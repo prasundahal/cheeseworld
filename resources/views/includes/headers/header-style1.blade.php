@@ -51,8 +51,17 @@
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <div class="container d-block">
-                            {{-- {{ dd(get_defined_vars()) }} --}}
-                              {{-- <div class="row">
+                            @php
+                              $arr = [];
+                              $categories = App\Models\Admin\Category::inRandomOrder()->take(12)->get();
+                              foreach($categories as $categories){
+                                $productCategory = App\Models\Admin\ProductCategory::where('category_id', $categories->id)->take(3)->get();
+                                foreach($productCategory as $productCategory){
+                                  $arr[$categories->detail[0]->category_name][] = App\Models\Admin\Product::where('id', $productCategory->product_id)->first();
+                                }
+                              }
+                            @endphp
+                              <div class="row">
                                 @foreach ($arr as $key => $arr)
                                 <div class="col-md-3">
                                   <ul class="nav flex-column">
@@ -69,7 +78,7 @@
                                     </ul>
                                   </div>
                                 @endforeach
-                              </div> --}}
+                              </div>
                           </div>
                           <!--  /.container  -->
                       </div>
