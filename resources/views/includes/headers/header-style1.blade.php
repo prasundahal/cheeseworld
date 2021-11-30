@@ -1,5 +1,13 @@
 <!-- //header style One-->
+<?php
+$categories = App\Models\Admin\Category::inRandomOrder()
+    ->with("detail")
+    ->whereHas('my_products')
+    ->with("my_products")
+    ->take(12)
+    ->get();
 
+?>
 <section id="navigation-wrapper" class="navigation-wrap fixed-top">
     <div class="container">
         <div class="main-header row py-2">
@@ -12,8 +20,8 @@
                                 Search</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a class="nav-link" href="#"> <span class="mr-1"><i class="fa fa-map-marker"
-                                        aria-hidden="true"></i>
+                            <a class="nav-link" href="/shop"> <span class="mr-1"><i
+                                        class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>
                                 Shops</a>
                         </li>
@@ -22,7 +30,9 @@
             </div>
             <div class="col-4 m-auto">
                 <div class="logo text-center">
-                    <img src="{{isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}" class="img-fluid">
+                    <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}"
+                        alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}"
+                        class="img-fluid">
                 </div>
             </div>
             <div class="col-4 m-auto">
@@ -31,11 +41,10 @@
                 </div>
             </div>
         </div>
-  
+
         <nav class="navbar navbar-expand-lg navbar-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,33 +60,27 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <div class="container d-block">
-                              @php
-                                $arr = [];
-                                $categories = App\Models\Admin\Category::inRandomOrder()->take(12)->get();
-                                foreach($categories as $categories){
-                                  $productCategory = App\Models\Admin\ProductCategory::where('category_id', $categories->id)->take(3)->get();
-                                  foreach($productCategory as $productCategory){
-                                    $arr[$categories->detail[0]->category_name][] = App\Models\Admin\Product::where('id', $productCategory->product_id)->first();
-                                  }
-                                }
-                              @endphp
+                               
                                 <div class="row">
-                                  @foreach ($arr as $key => $arr)
-                                  <div class="col-md-3">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                          <a class="nav-link head font-weight-bold"
-                                          href="under-construction.html">{{ $key }}</a>
-                                        </li>
-                                        @foreach ($arr as $value)
-                                          <li class="nav-item">
-                                            <a class="nav-link"
-                                            href="under-construction.html">{{ $value->detail[0]->title }}</a>
-                                          </li>
-                                        @endforeach
-                                      </ul>
-                                    </div>
-                                  @endforeach
+                                    @foreach ($categories as $key => $category)
+                                        <div class="col-md-3">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link head font-weight-bold"
+                                                        href="/shop?category={{ $category->id }}">{{ $category->detail[0]->category_name }}</a>
+                                                </li>
+                                                @foreach ($category->my_products->take(3) as $value)
+                                                   
+                                                        <li class="nav-item">
+                                                            <a class="nav-link"
+                                                                href="">{{ $value->detail[0]->title }}</a>
+                                                        </li>
+                                                   
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                    
                                 </div>
                             </div>
                             <!--  /.container  -->
@@ -93,11 +96,11 @@
             </div>
         </nav>
     </div>
-  </section>
+</section>
+
+{{-- <header id="headerOne" class="header-area header-one  header-desktop d-none d-lg-block d-xl-block">
   
-  {{-- <header id="headerOne" class="header-area header-one  header-desktop d-none d-lg-block d-xl-block">
-  
-    @if (trans("lables.header-top-offer") != '')
+    @if (trans('lables.header-top-offer') != '')
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <div class="container">
         <div class="pro-description">
@@ -127,7 +130,7 @@
                 
   
               <div class="dropdown-menu">
-                  @foreach($data['language'] as $languages)
+                  @foreach ($data['language'] as $languages)
                     <a class="dropdown-item language-default" href=" {{ url('/lang/'.$languages->code) }}" data-id={{$languages->id}} data-name="{{$languages->name}}">{{$languages->name}}</a>
                   @endforeach
                 </div>
@@ -139,7 +142,7 @@
                   USD
                 </button>
                 <div class="dropdown-menu">
-                  @foreach($data['currency'] as $currencies)
+                  @foreach ($data['currency'] as $currencies)
                     <a class="dropdown-item selected-currency" data-id="{{$currencies->id}}" data-code="{{$currencies->title}}" href="javascript:void(0)">{{$currencies->title}}</a>
                   @endforeach
                 </div>
@@ -201,7 +204,7 @@
                   {{  trans("lables.header-all-categories") }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="headerOneCartButton">
-                  @foreach($data['category'] as $categories)
+                  @foreach ($data['category'] as $categories)
                   
                   <a class="dropdown-item cat-dropdown" href="javascript:void(0)" data-id="{{ $categories->id }}" data-name="{{isset($categories->detail[0]->category_name) ? $categories->detail[0]->category_name : ''}}">{{isset($categories->detail[0]->category_name) ? $categories->detail[0]->category_name : ''}}</a>
                   @endforeach
@@ -281,11 +284,11 @@
       </div>
     </div>
   </header> --}}
+
+
+{{-- @include('includes.headers.sticky-header')
   
-  
-  {{-- @include('includes.headers.sticky-header')
-  
-  @if(isset($header_menu->menu))  
+  @if (isset($header_menu->menu))  
     @php $header_menu = json_decode(($header_menu->menu), true); $menuloop = 0; @endphp
     <!-- header mobile -->
     @include('includes.headers.mobile-menu')

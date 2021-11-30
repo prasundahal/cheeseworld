@@ -400,26 +400,41 @@
         });
         // Navigation Js Scroll Ends
         // Navigation Js Onclick Starts
+        var scroll;
+        $(document).on('click', 'body', function() {
+            console.log('helo body ma');
+            $("#navbarDropdown").hide();
+            $(".dropdown-menu").hide();
+            if (scroll > 150) {
+
+                $(".navigation-wrap").css("background", "white");
+                $(".nav-link").css("color", "black");
+            } else {
+                $(".navigation-wrap").css("background", "transparent");
+                $(".nav-link").css("color", "white");
+            }
+        })
         $(document).ready(function() {
-            var scroll;
-            $("#navbarDropdown")
-                .focusout(function() {
-                    scroll = $(window).scrollTop();
-                    $('.dropdown-menu').toggle();
-                    if (scroll > 150) {
 
-                        $(".navigation-wrap").css("background", "white");
-                        $(".nav-link").css("color", "black");
-                    } else {
-                        $(".navigation-wrap").css("background", "transparent");
-                        $(".nav-link").css("color", "white");
-                    }
+            /* $("#navbarDropdown")
+                    .focusout(function() {
+                        scroll = $(window).scrollTop();
+                        $('.dropdown-menu').toggle();
+                        if (scroll > 150) {
 
-                });
+                            $(".navigation-wrap").css("background", "white");
+                            $(".nav-link").css("color", "black");
+                        } else {
+                            $(".navigation-wrap").css("background", "transparent");
+                            $(".nav-link").css("color", "white");
+                        }
+
+                    });
+     */
 
             $('#navbarDropdown').click(function(e) {
                 console.log('navbarCLick');
-                e.stopImmediatePropagation();
+                // e.stopImmediatePropagation();
                 scroll = $(window).scrollTop();
                 $('.dropdown-menu').toggle();
                 if ($('.dropdown-menu').is(':visible')) {
@@ -460,17 +475,20 @@
                 success: function(data) {
                     if (data.status == 'Success') {
                         var category = '';
-                        $.each(data.data, function(i, e){
+                        $.each(data.data, function(i, e) {
                             category += '<div class="content text-center">' +
-                                '<a href="#">' +
-                                    '<div class=" d-flex flex-column m-auto justify-content-center align-items-center h-100">' +
-                                        '<div class="image mb-1">' +
-                                            '<img src="{{ asset("gallary") }}/' + e.gallary + '" class="img-fluid">' +
-                                        '</div>' +
-                                        '<label for="image" class="font-weight-bold mb-0">' + e.name + '</label>' +
-                                    '</div>' +
+
+                                '<a href="/shop?category=' + data.data[i].id + '">' +
+                                '<div class=" d-flex flex-column m-auto justify-content-center align-items-center h-100">' +
+                                '<div class="image mb-1">' +
+                                '<img src="{{ asset('gallary') }}/' + e.gallary +
+                                '" class="img-fluid">' +
+                                '</div>' +
+                                '<label for="image" class="font-weight-bold mb-0">' + e.name +
+                                '</label>' +
+                                '</div>' +
                                 '</a>' +
-                            '</div>';
+                                '</div>';
                         });
                         $('.slick-w2-a').html(category);
 
@@ -483,8 +501,7 @@
                             slidesToShow: 9,
                             slidesToScroll: 1,
 
-                            responsive: [
-                                {
+                            responsive: [{
                                     breakpoint: 1400,
                                     settings: {
                                         slidesToShow: 9,
@@ -534,7 +551,8 @@
             $.ajax({
                 type: 'get',
                 url: "{{ url('') }}" +
-                '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=1&topSelling=1&currency=' + localStorage.getItem("currency"),
+                    '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=1&topSelling=1&currency=' +
+                    localStorage.getItem("currency"),
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
@@ -544,18 +562,21 @@
                 success: function(data) {
                     var product = '';
                     if (data.status == 'Success') {
-                        $.each(data.data, function(i, e){
-                            product += '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
+                        $.each(data.data, function(i, e) {
+                            product +=
+                                '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
-                                    '<img src="{{ asset('gallary') }}/' + e.product_gallary.gallary_name + '" class="img-fluid" alt="image-1">' +
+                                '<img src="{{ asset('gallary') }}/' + e.product_gallary
+                                .gallary_name + '" class="img-fluid" alt="image-1">' +
                                 '</div>' +
                                 '<div class="heading m-auto">' +
-                                    '<a href="#">' +
-                                        '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +
-                                    '</a>' +
-                                    '<h6 class="text-uppercase text-center mb-3">' + e.category[0].category_detail.detail[0].name + '</h6>' +
+                                '<a href="#">' +
+                                '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +
+                                '</a>' +
+                                '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
+                                .category_detail.detail[0].name + '</h6>' +
                                 '</div>' +
-                            '</div>';
+                                '</div>';
                         })
                         $('.slick-w3-a').html(product);
 
@@ -568,8 +589,7 @@
                             slidesToShow: 4,
                             slidesToScroll: 1,
 
-                            responsive: [
-                                {
+                            responsive: [{
                                     breakpoint: 1400,
                                     settings: {
                                         slidesToShow: 4,
@@ -630,34 +650,35 @@
                     console.log(data);
                     if (data.status == 'Success') {
                         var articles = '';
-                        $.each(data.data, function(i, e){
-                            if(i % 2 == 0){
+                        $.each(data.data, function(i, e) {
+                            if (i % 2 == 0) {
                                 articles += '<div class="col-4">';
                             }
                             articles += '<div class="box-1st d-flex flex-column mb-5">' +
                                 '<div class="card text-center border-0">' +
-                                    '<div class="card-header-cus">' +
-                                        '<h4 class="font-weight-bold">' + e.detail[0].name + '</h4>' +
-                                    '</div>' +
-                                    '<div class="card-body-cus">' +
-                                        '<p class="card-text mb-2">' + e.detail[0].description.substring(0, 150) + '...</p>' +
-                                        '</div>' +
-                                    '<div class="card-footer-cus">' +
-                                        '<a href="#" class="font-weight-bold text-uppercase">Go To Article</a>' +
-                                        '</div>' +
+                                '<div class="card-header-cus">' +
+                                '<h4 class="font-weight-bold">' + e.detail[0].name + '</h4>' +
                                 '</div>' +
-                            '</div>';
-                            if((i + 1) % 2 == 0 && i != 0){
+                                '<div class="card-body-cus">' +
+                                '<p class="card-text mb-2">' + e.detail[0].description
+                                .substring(0, 150) + '...</p>' +
+                                '</div>' +
+                                '<div class="card-footer-cus">' +
+                                '<a href="#" class="font-weight-bold text-uppercase">Go To Article</a>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                            if ((i + 1) % 2 == 0 && i != 0) {
                                 articles += '</div>';
                             }
-                            if(i == 1){
+                            if (i == 1) {
                                 articles += '<div class="col-4">' +
                                     '<div class="box-3rd d-flex justify-content-center align-items-center h-100">' +
-                                        '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
+                                    '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
                                     '</div>' +
-                                '</div>';
+                                    '</div>';
                             }
-                            if(i == 3){
+                            if (i == 3) {
                                 return false;
                             }
                         });
@@ -1053,13 +1074,13 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        if($(".carousel-content").find($(".slider-navigation-show")).length > 0){
+                        if ($(".carousel-content").find($(".slider-navigation-show")).length > 0) {
                             $(".slider-navigation-show").html('');
                             const templ = document.getElementById("slider-navigation-template");
                             // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                             for (i = 0; i < data.data.length; i++) {
                                 $("#slider-bullets-" + i).addClass("d-xl-block");
-    
+
                                 const clone = templ.content.cloneNode(true);
                                 // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                                 clone.querySelector(".slider-navigation-title").innerHTML = data.data[i]
@@ -1077,31 +1098,38 @@
                                 }
                                 $(".slider-navigation-show").append(clone);
                             }
-                        }else{
+                        } else {
                             var indicator = '';
                             var carousel = '';
-                            $.each(data.data, function(i, e){
-                                if(i == 0){
-                                    indicator += '<li data-target="#carousel-index-wrapper" data-slide-to="' + i + '" class="active"></li>';
+                            $.each(data.data, function(i, e) {
+                                if (i == 0) {
+                                    indicator +=
+                                        '<li data-target="#carousel-index-wrapper" data-slide-to="' +
+                                        i + '" class="active"></li>';
                                     carousel += '<div class="carousel-item active">'
-                                }else{
-                                    indicator += '<li data-target="#carousel-index-wrapper" data-slide-to="' + i + '"></li>';
+                                } else {
+                                    indicator +=
+                                        '<li data-target="#carousel-index-wrapper" data-slide-to="' +
+                                        i + '"></li>';
                                     carousel += '<div class="carousel-item">'
                                 }
-                                carousel += '<img class="d-block w-100" src="{{ asset("gallary") }}/' + e.gallary + '" alt="First slide">' +
+                                carousel +=
+                                    '<img class="d-block w-100" src="{{ asset('gallary') }}/' + e
+                                    .gallary + '" alt="First slide">' +
                                     '<div class="carousel-caption d-flex flex-column h-100 align-items-start justify-content-center w-100">' +
-                                        '<div class="row w-100">' +
-                                            '<div class="col-4"></div>' +
-                                            '<div class="col-xl-6 col-md-6 col-sm-12 col-12">' +
-                                                '<div class="header-content text-left">' +
-                                                    '<h1 class="font-weight-bold mb-3">' + e.slider_title + '</h1>' +
-                                                    '<h5 class="mb-4">' + e.slider_description + '</h5>' +
-                                                    '<a href="' + e.slider_url + '" class="btn-anch px-4 py-2 font-weight-bold text-white">Know More</a>' +
-                                                '</div>' +
-                                            '</div>' +
-                                        '</div>' +
+                                    '<div class="row w-100">' +
+                                    '<div class="col-4"></div>' +
+                                    '<div class="col-xl-6 col-md-6 col-sm-12 col-12">' +
+                                    '<div class="header-content text-left">' +
+                                    '<h1 class="font-weight-bold mb-3">' + e.slider_title + '</h1>' +
+                                    '<h5 class="mb-4">' + e.slider_description + '</h5>' +
+                                    '<a href="' + e.slider_url +
+                                    '" class="btn-anch px-4 py-2 font-weight-bold text-white">Know More</a>' +
                                     '</div>' +
-                                '</div>';
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>';
                             });
                             $('.carousel-inner').html(carousel);
                             $('.carousel-indicators').html(indicator);
