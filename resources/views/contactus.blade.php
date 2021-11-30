@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
+{{-- {{ dd(get_defined_vars()) }} --}}
 @include(isset(getSetting()['contact_us']) ? 'includes.contactus.contactus-'.getSetting()['contact_us'] : 'includes.contactus.contactus-style1')
 
 

@@ -1,9 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+    
     @include(isset(getSetting()['slider_style']) ? 'includes.sliders.slider-'.getSetting()['slider_style'] :
     'includes.sliders.slider-style1')
-
 
     @foreach (homePageBuilderJson() as $template)
         @if (!$template['skip'] && $template['display'])
@@ -387,16 +386,50 @@
     <script>
         // Navigation Js Scroll Starts
         $(document).ready(function() {
-            $(window).scroll(function() {
-                var scroll = $(window).scrollTop();
-                if (scroll > 150) {
-                    $(".navigation-wrap").css("background", "white");
-                    $(".nav-link").css("color", "black");
-                } else {
-                    $(".navigation-wrap").css("background", "transparent");
-                    $(".nav-link").css("color", "white");
-                }
-            })
+            var url = "{{ url('') }}" +
+                '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&topSelling=1&currency=' + localStorage.getItem("currency");
+            appendTo = 'tab_top_sales';
+            fetchProduct(url, appendTo);
+
+            var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' +
+                languageId + '&currency=' + localStorage.getItem("currency");
+            appendTo = 'tab_special_products';
+            fetchProduct(url, appendTo);
+
+            var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' +
+                languageId + '&currency=' + localStorage.getItem("currency");
+            appendTo = 'tab_most_liked';
+            fetchProduct(url, appendTo);
+
+            var url = "{{ url('') }}" +
+                '/api/client/products?limit=12&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&sortBy=id&sortType=DESC&currency=' + localStorage.getItem("currency");
+            appendTo = 'new-arrival';
+            fetchProduct(url, appendTo);
+
+
+            var url = "{{ url('') }}" +
+                '/api/client/products?limit=6&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&sortBy=id&sortType=DESC&currency=' + localStorage.getItem("currency");
+            appendTo = 'weekly-sale';
+            fetchProduct(url, appendTo);
+
+            var url = "{{ url('') }}" +
+                '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&topSelling=1&currency=' + localStorage.getItem("currency");
+            appendTo = 'weekly-sale-first-div';
+            fetchFeaturedWeeklyProduct(url, appendTo)
+
+            blogNews();
+            sliderMedia();
+            categorySlider();
+            bannerMedia();
+            cartSession = $.trim(localStorage.getItem("cartSession"));
+            if (cartSession == null || cartSession == 'null') {
+                cartSession = '';
+            }
+            menuCart(cartSession);
         });
         // Navigation Js Scroll Ends
         // Navigation Js Onclick Starts
@@ -1169,6 +1202,7 @@
                     if (data.status == 'Success') {
                         $(".category-slider-show").html('');
                         const templ = document.getElementById("category-slider-template");
+                        // console.log(templ.content);
                         // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                         for (i = 0; i < data.data.length; i++) {
                             const clone = templ.content.cloneNode(true);
@@ -1180,7 +1214,61 @@
                             clone.querySelector(".category-slider-title").innerHTML = data.data[i].name;
                             $(".category-slider-show").append(clone);
                         }
-                        getSliderSettings("category-slider-show");
+
+                        $('.category-slider-show').slick({
+                            dots: false,
+                            focusOnSelect: false,
+                            autoplay: true,
+                            arrows: false,
+                            speed: 400,
+                            slidesToShow: 9,
+                            slidesToScroll: 1,
+
+                            responsive: [{
+                                    breakpoint: 1400,
+                                    settings: {
+                                        slidesToShow: 9,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 1080,
+                                    settings: {
+                                        slidesToShow: 6,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 780,
+                                    settings: {
+                                        slidesToShow: 6,
+                                        slidesToScroll: 1
+                                    }
+                                },
+
+                                {
+                                    breakpoint: 600,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 480,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1
+                                    }
+                                }
+
+
+                            ]
+
+
+
+                        });
+
+                        // getSliderSettings("category-slider-show");
                     }
                 },
                 error: function(data) {},
