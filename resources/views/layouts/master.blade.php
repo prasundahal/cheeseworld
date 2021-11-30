@@ -22,8 +22,29 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Core CSS Files -->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/style.css') }}">
+    <!-- New Template Css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css ') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css ') }}" />
+    <!--========================================= NEW LINK START  -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css ') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css ') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css ') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css ') }}" />
+
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,9 +56,17 @@
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
     {{-- {{   dd(getSetting()) }} --}}
-    @include('extras.preloader')
-    @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
-    'includes.headers.header-style1')
+    {{-- @include('extras.preloader') --}}
+    @if (!Request::is('/'))
+        <section id="page-wrapper">
+            @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
+            'includes.headers.header-style1')
+        </section>
+    @else
+        @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
+        'includes.headers.header-style1')
+    @endif
+
 
 
     @yield('content')
@@ -47,23 +76,160 @@
     'includes.footers.footer-style1')
 
 
-    <a href="javascript:void(0)" class="btn-secondary swipe-to-top" id="back-to-top" data-toggle="tooltip"
+    {{-- <a href="javascript:void(0)" class="btn-secondary swipe-to-top" id="back-to-top" data-toggle="tooltip"
         data-placement="bottom" data-original-title="{{ trans('lables.general-backtotop') }}"
-        title="{{ trans('lables.general-backtotop') }}">&uarr;</a>
+        title="{{ trans('lables.general-backtotop') }}">&uarr;</a> --}}
 
-    <div class="mobile-overlay"></div>
+    {{-- <div class="mobile-overlay"></div>
 
-    <div class="notifications" id="notificationWishlist">Product Added To Wishlist</div>
+    <div class="notifications" id="notificationWishlist">Product Added To Wishlist</div> --}}
 
 
 
-    @include('extras.settings')
-    @include('modals.product-quick-view')
+    {{-- @include('extras.settings')
+    @include('modals.product-quick-view') --}}
+
+
+    <!--Sidebar Modal -->
+    <div class="modal left fade" id="sidebarmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-0">
+                    <div class="modal-header text-center m-auto border-0">
+                        <h5 class="modal-title" id="modal1">
+                            <img src="../image/logo/logo.png" alt="logo" class="img-fluid">
+                        </h5>
+                    </div>
+                    <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pt-0 pb-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav id="column_left">
+                                <ul class="nav nav-list">
+                                    <li class="main-list">
+                                        <a class="accordion-heading" data-toggle="collapse" data-target="#submenu1">
+                                            <span
+                                                class="nav-header-primary nav-link dropdown-toggle d-block p-0">Products
+                                                <span class="ml-1 icon">
+                                                    <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
+
+                                                </span>
+                                                <span class="pull-right"><b
+                                                        class="caret"></b></span></span>
+                                        </a>
+                                        <ul class="collapse pl-0" id="submenu1">
+
+                                            <li>
+                                                <a class="accordion-heading dropdown-toggle" data-toggle="collapse"
+                                                    data-target="#submenu11" aria-expanded="true">Boppy
+
+                                                    <span class="pull-right"><b
+                                                            class="caret"></b></span></a>
+                                                <ul class="collapse pl-0" id="submenu11">
+                                                    <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
+                                                    <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <a class="accordion-heading dropdown-toggle" data-toggle="collapse"
+                                                    data-target="#submenu12" aria-expanded="true">Soothers
+
+                                                    <span class="pull-right"><b
+                                                            class="caret"></b></span></a>
+                                                <ul class="collapse pl-0" id="submenu12">
+                                                    <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
+                                                    <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="main-list">
+                                        <a class="accordion-heading" data-toggle="collapse" data-target="#submenu2">
+                                            <span class="nav-header-primary nav-link d-block p-0">Chicco
+                                                Research
+                                                Center
+                                                <!-- <span class="ml-1 icon">
+                                                    <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
+
+                                                </span> -->
+                                                <span class="pull-right"><b class="caret"></b></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="main-list">
+                                        <a class="accordion-heading" data-toggle="collapse" data-target="#submenu3">
+                                            <span class="nav-header-primary nav-link  d-block p-0">Who
+                                                we are
+
+                                                <span class="pull-right"><b class="caret"></b></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="main-list">
+                                        <a class="accordion-heading" data-toggle="collapse" data-target="#submenu4">
+                                            <span class="nav-header-primary nav-link  d-block p-0">
+                                                <span class="mr-2"><i class="fa fa-map-marker"
+                                                        aria-hidden="true"></i></span>
+
+                                                Shop
+                                                <span class="pull-right"><b class="caret"></b></span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div><!-- modal-content -->
+        </div>
+    </div>
+    <!--Sidebar modal -->
+
+    <!--SearchBar Modal -->
+    <div class="modal fade w-100 p-0 position-fixed" id="searchmodal" tabindex="-1" role="dialog"
+        aria-labelledby="searchmodal" aria-hidden="true">
+        <div class="modal-dialog modal-xl position-relative" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center m-auto">
+                    <h5 class="modal-title" id="modal1">
+                        <img src="{{ asset('frontend/image/logo/logo.png') }}" alt="logo" class="img-fluid">
+                    </h5>
+
+                </div>
+                <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body text-center">
+                    <form>
+                        <input type="search" id="search-input" class="w-75">
+                        <button id="search_button" class="d-none">Search</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--SearchBar Modal -->
 
     <!-- All custom scripts here -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/front/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/front/js/scripts.js') }}"></script> --}}
+    @include('includes.script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     @php
@@ -163,7 +329,7 @@
                             thisCarousel.slick({
                                 lazyLoad: 'progressive',
                                 dots: false,
-                                arrows: true,
+                                // arrows: true,
                                 infinite: false,
                                 // variableWidth: true,
                                 //rtl:true,
@@ -335,7 +501,8 @@
                         if (data.data.detail != null && data.data.detail != 'null' && data.data.detail != '') {
                             clone.querySelector(".quick-view-product-name").innerHTML = data.data.detail[0]
                                 .title;
-                            clone.querySelector(".quick-view-desc").innerHTML = data.data.detail[0].desc.replace(/<\/?[^>]+>/gi, '').substring(0,250)
+                            clone.querySelector(".quick-view-desc").innerHTML = data.data.detail[0].desc
+                                .replace(/<\/?[^>]+>/gi, '').substring(0, 250)
                         }
                         clone.querySelector(".quick-view-product-id").innerHTML = data.data.product_id;
 
@@ -345,7 +512,8 @@
                                 clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data
                                     .product_price_symbol + '</ins>';
                             } else {
-                                clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data.product_discount_price + '</ins> <del>' + data.data
+                                clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data
+                                    .product_discount_price + '</ins> <del>' + data.data
                                     .product_price_symbol +
                                     '</del>';
                             }
@@ -516,8 +684,7 @@
                                 }
                             }
 
-                            if (data.data[i].discount_price > 0)
-                            {
+                            if (data.data[i].discount_price > 0) {
                                 discount_price = data.data[i].discount_price;
                             } else {
                                 discount_price = data.data[i].price;
@@ -541,8 +708,8 @@
                                         '  onclick="removeCartItem(this)"></i>';
                                 }
                             }
-                            
-                            total_price = total_price + (discount_price*data.data[i].qty);
+
+                            total_price = total_price + (discount_price * data.data[i].qty);
 
                             $(".top-cart-product-show").append(clone);
                             currrency = data.data[i].currency;
@@ -750,8 +917,7 @@
                                 }
                             }
 
-                            if (data.data[i].discount_price > 0)
-                            {
+                            if (data.data[i].discount_price > 0) {
                                 discount_price = data.data[i].discount_price;
                             } else {
                                 discount_price = data.data[i].price;
@@ -763,16 +929,17 @@
                                     clone.querySelector(".cartItem-total").innerHTML = data.data[i].currency
                                         .code + ' ' + sum.toFixed(2);
                                     clone.querySelector(".cartItem-price").innerHTML = data.data[i].currency
-                                        .code + ' ' +discount_price.toFixed(2);
+                                        .code + ' ' + discount_price.toFixed(2);
                                 } else {
                                     sum = +data.data[i].qty * +discount_price;
-                                    clone.querySelector(".cartItem-total").innerHTML = sum.toFixed(2) + ' ' + data.data[i]
+                                    clone.querySelector(".cartItem-total").innerHTML = sum.toFixed(2) + ' ' +
+                                        data.data[i]
                                         .currency.code;
-                                    clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(2) + ' ' + data.data[i]
+                                    clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(
+                                            2) + ' ' + data.data[i]
                                         .currency.code;
                                 }
-                            }
-                            else{
+                            } else {
                                 clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(2);
                             }
                             clone.querySelector(".cartItem-qty").value = +data.data[i].qty;
@@ -782,8 +949,8 @@
                             clone.querySelector(".cartItem-qty-1").setAttribute('data-field', i);
                             clone.querySelector(".cartItem-qty-2").setAttribute('data-field', i);
 
-                           
-                            total_price = total_price + (discount_price*data.data[i].qty);
+
+                            total_price = total_price + (discount_price * data.data[i].qty);
 
 
                             if ($.trim(data.data[i].category_detail[0].category_detail) != '' && $.trim(data
@@ -816,19 +983,21 @@
                                     clone1.querySelector(".caritem-subtotal").innerHTML = data.data[i].currency
                                         .code + ' ' + total_price.toFixed(2);
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price.toFixed(2));
+                                        total_price.toFixed(2));
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price-symbol', data
                                         .data[i].currency.code + ' ' + total_price.toFixed(2));
                                     clone1.querySelector(".caritem-grandtotal").innerHTML = data.data[i]
                                         .currency.code + ' ' + total_price.toFixed(2);
                                 } else {
-                                    clone1.querySelector(".caritem-subtotal").innerHTML = total_price.toFixed(2) + ' ' +
+                                    clone1.querySelector(".caritem-subtotal").innerHTML = total_price.toFixed(
+                                            2) + ' ' +
                                         data.data[i].currency.code;
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price.toFixed(2));
+                                        total_price.toFixed(2));
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price-symbol', data
                                         .data[i].currency.code + ' ' + total_price.toFixed(2));
-                                    clone1.querySelector(".caritem-grandtotal").innerHTML = total_price.toFixed(2) + ' ' +
+                                    clone1.querySelector(".caritem-grandtotal").innerHTML = total_price.toFixed(
+                                            2) + ' ' +
                                         data.data[i].currency.code;
                                 }
                             }

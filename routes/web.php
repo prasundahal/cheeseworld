@@ -48,7 +48,7 @@ Route::any('admin/{all}', function () {
     // });
     Route::get('/hyperpay', 'Web\IndexController@getcall');
 
-Route::group(['middleware' => ['general','installer']], function () {
+Route::group(['middleware' => ['general']], function () {
 
     Route::get('/', 'Web\IndexController@index');
 

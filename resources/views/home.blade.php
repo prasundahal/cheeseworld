@@ -1,9 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+    
     @include(isset(getSetting()['slider_style']) ? 'includes.sliders.slider-'.getSetting()['slider_style'] :
     'includes.sliders.slider-style1')
-
 
     @foreach (homePageBuilderJson() as $template)
         @if (!$template['skip'] && $template['display'])
@@ -49,7 +48,7 @@
                 '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
                 '&topSelling=1&currency=' + localStorage.getItem("currency");
             appendTo = 'weekly-sale-first-div';
-            fetchFeaturedWeeklyProduct(url,appendTo)
+            fetchFeaturedWeeklyProduct(url, appendTo)
 
             blogNews();
             sliderMedia();
@@ -80,7 +79,7 @@
                         for (i = 0; i < data.data.length; i++) {
                             const clone = templ.content.cloneNode(true);
                             // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
-                            
+
                             clone.querySelector(".wishlist-icon").setAttribute('data-id', data.data[i]
                                 .product_id);
                             clone.querySelector(".wishlist-icon").setAttribute('onclick', 'addWishlist(this)');
@@ -97,27 +96,28 @@
                                 .product_type);
                             clone.querySelector(".quick-view-icon").setAttribute('onclick',
                                 'quiclViewData(this)');
-                            
+
                             rating = '';
-                            if(data.data[i].product_rating == 1){
-                                rating = '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa " for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            if (data.data[i].product_rating == 1) {
+                                rating =
+                                    '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa " for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            } else if (data.data[i].product_rating == 2) {
+                                rating =
+                                    '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            } else if (data.data[i].product_rating == 3) {
+                                rating =
+                                    '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            } else if (data.data[i].product_rating == 4) {
+                                rating =
+                                    '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa active" for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            } else if (data.data[i].product_rating == 5) {
+                                rating =
+                                    '<label class="full fa active" for="star1" title="Awesome - 1 stars"></label><label class="full fa active" for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
+                            } else {
+                                rating =
+                                    '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa " for="star_4" title="Awesome - 4 stars"></label><label class="full fa " for="star_5" title="Awesome - 5 stars"></label>'
                             }
-                            else if(data.data[i].product_rating == 2){
-                                rating = '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
-                            }
-                            else if(data.data[i].product_rating == 3){
-                                rating = '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
-                            }
-                            else if(data.data[i].product_rating == 4){
-                                rating = '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa active" for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
-                            }
-                            else if(data.data[i].product_rating == 5){
-                                rating = '<label class="full fa active" for="star1" title="Awesome - 1 stars"></label><label class="full fa active" for="star_2" title="Awesome - 2 stars"></label><label class="full fa active" for="star_3" title="Awesome - 3 stars"></label><label class="full fa active" for="star_4" title="Awesome - 4 stars"></label><label class="full fa active" for="star_5" title="Awesome - 5 stars"></label>'
-                            }
-                            else{
-                                rating = '<label class="full fa " for="star1" title="Awesome - 1 stars"></label><label class="full fa " for="star_2" title="Awesome - 2 stars"></label><label class="full fa " for="star_3" title="Awesome - 3 stars"></label><label class="full fa " for="star_4" title="Awesome - 4 stars"></label><label class="full fa " for="star_5" title="Awesome - 5 stars"></label>'
-                            }
-                            
+
                             clone.querySelector(".display-rating").innerHTML = rating;
                             clone.querySelector(".display-rating1").innerHTML = rating;
 
@@ -167,8 +167,9 @@
                                         .product_price_symbol;
                                 } else {
                                     clone.querySelector(".product-card-price").innerHTML =
-                                    data.data[i]
-                                        .product_discount_price_symbol + '<span>' +data.data[i].product_price_symbol + '</span>';
+                                        data.data[i]
+                                        .product_discount_price_symbol + '<span>' + data.data[i]
+                                        .product_price_symbol + '</span>';
                                 }
                             } else {
                                 if (data.data[i].product_combination != null && data.data[i]
@@ -193,7 +194,7 @@
                             }
 
                             $("." + appendTo).append(clone);
-                            
+
                             if (appendTo == 'new-arrival' || appendTo == 'weekly-sale') {
                                 $(".div-class").addClass('col-12 col-sm-6 col-lg-3');
                             }
@@ -221,72 +222,80 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        console.log(data,"final data");
-                        var htmlToRender ="<article><div class='badges'><span class='badge badge-success'>Featured</span></div><div class='detail'>";
-                        
-                            htmlToRender +='<h5 class="title"><a  href="/product/'+data
-                                    .data[0].product_id +'/'+data
-                                    .data[0].product_slug+'">'+data.data[0].detail[0]
-                                    .title+'</a></h5>';
+                        console.log(data, "final data");
+                        var htmlToRender =
+                            "<article><div class='badges'><span class='badge badge-success'>Featured</span></div><div class='detail'>";
+
+                        htmlToRender += '<h5 class="title"><a  href="/product/' + data
+                            .data[0].product_id + '/' + data
+                            .data[0].product_slug + '">' + data.data[0].detail[0]
+                            .title + '</a></h5>';
 
 
-                            htmlToRender +='<p class="discription">'+data.data[0].detail[0]
-                                    .desc+'</p>';
-                            
-                            
-                            
+                        htmlToRender += '<p class="discription">' + data.data[0].detail[0]
+                            .desc + '</p>';
 
-                            if (data.data[0].product_type == 'simple') {
-                                if (data.data[0].product_discount_price == '' || data.data[0]
-                                    .product_discount_price == null || data.data[0].product_discount_price ==
-                                    'null') {
-                                    htmlToRender +='<div class="price">'+data.data[0]
-                                        .product_price_symbol+'</div>';
-                                } else {
-                                    htmlToRender +='<div class="price">'+data.data[0]
-                                        .product_discount_price_symbol + '<span>' +data.data[0].product_price_symbol + '</span></div>';
-                                }
+
+
+
+                        if (data.data[0].product_type == 'simple') {
+                            if (data.data[0].product_discount_price == '' || data.data[0]
+                                .product_discount_price == null || data.data[0].product_discount_price ==
+                                'null') {
+                                htmlToRender += '<div class="price">' + data.data[0]
+                                    .product_price_symbol + '</div>';
                             } else {
-                                if (data.data[0].product_combination != null && data.data[0]
-                                    .product_combination != 'null' && data.data[0].product_combination != '') {
-                                        htmlToRender +='<div class="price">'+data.data[0]
-                                        .product_combination[0].product_price_symbol+'</div>';
-                                }
+                                htmlToRender += '<div class="price">' + data.data[0]
+                                    .product_discount_price_symbol + '<span>' + data.data[0]
+                                    .product_price_symbol + '</span></div>';
                             }
-
-                            htmlToRender +='<div class="pro-sub-buttons"><div class="buttons"><button type="button" class="btn  btn-link " data-id='+data.data[0]
-                                .product_id+' onclick="addWishlist(this)" data-type='+data.data[0]
-                                .product_type+'><i class="fas fa-heart"></i>Add to Wishlist</button>';
-                                
-                            htmlToRender +='<button type="button" class="btn btn-link" data-id='+data.data[0]
-                                .product_id+' data-type='+data.data[0]
-                                .product_type+' onclick="addCompare(this)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add to Compare"><i class="fas fa-align-right"></i>Add to Compare</button></div></div></div>';
-                            htmlToRender +='<picture><div class="product-hover">';
-                            if (data.data[0].product_type == 'simple') {
-                                
-                                htmlToRender +='<button type="button" onclick="addToCart(this)" class="btn btn-block btn-secondary cart swipe-to-top" >Add to Cart</button>';
-
-                            } else {
-                                
-                                htmlToRender +='<a href="/product/'+data
-                                    .data[0].product_id +'/'+data
-                                    .data[0].product_slug+'" onclick="addToCart(this)" class="btn btn-block btn-secondary cart swipe-to-top" >View Detail</a>';
-        
+                        } else {
+                            if (data.data[0].product_combination != null && data.data[0]
+                                .product_combination != 'null' && data.data[0].product_combination != '') {
+                                htmlToRender += '<div class="price">' + data.data[0]
+                                    .product_combination[0].product_price_symbol + '</div>';
                             }
-                            
-                            htmlToRender +='</div>';
+                        }
 
-                             if (data.data[0].product_gallary != null && data.data[0].product_gallary !=
-                                'null' && data.data[0].product_gallary != '') {
-                                if (data.data[0].product_gallary.detail != null && data.data[0].product_gallary
-                                    .detail != 'null' && data.data[0].product_gallary.detail != '') {
-                                       htmlToRender +='<img class="img-fluid" src="'+data.data[0]
-                                        .product_gallary.detail[1].gallary_path+'" alt="Men"s Cotton Classic Baseball Cap">';
+                        htmlToRender +=
+                            '<div class="pro-sub-buttons"><div class="buttons"><button type="button" class="btn  btn-link " data-id=' +
+                            data.data[0]
+                            .product_id + ' onclick="addWishlist(this)" data-type=' + data.data[0]
+                            .product_type + '><i class="fas fa-heart"></i>Add to Wishlist</button>';
 
-                                }
+                        htmlToRender += '<button type="button" class="btn btn-link" data-id=' + data.data[0]
+                            .product_id + ' data-type=' + data.data[0]
+                            .product_type +
+                            ' onclick="addCompare(this)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add to Compare"><i class="fas fa-align-right"></i>Add to Compare</button></div></div></div>';
+                        htmlToRender += '<picture><div class="product-hover">';
+                        if (data.data[0].product_type == 'simple') {
+
+                            htmlToRender +=
+                                '<button type="button" onclick="addToCart(this)" class="btn btn-block btn-secondary cart swipe-to-top" >Add to Cart</button>';
+
+                        } else {
+
+                            htmlToRender += '<a href="/product/' + data
+                                .data[0].product_id + '/' + data
+                                .data[0].product_slug +
+                                '" onclick="addToCart(this)" class="btn btn-block btn-secondary cart swipe-to-top" >View Detail</a>';
+
+                        }
+
+                        htmlToRender += '</div>';
+
+                        if (data.data[0].product_gallary != null && data.data[0].product_gallary !=
+                            'null' && data.data[0].product_gallary != '') {
+                            if (data.data[0].product_gallary.detail != null && data.data[0].product_gallary
+                                .detail != 'null' && data.data[0].product_gallary.detail != '') {
+                                htmlToRender += '<img class="img-fluid" src="' + data.data[0]
+                                    .product_gallary.detail[1].gallary_path +
+                                    '" alt="Men"s Cotton Classic Baseball Cap">';
+
                             }
-                            htmlToRender +='</picture></article>';
-                           
+                        }
+                        htmlToRender += '</picture></article>';
+
 
                         $('#weekly-sale-first-div').html(htmlToRender);
                     }
@@ -486,6 +495,7 @@
                     if (data.status == 'Success') {
                         $(".category-slider-show").html('');
                         const templ = document.getElementById("category-slider-template");
+                        // console.log(templ.content);
                         // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                         for (i = 0; i < data.data.length; i++) {
                             const clone = templ.content.cloneNode(true);
@@ -497,7 +507,61 @@
                             clone.querySelector(".category-slider-title").innerHTML = data.data[i].name;
                             $(".category-slider-show").append(clone);
                         }
-                        getSliderSettings("category-slider-show");
+
+                        $('.category-slider-show').slick({
+                            dots: false,
+                            focusOnSelect: false,
+                            autoplay: true,
+                            arrows: false,
+                            speed: 400,
+                            slidesToShow: 9,
+                            slidesToScroll: 1,
+
+                            responsive: [{
+                                    breakpoint: 1400,
+                                    settings: {
+                                        slidesToShow: 9,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 1080,
+                                    settings: {
+                                        slidesToShow: 6,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 780,
+                                    settings: {
+                                        slidesToShow: 6,
+                                        slidesToScroll: 1
+                                    }
+                                },
+
+                                {
+                                    breakpoint: 600,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 480,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1
+                                    }
+                                }
+
+
+                            ]
+
+
+
+                        });
+
+                        // getSliderSettings("category-slider-show");
                     }
                 },
                 error: function(data) {},

@@ -30,7 +30,7 @@ class CartController extends Controller
 
     public function store(CartRequest $request)
     {
-      
+        
         $parms = $request->all();
         return $this->CartRepository->store($parms);
     }

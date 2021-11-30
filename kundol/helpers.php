@@ -25,7 +25,7 @@ if(!function_exists("homePageBuilderJson")){
             $currentThemeSetting = CurrentTheme::first()->home_setting;
             $currentThemeSetting =  json_decode($currentThemeSetting,true);
         }
-       
+        // dd($currentThemeSetting);
         return $currentThemeSetting;
     }
 }

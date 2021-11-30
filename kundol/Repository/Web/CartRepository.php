@@ -85,9 +85,9 @@ class CartRepository implements CartInterface
                 $parms['session_id'] = $session_id;
                  $qtyValidation = new AvailableQty;
                  $qtyValidation = $qtyValidation->availableQty($parms['product_id'], $parms['product_combination_id'], $parms['qty'],'cart');
-                 if (!$qtyValidation) {
+                 /* if (!$qtyValidation) {
                     return $this->errorResponse('Out of Stock!', 422);
-                 }
+                 } */
             } else {
                 
                 $parms['qty'] = null;

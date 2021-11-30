@@ -1,21 +1,33 @@
-<section class="categories-content pro-content">
+<section id="moment-wrapper">
     <div class="container">
-      <div class="products-area">
-         <div class="row justify-content-center">
-           <div class="col-12 col-lg-6">
-             <div class="pro-heading-title">
-               <h2> {{ trans('lables.home-product-categories-title') }}
-               </h2>
-               <p>{{ trans('lables.home-product-categories-description') }}</p>
-               </div>
-             </div>
-         </div>
-      
-      </div>
-    </div>
+        <div class="moment">
+            <div class="row">
+                <div class="col-12">
+                    <div class="category-slider-show">
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <template id="category-slider-template">
+
+    <div class="content text-center">
+        <a class="category-slider-url" href="">
+            <div class=" d-flex flex-column m-auto justify-content-center align-items-center h-100">
+                <div class="image mb-1">
+                    <img src="" class="img-fluid category-slider-image">
+                </div>
+                <label for="image" class="font-weight-bold mb-0 category-slider-title"></label>
+            </div>
+        </a>
+    </div>
+
+</template>
+
+{{-- <template id="category-slider-template">
     <div class="">
         <div class="cat-banner">
           <a class="category-slider-url" href="">
@@ -37,6 +49,4 @@
 
       </div>
     </div>
-  </div>
-
-  </section>
+  </div> --}}
