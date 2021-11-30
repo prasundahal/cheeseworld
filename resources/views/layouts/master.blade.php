@@ -1,6 +1,6 @@
 {{-- {{ dd(getSetting()['card_style']) }} --}}
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js') }}" lang="zxx">
 
 <head>
     <meta charset="UTF-8">
@@ -16,26 +16,36 @@
 
     <link rel="icon" type="image/png"
         href="{{ isset(getSetting()['favicon']) ? getSetting()['favicon'] : '01-fav.png' }}">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
 
-    <!-- Fontawesome CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" />
+    <!--========================================= NEW LINK START  -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" />
 
-    <!-- Core CSS Files -->
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/style.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-
 
 </head>
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
     {{-- {{   dd(getSetting()) }} --}}
-    @include('extras.preloader')
+    {{-- @include('extras.preloader') --}}
     @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
     'includes.headers.header-style1')
 
@@ -47,31 +57,52 @@
     'includes.footers.footer-style1')
 
 
-    <a href="javascript:void(0)" class="btn-secondary swipe-to-top" id="back-to-top" data-toggle="tooltip"
+    {{-- <a href="javascript:void(0)" class="btn-secondary swipe-to-top" id="back-to-top" data-toggle="tooltip"
         data-placement="bottom" data-original-title="{{ trans('lables.general-backtotop') }}"
         title="{{ trans('lables.general-backtotop') }}">&uarr;</a>
 
     <div class="mobile-overlay"></div>
 
-    <div class="notifications" id="notificationWishlist">Product Added To Wishlist</div>
+    <div class="notifications" id="notificationWishlist">Product Added To Wishlist</div> --}}
 
 
 
-    @include('extras.settings')
-    @include('modals.product-quick-view')
+    {{-- @include('extras.settings')
+    @include('modals.product-quick-view') --}}
 
     <!-- All custom scripts here -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/front/js/scripts.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- Js link Starts -->
+    <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- font awesome -->
+    <script src="{{ asset('frontend/js/wow.js') }}"></script>
+    <script src="https://kit.fontawesome.com/a26d9146a0.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/js/scripts/main.js') }}"></script>
+    <!-- NEW LIN ============================================================ -->
+    <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/animated.headline.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/classie.js') }}"></script>
+    <script src="{{ asset('frontend/js/cbpGridGallery.js') }}"></script>
 
     @php
         $language_id = $data['selectedLenguage'];
         $locale = session()->get('locale');
         //dd ($locale);
     @endphp
-    <script>
+    {{-- <script>
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -890,7 +921,7 @@
                 error: function(data) {},
             });
         }
-    </script>
+    </script> --}}
 
     @yield('script')
 </body>

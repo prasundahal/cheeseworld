@@ -48,10 +48,13 @@ Route::any('admin/{all}', function () {
     // });
     Route::get('/hyperpay', 'Web\IndexController@getcall');
 
-Route::group(['middleware' => ['general','installer']], function () {
+Route::group(['middleware' => ['general']], function () {
 
     Route::get('/', 'Web\IndexController@index');
 
+    Route::get('/product-listing/', 'Web\IndexController@productListing');
+    Route::get('/research-center/', 'Web\IndexController@researchCenter');
+    Route::get('/store/', 'Web\IndexController@store');
     Route::get('/product/{id}/{slug}', 'Web\IndexController@productDetail');
     Route::get('/shop', 'Web\IndexController@shop');
     Route::get('/cart', 'Web\IndexController@cartPage');
@@ -80,5 +83,9 @@ Route::group(['middleware' => ['general','installer']], function () {
     Route::get('set_currency/{currency}', 'Web\IndexController@setCurrency');
 
     Route::get('lang/{locale}', 'LocalizationController@index');
+
+    Route::prefix('old')->group(function(){
+        Route::get('/', 'Web\IndexController@index');
+    });
 
 });
