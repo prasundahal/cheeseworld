@@ -70,10 +70,14 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                                         href="/shop?category={{ $category->id }}">{{ $category->detail[0]->category_name }}</a>
                                                 </li>
                                                 @foreach ($category->my_products->take(3) as $value)
-                                                   
+                                                  {{--  <?php
+                                                   echo "<pre>";
+                                                    print_r($value);
+                                                    echo "</pre>";
+                                                   ?> --}}
                                                         <li class="nav-item">
                                                             <a class="nav-link"
-                                                                href="">{{ $value->detail[0]->title }}</a>
+                                                                href="/product/{{ $value->id }}/{{ $value->product_slug }}">{{ $value->detail[0]->title }}</a>
                                                         </li>
                                                    
                                                 @endforeach
