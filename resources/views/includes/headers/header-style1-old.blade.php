@@ -1,6 +1,101 @@
-{{-- {{ dd($header_menu) }} --}}
 <!-- //header style One-->
-<header id="headerOne" class="header-area header-one  header-desktop d-none d-lg-block d-xl-block">
+
+<section id="navigation-wrapper" class="navigation-wrap fixed-top">
+  <div class="container">
+      <div class="main-header row py-2">
+          <div class="col-4 m-auto">
+              <div class=" list">
+                  <ul class="navbar-nav mr-auto d-flex flex-row">
+                      <li class="nav-item active px-2">
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#modal1">
+                              <span class="mr-1"><i class="fa fa-search" aria-hidden="true"></i></span>
+                              Search</a>
+                      </li>
+                      <li class="nav-item px-2">
+                          <a class="nav-link" href="#"> <span class="mr-1"><i class="fa fa-map-marker"
+                                      aria-hidden="true"></i>
+                              </span>
+                              Shops</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-4 m-auto">
+              <div class="logo text-center">
+                  <img src="{{isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}" class="img-fluid">
+              </div>
+          </div>
+          <div class="col-4 m-auto">
+              <div class="notice">
+                  <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a>
+              </div>
+          </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav m-auto">
+                  <li class="nav-item dropdown px-3">
+                      <a class="nav-link dropdown-toggle font-weight-bold d-block" href="javascript:void(0);"
+                          id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                          Products
+                          <span class="ml-1 icon ">
+                              <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
+                          </span>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <div class="container d-block">
+                            @php
+                              $arr = [];
+                              $categories = App\Models\Admin\Category::inRandomOrder()->take(12)->get();
+                              foreach($categories as $categories){
+                                $productCategory = App\Models\Admin\ProductCategory::where('category_id', $categories->id)->take(3)->get();
+                                foreach($productCategory as $productCategory){
+                                  $arr[$categories->detail[0]->category_name][] = App\Models\Admin\Product::where('id', $productCategory->product_id)->first();
+                                }
+                              }
+                            @endphp
+                              <div class="row">
+                                @foreach ($arr as $key => $arr)
+                                <div class="col-md-3">
+                                  <ul class="nav flex-column">
+                                      <li class="nav-item">
+                                        <a class="nav-link head font-weight-bold"
+                                        href="under-construction.html">{{ $key }}</a>
+                                      </li>
+                                      @foreach ($arr as $value)
+                                        <li class="nav-item">
+                                          <a class="nav-link"
+                                          href="under-construction.html">{{ $value->detail[0]->title }}</a>
+                                        </li>
+                                      @endforeach
+                                    </ul>
+                                  </div>
+                                @endforeach
+                              </div>
+                          </div>
+                          <!--  /.container  -->
+                      </div>
+                  </li>
+                  <li class="nav-item px-3">
+                      <a class="nav-link font-weight-bold" href="#">Chicco Research Center</a>
+                  </li>
+                  <li class="nav-item px-3">
+                      <a class="nav-link font-weight-bold" href="#">Who we are</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</section>
+
+{{-- <header id="headerOne" class="header-area header-one  header-desktop d-none d-lg-block d-xl-block">
 
   @if (trans("lables.header-top-offer") != '')
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -168,8 +263,6 @@
               <ul class="shopping-cart-items top-cart-product-show">
                 <li>{{  trans("lables.header-emptycart") }}</li>
               </ul>
-
-
             </div>
             </li>
           </ul>
@@ -187,13 +280,13 @@
     </nav>
     </div>
   </div>
-</header>
+</header> --}}
 
 
-@include('includes.headers.sticky-header')
+{{-- @include('includes.headers.sticky-header')
 
-      @if(isset($header_menu->menu))  
-        @php $header_menu = json_decode(($header_menu->menu), true); $menuloop = 0; @endphp
-       <!-- header mobile -->
-       @include('includes.headers.mobile-menu')
-      @endif
+@if(isset($header_menu->menu))  
+  @php $header_menu = json_decode(($header_menu->menu), true); $menuloop = 0; @endphp
+  <!-- header mobile -->
+  @include('includes.headers.mobile-menu')
+@endif --}}
