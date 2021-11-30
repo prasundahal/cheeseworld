@@ -14,6 +14,7 @@ use App\Models\Web\Order;
 use App\Services\Web\HomeService;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -49,6 +50,7 @@ class IndexController extends Controller
     }
     public function Index()
     {
+        
         // return ini_get('memory_limit');
         $homeService = new HomeService;
         $data = $homeService->homeIndex();

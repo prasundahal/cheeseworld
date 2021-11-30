@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css"> --}}
     <style>
         .variation_active {
             border: 1px solid;
@@ -153,7 +153,7 @@
 
 
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script> --}}
     <script>
         var attribute_id = [];
         var attribute = [];
@@ -434,6 +434,10 @@
                                 clone.querySelector(".product-card-name").innerHTML = data.data[i].detail[0]
                                     .title;
                                 clone.querySelector(".product-card-name").setAttribute('href', '/product/' +
+                                    data
+                                    .data[i].product_id + '/' + data
+                                    .data[i].product_slug);
+                                clone.querySelector(".product-card-link").setAttribute('href', '/product/' +
                                     data
                                     .data[i].product_id + '/' + data
                                     .data[i].product_slug);
