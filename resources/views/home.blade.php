@@ -458,6 +458,7 @@
                     var product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
+                            console.log(e);
                             product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -465,7 +466,7 @@
                                 .gallary_name + '" class="img-fluid" alt="image-1">' +
                                 '</div>' +
                                 '<div class="heading m-auto">' +
-                                '<a href="#">' +
+                                '<a href="/product/'+e.product_id+'/'+e.product_slug+'">' +
                                 '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
