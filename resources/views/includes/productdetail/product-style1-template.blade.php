@@ -18,7 +18,17 @@ if (!$prod->product_combination->isEmpty()) {
     }
 }
 $gallaryIds = array_unique($gallary_id);
-$galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
+$galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)
+    ->get();
+
+/* $newgalleries = array_chunk($galleries, 4, true);
+
+foreach($newgalleries as $key => $newgallery){
+    echo "<pre>";
+    print_r($newgallery);
+    echo "</pre>";
+}
+die(); */
 
 ?>
 
@@ -27,8 +37,7 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
 
     <script>
-        function toggleActiveClass(id)
-        {
+        function toggleActiveClass(id) {
             $(".currentSlider").find(".")
         }
     </script>
@@ -42,8 +51,10 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                             <?php
                             $i = 0;
                             $id = [];
+                            // $j = 1;
                             ?>
                             <div class="carousel-inner allSlide">
+
                                 @for ($i = 0; $i <= 1; $i++)
                                     @if ($i == 0)
                                         <div class="carousel-item active" data-slide-number="0">
@@ -108,6 +119,7 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                                             class="d-block w-100" alt="...">
                                     </div>
                                 @endforeach
+
 
                             </div>
                             <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
