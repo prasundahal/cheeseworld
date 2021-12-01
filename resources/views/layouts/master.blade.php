@@ -580,7 +580,7 @@
                 url = "{{ url('') }}" + '/api/client/cart/guest/get?session_id=' + cartSession + '&currency=' +
                     localStorage.getItem("currency");
             }
-            /* $.ajax({
+            $.ajax({
                 type: 'get',
                 url: url,
                 headers: {
@@ -701,7 +701,7 @@
                     }
                 },
                 error: function(data) {},
-            }); */
+            });
         }
 
         function article_news() {

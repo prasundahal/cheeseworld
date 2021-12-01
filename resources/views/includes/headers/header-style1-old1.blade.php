@@ -8,30 +8,6 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     ->get();
 
 ?>
-
-<style>
-    #top-cart-product-template .top-cart-product-id .item-thumb .image img {
-        max-height: 80px;
-        min-height: 80px;
-        object-fit: contain;
-        object-position: center;
-        width: 100%;
-
-    }
-
-    .dropdown-menu .shopping-cart-items {
-        overflow-y: scroll;
-        height: 350px;
-        width: 320px;
-    }
-
-    .dropdown-menu .shopping-cart-items li {
-
-        border-bottom: 1px solid #dddddd;
-
-    }
-
-</style>
 <section id="navigation-wrapper" class="navigation-wrap fixed-top">
     <div class="container">
         <div class="main-header row py-2">
@@ -59,119 +35,82 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         class="img-fluid">
                 </div>
             </div>
-            <div class="col-4 auth-login p-0">
-              <div class="notice d-flex justify-content-center align-items-center">
-                <div class="login-wrapper">
-                  <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="welcomeUsername"></span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="loginDropdown">
-                      <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
-                  </div>
-              </div>
-              </div>
-            </div>
-            <div class="col-4 without-auth-login p-0">
-                <div class="notice d-flex  justify-content-center align-items-center">
-
-                    <div class="login-wrapper">
-                        <a class="nav-link" href="{{ url('/login') }}">
-                          {{  trans("lables.header-login-register") }}
-                        </a>
-                        
-                    </div>
-                    <ul class="pro-header-right-options d-flex pl-0 mb-0">
-                        <li>
-                            <a href="http://127.0.0.1:8000/wishlist" class="btn" data-toggle="tooltip"
-                                data-placement="bottom" title="Wishlist">
-                                <i class="far fa-heart" aria-hidden="true"></i>
-                                <span class="badge badge-secondary wishlist-count"></span>
-                            </a>
-                        </li>
-                        <li class="show">
-                            <div class="btn" type="button" id="headerOneCartButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <div class="cart-left">
-                                    <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-                                    <span class="badge badge-secondary total-menu-cart-product-count"></span>
-                                </div>
-
-
-                            </div>
-                        
-                            <template id="top-cart-product-template">
-                        <li class="top-cart-product-id d-flex justify-content-center align-items-center mb-2">
-                            <div class="item-thumb">
-
-                                <div class="image mr-2">
-                                    <img class="img-fluid top-cart-product-image" src="" alt="Product Image">
-                                </div>
-                            </div>
-                            <div class="item-detail">
-                                <h3 class="top-cart-product-name"></h3>
-                                <div
-                                    class="item-s top-cart-product-qty-amount d-flex justify-content-between align-items-center mb-2">
-                                </div>
-                            </div>
-                        </li>
-                        </template>
-                        <template id="top-cart-product-total-template">
-                            <li>
-                                <span class="item-summary ">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
-                                        class="top-cart-product-total"></span>
-                                </span>
-                            </li>
-                            <li>
-                                <a class="btn btn-link btn-block text-dark"
-                                    href="{{ url('/cart') }}">{{ trans('lables.header-view-cart') }}</a>
-                                <a class="btn btn-secondary btn-block swipe-to-top"
-                                    href="{{ url('/checkout') }}">{{ trans('lables.header-checkout') }}</a>
-                            </li>
-                        </template>
-                        <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="headerOneCartButton"
-                            style="position: absolute; transform: translate3d(30px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"
-                            x-placement="bottom-end">
-                            <ul class="shopping-cart-items top-cart-product-show p-3">
-                                {{-- <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
-                                    style="border-bottom:1px solid #dddddd;">
-                                    <div class="item-thumb">
-
-                                        <div class="image mr-2">
-                                            <img class="img-fluid top-cart-product-image"
-                                                src="/gallary/thumbnail202111154912purex.jpg" alt="Purex Detergent"
-                                                style="width:100%;max-height:60px;min-height:60px;object-fit:contain;object-fit:center;">
-                                        </div>
-                                    </div>
-                                    <div class="item-detail">
-                                        <h6 class="top-cart-product-name">Purex Detergent</h6>
-                                        <div
-                                            class="item-s top-cart-product-qty-amount d-flex justify-content-between align-items-center mb-1">
-                                            1 x Rs 84.48 <span class="ml-2"> <i class="fas fa-trash"
-                                                    data-id="8" data-combination-id="null"
-                                                    onclick="removeCartItem(this)" aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="remove-item">
-
-                                    </div>
-                                </li>
-                                <li class="pb-2">
-                                    <span class="item-summary ">Total&nbsp;:&nbsp;<span
-                                            class="top-cart-product-total">Rs 84.48</span>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a class="btn btn-link btn-block text-dark" href="http://127.0.0.1:8000/cart">View
-                                        Cart</a>
-                                    <a class="btn btn-secondary btn-block  swipe-to-top"
-                                        href="http://127.0.0.1:8000/checkout">Checkout</a>
-                                </li> --}}
-                            </ul>
-                        </div>
-                        </li>
-                    </ul>
+            <div class="col-4 m-auto without-auth-login">
+                <div class="notice">
+                    <a href="{{ url('/login') }}" class="nav-link without-auth-login m-0">Login/Register</a>
+                    
                 </div>
+            </div>
+            <div class="col-4 m-auto auth-login">
+                <div class="notice">
+              
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                 
+                    <span class="auth-login welcomeUsername"></span>
+                    <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
+                </div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-3">
+              <ul class="pro-header-right-options">
+                <li>
+                  <a href="{{ url('/wishlist') }}" class="btn" data-toggle="tooltip" data-placement="bottom" title="{{ trans('lables.header-wishlist') }}">
+                    <i class="far fa-heart"></i>
+                    <span class="badge badge-secondary wishlist-count">0</span>
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="headerOneCartButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="cart-left">
+                      <i class="fas fa-shopping-bag"></i>
+                      <span class="badge badge-secondary total-menu-cart-product-count">0</span>
+                    </div>
+    
+                    <div class="cart-right d-flex flex-column align-self-end ml-13">
+                      <span class="title-cart"> {{  trans("lables.header-cart") }} </span>
+                      <span class="cart-item"> {{  trans("lables.header-item") }} </span>
+                    </div>
+                  </button>
+                  <template id="top-cart-product-template">
+                <li class="top-cart-product-id">
+                  <div class="item-thumb">
+    
+                    <div class="image">
+                      <img class="img-fluid top-cart-product-image" src="" alt="Product Image">
+                    </div>
+                  </div>
+                  <div class="item-detail">
+                    <h3 class="top-cart-product-name"></h3>
+                    <div class="item-s top-cart-product-qty-amount"></div>
+                  </div>
+                </li>
+                </template>
+                <template id="top-cart-product-total-template">
+                  <li>
+                    <span class="item-summary ">{{  trans("lables.header-total") }}&nbsp;:&nbsp;<span class="top-cart-product-total"></span>
+                    </span>
+                  </li>
+                  <li>
+                    <a class="btn btn-link btn-block " href="{{url('/cart')}}">{{  trans("lables.header-view-cart") }}</a>
+                    <a class="btn btn-secondary btn-block  swipe-to-top" href="{{url('/checkout')}}">{{  trans("lables.header-checkout") }}</a>
+                  </li>
+                </template>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="headerOneCartButton">
+                  <ul class="shopping-cart-items top-cart-product-show">
+                    <li>{{  trans("lables.header-emptycart") }}</li>
+                  </ul>
+    
+    
+                </div>
+                </li>
+              </ul>
             </div>
         </div>
 
