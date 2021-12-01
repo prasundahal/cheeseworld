@@ -35,9 +35,17 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         class="img-fluid">
                 </div>
             </div>
-            <div class="col-4 m-auto">
+            <div class="col-4 m-auto without-auth-login">
                 <div class="notice">
-                    <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a>
+                    <a href="{{ url('/login') }}" class="nav-link without-auth-login m-0">Login/Register</a>
+                    
+                </div>
+            </div>
+            <div class="col-4 m-auto auth-login">
+                <div class="notice">
+                    
+                    <span class="auth-login welcomeUsername"></span>
+                    <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
                 </div>
             </div>
         </div>

@@ -25,6 +25,13 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
 <template id="product-detail-section">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+
+    <script>
+        function toggleActiveClass(id)
+        {
+            $(".currentSlider").find(".")
+        }
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-xl-8 col-lg-8 col-12">
@@ -36,20 +43,19 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                             $i = 0;
                             $id = [];
                             ?>
-                            <div class="carousel-inner slider-for">
+                            <div class="carousel-inner allSlide">
                                 @for ($i = 0; $i <= 1; $i++)
                                     @if ($i == 0)
-                                        <div class="carousel-item active"
-                                            data-slide-number="0">
+                                        <div class="carousel-item active" data-slide-number="0">
                                             <div
                                                 class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
-                                                @foreach ($galleries->take(4) as $gallery)
-                                                <?php
-                                                $id[] = $gallery->id;
-                                                ?>
-                                                    <div id="carousel-selector-{{ $gallery->id }}"
+                                                @foreach ($galleries->take(4) as $key => $gallery)
+                                                    <?php
+                                                    $id[] = $gallery->id;
+                                                    ?>
+                                                    <div id="carousel-selector-{{ $key }}"
                                                         class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
-                                                        data-target="#carousel" data-slide-to="{{ $gallery->id }}">
+                                                        data-target="#carousel" data-slide-to="{{ $key }}">
                                                         <img src="{{ asset('gallary/large' . $gallery->name) }}"
                                                             class="img-fluid">
                                                     </div>
@@ -58,14 +64,13 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                                         </div>
                                     @endif
                                     @if ($i == 1)
-                                        <div class="carousel-item"
-                                            data-slide-number="1">
+                                        <div class="carousel-item" data-slide-number="1">
                                             <div
                                                 class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
-                                                @foreach ($galleries->whereNotIn('id', (array)$id)->take(4) as $gallery)
-                                                    <div id="carousel-selector-{{ $gallery->id }}"
+                                                @foreach ($galleries->whereNotIn('id', (array) $id)->take(4) as $k => $gallery)
+                                                    <div id="carousel-selector-{{ $k }}"
                                                         class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
-                                                        data-target="#carousel" data-slide-to="{{ $gallery->id }}">
+                                                        data-target="#carousel" data-slide-to="{{ $k }}">
                                                         <img src="{{ asset('gallary/large' . $gallery->name) }}"
                                                             class="img-fluid">
                                                     </div>
@@ -93,10 +98,10 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                     <div class="col-xl-9 col-lg-9 col-12">
                         <!-- Carousel -->
                         <div id="carousel" class="carousel slide gallery" data-ride="carousel">
-                            <div class="carousel-inner">
-                                @foreach ($galleries->take(8) as $gallery)
+                            <div class="carousel-inner allImage">
+                                @foreach ($galleries->take(8) as $v => $gallery)
                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
-                                        data-slide-number="{{ $gallery->id }}" data-toggle="lightbox"
+                                        data-slide-number="{{ $v }}" data-toggle="lightbox"
                                         data-gallery="gallery"
                                         data-remote="{{ asset('gallary/large' . $gallery->name) }}">
                                         <img src="{{ asset('gallary/large' . $gallery->name) }}"
@@ -105,6 +110,14 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
                                 @endforeach
 
                             </div>
+                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -293,5 +306,5 @@ $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)->get();
             </div>
         </div>
     </div>
-    
+
 </template>

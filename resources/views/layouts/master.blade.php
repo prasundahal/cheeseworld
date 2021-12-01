@@ -18,7 +18,7 @@
         href="{{ isset(getSetting()['favicon']) ? getSetting()['favicon'] : '01-fav.png' }}">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" /> --}}
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
         rel="stylesheet">
@@ -35,10 +35,12 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" />
     <!--========================================= NEW LINK START  -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" />
-
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" /> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -57,6 +59,30 @@
         @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
         'includes.headers.header-style1')
     @endif
+    <!-- Modal -->
+    <div class="modal fade w-100 p-0 position-fixed" id="searchmodal" tabindex="-1" role="dialog"
+        aria-labelledby="searchmodal" aria-hidden="true">
+        <div class="modal-dialog modal-xl position-relative" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center m-auto">
+                    <h5 class="modal-title" id="modal1">
+                        <img src="{{ 'frontend/image/logo/logo.png' }}" alt="logo" class="img-fluid">
+                    </h5>
+
+                </div>
+                <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body text-center">
+                    <form>
+                        <input type="search" id="search-input" class="w-75">
+                        <button id="search_button" class="d-none">Search</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     @yield('content')
 
@@ -80,7 +106,8 @@
 
     <!-- All custom scripts here -->
     <!-- Js link Starts -->
-    <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -89,22 +116,25 @@
     <script src="https://kit.fontawesome.com/a26d9146a0.js" crossorigin="anonymous"></script>
     <script src="{{ asset('frontend/js/scripts/main.js') }}"></script>
     <!-- NEW LIN ============================================================ -->
-    <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script> --}}
+    
     <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
     <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/animated.headline.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/js/animated.headline.js') }}"></script> --}}
     <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.ajaxchimp.min.js') }}"></script>
     <script src="{{ asset('frontend/js/imagesloaded.pkgd.min.js') }}"></script>
     <script src="{{ asset('frontend/js/masonry.pkgd.min.js') }}"></script>
     <script src="{{ asset('frontend/js/classie.js') }}"></script>
-    <script src="{{ asset('frontend/js/cbpGridGallery.js') }}"></script>
-
+    {{-- <script src="{{ asset('frontend/js/cbpGridGallery.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/front/js/scripts.js') }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @php
         $language_id = $data['selectedLenguage'];
         $locale = session()->get('locale');
@@ -112,21 +142,67 @@
     @endphp
 
     <script>
-        $('#search_button').click(function(e) {
-            e.preventDefault();
-            var searchInput = $('#search-input').val();
-            if (searchInput == "") {
-                toastr.error("{{ trans('search-input-empty') }}")
-            } else {
-                var url = "{{ url('/shop') }}" + '?search=' + searchInput;
-                var catgory_id = $('.selected_category').attr('data-id');
-                if (catgory_id != '' && catgory_id !== undefined)
-                    url += "&category=" + catgory_id;
-                window.location.href = url;
-            }
-        });
+        /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
+                customerFname = $.trim(localStorage.getItem("customerFname"));
+                customerLname = $.trim(localStorage.getItem("customerLname"));
+                if (loggedIn != '1') {
+                    $(".auth-login").remove();
+                } else {
+                    $(".without-auth-login").remove();
+                    $(".welcomeUsername").html(customerFname + " " + customerLname);
+                }
+
+                customerToken = $.trim(localStorage.getItem("customerToken"));
+
+
+                languageId = localStorage.getItem("languageId");
+                languageName = localStorage.getItem("languageName");
+
+                if (languageName == null || languageName == 'null') {
+                    localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
+                    localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
+                    $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
+                    languageId = $.trim("{{ $data['selectedLenguage'] }}");
+                } else {
+                    $(".language-default-name").html(localStorage.getItem("languageName"));
+                    $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                }
+
+                currency = localStorage.getItem("currency");
+                currencyCode = localStorage.getItem("currencyCode");
+                if (currencyCode == null || currencyCode == 'null') {
+                    localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
+                    localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
+                    $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
+                    currency = 1;
+                } else {
+                    $("#selected-currency").html(localStorage.getItem("currencyCode"));
+                    $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                }
+
+
+                cartSession = $.trim(localStorage.getItem("cartSession"));
+                if (cartSession == null || cartSession == 'null') {
+                    cartSession = '';
+                }
+                $(document).ready(function() {
+
+                    if (loggedIn != '1') {
+                        localStorage.setItem("cartSession", cartSession);
+                        menuCart(cartSession);
+                    } else {
+                        menuCart('');
+                    }
+
+                    getWishlist();
+
+
+
+                });
+
+                 */
     </script>
-    {{-- <script>
+    <script>
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -390,7 +466,8 @@
                         if (data.data.detail != null && data.data.detail != 'null' && data.data.detail != '') {
                             clone.querySelector(".quick-view-product-name").innerHTML = data.data.detail[0]
                                 .title;
-                            clone.querySelector(".quick-view-desc").innerHTML = data.data.detail[0].desc.replace(/<\/?[^>]+>/gi, '').substring(0,250)
+                            clone.querySelector(".quick-view-desc").innerHTML = data.data.detail[0].desc
+                                .replace(/<\/?[^>]+>/gi, '').substring(0, 250)
                         }
                         clone.querySelector(".quick-view-product-id").innerHTML = data.data.product_id;
 
@@ -400,7 +477,8 @@
                                 clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data
                                     .product_price_symbol + '</ins>';
                             } else {
-                                clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data.product_discount_price + '</ins> <del>' + data.data
+                                clone.querySelector(".quick-view-price").innerHTML = '<ins>' + data.data
+                                    .product_discount_price + '</ins> <del>' + data.data
                                     .product_price_symbol +
                                     '</del>';
                             }
@@ -502,7 +580,7 @@
                 url = "{{ url('') }}" + '/api/client/cart/guest/get?session_id=' + cartSession + '&currency=' +
                     localStorage.getItem("currency");
             }
-            $.ajax({
+            /* $.ajax({
                 type: 'get',
                 url: url,
                 headers: {
@@ -623,10 +701,76 @@
                     }
                 },
                 error: function(data) {},
+            }); */
+        }
+
+        function article_news() {
+            $.ajax({
+                type: 'get',
+                url: "{{ url('') }}" +
+                    '/api/client/blog_news?getGallaryDetail=1&limit=10&sortBy=id&language_id=1&getDetail=1&getBlogCategory=1&sortType=DESC',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
+                    clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
+                },
+                beforeSend: function() {},
+                success: function(data) {
+                    console.log(data);
+                    if (data.status == 'Success') {
+                        var articles = '';
+                        $.each(data.data, function(i, e) {
+                            if (i % 2 == 0) {
+                                articles += '<div class="col-4">';
+                            }
+                            articles += '<div class="box-1st d-flex flex-column mb-5">' +
+                                '<div class="card text-center border-0">' +
+                                '<div class="card-header-cus">' +
+                                '<h4 class="font-weight-bold">' + e.detail[0].name + '</h4>' +
+                                '</div>' +
+                                '<div class="card-body-cus">' +
+                                '<p class="card-text mb-2">' + e.detail[0].description
+                                .substring(0, 150) + '...</p>' +
+                                '</div>' +
+                                '<div class="card-footer-cus">' +
+                                '<a href="#" class="font-weight-bold text-uppercase">Go To Article</a>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                            if ((i + 1) % 2 == 0 && i != 0) {
+                                articles += '</div>';
+                            }
+                            if (i == 1) {
+                                articles += '<div class="col-4">' +
+                                    '<div class="box-3rd d-flex justify-content-center align-items-center h-100">' +
+                                    '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            if (i == 3) {
+                                return false;
+                            }
+                        });
+                        $('#articles').html(articles);
+                    }
+                },
+                error: function(data) {},
             });
         }
 
-
+        $('#search_button').click(function(e) {
+            e.preventDefault();
+            var searchInput = $('#search-input').val();
+            if (searchInput == "") {
+                toastr.error("{{ trans('search-input-empty') }}")
+            } else {
+                var url = "{{ url('/shop') }}" + '?search=' + searchInput;
+                var catgory_id = $('.selected_category').attr('data-id');
+                if (catgory_id != '' && catgory_id !== undefined)
+                    url += "&category=" + catgory_id;
+                window.location.href = url;
+            }
+        });
         $(document).on('click', '.quantity-plus', function() {
             var quantity = $('#quantity-input').val();
             $('#quantity-input').val(parseInt(quantity) + 1);
@@ -667,7 +811,7 @@
             $('.selected_category').html(category_name);
         });
 
-        
+
 
 
         $(".selected-currency").click(function(e) {
@@ -793,8 +937,7 @@
                                 }
                             }
 
-                            if (data.data[i].discount_price > 0)
-                            {
+                            if (data.data[i].discount_price > 0) {
                                 discount_price = data.data[i].discount_price;
                             } else {
                                 discount_price = data.data[i].price;
@@ -806,16 +949,17 @@
                                     clone.querySelector(".cartItem-total").innerHTML = data.data[i].currency
                                         .code + ' ' + sum.toFixed(2);
                                     clone.querySelector(".cartItem-price").innerHTML = data.data[i].currency
-                                        .code + ' ' +discount_price.toFixed(2);
+                                        .code + ' ' + discount_price.toFixed(2);
                                 } else {
                                     sum = +data.data[i].qty * +discount_price;
-                                    clone.querySelector(".cartItem-total").innerHTML = sum.toFixed(2) + ' ' + data.data[i]
+                                    clone.querySelector(".cartItem-total").innerHTML = sum.toFixed(2) + ' ' +
+                                        data.data[i]
                                         .currency.code;
-                                    clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(2) + ' ' + data.data[i]
+                                    clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(
+                                            2) + ' ' + data.data[i]
                                         .currency.code;
                                 }
-                            }
-                            else{
+                            } else {
                                 clone.querySelector(".cartItem-price").innerHTML = discount_price.toFixed(2);
                             }
                             clone.querySelector(".cartItem-qty").value = +data.data[i].qty;
@@ -825,8 +969,8 @@
                             clone.querySelector(".cartItem-qty-1").setAttribute('data-field', i);
                             clone.querySelector(".cartItem-qty-2").setAttribute('data-field', i);
 
-                           
-                            total_price = total_price + (discount_price*data.data[i].qty);
+
+                            total_price = total_price + (discount_price * data.data[i].qty);
 
 
                             if ($.trim(data.data[i].category_detail[0].category_detail) != '' && $.trim(data
@@ -859,19 +1003,21 @@
                                     clone1.querySelector(".caritem-subtotal").innerHTML = data.data[i].currency
                                         .code + ' ' + total_price.toFixed(2);
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price.toFixed(2));
+                                        total_price.toFixed(2));
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price-symbol', data
                                         .data[i].currency.code + ' ' + total_price.toFixed(2));
                                     clone1.querySelector(".caritem-grandtotal").innerHTML = data.data[i]
                                         .currency.code + ' ' + total_price.toFixed(2);
                                 } else {
-                                    clone1.querySelector(".caritem-subtotal").innerHTML = total_price.toFixed(2) + ' ' +
+                                    clone1.querySelector(".caritem-subtotal").innerHTML = total_price.toFixed(
+                                            2) + ' ' +
                                         data.data[i].currency.code;
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price.toFixed(2));
+                                        total_price.toFixed(2));
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price-symbol', data
                                         .data[i].currency.code + ' ' + total_price.toFixed(2));
-                                    clone1.querySelector(".caritem-grandtotal").innerHTML = total_price.toFixed(2) + ' ' +
+                                    clone1.querySelector(".caritem-grandtotal").innerHTML = total_price.toFixed(
+                                            2) + ' ' +
                                         data.data[i].currency.code;
                                 }
                             }
@@ -933,7 +1079,7 @@
                 error: function(data) {},
             });
         }
-    </script> --}}
+    </script>
 
     @yield('script')
 </body>

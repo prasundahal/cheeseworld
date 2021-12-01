@@ -261,92 +261,7 @@
             </div>
             <div class="content mb-3">
                 <div class="row" id="articles">
-                    {{-- <div class="col-4">
-                        <div class="box-1st d-flex flex-column mb-5">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="box-2nd d-flex flex-column">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="box-3rd d-flex justify-content-center align-items-center h-100">
-                            <img src="{{ asset('frontend//image/observatory/kid.jpg') }}" alt="">
-                        </div>
-
-                    </div>
-                    <div class="col-4">
-                        <div class="box-4th d-flex flex-column mb-5">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="box-5th d-flex flex-column">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> --}}
+                    
                 </div>
             </div>
             <div class="discover text-center mt-5">
@@ -360,36 +275,13 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade w-100 p-0 position-fixed" id="searchmodal" tabindex="-1" role="dialog"
-        aria-labelledby="searchmodal" aria-hidden="true">
-        <div class="modal-dialog modal-xl position-relative" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center m-auto">
-                    <h5 class="modal-title" id="modal1">
-                        <img src="{{ 'frontend/image/logo/logo.png' }}" alt="logo" class="img-fluid">
-                    </h5>
-
-                </div>
-                <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="modal-body text-center">
-                    <form>
-                        <input type="search" id="search-input" class="w-75">
-                        <button id="search_button" class="d-none">Search</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    
 @endsection
 @section('script')
     <script>
         // Navigation Js Scroll Starts
         $(document).ready(function() {
+            article_news();
             $(window).scroll(function() {
                 var scroll = $(window).scrollTop();
                 if (scroll > 150) {
@@ -639,7 +531,7 @@
                 error: function(data) {},
             });
 
-            $.ajax({
+            /* $.ajax({
                 type: 'get',
                 url: "{{ url('') }}" +
                     '/api/client/blog_news?getGallaryDetail=1&limit=10&sortBy=id&language_id=1&getDetail=1&getBlogCategory=1&sortType=DESC',
@@ -689,7 +581,7 @@
                     }
                 },
                 error: function(data) {},
-            });
+            }); */
 
 
             // var url = "{{ url('') }}" +

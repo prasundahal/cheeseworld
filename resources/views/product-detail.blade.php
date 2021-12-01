@@ -54,93 +54,8 @@
 
             </div>
             <div class="content mb-3">
-                <div class="row">
-                    <div class="col-xl-4 col-md-4 d-md-block d-none">
-                        <div class="box-1st d-flex flex-column mb-5">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
+                <div class="row" id="articles">
 
-                        </div>
-                        <div class="box-2nd d-flex flex-column">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4 col-sm-12">
-                        <div class="box-3rd d-flex justify-content-center align-items-center h-100">
-                            <img src="../image/observatory/kid.jpg" alt="">
-                        </div>
-
-                    </div>
-                    <div class="col-xl-4 col-md-4 d-md-block d-none">
-                        <div class="box-4th d-flex flex-column mb-5">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="box-5th d-flex flex-column">
-                            <div class="card text-center border-0">
-                                <div class="card-header-cus">
-                                    <h4 class="font-weight-bold">
-                                        The milk from the mother, even if she isn't there.
-                                    </h4>
-                                </div>
-                                <div class="card-body-cus">
-                                    <p class="card-text mb-2">It is possible to keep on feeding the baby using the
-                                        precious
-                                        milk from his mother, even if she went back to work or she
-                                        needs to leave the baby for a while.</p>
-                                </div>
-                                <div class="card-footer-cus">
-                                    <a href="#" class="font-weight-bold text-uppercase">Go To Article</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -162,7 +77,10 @@
         $(document).ready(function() {
             fetchProduct();
             fetchRelatedProduct();
+            article_news();
         });
+
+
 
         languageId = localStorage.getItem("languageId");
         if (languageId == null || languageId == 'null') {
@@ -272,7 +190,58 @@
                         // }
                         $("." + appendTo).append(clone);
 
-
+                        /* var allSlide = '';
+                        var allImage = '';
+                        var j = 1
+                        $.each(data.data.product_gallary_detail, function(i, e) {
+                            console.log(1 + ', ' + e);
+                            if (i % 4 == 0) {
+                                if (i == 0) {
+                                    allSlide +=
+                                        '<div class="carousel-item active" data-slide-number="' + j +
+                                        '">' +
+                                        '<div class="row mx-0 .row-content d-flex  align-items-center justify-content-center">';
+                                } else {
+                                    allSlide += '<div class="carousel-item" data-slide-number="' + j +
+                                        '">' +
+                                        '<div class="row mx-0 .row-content d-flex  align-items-center justify-content-center">';
+                                }
+                            }
+                            if (i == 0) {
+                                allSlide += '<div id="carousel-selector-' + i +
+                                    '" class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected" data-target="#carousel" data-slide-to="' +
+                                    i + '">' +
+                                    '<img src="{{ asset('gallary') }}/' + e.gallary_name +
+                                    '" class="img-fluid">' +
+                                    '</div>';
+                                allImage += '<div class="carousel-item active" data-slide-number="' +
+                                    i +
+                                    '" data-toggle="lightbox" data-gallery="gallery" data-remote="{{ asset('gallary') }}/' +
+                                    e.gallary_name + '">' +
+                                    '<img src="{{ asset('gallary') }}/' + e.gallary_name +
+                                    '" class="d-block w-100" alt="...">' +
+                                    '</div>';
+                            } else {
+                                allSlide += '<div id="carousel-selector-' + i +
+                                    '" class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2" data-target="#carousel" data-slide-to="' +
+                                    i + '">' +
+                                    '<img src="{{ asset('gallary') }}/' + e.gallary_name +
+                                    '" class="img-fluid">' +
+                                    '</div>';
+                                allImage += '<div class="carousel-item" data-slide-number="' + i +
+                                    '" data-toggle="lightbox" data-gallery="gallery" data-remote="{{ asset('gallary') }}/' +
+                                    e.gallary_name + '">' +
+                                    '<img src="{{ asset('gallary') }}/' + e.gallary_name +
+                                    '" class="d-block w-100" alt="...">' +
+                                    '</div>';
+                            }
+                            if ((i + 1) % 4 == 0 && i != 0) {
+                                allSlide += '</div></div>';
+                                j++;
+                            }
+                        })
+                        $('.allSlide').html(allSlide);
+                        $('.allImage').html(allImage); */
                     }
                 },
                 error: function(data) {},
