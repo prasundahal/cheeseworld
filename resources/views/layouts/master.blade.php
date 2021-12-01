@@ -110,6 +110,22 @@
         $locale = session()->get('locale');
         //dd ($locale);
     @endphp
+
+    <script>
+        $('#search_button').click(function(e) {
+            e.preventDefault();
+            var searchInput = $('#search-input').val();
+            if (searchInput == "") {
+                toastr.error("{{ trans('search-input-empty') }}")
+            } else {
+                var url = "{{ url('/shop') }}" + '?search=' + searchInput;
+                var catgory_id = $('.selected_category').attr('data-id');
+                if (catgory_id != '' && catgory_id !== undefined)
+                    url += "&category=" + catgory_id;
+                window.location.href = url;
+            }
+        });
+    </script>
     {{-- <script>
         toastr.options = {
             "closeButton": false,
@@ -651,19 +667,7 @@
             $('.selected_category').html(category_name);
         });
 
-        $('#search_button').click(function(e) {
-            e.preventDefault();
-            var searchInput = $('#search-input').val();
-            if (searchInput == "") {
-                toastr.error("{{ trans('search-input-empty') }}")
-            } else {
-                var url = "{{ url('/shop') }}" + '?search=' + searchInput;
-                var catgory_id = $('.selected_category').attr('data-id');
-                if (catgory_id != '' && catgory_id !== undefined)
-                    url += "&category=" + catgory_id;
-                window.location.href = url;
-            }
-        })
+        
 
 
         $(".selected-currency").click(function(e) {

@@ -355,19 +355,19 @@
                     innovative solutions.
                 </h5>
                 <a href="#" class="btn-blue px-5 py-3 text-white font-weight-bold">Discover More</a>
-            </div>
+            </div>m
 
         </div>
     </section>
 
     <!-- Modal -->
-    <div class="modal fade w-100 p-0 position-fixed" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1"
-        aria-hidden="true">
+    <div class="modal fade w-100 p-0 position-fixed" id="searchmodal" tabindex="-1" role="dialog"
+        aria-labelledby="searchmodal" aria-hidden="true">
         <div class="modal-dialog modal-xl position-relative" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center m-auto">
                     <h5 class="modal-title" id="modal1">
-                        <img src="{{ asset('frontend/image/logo/logo.png') }}" alt="logo" class="img-fluid">
+                        <img src="{{ 'frontend/image/logo/logo.png' }}" alt="logo" class="img-fluid">
                     </h5>
 
                 </div>
@@ -375,7 +375,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-body text-center">
-                    <input type="text" class="w-75">
+                    <form>
+                        <input type="search" id="search-input" class="w-75">
+                        <button id="search_button" class="d-none">Search</button>
+                    </form>
                 </div>
 
             </div>

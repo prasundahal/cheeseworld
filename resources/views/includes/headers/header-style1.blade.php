@@ -1,9 +1,9 @@
 <!-- //header style One-->
 <?php
 $categories = App\Models\Admin\Category::inRandomOrder()
-    ->with("detail")
+    ->with('detail')
     ->whereHas('my_products')
-    ->with("my_products")
+    ->with('my_products')
     ->take(12)
     ->get();
 
@@ -15,9 +15,9 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                 <div class=" list">
                     <ul class="navbar-nav mr-auto d-flex flex-row">
                         <li class="nav-item active px-2">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal1">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#searchmodal">
                                 <span class="mr-1"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                Search</a>
+                                <label class="mb-0">Search</label></a>
                         </li>
                         <li class="nav-item px-2">
                             <a class="nav-link" href="/shop"> <span class="mr-1"><i
@@ -60,7 +60,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <div class="container d-block">
-                               
+
                                 <div class="row">
                                     @foreach ($categories as $key => $category)
                                         <div class="col-md-3">
@@ -70,21 +70,15 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                                         href="/shop?category={{ $category->id }}">{{ $category->detail[0]->category_name }}</a>
                                                 </li>
                                                 @foreach ($category->my_products->take(3) as $value)
-                                                  {{--  <?php
-                                                   echo "<pre>";
-                                                    print_r($value);
-                                                    echo "</pre>";
-                                                   ?> --}}
-                                                        <li class="nav-item">
-                                                            <a class="nav-link"
-                                                                href="/product/{{ $value->id }}/{{ $value->product_slug }}">{{ $value->detail[0]->title }}</a>
-                                                        </li>
-                                                   
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                            href="/product/{{ $value->id }}/{{ $value->product_slug }}">{{ $value->detail[0]->title }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     @endforeach
-                                    
+
                                 </div>
                             </div>
                             <!--  /.container  -->
