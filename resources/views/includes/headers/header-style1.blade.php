@@ -48,6 +48,60 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
                 </div>
             </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-3">
+              <ul class="pro-header-right-options">
+                <li>
+                  <a href="{{ url('/wishlist') }}" class="btn" data-toggle="tooltip" data-placement="bottom" title="{{ trans('lables.header-wishlist') }}">
+                    <i class="far fa-heart"></i>
+                    <span class="badge badge-secondary wishlist-count">0</span>
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="headerOneCartButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="cart-left">
+                      <i class="fas fa-shopping-bag"></i>
+                      <span class="badge badge-secondary total-menu-cart-product-count">0</span>
+                    </div>
+    
+                    <div class="cart-right d-flex flex-column align-self-end ml-13">
+                      <span class="title-cart"> {{  trans("lables.header-cart") }} </span>
+                      <span class="cart-item"> {{  trans("lables.header-item") }} </span>
+                    </div>
+                  </button>
+                  <template id="top-cart-product-template">
+                <li class="top-cart-product-id">
+                  <div class="item-thumb">
+    
+                    <div class="image">
+                      <img class="img-fluid top-cart-product-image" src="" alt="Product Image">
+                    </div>
+                  </div>
+                  <div class="item-detail">
+                    <h3 class="top-cart-product-name"></h3>
+                    <div class="item-s top-cart-product-qty-amount"></div>
+                  </div>
+                </li>
+                </template>
+                <template id="top-cart-product-total-template">
+                  <li>
+                    <span class="item-summary ">{{  trans("lables.header-total") }}&nbsp;:&nbsp;<span class="top-cart-product-total"></span>
+                    </span>
+                  </li>
+                  <li>
+                    <a class="btn btn-link btn-block " href="{{url('/cart')}}">{{  trans("lables.header-view-cart") }}</a>
+                    <a class="btn btn-secondary btn-block  swipe-to-top" href="{{url('/checkout')}}">{{  trans("lables.header-checkout") }}</a>
+                  </li>
+                </template>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="headerOneCartButton">
+                  <ul class="shopping-cart-items top-cart-product-show">
+                    <li>{{  trans("lables.header-emptycart") }}</li>
+                  </ul>
+    
+    
+                </div>
+                </li>
+              </ul>
+            </div>
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light">
