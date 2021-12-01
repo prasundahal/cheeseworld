@@ -19,16 +19,21 @@ if (!$prod->product_combination->isEmpty()) {
 }
 $gallaryIds = array_unique($gallary_id);
 $galleries = App\Models\Admin\Gallary::whereIn('id', $gallaryIds)
-    ->get();
+    ->get()
+    ->toArray();
 
-/* $newgalleries = array_chunk($galleries, 4, true);
+$newgalleries = array_chunk($galleries, 4, true);
 
-foreach($newgalleries as $key => $newgallery){
-    echo "<pre>";
-    print_r($newgallery);
-    echo "</pre>";
-}
-die(); */
+// foreach ($newgalleries as $key => $newgallery) {
+//     foreach ($newgallery as $gal) {
+//         echo '<pre>';
+//         print_r($gal['name']);
+//         echo '</pre>';
+//     }
+//     // echo "<pre>";
+//     // print_r($newgallery);
+// }
+// die();
 
 ?>
 
@@ -54,8 +59,23 @@ die(); */
                             // $j = 1;
                             ?>
                             <div class="carousel-inner allSlide">
+                                @foreach ($newgalleries as $key => $newgallery)
+                                    <div class="carousel-item {{ $loop->first ? 'active': '' }}" data-slide-number="{{ $key }}">
+                                        <div
+                                            class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
+                                            @foreach ($newgallery as $v => $gal)
+                                                <div id="carousel-selector-{{ $v }}"
+                                                    class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
+                                                    data-target="#carousel" data-slide-to="{{ $v }}">
+                                                    <img src="{{ asset('gallary/large' . $gal['name']) }}"
+                                                        class="img-fluid">
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
 
-                                @for ($i = 0; $i <= 1; $i++)
+                                {{-- @for ($i = 0; $i <= 1; $i++)
                                     @if ($i == 0)
                                         <div class="carousel-item active" data-slide-number="0">
                                             <div
@@ -89,7 +109,7 @@ die(); */
                                             </div>
                                         </div>
                                     @endif
-                                @endfor
+                                @endfor --}}
 
                             </div>
                             <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
@@ -110,12 +130,12 @@ die(); */
                         <!-- Carousel -->
                         <div id="carousel" class="carousel slide gallery" data-ride="carousel">
                             <div class="carousel-inner allImage">
-                                @foreach ($galleries->take(8) as $v => $gallery)
+                                @foreach ($galleries as $v => $gallery)
                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
                                         data-slide-number="{{ $v }}" data-toggle="lightbox"
                                         data-gallery="gallery"
-                                        data-remote="{{ asset('gallary/large' . $gallery->name) }}">
-                                        <img src="{{ asset('gallary/large' . $gallery->name) }}"
+                                        data-remote="{{ asset('gallary/large' . $gallery['name']) }}">
+                                        <img src="{{ asset('gallary/large' . $gallery['name']) }}"
                                             class="d-block w-100" alt="...">
                                     </div>
                                 @endforeach
