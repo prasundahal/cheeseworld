@@ -74,20 +74,21 @@ $categories = App\Models\Admin\Category::inRandomOrder()
             </div> --}}
             <div class="col-4  p-0">
                 <div class="notice d-flex  justify-content-center align-items-center">
-                  <div class="login-wrapper auth-login">
-                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="welcomeUsername"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="loginDropdown">
-                        <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
+                    <div class="login-wrapper auth-login">
+                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="welcomeUsername"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a class="dropdown-item log_out" href="javascript:void(0)"
+                                title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
+                        </div>
                     </div>
-                </div>
                     <div class="login-wrapper without-auth-login">
                         <a class="nav-link" href="{{ url('/login') }}">
-                          {{  trans("lables.header-login-register") }}
+                            {{ trans('lables.header-login-register') }}
                         </a>
-                        
+
                     </div>
                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                         <li>
@@ -107,7 +108,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
 
 
                             </div>
-                        
+
                             <template id="top-cart-product-template">
                         <li class="top-cart-product-id d-flex justify-content-center align-items-center mb-2">
                             <div class="item-thumb">
