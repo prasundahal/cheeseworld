@@ -59,7 +59,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         class="img-fluid">
                 </div>
             </div>
-            <div class="col-4 auth-login p-0">
+            {{-- <div class="col-4 auth-login p-0">
               <div class="notice d-flex justify-content-center align-items-center">
                 <div class="login-wrapper">
                   <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
@@ -71,11 +71,19 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                   </div>
               </div>
               </div>
-            </div>
-            <div class="col-4 without-auth-login p-0">
+            </div> --}}
+            <div class="col-4  p-0">
                 <div class="notice d-flex  justify-content-center align-items-center">
-
-                    <div class="login-wrapper">
+                  <div class="login-wrapper auth-login">
+                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="welcomeUsername"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                        <a class="dropdown-item log_out" href="javascript:void(0)" title="{{  trans("lables.header-logout") }}">{{  trans("lables.header-logout") }}</a>
+                    </div>
+                </div>
+                    <div class="login-wrapper without-auth-login">
                         <a class="nav-link" href="{{ url('/login') }}">
                           {{  trans("lables.header-login-register") }}
                         </a>
