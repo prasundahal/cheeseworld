@@ -1075,6 +1075,10 @@
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                     }
+                    if($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr").length < 0){
+                        location.href = '/';
+                        toastr.success('No item in cart.');
+                    }
                 },
                 error: function(data) {},
             });

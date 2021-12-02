@@ -771,7 +771,7 @@
             }
 
             if (loggedIn == '1') {
-                url = "{{ url('') }}" + '/api/client/cart?session_id=' + cartSession + '&product_id=' + product_id +
+                url = "{{ url('') }}" + '/api/client/cart/delete?session_id=' + cartSession + '&product_id=' + product_id +
                     '&product_combination_id=' + product_combination_id + '&language_id=' + languageId;
             } else {
                 url = "{{ url('') }}" + '/api/client/cart/guest/delete?session_id=' + cartSession + '&product_id=' +
@@ -795,6 +795,11 @@
                         menuCart(cartSession);
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
+                    }
+                    
+                    if($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr").length < 0){
+                        location.href = '/';
+                        toastr.success('No item in cart.');
                     }
                 },
                 error: function(data) {},
