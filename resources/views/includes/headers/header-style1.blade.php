@@ -94,7 +94,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     </div>
                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                         <li>
-                            <a href="http://127.0.0.1:8000/wishlist" class="btn" data-toggle="tooltip"
+                            <a href="{{ url('/wishlist') }}" class="btn" data-toggle="tooltip"
                                 data-placement="bottom" title="Wishlist">
                                 <i class="far fa-heart" aria-hidden="true"></i>
                                 <span class="badge badge-secondary wishlist-count"></span>
