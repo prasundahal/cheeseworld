@@ -53,11 +53,13 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                 </div>
             </div>
             <div class="col-4 m-auto">
-                <div class="logo text-center">
-                    <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}"
-                        alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}"
-                        class="img-fluid">
-                </div>
+                <a href="/">
+                    <div class="logo text-center">
+                        <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}"
+                            alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}"
+                            class="img-fluid">
+                    </div>
+                </a>
             </div>
             {{-- <div class="col-4 auth-login p-0">
               <div class="notice d-flex justify-content-center align-items-center">
@@ -230,7 +232,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         <a class="nav-link font-weight-bold" href="#">Chicco Research Center</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link font-weight-bold" href="#">Who we are</a>
+                        <a class="nav-link font-weight-bold" href="/about-us">Who we are</a>
                     </li>
                 </ul>
             </div>
