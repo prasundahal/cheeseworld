@@ -101,6 +101,8 @@
                     localStorage.setItem("customerToken",data.data.token);
                     localStorage.setItem("customerHash",data.data.hash);
                     localStorage.setItem("customerId",data.data.id);
+                    localStorage.setItem("customerFname",data.data.first_name);
+                    localStorage.setItem("customerLname",data.data.last_name);
                     localStorage.setItem("customerLoggedin",'1');
                     localStorage.setItem("cartSession",'');
                     window.location.href = "/";

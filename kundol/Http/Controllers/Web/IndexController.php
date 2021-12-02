@@ -112,6 +112,8 @@ class IndexController extends Controller
         return view('login', compact('data', 'setting'));
     }
 
+    
+
     public function blogDetail($slug)
     {
 
