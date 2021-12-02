@@ -183,7 +183,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                     </div>
 
                  
-                    <button type="button" class="btn  wishlist-icon btn-secondary swipe-to-top mt-2">Add to Wishlist</button>
+                    <button type="button" class="btn  wishlist-icon btn-secondary swipe-to-top mt-2* ">Add to Wishlist</button>
                     <button type="button" class="btn btn-secondary swipe-to-top add-to-cart mt-2">Add to Cart</button>
 
 

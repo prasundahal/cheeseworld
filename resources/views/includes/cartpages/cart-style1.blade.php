@@ -85,10 +85,10 @@
                    </div>
                         </h4>
                         <div class="item-attributes"></div>
-                        <div class="item-controls m-auto">
-                            {{-- <button type="button" class="btn">
+                        <div class="item-controls">
+                            <button type="button" class="btn">
                                 <span class="fas fa-pencil-alt"></span>
-                            </button> --}}
+                            </button>
                             <button type="button" class="btn cartItem-remove">
                                 <span class="fas fa-times"></span>
                             </button>

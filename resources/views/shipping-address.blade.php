@@ -16,7 +16,7 @@
 </div>
 <section class="pro-content">
 
-    <section class="shipping-content">
+    <section class="shipping-content py-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-3">
@@ -40,11 +40,11 @@
                     <table class="table shipping-table">
                         <thead>
                             <tr>
-                                <th scope="col">{{ trans('lables.shipping-address-default') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-first-name') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-last-name') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-country-state-city') }}</th>
-                                <th scope="col" class="d-none d-md-block">{{ trans('lables.shipping-address-action') }}</th>
+                                <th>{{ trans('lables.shipping-address-default') }}</th>
+                                <th>{{ trans('lables.shipping-address-first-name') }}</th>
+                                <th>{{ trans('lables.shipping-address-last-name') }}</th>
+                                <th>{{ trans('lables.shipping-address-country-state-city') }}</th>
+                                <th class="d-none d-md-block">{{ trans('lables.shipping-address-action') }}</th>
                             </tr>
                         </thead>
                         <tbody id="shipping-address-listing-show">
@@ -55,7 +55,7 @@
                     <template id="shipping-address-listing-template">
                         <tr class="shipping-address-listing-id">
                             <td>
-                                <div class="form-check">
+                                <div class="form-check" style="display: unset">
                                     <input class="form-check-input shipping-address-listing-is-default" name="radiobtn" type="radio">
                                 </div>
                             </td>
@@ -73,7 +73,7 @@
                             </td>
 
                             <td class="edit-tag">
-                                <ul>
+                                <ul class="pl-0 mb-0 d-flex justify-content-between">
                                     <li><a href="javascript:void(0)" class="shipping-address-listing-edit-btn"> <i class="fas fa-pen"></i> Edit</a></li>
                                     <li><a href="javascript:void(0)" class="shipping-address-listing-delete-btn"> <i class="fas fa-trash-alt"></i> Remove</a></li>
                                 </ul>

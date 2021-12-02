@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <!-- wishlist Content -->
-<section class="wishlist-content pro-content">
+<section class="wishlist-content pro-content py-4">
 
     <div class="container">
         <div class="row">
@@ -35,14 +35,14 @@
 </section>
 
 <template id="wishlist-product-template">
-    <div class="media">
+    <div class="media bg-light p-2">
         <img class="img-fluid wishlist-product-img" src="images/wishlist/wishlist-1.png" alt="John Doe">
-        <div class="media-body">
-            <div class="row">
+        <div class="media-body d-flex align-items-center w-100">
+            <div class="row w-100 align-items-center">
                 <div class="col-12 col-md-8  texting">
-                    <h3><a href="javascript:void(0)" class="wishlist-product-name"></a></h3>
+                    <h5 class="m-0"><a href="javascript:void(0)" class="wishlist-product-name"></a></h5>
                     <div class="price wishlist-product-price"></div>
-                    <p class="wishlist-product-desc"></p>
+                    <p class="wishlist-product-desc mb-1"></p>
                     <div class="buttons">
                         <div class="input-group item-quantity">
 
@@ -63,7 +63,7 @@
     
     
                         </div>
-                        <a href="javascript:void(0)" class="btn btn-secondary swipe-to-top wishlist-product-btn">
+                        <a href="javascript:void(0)" class="btn btn-secondary swipe-to-top wishlist-product-btn mt-2">
                             ADD TO CART
                         </a>
                     </div>
