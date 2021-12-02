@@ -428,7 +428,7 @@
                                                     class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
                                                     class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
-                                                <button type="submit">Submit</button>
+                                                
 
                                             </div>
                                         </div>
