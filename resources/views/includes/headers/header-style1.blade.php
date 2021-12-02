@@ -112,23 +112,27 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             </div>
 
                             <template id="top-cart-product-template">
-                        <li class="top-cart-product-id d-flex justify-content-center align-items-center mb-2">
+                        <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
+                            style="border-bottom:1px solid #dddddd;">
                             <div class="item-thumb">
 
                                 <div class="image mr-2">
-                                    <img class="img-fluid top-cart-product-image" src="" alt="Product Image">
+                                    <img class="img-fluid top-cart-product-image" src="" alt="Product Image" style="width:100%;max-height:60px;min-height:60px;object-fit:contain;object-fit:center;">
                                 </div>
                             </div>
                             <div class="item-detail">
                                 <h3 class="top-cart-product-name"></h3>
                                 <div
-                                    class="item-s top-cart-product-qty-amount d-flex justify-content-between align-items-center mb-2">
+                                    class="item-s top-cart-product-qty-amount d-flex justify-content-between align-items-center mb-1">
                                 </div>
+                            </div>
+                            <div class="remove-item">
+
                             </div>
                         </li>
                         </template>
                         <template id="top-cart-product-total-template">
-                            <li>
+                            <li class="pb-2">
                                 <span class="item-summary ">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
                                         class="top-cart-product-total"></span>
                                 </span>
@@ -144,7 +148,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             style="position: absolute; transform: translate3d(30px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"
                             x-placement="bottom-end">
                             <ul class="shopping-cart-items top-cart-product-show p-3">
-                                {{-- <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
+                               {{--  <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
                                     style="border-bottom:1px solid #dddddd;">
                                     <div class="item-thumb">
 
