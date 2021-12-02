@@ -107,6 +107,7 @@
         outline: none;
 
     }
+    
 
     .slick-next {
         position: absolute;
@@ -291,6 +292,14 @@
         min-height: 47px;
         overflow: hidden;
     }
+    #moment-wrapper .slick-slide img {
+
+max-height: 50px;
+min-height: 50px;
+object-fit: contain;
+object-position: center;
+width: 100%;
+    }
 
     #moment-wrapper .moment .content:hover {
         background-color: #eee;
@@ -323,10 +332,18 @@
     #welcome-wrapper .content-wrapper .content:hover {
         cursor: pointer;
     }
-
+    #welcome-wrapper .content-wrapper .content .heading {
+        padding: 15px;
+        text-align: center;
+     
+    }
     #welcome-wrapper .content-wrapper .content .heading a {
         text-decoration: none;
         color: #23527c;
+           max-height: 28px;
+        min-height: 28px;
+        overflow: hidden;
+        display: block;
     }
 
     #welcome-wrapper .slick-w3 .slick-slide img {
@@ -334,6 +351,14 @@
         min-height: 270px;
         object-fit: fill;
         object-position: center;
+    }
+    #welcome-wrapper .slick-slide .image img {
+
+max-height: 250px;
+min-height: 250px;
+object-fit: cover;
+object-position: center;
+width: 100%;
     }
 
     /* Welcome Section Ends */

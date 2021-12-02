@@ -152,7 +152,7 @@
                                                 @if(isset(getSetting()['is_deliveryboyapp_purchased']) && getSetting()['is_deliveryboyapp_purchased'] == '1')
                                                 <div class="form-group col-md-6 mb-3">
                                                     <label for=""> @lang('lables.checkout-location')</label>
-                                                    <input type="text" required class="form-control field-validate"
+                                                    <input type="text" required class="form-control field-validate" value="asdfasdfs"
                                                         data-toggle="modal" data-target="#mapModal" name="latlong"
                                                         id="latlong" aria-describedby="addressHelp"
                                                         placeholder="@lang('lables.checkout-location-placeholder')">
@@ -1028,11 +1028,15 @@
                         html = '<option value="">Select</option>';
                         for (i = 0; i < data.data.length; i++) {
                             selected = '';
-                            if ($.trim($("#delivery_country_hidden").val()) != '' && $.trim($(
-                                    "#delivery_country_hidden").val()) == data.data[i].country_id) {
-                                selected = 'selected';
-                                $("#delivery_country_hidden").val('');
-                            } else if (data.data[i].country_id == country) {
+                            // if ($.trim($("#delivery_country_hidden").val()) != '' && $.trim($(
+                            //         "#delivery_country_hidden").val()) == data.data[i].country_id) {
+                            //     selected = 'selected';
+                            //     $("#delivery_country_hidden").val('');
+                            // } else if (data.data[i].country_id == country) {
+                            //     selected = 'selected';
+                            // }
+                            // console.log(data.data[i].country_name);
+                            if(data.data[i].country_name == 'Australia'){
                                 selected = 'selected';
                             }
                             html += '<option value="' + data.data[i].country_id + '" ' + selected + '>' + data
@@ -1304,6 +1308,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log('successhere');
                     if (data.status == 'Success') {
                         window.location.href = "{{ url('/thankyou') }}";
                     } else if (data.status == 'Error') {
@@ -1313,7 +1318,7 @@
                     }
                 },
                 error: function(data) {
-                    console.log();
+                    console.log('errorhere');
                     if (data.status == 422) {
                         jQuery.each(data.responseJSON.errors, function(index, item) {
                             $("#" + index).parent().find('.invalid-feedback').css('display',
