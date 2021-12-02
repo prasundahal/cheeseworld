@@ -270,7 +270,7 @@
                     innovative solutions.
                 </h5>
                 <a href="#" class="btn-blue px-5 py-3 text-white font-weight-bold">Discover More</a>
-            </div>m
+            </div>
 
         </div>
     </section>
