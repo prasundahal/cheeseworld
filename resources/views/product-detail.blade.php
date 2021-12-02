@@ -112,6 +112,9 @@
                         const templ = document.getElementById("product-detail-section");
                         console.log(templ);
                         const clone = templ.content.cloneNode(true);
+                        clone.querySelector(".wishlist-icon").setAttribute('data-id', data.data.product_id);
+                        clone.querySelector(".wishlist-icon").setAttribute('onclick', 'addWishlist(this)');
+                        clone.querySelector(".wishlist-icon").setAttribute('data-type', data.data.product_type);
                         clone.querySelector(".add-to-cart").setAttribute('onclick', 'addToCart(this)');
                         clone.querySelector(".add-to-cart").setAttribute('data-id', data.data.product_id);
                         clone.querySelector(".add-to-cart").setAttribute('data-type', data.data.product_type);
