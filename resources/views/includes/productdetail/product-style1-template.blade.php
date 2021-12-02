@@ -166,7 +166,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                         <a><i class=" fa fa-share-alt fa-2x" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                <div class="pro-counter">
+                <div class="pro-counter mt-2">
                     <div class="input-group item-quantity">
 
                         <input type="text" id="quantity-input" name="quantity" class="form-control" value="1">
@@ -181,7 +181,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                             </button>
                         </span>
                     </div>
-                    <button type="button" class="btn btn-secondary btn-lg swipe-to-top add-to-cart">Add to Cart</button>
+                    <button type="button" class="btn btn-secondary swipe-to-top add-to-cart mt-2">Add to Cart</button>
 
 
                 </div>

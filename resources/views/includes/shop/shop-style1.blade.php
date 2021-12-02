@@ -56,7 +56,7 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-8">
                 <div class="sort d-flex justify-content-end align-items-center">
-                    <form>
+                    <form class="w-100"> 
                         <label for="sorting" class="m-0">Sort by:</label>
                         <select class="custom-select w-50 mb-0 ml-3 sortBy">
                             <option value="">choose</option>

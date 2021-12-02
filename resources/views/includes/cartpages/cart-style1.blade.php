@@ -8,7 +8,7 @@
         </div>
     </nav>
 </div>
-<section class="pro-content">
+<section class="pro-content py-4">
     <div class="container">
         <div class="page-heading-title">
             <h2>{{ trans('lables.cart-page-shopping-cart') }}</h2>
@@ -43,9 +43,9 @@
                                     </div>
                                     <div class="col-12 col-lg-7 align-right">
                                         <div class="row">
-                                            <button type="button" class="btn btn-secondary swipe-to-top">
+                                            <button type="button" class="btn btn-secondary swipe-to-top mx-2">
                                                 {{ trans('lables.cart-page-continue-shopping') }}</button>
-                                            <button type="button" class="btn btn-light swipe-to-top" onclick="updateCartItem()">{{ 
+                                            <button type="button" class="btn btn-light swipe-to-top mx-2" onclick="updateCartItem()">{{ 
                                             trans('lables.cart-page-update-cart') }}</button>
                                         </div>
 
@@ -73,17 +73,19 @@
 
     <template id="cartItem-Template">
         <tbody>
-            <tr class="d-flex cartItem-row">
+            <tr class="d-flex cartItem-row justify-content-center align-items-center bg-light">
                 <td class="col-12 col-md-2">
                     <img class="img-fluid cartItem-image" src="" />
                 </td>
                 <td class="col-12 col-md-4 item-detail-left">
-                    <div class="item-detail">
-                        <span class="cartItem-category-name"></span>
-                        <h4 class="cartItem-name">
+                    <div class="item-detail d-flex ">
+                   <div class="title">
+                    <span class="cartItem-category-name"></span>
+                    <h4 class="cartItem-name">
+                   </div>
                         </h4>
                         <div class="item-attributes"></div>
-                        <div class="item-controls">
+                        <div class="item-controls m-auto">
                             {{-- <button type="button" class="btn">
                                 <span class="fas fa-pencil-alt"></span>
                             </button> --}}
@@ -100,12 +102,12 @@
                         <input type="text" id="quantity2" name="quantity" class="form-control cartItem-qty">
 
                         <span class="input-group-btn">
-                            <button type="button" value="quantity" class="quantity-right-plus btn cartItem-qty-1" data-type="plus" data-field="">
+                            <button type="button" value="quantity" class="quantity-right-plus btn cartItem-qty-1 px-2" data-type="plus" data-field="">
 
                                 <span class="fas fa-plus"></span>
                             </button>
 
-                            <button type="button" value="quantity" class="quantity-left-minus btn cartItem-qty-2" data-type="minus" data-field="">
+                            <button type="button" value="quantity" class="quantity-left-minus btn cartItem-qty-2 px-2" data-type="minus" data-field="">
                                 <span class="fas fa-minus"></span>
                             </button>
 
@@ -131,19 +133,19 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">{{ trans('lables.cart-page-subtotal') }}</th>
-                <td align="right" class="caritem-subtotal"></td>
+                <th scope="row" class="">{{ trans('lables.cart-page-subtotal') }}</th>
+                <td align="right" class="caritem-subtotal "></td>
 
             </tr>
             <tr>
-                <th scope="row">{{ trans('lables.cart-page-discount') }}</th>
-                <td align="right" class="caritem-discount-coupon"></td>
+                <th scope="row" class="">{{ trans('lables.cart-page-discount') }}</th>
+                <td align="right" class="caritem-discount-coupon "></td>
 
             </tr>
             
             <tr class="item-price">
-                <th scope="row">{{ trans('lables.cart-page-total') }}</th>
-                <td align="right" class="caritem-grandtotal"></td>
+                <th scope="row" class="">{{ trans('lables.cart-page-total') }}</th>
+                <td align="right" class="caritem-grandtotal "></td>
 
             </tr>
 

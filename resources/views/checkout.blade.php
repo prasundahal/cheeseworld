@@ -20,7 +20,7 @@
             </div>
         </div>
         <!-- checkout Content -->
-        <section class="checkout-area">
+        <section class="checkout-area py-4">
 
             <div class="container">
                 <div class="row">
@@ -77,7 +77,7 @@
                                             </div>
                                             <div class="form-row">
                                                 {{-- {{dd(getSetting()['is_deliveryboyapp_purchased'])}} --}}
-                                                
+
                                                 <div class="from-group col-md-6 mb-3">
                                                     <label for="">{{ trans('lables.checkout-address') }}</label>
                                                     <div class="input-group ">
@@ -125,7 +125,7 @@
                                             </div>
 
                                             <div class="form-row">
-                                                
+
                                                 <div class="from-group col-md-6 mb-3">
                                                     <label for="">{{ trans('lables.checkout-postal-code') }}</label>
                                                     <div class="input-group">
@@ -148,17 +148,17 @@
                                             </div>
 
                                             <div class="form-row">
-                                                
-                                                @if(isset(getSetting()['is_deliveryboyapp_purchased']) && getSetting()['is_deliveryboyapp_purchased'] == '1')
-                                                <div class="form-group col-md-6 mb-3">
-                                                    <label for=""> @lang('lables.checkout-location')</label>
-                                                    <input type="text" required class="form-control field-validate" value="asdfasdfs"
-                                                        data-toggle="modal" data-target="#mapModal" name="latlong"
-                                                        id="latlong" aria-describedby="addressHelp"
-                                                        placeholder="@lang('lables.checkout-location-placeholder')">
+
+                                                @if (isset(getSetting()['is_deliveryboyapp_purchased']) && getSetting()['is_deliveryboyapp_purchased'] == '1')
+                                                    <div class="form-group col-md-6 mb-3">
+                                                        <label for=""> @lang('lables.checkout-location')</label>
+                                                        <input type="text" required class="form-control field-validate"
+                                                            value="asdfasdfs" data-toggle="modal" data-target="#mapModal"
+                                                            name="latlong" id="latlong" aria-describedby="addressHelp"
+                                                            placeholder="@lang('lables.checkout-location-placeholder')">
                                                         <div class="invalid-feedback"></div>
-                                                        
-                                                </div>
+
+                                                    </div>
                                                 @endif
 
                                             </div>
@@ -331,40 +331,41 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <form id="paymentForm" class="d-block">
-                                                       
-                                                            {{-- <label for="exampleFormControlTextarea1" style="width:100%; margin-bottom:30px;">{{ trans('lables.checkout-payment-method-description') }}</label> --}}
-                                                            @foreach ($payment_method as $payment_methods)
-                                                                @if ($payment_methods->id == '4')
-                                                                     <div class="form-group">
-                                                                        <input class="form-check-input payment_method"
-                                                                            type="radio"
-                                                                            id="inlineCheckbox{{ $payment_methods->id }}"
-                                                                            value="cod" name="payment_method" checked>
-                                                                        <label class="form-check-label"
-                                                                            for="inlineCheckbox{{ $payment_methods->id }}">COD</label>
-                                                                    </div>
-                                                                @elseif($payment_methods->id == '3')
-                                                                     <div class="form-group">
-                                                                        <input class="form-check-input payment_method"
-                                                                            type="radio"
-                                                                            id="inlineCheckbox{{ $payment_methods->id }}"
-                                                                            value="banktransfer" name="payment_method" checked>
-                                                                        <label class="form-check-label"
-                                                                            for="inlineCheckbox{{ $payment_methods->id }}">Bank
-                                                                            Transafer</label>
-                                                                    </div>
-                                                                @endif
-                                                            @endforeach
-                                                            @foreach ($payment_method_default as $payment_methods)
-                                                                 <div class="form-group">
-                                                                    <input class="form-check-input payment_method" type="radio"
+
+                                                        {{-- <label for="exampleFormControlTextarea1" style="width:100%; margin-bottom:30px;">{{ trans('lables.checkout-payment-method-description') }}</label> --}}
+                                                        @foreach ($payment_method as $payment_methods)
+                                                            @if ($payment_methods->id == '4')
+                                                                <div class="form-group">
+                                                                    <input class="form-check-input payment_method"
+                                                                        type="radio"
                                                                         id="inlineCheckbox{{ $payment_methods->id }}"
-                                                                        value="{{ $payment_methods->payment_method }}"
-                                                                        name="payment_method">
-                                                                    <label class="form-check-label" for="inlineCheckbox{{ $payment_methods->id }}">
-                                                                        Card Payment</label>
+                                                                        value="cod" name="payment_method" checked>
+                                                                    <label class="form-check-label"
+                                                                        for="inlineCheckbox{{ $payment_methods->id }}">COD</label>
                                                                 </div>
-                                                            @endforeach
+                                                            @elseif($payment_methods->id == '3')
+                                                                <div class="form-group">
+                                                                    <input class="form-check-input payment_method"
+                                                                        type="radio"
+                                                                        id="inlineCheckbox{{ $payment_methods->id }}"
+                                                                        value="banktransfer" name="payment_method" checked>
+                                                                    <label class="form-check-label"
+                                                                        for="inlineCheckbox{{ $payment_methods->id }}">Bank
+                                                                        Transafer</label>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                        @foreach ($payment_method_default as $payment_methods)
+                                                            <div class="form-group">
+                                                                <input class="form-check-input payment_method" type="radio"
+                                                                    id="inlineCheckbox{{ $payment_methods->id }}"
+                                                                    value="{{ $payment_methods->payment_method }}"
+                                                                    name="payment_method">
+                                                                <label class="form-check-label"
+                                                                    for="inlineCheckbox{{ $payment_methods->id }}">
+                                                                    Card Payment</label>
+                                                            </div>
+                                                        @endforeach
                                                     </form>
                                                 </div>
                                             </div>
@@ -380,66 +381,67 @@
                                                                 <td>{{ $payment_method_settings->value }}</td>
                                                             </tr>
                                                         @endforeach
-                                                    
+
                                                     </table>
                                                 </div>
                                             </div>
-                                    </div>
-                                    <div class="col-md-12 stripe_payment d-none">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group" style="width:100%; padding:0;">
-                                                    <label for="exampleFormControlTextarea1">Account Number</label>
-                                                    <input type="text" class="form-control" id="cc_number"
-                                                        maxlength="16" />
-                                                    <div class="invalid-feedback"></div>
+                                        </div>
+                                        <div class="col-md-12 stripe_payment d-none">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="width:100%; padding:0;">
+                                                        <label for="exampleFormControlTextarea1">Account Number</label>
+                                                        <input type="text" class="form-control" id="cc_number"
+                                                            maxlength="16" />
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group" style="width:100%; padding:0;">
-                                                    <label for="exampleFormControlTextarea1">Expiry Month</label>
-                                                    <input type="text" class="form-control" id="cc_expiry_month"
-                                                        maxlength="2" />
-                                                    <div class="invalid-feedback"></div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="width:100%; padding:0;">
+                                                        <label for="exampleFormControlTextarea1">Expiry Month</label>
+                                                        <input type="text" class="form-control" id="cc_expiry_month"
+                                                            maxlength="2" />
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group" style="width:100%; padding:0;">
-                                                    <label for="exampleFormControlTextarea1">Expiry Year</label>
-                                                    <input type="text" class="form-control" id="cc_expiry_year"
-                                                        maxlength="4" />
-                                                    <div class="invalid-feedback"></div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="width:100%; padding:0;">
+                                                        <label for="exampleFormControlTextarea1">Expiry Year</label>
+                                                        <input type="text" class="form-control" id="cc_expiry_year"
+                                                            maxlength="4" />
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group" style="width:100%; padding:0;">
-                                                    <label for="exampleFormControlTextarea1">CVC</label>
-                                                    <input type="text" class="form-control" id="cc_cvc" maxlength="3" />
-                                                    <div class="invalid-feedback"></div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group" style="width:100%; padding:0;">
+                                                        <label for="exampleFormControlTextarea1">CVC</label>
+                                                        <input type="text" class="form-control" id="cc_cvc"
+                                                            maxlength="3" />
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="row">
-                                            <a data-toggle="pill" href="#pills-method"
-                                                class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
-                                            <button type="submit"
-                                                class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
-                                            <button type="submit">Submit</button>
-                                        
+                                        <div class="col-12 col-sm-12">
+                                            <div class="row justify-content-between">
+                                                <a data-toggle="pill" href="#pills-method"
+                                                    class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
+                                                <button type="submit"
+                                                    class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
+                                                <button type="submit">Submit</button>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-xl-3">
+                        <table class="table right-table" id="cartItem-grandtotal-product-show"></table>
+                        <input type="button" class="form-control btn btn-danger" id="removeCoupon" value="Remove Coupon" />
+                    </div>
                 </div>
-                <div class="col-12 col-xl-3">
-                    <table class="table right-table" id="cartItem-grandtotal-product-show"></table>
-                    <input type="button" class="form-control btn btn-danger" id="removeCoupon" value="Remove Coupon" />
-                </div>
-            </div>
             </div>
             </div>
         </section>
@@ -447,15 +449,17 @@
     </section>
     <template id="cartItem-Template">
         <tbody>
-            <tr class="d-flex cartItem-row">
+            <tr class="d-flex cartItem-row bg-light">
                 <td class="col-12 col-md-2">
                     <img class="img-fluid cartItem-image" src="images/product_images/product_image_6.png" />
                 </td>
                 <td class="col-12 col-md-4 item-detail-left">
                     <div class="item-detail">
-                        <span class="cartItem-category-name"></span>
-                        <h4 class="cartItem-name">
-                        </h4>
+                        <div class="title">
+                            <span class="cartItem-category-name"></span>
+                            <h4 class="cartItem-name">
+                            </h4>
+                        </div>
                         <div class="item-attributes"></div>
                         <div class="item-controls">
                             <button type="button" class="btn">
@@ -716,7 +720,7 @@
                                     clone1.querySelector(".caritem-subtotal").innerHTML = data.data[i].currency
                                         .code + ' ' + total_price;
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price);
+                                        total_price);
                                     clone1.querySelector(".caritem-subtotal").setAttribute('currency-position',
                                         data.data[i].currency.symbol_position);
                                     clone1.querySelector(".caritem-subtotal").setAttribute('currency-code', data
@@ -730,7 +734,7 @@
                                     clone1.querySelector(".caritem-subtotal").innerHTML = total_price + ' ' +
                                         data.data[i].currency.code;
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price',
-                                    total_price);
+                                        total_price);
                                     clone1.querySelector(".shipping-tax").setAttribute('data-price', '0');
                                     clone1.querySelector(".caritem-subtotal").setAttribute('price-symbol', data
                                         .data[i].currency.code + ' ' + total_price);
@@ -1038,7 +1042,7 @@
                             //     selected = 'selected';
                             // }
                             // console.log(data.data[i].country_name);
-                            if(data.data[i].country_name == 'Australia'){
+                            if (data.data[i].country_name == 'Australia') {
                                 selected = 'selected';
                             }
                             html += '<option value="' + data.data[i].country_id + '" ' + selected + '>' + data
@@ -1227,12 +1231,12 @@
                 $(".bank_transfer").removeClass('d-none');
                 $(".stripe_payment").addClass('d-none');
             }
-            if(payment_method == 'cod'){
+            if (payment_method == 'cod') {
                 $(".stripe_payment").addClass('d-none');
                 $(".bank_transfer").addClass('d-none');
 
             }
-            
+
         });
 
 
@@ -1584,12 +1588,12 @@
                         // }
                         $('#mapModal').hide();
                         $('.modal-backdrop').hide();
-                        setTimeout(function() { 
+                        setTimeout(function() {
                             // $('#location').focus();
                             $('#latlong').get(0).focus();
-                           
+
                         }, 500);
-                       
+
 
                     } else {
                         console.log('No results found');
