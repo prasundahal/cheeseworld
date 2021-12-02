@@ -83,7 +83,9 @@ class OrderService
 
     public function RemoveOrderInventory($parms)
     {
-        $defaultWareHouse =  Warehouse::isDefault()->value('id');
+        $defaultWareHouse =  Warehouse::where("is_default", 1)->first()->id;
+        // $defaultWareHouse =  Warehouse::isDefault()->value('id');
+        // dd($defaultWareHouse);
         $parms['warehouse_id'] = $defaultWareHouse;
         $parms['stock_status'] = 'OUT';
         $parms['stock_type'] = 'Order';
