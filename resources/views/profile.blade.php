@@ -1,121 +1,37 @@
 @extends('layouts.master')
 @section('content')
 
+<section class="wishlist-content pro-content py-4">
 
-<div class="container-fuild">
-    <nav aria-label="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('lables.bread-profile') }}</li>
-            </ol>
-        </div>
-    </nav>
-</div>
-<section class="pro-content">
-
-    <!-- Profile Content -->
-    <section class="profile-content">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-12 media-main">
-                    <div class="media">
-                        <div class="media-body">
-                            <div class="row">
-                                <div class="col-12 col-sm-4 col-md-6">
-                                    <h4>User Name<br>
-                                        <small>Location </small>
-                                    </h4>
-                                </div>
-                                <div class="col-12 col-sm-8 col-md-6 detail">
-
-                                    <p class="mb-0">{{ trans('lables.profile-email') }}:<span>info@yourcompanyname.com</span></p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <div class="heading">
+                    <h2>
+                        My Account
+                    </h2>
+                    <hr>
                 </div>
-                <div class="col-12 col-lg-3">
-                    <div class="heading">
-                        <h2>
-                            {{ trans('lables.profile-my-account') }}
-                        </h2>
-                        <hr>
-                    </div>
 
-                    @include('includes.side-menu')
+                @include('includes.side-menu')
+
+            </div>
+            <div class="col-12 col-lg-9 ">
+                <div class="heading">
+                    <h2>
+                        Wishlist Products
+                    </h2>
+                    <hr>
                 </div>
-                <div class="col-12 col-lg-9 ">
-                    <div class="heading">
-                        <h2>
-                            {{ trans('lables.profile-prsonal-info') }}
-                        </h2>
-                        <hr>
-                    </div>
 
-                    <form class="align-items-center" id="profileForm">
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">{{ trans('lables.profile-first-name') }}</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="first_name" placeholder="{{ trans('lables.profile-first-name') }}">
-                                <div class="invalid-feedback">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">{{ trans('lables.profile-last-name') }}</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="last_name" placeholder="{{ trans('lables.profile-last-name') }}">
-                                <div class="invalid-feedback">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">{{ trans('lables.profile-gender') }}</label>
-                            <div class="from-group  select-control col-sm-4 ">
+                <div class="col-12 px-0 media-main" id="wishlist-show">
 
-
-                                <select class="form-control " id="gender">
-                                    <option value="Male" >Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    
-                                </div>
-
-                            </div>
-                            <label for="inputPassword" class="col-sm-2 col-form-label">{{ trans('lables.profile-dob') }}</label>
-                            <div class=" col-sm-4">
-                                <div class="input-group date">
-                                    <input type="date" class="form-control datepicker" id="{{ trans('lables.profile-dob') }}">
-                                    <div class="invalid-feedback">
-                                        
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">{{ trans('lables.profile-phone') }}</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="phone" placeholder="{{ trans('lables.profile-phone') }}">
-                            </div>
-                        </div>
-                        <input type="hidden" class="form-control" id="method">
-                        <input type="hidden" class="form-control" id="addres_id">
-                        <button type="submit" class="btn btn-secondary swipe-to-top saveProfile">{{ trans('lables.profile-update') }}</button>
-                    </form>
-
-                    <!-- ............the end..... -->
                 </div>
+
+                <!-- ............the end..... -->
             </div>
         </div>
-    </section>
+    </div>
 </section>
 
 

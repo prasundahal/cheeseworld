@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
 <!-- wishlist Content -->
 <section class="wishlist-content pro-content py-4">
 
