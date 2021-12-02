@@ -57,7 +57,6 @@ class OrderProcess implements ShouldQueue
     public function handle()
     {
         
-        // dd($this->parms);
         try {
             \DB::beginTransaction();
             $orderService = new OrderService;
@@ -170,7 +169,7 @@ class OrderProcess implements ShouldQueue
             $this->parms['currency_id'] = $currency->id;
             $this->parms['currency_value'] = $currency->exchange_rate;
             // $this->parms['warehouse_id'] = 3;
-            // dd($this->parms);
+            //  dd($this->parms);
             $sql = Order::create($this->parms);
             // dd($sql);
             OrderHistory::create([
@@ -247,7 +246,9 @@ class OrderProcess implements ShouldQueue
             return $this->errorResponse();
         }
         if ($sql) {
-            OrderProcessed::dispatch($sql->id);
+            $this->parms["warehouse_id"] = 3;
+             $a = OrderProcessed::dispatch($sql->id);
+            // dd($a);
             \DB::commit();
             return $this->successResponse(new OrderResource($sql), 'Order Save Successfully!');
         } else {
