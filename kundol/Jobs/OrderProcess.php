@@ -168,8 +168,7 @@ class OrderProcess implements ShouldQueue
             $this->parms['customer_id'] = $customer_id;
             $this->parms['currency_id'] = $currency->id;
             $this->parms['currency_value'] = $currency->exchange_rate;
-            // $this->parms['warehouse_id'] = 3;
-            //  dd($this->parms);
+            
             $sql = Order::create($this->parms);
             // dd($sql);
             OrderHistory::create([
@@ -247,8 +246,7 @@ class OrderProcess implements ShouldQueue
         }
         if ($sql) {
             $this->parms["warehouse_id"] = 3;
-             $a = OrderProcessed::dispatch($sql->id);
-            // dd($a);
+             OrderProcessed::dispatch($sql->id);
             \DB::commit();
             return $this->successResponse(new OrderResource($sql), 'Order Save Successfully!');
         } else {

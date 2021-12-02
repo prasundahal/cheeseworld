@@ -31,7 +31,7 @@ class OrderRepository implements OrderInterface
             //     $parms['action'] = 'PayPal';
             // }
             // dd($parms);
-            dd(OrderProcess::dispatchNow($parms));
+            // dd(OrderProcess::dispatchNow($parms));
             return OrderProcess::dispatchNow($parms);
             return $this->successResponse(OrderProcess::dispatchNow($parms), 'Data Get Successfully!');
         } catch (Exception $e) {
