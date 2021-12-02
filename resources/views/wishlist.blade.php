@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- wishlist Content -->
-<section class="wishlist-content pro-content py-4">
+<section class="order-one-content pro-content  wishlist-content pro-content py-4">
 
     <div class="container">
         <div class="row">

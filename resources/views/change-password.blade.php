@@ -1,24 +1,22 @@
 @extends('layouts.master')
 @section('content')
-    <!-- change password -->
-    <div class="container-fuild">
-        <nav aria-label="breadcrumb">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ trans('lables.change-password') }}</li>
-                </ol>
-            </div>
-        </nav>
-    </div>
 
     <!-- page Content -->
-    <section class="page-area pro-content">
+    <section class="page-area pro-content wishlist-content pro-content py-4">
         <div class="container">
-            <div class="row justify-content-center">
-
-
-                <div class="col-12 col-sm-12 col-md-6">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <div class="heading">
+                        <h2>
+                            My Account
+                        </h2>
+                        <hr>
+                    </div>
+    
+                    @include('includes.side-menu')
+    
+                </div>
+                <div class="col-12 col-lg-9 ">
 
                     <div class="col-12">
                         <div class="heading">
