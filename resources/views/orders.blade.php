@@ -1,33 +1,74 @@
 @extends('layouts.master')
 @section('content')
 
-<section class="wishlist-content pro-content py-4">
+<!-- -My Order content -->
+<div class="container-fuild">
+    <nav aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('lables.bread-order') }}</li>
+            </ol>
+        </div>
+    </nav>
+</div>
+
+<!--My Order Content -->
+<section class="order-one-content pro-content">
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-3  d-none d-lg-block d-xl-block">
                 <div class="heading">
                     <h2>
-                        My Account
+                        {{ trans('lables.orders-my-account') }}
                     </h2>
                     <hr>
                 </div>
-
                 @include('includes.side-menu')
-
             </div>
             <div class="col-12 col-lg-9 ">
                 <div class="heading">
                     <h2>
-                        Wishlist Products
+                        {{ trans('lables.orders-my-order') }}
                     </h2>
                     <hr>
                 </div>
 
-                <div class="col-12 px-0 media-main" id="wishlist-show">
 
-                </div>
+                <table class="table order-table">
 
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-12 col-md-2">{{ trans('lables.orders-order-id') }}</th>
+                            <th class="col-12 col-md-2">{{ trans('lables.orders-date') }}</th>
+                            <th class="col-12 col-md-3">{{ trans('lables.orders-description') }}</th>
+                            <th class="col-12 col-md-3">{{ trans('lables.orders-status') }}</th>
+                            <th class="col-12 col-md-2">{{ trans('lables.orders-detail') }}</th>
+
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody id="order-show">
+
+                    </tbody>
+                </table>
+
+
+                {{-- <div class="pagination justify-content-between ">
+
+                    <label for="staticEmail" class="col-form-label">Showing 1&ndash;<span class="showing_record">1</span>&nbsp;of&nbsp;<span class="showing_total_record">23</span>&nbsp;results.</label>
+
+                    <div class="col-12 col-sm-6">
+                        <ol class="loader-page">
+                            <li class="loader-page-item"><a href="javascript:void(0)">
+                                    <i class="fa fa-angle-double-left" style="font-size:12px"></i></a>
+                            </li>
+                           
+                        </ol>
+                    </div>
+                </div> --}}
                 <!-- ............the end..... -->
             </div>
         </div>
