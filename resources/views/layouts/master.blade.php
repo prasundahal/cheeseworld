@@ -16,7 +16,7 @@
 
     <link rel="icon" type="image/png"
         href="{{ isset(getSetting()['favicon']) ? getSetting()['favicon'] : '01-fav.png' }}">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
     <link
@@ -102,6 +102,16 @@
         $locale = session()->get('locale');
         //dd ($locale);
     @endphp
+
+    <script>
+        $('#searchInput').on('keyup', function(e) {
+            if(e.keyCode == 13){
+                var url = "{{ url('/shop') }}" + '?search=' + $(this).val();
+                console.log(url);
+                window.location.href = url;
+            }
+        })
+    </script>
     {{-- <script>
         toastr.options = {
             "closeButton": false,
@@ -642,20 +652,6 @@
             $('.selected_category').attr('data-id', category_id);
             $('.selected_category').html(category_name);
         });
-
-        $('#search_button').click(function(e) {
-            e.preventDefault();
-            var searchInput = $('#search-input').val();
-            if (searchInput == "") {
-                toastr.error("{{ trans('search-input-empty') }}")
-            } else {
-                var url = "{{ url('/shop') }}" + '?search=' + searchInput;
-                var catgory_id = $('.selected_category').attr('data-id');
-                if (catgory_id != '' && catgory_id !== undefined)
-                    url += "&category=" + catgory_id;
-                window.location.href = url;
-            }
-        })
 
 
         $(".selected-currency").click(function(e) {

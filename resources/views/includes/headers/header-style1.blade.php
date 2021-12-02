@@ -55,9 +55,10 @@
                               $arr = [];
                               $categories = App\Models\Admin\Category::inRandomOrder()->take(12)->get();
                               foreach($categories as $categories){
+                                $arr[$categories->detail[0]->category_name][0] = $categories->id;
                                 $productCategory = App\Models\Admin\ProductCategory::where('category_id', $categories->id)->take(3)->get();
                                 foreach($productCategory as $productCategory){
-                                  $arr[$categories->detail[0]->category_name][] = App\Models\Admin\Product::where('id', $productCategory->product_id)->first();
+                                  $arr[$categories->detail[0]->category_name . '|' . $categories->id][] = App\Models\Admin\Product::where('id', $productCategory->product_id)->first();
                                 }
                               }
                             @endphp
@@ -69,11 +70,13 @@
                                         <a class="nav-link head font-weight-bold"
                                         href="under-construction.html">{{ $key }}</a>
                                       </li>
-                                      @foreach ($arr as $value)
-                                        <li class="nav-item">
-                                          <a class="nav-link"
-                                          href="under-construction.html">{{ $value->detail[0]->title }}</a>
-                                        </li>
+                                      @foreach ($arr as $key => $value)
+                                        @if($key != 0)
+                                          <li class="nav-item">
+                                            <a class="nav-link"
+                                            href="under-construction.html">{{ $value->detail[0]->title }}</a>
+                                          </li>
+                                        @endif
                                       @endforeach
                                     </ul>
                                   </div>
@@ -94,6 +97,29 @@
       </nav>
   </div>
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade w-100 p-0 position-fixed" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl position-relative" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center m-auto">
+                <h5 class="modal-title" id="modal1">
+                    <img src="{{ asset('frontend/image/logo/logo.png') }}" alt="logo" class="img-fluid">
+                </h5>
+
+            </div>
+            <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body text-center">
+                <input type="text" class="w-75" id="searchInput">
+            </div>
+
+        </div>
+    </div>
+</div>
 
 {{-- <header id="headerOne" class="header-area header-one  header-desktop d-none d-lg-block d-xl-block">
 

@@ -360,28 +360,6 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade w-100 p-0 position-fixed" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl position-relative" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center m-auto">
-                    <h5 class="modal-title" id="modal1">
-                        <img src="{{ asset('frontend/image/logo/logo.png') }}" alt="logo" class="img-fluid">
-                    </h5>
-
-                </div>
-                <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="modal-body text-center">
-                    <input type="text" class="w-75">
-                </div>
-
-            </div>
-        </div>
-    </div>
-
 @endsection
 @section('script')
     <script>
