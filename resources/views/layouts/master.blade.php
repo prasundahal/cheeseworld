@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png"
         href="{{ isset(getSetting()['favicon']) ? getSetting()['favicon'] : '01-fav.png' }}">
 
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     {{-- <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" /> --}}
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
@@ -110,7 +110,7 @@
     {{-- <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- font awesome -->
     <script src="{{ asset('frontend/js/wow.js') }}"></script>
     <script src="https://kit.fontawesome.com/a26d9146a0.js" crossorigin="anonymous"></script>
