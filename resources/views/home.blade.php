@@ -261,7 +261,7 @@
             </div>
             <div class="content mb-3">
                 <div class="row" id="articles">
-                    
+
                 </div>
             </div>
             <div class="discover text-center mt-5">
@@ -274,8 +274,32 @@
 
         </div>
     </section>
+    <section id="welcome-wrapper" class="bg-light py-5">
+        <div class="container">
+            <div class="heading text-center">
+                <h2 class="font-weight-bold">
+                    A big welcome from chicco
+                </h2>
+                <p class="my-5">
+                    We are by your side - you who look after children every day. You do so with enthusiasm but you have
+                    concerns and
+                    questions. We want to take care of you, and those you care about, with exciting new solutions
+                    designed for every need.
+                </p>
+            </div>
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slick-w4-a">
+                            
+                        </div>
+                    </div>
 
-    
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection
 @section('script')
     <script>
@@ -297,7 +321,7 @@
         // Navigation Js Onclick Starts
         var scroll;
         $(document).on('click', 'body', function() {
-            console.log('helo body ma');
+            // console.log('helo body ma');
             $("#navbarDropdown").hide();
             $(".dropdown-menu").hide();
             if (scroll > 150) {
@@ -312,20 +336,20 @@
         $(document).ready(function() {
 
             /* $("#navbarDropdown")
-                    .focusout(function() {
-                        scroll = $(window).scrollTop();
-                        $('.dropdown-menu').toggle();
-                        if (scroll > 150) {
+                            .focusout(function() {
+                                scroll = $(window).scrollTop();
+                                $('.dropdown-menu').toggle();
+                                if (scroll > 150) {
 
-                            $(".navigation-wrap").css("background", "white");
-                            $(".nav-link").css("color", "black");
-                        } else {
-                            $(".navigation-wrap").css("background", "transparent");
-                            $(".nav-link").css("color", "white");
-                        }
+                                    $(".navigation-wrap").css("background", "white");
+                                    $(".nav-link").css("color", "black");
+                                } else {
+                                    $(".navigation-wrap").css("background", "transparent");
+                                    $(".nav-link").css("color", "white");
+                                }
 
-                    });
-     */
+                            });
+             */
 
             $('#navbarDropdown').click(function(e) {
                 console.log('navbarCLick');
@@ -357,6 +381,7 @@
 
     <script>
         $(document).ready(function() {
+            fetchFeatureProduct();
             $.ajax({
                 type: 'get',
                 url: "{{ url('') }}" +
@@ -458,7 +483,7 @@
                     var product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
-                            console.log(e);
+                            // console.log(e);
                             product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -466,7 +491,8 @@
                                 .gallary_name + '" class="img-fluid" alt="image-1">' +
                                 '</div>' +
                                 '<div class="heading m-auto">' +
-                                '<a href="/product/'+e.product_id+'/'+e.product_slug+'">' +
+                                '<a href="/product/' + e.product_id + '/' + e.product_slug +
+                                '">' +
                                 '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
@@ -532,103 +558,10 @@
                 error: function(data) {},
             });
 
-            /* $.ajax({
-                type: 'get',
-                url: "{{ url('') }}" +
-                    '/api/client/blog_news?getGallaryDetail=1&limit=10&sortBy=id&language_id=1&getDetail=1&getBlogCategory=1&sortType=DESC',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
-                    clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
-                },
-                beforeSend: function() {},
-                success: function(data) {
-                    console.log(data);
-                    if (data.status == 'Success') {
-                        var articles = '';
-                        $.each(data.data, function(i, e) {
-                            if (i % 2 == 0) {
-                                articles += '<div class="col-4">';
-                            }
-                            articles += '<div class="box-1st d-flex flex-column mb-5">' +
-                                '<div class="card text-center border-0">' +
-                                '<div class="card-header-cus">' +
-                                '<h4 class="font-weight-bold">' + e.detail[0].name + '</h4>' +
-                                '</div>' +
-                                '<div class="card-body-cus">' +
-                                '<p class="card-text mb-2">' + e.detail[0].description
-                                .substring(0, 150) + '...</p>' +
-                                '</div>' +
-                                '<div class="card-footer-cus">' +
-                                '<a href="#" class="font-weight-bold text-uppercase">Go To Article</a>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>';
-                            if ((i + 1) % 2 == 0 && i != 0) {
-                                articles += '</div>';
-                            }
-                            if (i == 1) {
-                                articles += '<div class="col-4">' +
-                                    '<div class="box-3rd d-flex justify-content-center align-items-center h-100">' +
-                                    '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
-                                    '</div>' +
-                                    '</div>';
-                            }
-                            if (i == 3) {
-                                return false;
-                            }
-                        });
-                        $('#articles').html(articles);
-                    }
-                },
-                error: function(data) {},
-            }); */
 
 
-            // var url = "{{ url('') }}" +
-            //     '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=' + languageId +
-            //     '&topSelling=1&currency=' + localStorage.getItem("currency");
-            // appendTo = 'tab_top_sales';
-            // fetchProduct(url, appendTo);
 
-            // var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' +
-            //     languageId + '&currency=' + localStorage.getItem("currency");
-            // appendTo = 'tab_special_products';
-            // fetchProduct(url, appendTo);
-
-            // var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' +
-            //     languageId + '&currency=' + localStorage.getItem("currency");
-            // appendTo = 'tab_most_liked';
-            // fetchProduct(url, appendTo);
-
-            // var url = "{{ url('') }}" +
-            //     '/api/client/products?limit=12&getCategory=1&getDetail=1&language_id=' + languageId +
-            //     '&sortBy=id&sortType=DESC&currency=' + localStorage.getItem("currency");
-            // appendTo = 'new-arrival';
-            // fetchProduct(url, appendTo);
-
-
-            // var url = "{{ url('') }}" +
-            //     '/api/client/products?limit=6&getCategory=1&getDetail=1&language_id=' + languageId +
-            //     '&sortBy=id&sortType=DESC&currency=' + localStorage.getItem("currency");
-            // appendTo = 'weekly-sale';
-            // fetchProduct(url, appendTo);
-
-            // var url = "{{ url('') }}" +
-            //     '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
-            //     '&topSelling=1&currency=' + localStorage.getItem("currency");
-            // appendTo = 'weekly-sale-first-div';
-            // fetchFeaturedWeeklyProduct(url, appendTo)
-
-            // blogNews();
             sliderMedia();
-            // categorySlider();
-            // bannerMedia();
-            // cartSession = $.trim(localStorage.getItem("cartSession"));
-            // if (cartSession == null || cartSession == 'null') {
-            //     cartSession = '';
-            // }
-            // menuCart(cartSession);
         });
 
         function fetchProduct(url, appendTo) {
@@ -778,6 +711,101 @@
             });
         }
 
+
+        function fetchFeatureProduct() {
+            console.log("Elo");
+            var url = "{{ url('') }}" +
+                '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&topSelling=1&currency=' + localStorage.getItem("currency");
+            $.ajax({
+                type: 'get',
+                url: url,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
+                    clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
+                },
+                beforeSend: function() {},
+                success: function(data) {
+                    console.log(data);
+
+                    var feature_product = '';
+                    if (data.status == 'Success') {
+                        $.each(data.data, function(i, e) {
+                            console.log(e);
+                            feature_product +=
+                                '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
+                                '<div class="image mb-3">' +
+                                '<img src="{{ asset('gallary') }}/' + e.product_gallary
+                                .gallary_name + '" class="img-fluid" alt="image-1">' +
+                                '</div>' +
+                                '<div class="heading m-auto">' +
+                                '<a href="/product/' + e.product_id + '/' + e.product_slug + '">' +
+                                '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +
+                                '</a>' +
+                                '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
+                                .category_detail.detail[0].name + '</h6>' +
+                                '</div>' +
+                                '</div>';
+                        })
+                        $('.slick-w4-a').html(feature_product);
+
+                         $('.slick-w4-a').slick({
+                             dots: false,
+                             focusOnSelect: false,
+                             autoplay: true,
+                             arrows: false,
+                             speed: 400,
+                             slidesToShow: 4,
+                             slidesToScroll: 1,
+
+                             responsive: [{
+                                     breakpoint: 1400,
+                                     settings: {
+                                         slidesToShow: 4,
+                                         slidesToScroll: 1
+                                     }
+                                 },
+                                 {
+                                     breakpoint: 1080,
+                                     settings: {
+                                         slidesToShow: 2,
+                                         slidesToScroll: 1
+                                     }
+                                 },
+                                 {
+                                     breakpoint: 780,
+                                     settings: {
+                                         slidesToShow: 2,
+                                         slidesToScroll: 1
+                                     }
+                                 },
+
+                                 {
+                                     breakpoint: 600,
+                                     settings: {
+                                         slidesToShow: 1,
+                                         slidesToScroll: 1
+                                     }
+                                 },
+                                 {
+                                     breakpoint: 480,
+                                     settings: {
+                                         slidesToShow: 1,
+                                         slidesToScroll: 1
+                                     }
+                                 }
+
+
+                             ]
+
+
+                         });
+                    }
+                }
+            });
+        }
+
         function fetchFeaturedWeeklyProduct(url, appendTo) {
             $.ajax({
                 type: 'get',
@@ -790,7 +818,7 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        console.log(data, "final data");
+                        // console.log(data, "final data");
                         var htmlToRender =
                             "<article><div class='badges'><span class='badge badge-success'>Featured</span></div><div class='detail'>";
 
@@ -1014,7 +1042,7 @@
                                     .gallary + '" alt="First slide">' +
                                     '<div class="carousel-caption d-flex flex-column h-100 align-items-start justify-content-center w-100">' +
                                     '<div class="row w-100">' +
-                                    '<div class="col-4"></div>' +
+                                    '<div class=""></div>' +
                                     '<div class="col-xl-6 col-md-6 col-sm-12 col-12">' +
                                     '<div class="header-content text-left">' +
                                     '<h1 class="font-weight-bold mb-3">' + e.slider_title + '</h1>' +

@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png"
         href="{{ isset(getSetting()['favicon']) ? getSetting()['favicon'] : '01-fav.png' }}">
 
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     {{-- <link href="{{ asset('frontend/css/magnific-popup.css') }}" rel="stylesheet" /> --}}
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
@@ -75,7 +75,7 @@
                 </button>
                 <div class="modal-body text-center">
                     <form>
-                        <input type="search" id="search-input" class="w-75">
+                        <input type="search" id="search-input" placeholder="Search anything you like" class="w-75">
                         <button id="search_button" class="d-none">Search</button>
                     </form>
                 </div>
@@ -110,7 +110,7 @@
     {{-- <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- font awesome -->
     <script src="{{ asset('frontend/js/wow.js') }}"></script>
     <script src="https://kit.fontawesome.com/a26d9146a0.js" crossorigin="anonymous"></script>
@@ -693,6 +693,11 @@
                             clone1.querySelector(".top-cart-product-total").innerHTML = total_price;
                             $(".top-cart-product-show").append(clone1);
                             $(".total-menu-cart-product-count").html(data.data.length);
+                            $(".dropdown-menu .shopping-cart-items").css({
+                                'overflow-y': 'scroll',
+                                'height': '350px',
+                                'width': '320px',
+                            });
                         } else {
                             $(".top-cart-product-show").html('{{ trans('lables.header-emptycart') }}');
                         }

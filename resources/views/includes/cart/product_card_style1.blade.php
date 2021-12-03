@@ -9,7 +9,13 @@
                     <a class="font-weight-bold product-card-name">
 
                     </a>
+                    
                 {{-- </a> --}}
+                <div class="font-weight-bold price product-card-price mt-2">
+                    {{-- <a class="font-weight-bold price product-card-price mt-2">
+
+                    </a> --}}
+                </div>
                 <div class=" btn-hover new-design">
                     <a class="btn  btn-secondary  swipe-to-top product-card-link" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View Detail">View Detail</a>
             
