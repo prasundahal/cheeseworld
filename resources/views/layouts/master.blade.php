@@ -693,6 +693,11 @@
                             clone1.querySelector(".top-cart-product-total").innerHTML = total_price;
                             $(".top-cart-product-show").append(clone1);
                             $(".total-menu-cart-product-count").html(data.data.length);
+                            $(".dropdown-menu .shopping-cart-items").css({
+                                'overflow-y': 'scroll',
+                                'height': '350px',
+                                'width': '320px',
+                            });
                         } else {
                             $(".top-cart-product-show").html('{{ trans('lables.header-emptycart') }}');
                         }

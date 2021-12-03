@@ -19,11 +19,11 @@ $categories = App\Models\Admin\Category::inRandomOrder()
 
     }
 
-    .dropdown-menu .shopping-cart-items {
+    /* .dropdown-menu .shopping-cart-items {
         overflow-y: scroll;
         height: 350px;
         width: 320px;
-    }
+    } */
 
     .dropdown-menu .shopping-cart-items li {
 
