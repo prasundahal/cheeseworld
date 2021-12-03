@@ -1,15 +1,19 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container-fuild">
-        <nav aria-label="breadcrumb">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ trans('lables.bread-blo') }}g</li>
-                </ol>
+    <section id="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="m-0 p-0 d-flex align-items-center">
+                        <li class="font-weight-bold">Home</li><span class="mx-2"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></span>
+                        <li class="">Blog Details</li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </section>
+    <br />
     <section class="pro-content">
         <div class="container">
             <div class="page-heading-title">
@@ -27,7 +31,7 @@
 
                     <div class="row">
 
-                        <div class="col-12 col-lg-8">
+                        <div class="col-12 col-lg-12">
                             <div class="row">
                                 <div class="col-12 col-sm-12">
                                     <div class="blog blog-detail">
@@ -41,7 +45,7 @@
                         </div>
 
 
-                        <div class="col-12 col-lg-4  d-lg-block d-xl-block blog-menu">
+                        {{-- <div class="col-12 col-lg-4  d-lg-block d-xl-block blog-menu">
                             <div class="right-menu-categories category-div category-list">
 
                             </div>
@@ -65,7 +69,7 @@
                             </div>
 
 
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
