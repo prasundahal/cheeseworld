@@ -93,7 +93,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
             <div class="col-12">
                 <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex">
                     <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
-                    <li class="circle-dot"><a href="#">Catalogs</a></li>
+                    {{-- <li class="circle-dot"><a href="#">Catalogs</a></li> --}}
                     <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
                     @foreach ($pages as $page)
                         <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>

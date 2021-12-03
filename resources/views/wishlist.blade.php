@@ -130,6 +130,7 @@
                     $("#wishlist-show").html('');
                     const templ = document.getElementById("wishlist-product-template");
                     for (i = 0; i < data.data.length; i++) {
+                        console.log(data.data[i]);
                         const clone = templ.content.cloneNode(true);
                         // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                         if (data.data[i].products.product_gallary != null && data.data[i].products.product_gallary !=
@@ -163,8 +164,8 @@
                             .detail != '') {
                             clone.querySelector(".wishlist-product-name").innerHTML = data.data[i].products.detail[0]
                                 .title;
-                            // clone.querySelector(".wishlist-product-desc").innerHTML = data.data[i].products.detail[0]
-                            //     .desc;
+                            clone.querySelector(".wishlist-product-desc").innerHTML = data.data[i].products.detail[0]
+                                .desc;
                         }
 
                         // if (data.data[i].products.product_type == 'simple') {
