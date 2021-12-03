@@ -43,4 +43,10 @@ class Page extends Model
         return $this->hasMany(PageDetail::class);
     }
 
+
+    public function lastDetail()
+    {
+        return $this->page_detail()->latest()->first();
+    }
+
 }
