@@ -5,6 +5,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
            return $q->latest()->first();
         },
     ])->get();
+    
 ?>
 <section id="footer-wrapper" class="py-4">
     <div class="container">
@@ -41,7 +42,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                         Follow us on
                     </label>
                     <ul class="p-0 m-0 d-flex align-items-center">
-                        <li class="mr-2">
+                        {{-- <li class="mr-2">
                             <a href="{{ getSetting()['google_url'] ?? '#' }}">
                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
                             </a>
@@ -54,7 +55,38 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                             <a href="{{ getSetting()['instagram_url'] ?? '#' }}">
                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
-                        </li>
+                        </li> --}}
+                        @if (isset(getSetting()['facebook_url']))
+                            <li class="mr-2">
+                                <a target="_blank"
+                                    href="{{ isset(getSetting()['facebook_url']) ? getSetting()['facebook_url'] : '#' }}" title="{{ trans('lables.footer-facebook') }}">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                        @endif
+                        @if (isset(getSetting()['twitter_url']))
+                            <li class="mr-2"><a target="_blank" href="{{ isset(getSetting()['twitter_url']) ? getSetting()['twitter_url'] : '#' }}"
+                                     data-toggle="tooltip" data-placement="bottom"
+                                    title="{{ trans('lables.footer-twitter') }}">
+                                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                  </a></li>
+                        @endif
+                        
+                        @if (isset(getSetting()['linkedin_url']))
+                            <li class="mr-2">
+                              <a target="_blank" href="{{ isset(getSetting()['google_url']) ? getSetting()['linkedin_url'] : '#' }}" data-toggle="tooltip" data-placement="bottom"
+                              title="{{ trans('lables.footer-linkedin') }}">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                              </a>
+                                  </li>
+                        @endif
+                        @if (isset(getSetting()['instagram_url']))
+                            <li class="mr-2">
+                                <a target="_blank"
+                                    href="{{ isset(getSetting()['instagram_url']) ? getSetting()['instagram_url'] : '#' }}" title="{{ trans('lables.footer-instagram') }}">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -62,7 +94,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                 <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex">
                     <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
                     <li class="circle-dot"><a href="#">Catalogs</a></li>
-                    <li class="circle-dot"><a href="#">Who we are</a></li>
+                    <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
                     @foreach ($pages as $page)
                         <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
                     @endforeach
