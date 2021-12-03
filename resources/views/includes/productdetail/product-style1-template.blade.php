@@ -162,9 +162,9 @@ $newgalleries = array_chunk($galleries, 4, true);
                     <p class="description">
 
                     </p>
-                    <div class="share ml-auto">
+                    {{-- <div class="share ml-auto">
                         <a><i class=" fa fa-share-alt fa-2x" aria-hidden="true"></i></a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="pro-counter mt-2">
                     <div class="input-group item-quantity">
@@ -183,7 +183,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                     </div>
 
                  
-                    <button type="button" class="btn  wishlist-icon btn-secondary swipe-to-top mt-2* ">Add to Wishlist</button>
+                    <button type="button" class="btn  wishlist-icon btn-secondary swipe-to-top mt-2">Add to Wishlist</button>
                     <button type="button" class="btn btn-secondary swipe-to-top add-to-cart mt-2">Add to Cart</button>
 
 
