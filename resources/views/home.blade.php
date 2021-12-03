@@ -278,13 +278,13 @@
         <div class="container">
             <div class="heading text-center">
                 <h2 class="font-weight-bold">
-                    A big welcome from chicco
+                    Featured Product
                 </h2>
                 <p class="my-5">
-                    We are by your side - you who look after children every day. You do so with enthusiasm but you have
+                    {{-- We are by your side - you who look after children every day. You do so with enthusiasm but you have
                     concerns and
                     questions. We want to take care of you, and those you care about, with exciting new solutions
-                    designed for every need.
+                    designed for every need. --}}
                 </p>
             </div>
             <div class="content-wrapper">
