@@ -79,6 +79,6 @@ Route::group(['middleware' => ['general']], function () {
 
     Route::get('set_currency/{currency}', 'Web\IndexController@setCurrency');
 
-    Route::get('lang/{locale}', 'LocalizationController@index');
+    Route::get('lang/{locale}', 'LocalizationController@n');
 
 });

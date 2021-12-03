@@ -125,6 +125,7 @@
             },
             beforeSend: function() {},
             success: function(data) {
+                console.log(data);
                 if (data.status == 'Success') {
                     $("#wishlist-show").html('');
                     const templ = document.getElementById("wishlist-product-template");
@@ -162,8 +163,8 @@
                             .detail != '') {
                             clone.querySelector(".wishlist-product-name").innerHTML = data.data[i].products.detail[0]
                                 .title;
-                            clone.querySelector(".wishlist-product-desc").innerHTML = data.data[i].products.detail[0]
-                                .desc;
+                            // clone.querySelector(".wishlist-product-desc").innerHTML = data.data[i].products.detail[0]
+                            //     .desc;
                         }
 
                         // if (data.data[i].products.product_type == 'simple') {

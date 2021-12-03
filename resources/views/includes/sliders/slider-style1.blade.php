@@ -1,11 +1,13 @@
 <!-- Bootstrap Caption Carousel Content Full Width -->
 <section id="carousel-index-wrapper" class="carousel slide position-relative" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carousel-index-wrapper" data-slide-to="0" class="active"></li>
+        {{-- <li data-target="#carousel-index-wrapper" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-index-wrapper" data-slide-to="1"></li>
-        <li data-target="#carousel-index-wrapper" data-slide-to="2"></li>
+        <li data-target="#carousel-index-wrapper" data-slide-to="2"></li> --}}
     </ol>
-    <div class="carousel-inner position-relative"></div>
+    <div class="carousel-inner position-relative">
+        
+    </div>
   
   </section>
   

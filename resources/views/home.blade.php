@@ -323,7 +323,7 @@
         $(document).on('click', 'body', function() {
             // console.log('helo body ma');
             $("#navbarDropdown").hide();
-            $(".dropdown-menu").hide();
+            $(".mynav").hide();
             if (scroll > 150) {
 
                 $(".navigation-wrap").css("background", "white");
@@ -497,6 +497,9 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
+                                '<div class=" btn-hover new-design">' +
+                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' + e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
+                                '</div>' +
                                 '</div>' +
                                 '</div>';
                         })
@@ -1040,17 +1043,12 @@
                                 carousel +=
                                     '<img class="d-block w-100" src="{{ asset('gallary') }}/' + e
                                     .gallary + '" alt="First slide">' +
-                                    '<div class="carousel-caption d-flex flex-column h-100 align-items-start justify-content-center w-100">' +
-                                    '<div class="row w-100">' +
-                                    '<div class=""></div>' +
-                                    '<div class="col-xl-6 col-md-6 col-sm-12 col-12">' +
-                                    '<div class="header-content text-left">' +
+                                    '<div class="carousel-caption w-25">' +
+                                    '<div class="header-content m-auto">' +
                                     '<h1 class="font-weight-bold mb-3">' + e.slider_title + '</h1>' +
                                     '<h5 class="mb-4">' + e.slider_description + '</h5>' +
                                     '<a href="' + e.slider_url +
-                                    '" class="btn-anch px-4 py-2 font-weight-bold text-white">Know More</a>' +
-                                    '</div>' +
-                                    '</div>' +
+                                    '" class="btn-anch font-weight-bold text-white">Know More</a>' +
                                     '</div>' +
                                     '</div>' +
                                     '</div>';

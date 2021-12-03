@@ -327,8 +327,8 @@
     #welcome-wrapper .content-wrapper .content .heading a {
         text-decoration: none;
         color: #23527c;
-        max-height: 28px;
-        min-height: 28px;
+        max-height: 38px;
+        min-height: 38px;
         overflow: hidden;
         display: block;
     }
