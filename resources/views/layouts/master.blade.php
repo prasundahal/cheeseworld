@@ -66,7 +66,7 @@
             <div class="modal-content">
                 <div class="modal-header text-center m-auto">
                     <h5 class="modal-title" id="modal1">
-                        <img src="{{ 'frontend/image/logo/logo.png' }}" alt="logo" class="img-fluid">
+                        <img src="{{ asset('frontend/image/logo/logo.png') }}" alt="logo" class="img-fluid">
                     </h5>
 
                 </div>

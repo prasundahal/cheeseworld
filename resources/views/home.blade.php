@@ -332,7 +332,7 @@
                 $(".navigation-wrap").css("background", "transparent");
                 $(".nav-link").css("color", "white");
             }
-        })
+        });
         $(document).ready(function() {
 
             /* $("#navbarDropdown")
@@ -355,8 +355,8 @@
                 console.log('navbarCLick');
                 // e.stopImmediatePropagation();
                 scroll = $(window).scrollTop();
-                $('.dropdown-menu').toggle();
-                if ($('.dropdown-menu').is(':visible')) {
+                $('.mynav').toggle();
+                if ($('.mynav').is(':visible')) {
                     console.log('visible');
                     $("#navigation-wrapper").css("background", "white");
                     $(".nav-link").css("color", "black");

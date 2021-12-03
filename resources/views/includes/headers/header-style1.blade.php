@@ -272,7 +272,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                 <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
                             </span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="mynav dropdown-menu" aria-labelledby="navbarDropdown">
                             <div class="container d-block">
 
                                 <div class="row">
