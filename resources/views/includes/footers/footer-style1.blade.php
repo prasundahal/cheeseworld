@@ -1,3 +1,11 @@
+<?php
+$pages = App\Models\Admin\Page::whereHas('page_detail')
+    ->with([
+        'page_detail' => function ($q) {
+           return $q->latest()->first();
+        },
+    ])->get();
+?>
 <section id="footer-wrapper" class="py-4">
     <div class="container">
         <div class="row text-white">
@@ -52,9 +60,12 @@
             </div>
             <div class="col-12">
                 <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex">
-                    <li class="circle-dot"><a href="/about-us">About Us</a></li>
-                    <li class="circle-dot"><a href="/shop">Shop</a></li>
-                    <li class="circle-dot"><a href="about-us ">Who we are</a></li>
+                    <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
+                    <li class="circle-dot"><a href="#">Catalogs</a></li>
+                    <li class="circle-dot"><a href="#">Who we are</a></li>
+                    @foreach ($pages as $page)
+                        <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-12">
@@ -65,8 +76,8 @@
             </div>
         </div>
     </div>
-  </section>
-  <section id="copyright-wrapper" class="py-3">
+</section>
+<section id="copyright-wrapper" class="py-3">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -78,9 +89,9 @@
             </div>
         </div>
     </div>
-  </section>
-  
-  {{-- <section class="pro-content header-section">
+</section>
+
+{{-- <section class="pro-content header-section">
     <!-- //footer style One -->
     <footer id="footerOne" class="footer-area footer-content footer-one d-lg-block d-xl-block">
         <div class="container">
