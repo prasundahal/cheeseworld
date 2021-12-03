@@ -52,9 +52,9 @@
             </div>
             <div class="col-12">
                 <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex">
-                    <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
-                    <li class="circle-dot"><a href="#">Catalogs</a></li>
-                    <li class="circle-dot"><a href="#">Who we are</a></li>
+                    <li class="circle-dot"><a href="/about-us">About Us</a></li>
+                    <li class="circle-dot"><a href="/shop">Shop</a></li>
+                    <li class="circle-dot"><a href="about-us ">Who we are</a></li>
                 </ul>
             </div>
             <div class="col-12">
