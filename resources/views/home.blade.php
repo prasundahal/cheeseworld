@@ -1014,7 +1014,7 @@
                                     .gallary + '" alt="First slide">' +
                                     '<div class="carousel-caption d-flex flex-column h-100 align-items-start justify-content-center w-100">' +
                                     '<div class="row w-100">' +
-                                    '<div class="col-4"></div>' +
+                                    '<div class=""></div>' +
                                     '<div class="col-xl-6 col-md-6 col-sm-12 col-12">' +
                                     '<div class="header-content text-left">' +
                                     '<h1 class="font-weight-bold mb-3">' + e.slider_title + '</h1>' +

@@ -75,7 +75,7 @@
                 </button>
                 <div class="modal-body text-center">
                     <form>
-                        <input type="search" id="search-input" class="w-75">
+                        <input type="search" id="search-input" placeholder="Search anything you like" class="w-75">
                         <button id="search_button" class="d-none">Search</button>
                     </form>
                 </div>

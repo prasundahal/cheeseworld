@@ -45,7 +45,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         </li>
                         <li class="nav-item px-2">
                             <a class="nav-link" href="/shop"> <span class="mr-1"><i
-                                        class="fa fa-map-marker" aria-hidden="true"></i>
+                                        class="fas fa-store" aria-hidden="true"></i>
                                 </span>
                                 Shops</a>
                         </li>
@@ -82,6 +82,14 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             <span class="welcomeUsername"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                            <a class="dropdown-item userDashboard" href="{{ url('/profile') }}"
+                                title="Dashboard">Dashboard</a>
+                            <a class="dropdown-item" href="{{ url('/wishlist') }}"
+                                title="{{ trans('lables.header-wishlist') }}">{{ trans('lables.header-wishlist') }}</a>
+                            {{-- <a class="dropdown-item" href="{{ url('/compare') }}"
+                                title="{{ trans('lables.header-compare') }}">{{ trans('lables.header-compare') }}</a> --}}
+                            <a class="dropdown-item" href="{{ url('/orders') }}"
+                                title="{{ trans('lables.header-order') }}">{{ trans('lables.header-order') }}</a>
                             <a class="dropdown-item log_out" href="javascript:void(0)"
                                 title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
                         </div>
@@ -117,7 +125,8 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             <div class="item-thumb">
 
                                 <div class="image mr-2">
-                                    <img class="img-fluid top-cart-product-image" src="" alt="Product Image" style="width:100%;max-height:60px;min-height:60px;object-fit:contain;object-fit:center;">
+                                    <img class="img-fluid top-cart-product-image" src="" alt="Product Image"
+                                        style="width:100%;max-height:60px;min-height:60px;object-fit:contain;object-fit:center;">
                                 </div>
                             </div>
                             <div class="item-detail">
@@ -148,7 +157,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             style="position: absolute; transform: translate3d(30px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"
                             x-placement="bottom-end">
                             <ul class="shopping-cart-items top-cart-product-show p-3">
-                               {{--  <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
+                                {{-- <li class="top-cart-product-id d-flex justify-content-between align-items-center mb-2 pb-2"
                                     style="border-bottom:1px solid #dddddd;">
                                     <div class="item-thumb">
 

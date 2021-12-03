@@ -136,24 +136,24 @@
               // clone.querySelector(".product-card-desc").innerHTML = desc.substring(0, 50);
             }
 
-              // if (data.data[i].product_type == 'simple') {
-              //     if (data.data[i].product_discount_price == '' || data.data[i]
-              //         .product_discount_price == null || data.data[i].product_discount_price ==
-              //         'null') {
-              //         clone.querySelector(".product-card-price").innerHTML = data.data[i]
-              //             .product_price_symbol;
-              //     } else {
+              if (data.data[i].product_type == 'simple') {
+                  if (data.data[i].product_discount_price == '' || data.data[i]
+                      .product_discount_price == null || data.data[i].product_discount_price ==
+                      'null') {
+                      clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                          .product_price_symbol;
+                  } else {
                     
-              //         clone.querySelector(".product-card-price").innerHTML = data.data[i]
-              //                           .product_discount_price_symbol + '<span>' +data.data[i].product_price_symbol + '</span>';
-              //     }
-              // } else {
-              //     if (data.data[i].product_combination != null && data.data[i]
-              //         .product_combination != 'null' && data.data[i].product_combination != '') {
-              //         clone.querySelector(".product-card-price").innerHTML = data.data[i]
-              //             .product_combination[0].product_price_symbol;
-              //     }
-              // }
+                      clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                        .product_discount_price_symbol + '<span>' +data.data[i].product_price_symbol + '</span>';
+                  }
+              } else {
+                  if (data.data[i].product_combination != null && data.data[i]
+                      .product_combination != 'null' && data.data[i].product_combination != '') {
+                      clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                          .product_combination[0].product_price_symbol;
+                  }
+              }
 
               if (data.data[i].product_type == 'simple') {
                   clone.querySelector(".product-card-link").setAttribute('onclick', "addToCart(this)");
