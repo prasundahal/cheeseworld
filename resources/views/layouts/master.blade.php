@@ -144,64 +144,64 @@
 
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
-                        customerFname = $.trim(localStorage.getItem("customerFname"));
-                        customerLname = $.trim(localStorage.getItem("customerLname"));
-                        if (loggedIn != '1') {
-                            $(".auth-login").remove();
-                        } else {
-                            $(".without-auth-login").remove();
-                            $(".welcomeUsername").html(customerFname + " " + customerLname);
-                        }
-
-                        customerToken = $.trim(localStorage.getItem("customerToken"));
-
-
-                        languageId = localStorage.getItem("languageId");
-                        languageName = localStorage.getItem("languageName");
-
-                        if (languageName == null || languageName == 'null') {
-                            localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
-                            localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
-                            $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
-                            languageId = $.trim("{{ $data['selectedLenguage'] }}");
-                        } else {
-                            $(".language-default-name").html(localStorage.getItem("languageName"));
-                            $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                        }
-
-                        currency = localStorage.getItem("currency");
-                        currencyCode = localStorage.getItem("currencyCode");
-                        if (currencyCode == null || currencyCode == 'null') {
-                            localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
-                            localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
-                            $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
-                            currency = 1;
-                        } else {
-                            $("#selected-currency").html(localStorage.getItem("currencyCode"));
-                            $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                        }
-
-
-                        cartSession = $.trim(localStorage.getItem("cartSession"));
-                        if (cartSession == null || cartSession == 'null') {
-                            cartSession = '';
-                        }
-                        $(document).ready(function() {
-
+                            customerFname = $.trim(localStorage.getItem("customerFname"));
+                            customerLname = $.trim(localStorage.getItem("customerLname"));
                             if (loggedIn != '1') {
-                                localStorage.setItem("cartSession", cartSession);
-                                menuCart(cartSession);
+                                $(".auth-login").remove();
                             } else {
-                                menuCart('');
+                                $(".without-auth-login").remove();
+                                $(".welcomeUsername").html(customerFname + " " + customerLname);
                             }
 
-                            getWishlist();
+                            customerToken = $.trim(localStorage.getItem("customerToken"));
+
+
+                            languageId = localStorage.getItem("languageId");
+                            languageName = localStorage.getItem("languageName");
+
+                            if (languageName == null || languageName == 'null') {
+                                localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
+                                localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
+                                $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
+                                languageId = $.trim("{{ $data['selectedLenguage'] }}");
+                            } else {
+                                $(".language-default-name").html(localStorage.getItem("languageName"));
+                                $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                            }
+
+                            currency = localStorage.getItem("currency");
+                            currencyCode = localStorage.getItem("currencyCode");
+                            if (currencyCode == null || currencyCode == 'null') {
+                                localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
+                                localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
+                                $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
+                                currency = 1;
+                            } else {
+                                $("#selected-currency").html(localStorage.getItem("currencyCode"));
+                                $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                            }
+
+
+                            cartSession = $.trim(localStorage.getItem("cartSession"));
+                            if (cartSession == null || cartSession == 'null') {
+                                cartSession = '';
+                            }
+                            $(document).ready(function() {
+
+                                if (loggedIn != '1') {
+                                    localStorage.setItem("cartSession", cartSession);
+                                    menuCart(cartSession);
+                                } else {
+                                    menuCart('');
+                                }
+
+                                getWishlist();
 
 
 
-                        });
+                            });
 
-                         */
+                             */
     </script>
     <script>
         toastr.options = {
@@ -564,8 +564,12 @@
                             localStorage.setItem("cartSession", data.data.session);
                             // console.dir(data);
                             menuCart(data.data.session);
+                            menuCart(cartSession);
+                            cartItem(cartSession);
                         } else {
-                            menuCart('');
+                            // menuCart('');
+                            menuCart(cartSession);
+                            cartItem(cartSession);
                         }
                         toastr.success('{{ trans('response.add-to-cart-success') }}')
                     } else if (data.status == 'Error') {
@@ -602,7 +606,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data.data.length);
+                    // console.log(data.data.length);
                     if (data.status == 'Success') {
                         $(".top-cart-product-show").html('');
                         const templ = document.getElementById("top-cart-product-template");
@@ -802,6 +806,7 @@
         });
         $(document).on('click', '.quantity-plus', function() {
             var quantity = $('#quantity-input').val();
+            console.log(quantity);
             $('#quantity-input').val(parseInt(quantity) + 1);
         })
 
@@ -919,6 +924,7 @@
                         const templ = document.getElementById("cartItem-Template");
                         total_price = 0;
                         for (i = 0; i < data.data.length; i++) {
+                            // console.log("qty =" +data.data[i].qty);
                             $("#totalItems").val(i + 1);
                             const clone = templ.content.cloneNode(true);
                             // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
