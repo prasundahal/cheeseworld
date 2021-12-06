@@ -75,7 +75,8 @@
                 </button>
                 <div class="modal-body text-center">
                     <form>
-                        <input type="search" id="search-input" placeholder="Search anything you like" class="w-75">
+                        <input type="search" id="search-input" placeholder="Search anything you like"
+                            class="w-75">
                         <button id="search_button" class="d-none">Search</button>
                     </form>
                 </div>
@@ -118,7 +119,7 @@
     <!-- NEW LIN ============================================================ -->
     {{-- <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script> --}}
-    
+
     <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
@@ -143,64 +144,64 @@
 
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
-                customerFname = $.trim(localStorage.getItem("customerFname"));
-                customerLname = $.trim(localStorage.getItem("customerLname"));
-                if (loggedIn != '1') {
-                    $(".auth-login").remove();
-                } else {
-                    $(".without-auth-login").remove();
-                    $(".welcomeUsername").html(customerFname + " " + customerLname);
-                }
+                        customerFname = $.trim(localStorage.getItem("customerFname"));
+                        customerLname = $.trim(localStorage.getItem("customerLname"));
+                        if (loggedIn != '1') {
+                            $(".auth-login").remove();
+                        } else {
+                            $(".without-auth-login").remove();
+                            $(".welcomeUsername").html(customerFname + " " + customerLname);
+                        }
 
-                customerToken = $.trim(localStorage.getItem("customerToken"));
-
-
-                languageId = localStorage.getItem("languageId");
-                languageName = localStorage.getItem("languageName");
-
-                if (languageName == null || languageName == 'null') {
-                    localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
-                    localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
-                    $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
-                    languageId = $.trim("{{ $data['selectedLenguage'] }}");
-                } else {
-                    $(".language-default-name").html(localStorage.getItem("languageName"));
-                    $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                }
-
-                currency = localStorage.getItem("currency");
-                currencyCode = localStorage.getItem("currencyCode");
-                if (currencyCode == null || currencyCode == 'null') {
-                    localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
-                    localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
-                    $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
-                    currency = 1;
-                } else {
-                    $("#selected-currency").html(localStorage.getItem("currencyCode"));
-                    $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                }
+                        customerToken = $.trim(localStorage.getItem("customerToken"));
 
 
-                cartSession = $.trim(localStorage.getItem("cartSession"));
-                if (cartSession == null || cartSession == 'null') {
-                    cartSession = '';
-                }
-                $(document).ready(function() {
+                        languageId = localStorage.getItem("languageId");
+                        languageName = localStorage.getItem("languageName");
 
-                    if (loggedIn != '1') {
-                        localStorage.setItem("cartSession", cartSession);
-                        menuCart(cartSession);
-                    } else {
-                        menuCart('');
-                    }
+                        if (languageName == null || languageName == 'null') {
+                            localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
+                            localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
+                            $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
+                            languageId = $.trim("{{ $data['selectedLenguage'] }}");
+                        } else {
+                            $(".language-default-name").html(localStorage.getItem("languageName"));
+                            $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                        }
 
-                    getWishlist();
+                        currency = localStorage.getItem("currency");
+                        currencyCode = localStorage.getItem("currencyCode");
+                        if (currencyCode == null || currencyCode == 'null') {
+                            localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
+                            localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
+                            $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
+                            currency = 1;
+                        } else {
+                            $("#selected-currency").html(localStorage.getItem("currencyCode"));
+                            $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                        }
+
+
+                        cartSession = $.trim(localStorage.getItem("cartSession"));
+                        if (cartSession == null || cartSession == 'null') {
+                            cartSession = '';
+                        }
+                        $(document).ready(function() {
+
+                            if (loggedIn != '1') {
+                                localStorage.setItem("cartSession", cartSession);
+                                menuCart(cartSession);
+                            } else {
+                                menuCart('');
+                            }
+
+                            getWishlist();
 
 
 
-                });
+                        });
 
-                 */
+                         */
     </script>
     <script>
         toastr.options = {
@@ -349,7 +350,7 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        if(data.data.length > 0){
+                        if (data.data.length > 0) {
                             $(".wishlist-count").css({
                                 "padding-top": "1px",
                                 "padding-right": "5px",
@@ -358,7 +359,7 @@
                             });
                             $(".wishlist-count").html(data.data.length);
                         }
-                        
+
                     }
                 },
                 error: function(data) {},
@@ -519,7 +520,7 @@
 
 
         function addToCart(input) {
-            console.log(input);
+            // console.log(input);
             product_type = $.trim($(input).attr('data-type'));
             product_id = $.trim($(input).attr('data-id'));
             product_combination_id = '';
@@ -561,7 +562,7 @@
                     if (data.status == 'Success') {
                         if (loggedIn != '1') {
                             localStorage.setItem("cartSession", data.data.session);
-                            console.dir(data);
+                            // console.dir(data);
                             menuCart(data.data.session);
                         } else {
                             menuCart('');
@@ -601,6 +602,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log(data.data.length);
                     if (data.status == 'Success') {
                         $(".top-cart-product-show").html('');
                         const templ = document.getElementById("top-cart-product-template");
@@ -659,8 +661,7 @@
                                 }
                             }
 
-                            if (data.data[i].discount_price > 0)
-                            {
+                            if (data.data[i].discount_price > 0) {
                                 discount_price = data.data[i].discount_price;
                             } else {
                                 discount_price = data.data[i].price;
@@ -674,18 +675,18 @@
                                         '     <i class="fas fa-trash"  data-id=' + data.data[i]
                                         .product_id + ' data-combination-id=' + data
                                         .data[i].product_combination_id +
-                                        ' onclick="removeCartItem(this)"></i>';
+                                        ' onclick="removeCartItem(this)" style="cursor: pointer"></i>';
                                 } else {
                                     clone.querySelector(".top-cart-product-qty-amount").innerHTML = data.data[i]
                                         .qty + ' x ' + discount_price + ' ' + data.data[i].currency.code +
                                         '  <i class="fas fa-trash" data-id=' + data.data[i]
                                         .product_id + ' data-combination-id=' + data
                                         .data[i].product_combination_id +
-                                        '  onclick="removeCartItem(this)"></i>';
+                                        '  onclick="removeCartItem(this)" style="cursor: pointer"></i>';
                                 }
                             }
-                            
-                            total_price = total_price + (discount_price*data.data[i].qty);
+
+                            total_price = total_price + (discount_price * data.data[i].qty);
 
                             $(".top-cart-product-show").append(clone);
                             currrency = data.data[i].currency;
@@ -706,7 +707,7 @@
                                 "padding-top": "1px",
                                 "padding-right": "5px",
                                 "padding-bottom": "1px",
-                                "padding-left": "5px", 
+                                "padding-left": "5px",
                             });
                             $(".total-menu-cart-product-count").html(data.data.length);
                             $(".dropdown-menu .shopping-cart-items").css({
@@ -716,6 +717,13 @@
                             });
                         } else {
                             $(".top-cart-product-show").html('{{ trans('lables.header-emptycart') }}');
+                            $(".total-menu-cart-product-count").html('');
+                            $(".total-menu-cart-product-count").css({
+                                "padding-top": "0px",
+                                "padding-right": "0px",
+                                "padding-bottom": "0px",
+                                "padding-left": "0px",
+                            });
                         }
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
@@ -737,7 +745,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.status == 'Success') {
                         var articles = '';
                         $.each(data.data, function(i, e) {
@@ -1089,6 +1097,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    var cartUrl = "{{ url('/cart') }}";
                     if (data.status == 'Success') {
                         $(input).closest('tr').remove();
                         cartItem(cartSession);
@@ -1096,15 +1105,28 @@
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                     }
-                    if($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr").length < 0){
-                        location.href = '/';
-                        toastr.success('No item in cart.');
+                    if (window.location.href === cartUrl) {
+                        if ($("#cartItem-product-show tbody tr").length === 0 || $(
+                                "#cartItem-product-show tbody tr").length < 0) {
+                            toastr.success('No item in cart.');
+                            location.href = '/';
+
+                        }
                     }
+
                 },
                 error: function(data) {},
             });
         }
     </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            let carturl = "{{ url('/cart') }}";
+            alert(window.location.href);
+            alert(window.location.href === carturl);
+        })
+    </script> --}}
 
     @yield('script')
 </body>
