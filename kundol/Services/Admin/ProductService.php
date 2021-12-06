@@ -252,8 +252,18 @@ class ProductService
     public function saveProductGallaryImage($product_id, $gallary_detail_id)
     {
         
-        $sql = ProductGallaryDetail::where('product_id', $product_id)->delete();
-        if($sql){
+        $sql = ProductGallaryDetail::where('product_id', $product_id)->count();
+        if($sql > 0){
+            if($sql->delete()){
+                foreach ($gallary_detail_id as $gallary_detail) {
+                    ProductGallaryDetail::create([
+                        'product_id' => $product_id,
+                        'gallary_id' => $gallary_detail,
+                    ]);
+                }
+            }
+        }
+        else{
             foreach ($gallary_detail_id as $gallary_detail) {
                 ProductGallaryDetail::create([
                     'product_id' => $product_id,

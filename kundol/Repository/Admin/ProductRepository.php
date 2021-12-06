@@ -334,6 +334,7 @@ class ProductRepository implements ProductInterface
             if ($parms['product_type'] == 'variable' && $sql) {
                 $variable_result = $productService->variableProductDetailData($parms, $sql->id, 'store');
                 if ($variable_result) {
+                    $productService->saveProductGallaryImage($sql->id, $parms["gallary_detail_id"]);
                     \DB::commit();
                     return $this->successResponse(new ProductResource(Product::with('category')->with("detail")->productId($sql->id)->firstOrFail()), 'Product Save Successfully!');
                 } else {
