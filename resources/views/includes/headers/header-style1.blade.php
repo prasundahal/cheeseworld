@@ -192,7 +192,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                                     <ul class="nav flex-column">
                                                         <li class="nav-item">
                                                             <a class="nav-link head font-weight-bold"
-                                                                href="under-construction.html">{{ $category->detail[0]->category_name }}</a>
+                                                                href="/shop?category={{ $category->id }}">{{ $category->detail[0]->category_name }}</a>
                                                         </li>
                                                         @foreach ($category->my_products->take(3) as $value)
                                                             <li class="nav-item p-0">
@@ -216,7 +216,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                 <a class="nav-link font-weight-bold" href="#">Chicco Research Center</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-bold" href="#">Who we are</a>
+                                <a class="nav-link font-weight-bold" href="{{ url('/about-us') }}">Who we are</a>
                             </li>
                         </ul>
                     </div>
