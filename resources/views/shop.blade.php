@@ -80,11 +80,10 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        console.log("shopPage");
-                        console.log(data.data.length);
+                        
                         if (data.data.length > 0) {
 
-                            console.log("true");
+                            
                             if(data.meta.last_page < page){
                                 $('.load-more-products').attr('disabled',true);
                                 $('.load-more-products').html('No More Items');
@@ -94,7 +93,7 @@
                             var nextPage = parseInt(data.meta.current_page)+1;
                             pagination += '<div class="col-12 col-sm-6">';
                             pagination +='<ol class="loader-page mt-0">';
-                            pagination +='<li class="loader-page-item">';
+                            pagination +='<li class="loader-page-item" style="list-style:none">';
                             pagination +='<button class="load-more-products btn btn-secondary" data-page="'+nextPage+'">Load More</button>';
                             pagination +='</li>';
                             pagination +='</ol>';

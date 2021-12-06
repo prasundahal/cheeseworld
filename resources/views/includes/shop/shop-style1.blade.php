@@ -76,7 +76,7 @@
             </div>
             
             <form class="w-100">
-                <div class="col-xl-12 col-md-4 col-sm-12 col-12">
+                <div class="col-xl-12 col-md-4 col-sm-12 col-12 mt-4">
                     <div class="collapse" id="collapse1">
                         {{-- <div class="card card-body border-0 px-0">
                             <select class="custom-select">
@@ -94,14 +94,8 @@
                                 <div class="col-12 col-lg-12">
                                     <div class="row align-items-center">
                                         <div class="col-12 d-flex justify-content-between">
-                                            <div class="block">
-                                                <label>{{ trans('lables.shop-display') }}</label>
-                                                <div class="buttons">
-                                                    <a href="javascript:void(0);" id="grid_4column"><i class="fas fa-th-large"></i></a>
-                                                    <a href="javascript:void(0);" id="list_4column"><i class="fas fa-list"></i></a>
-                                                </div>
-                                            </div>
-                                            <form class="form-inline justify-content-center">
+                                            
+                                            {{-- <form class="form-inline justify-content-center"> --}}
                                                 <div class="form-group ">
                                                     <label>{{ trans('lables.shop-category') }}</label>
                                                     <div class="select-control">
@@ -173,7 +167,7 @@
                                                 {{-- <div class="form-group ">
                                                     <button class="btn-secondary" type="button" id="filter">filter</button>
                                                 </div> --}}
-                                            </form>
+                                            {{-- </form> --}}
                                         </div>
                                     </div>
                 
@@ -182,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-3">
                     <div class="collapse text-center" id="collapse1">
                         <a href="#" id="filter" class="btn-blue px-5 py-3 text-white font-weight-bold">Apply Now</a>
                     </div>
