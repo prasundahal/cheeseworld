@@ -14,6 +14,9 @@
             </div>
         </div>
     </section>
+    <div class="container">
+        
+    </div>
 </section>
 <!-- Breadcrumb Section Ends -->
 <!-- Things We Believe Section Starts -->
@@ -73,9 +76,9 @@
             </div>
             
             <form class="w-100">
-                <div class="col-xl-4 col-md-4 col-sm-12 col-12">
+                <div class="col-xl-12 col-md-4 col-sm-12 col-12">
                     <div class="collapse" id="collapse1">
-                        <div class="card card-body border-0 px-0">
+                        {{-- <div class="card card-body border-0 px-0">
                             <select class="custom-select">
                                 <option value="">choose</option>
                                 <option disabled><b>Price</b></option>
@@ -85,6 +88,97 @@
                                 <option value="A-Z" data-sort-by="title" data-sort-type="asc">A-Z</option>
                                 <option value="Z-A" data-sort-by="title" data-sort-type="desc">Z-A</option>
                             </select>
+                        </div> --}}
+                        <div class="top-bar">
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 d-flex justify-content-between">
+                                            <div class="block">
+                                                <label>{{ trans('lables.shop-display') }}</label>
+                                                <div class="buttons">
+                                                    <a href="javascript:void(0);" id="grid_4column"><i class="fas fa-th-large"></i></a>
+                                                    <a href="javascript:void(0);" id="list_4column"><i class="fas fa-list"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="form-inline justify-content-center">
+                                                <div class="form-group ">
+                                                    <label>{{ trans('lables.shop-category') }}</label>
+                                                    <div class="select-control">
+                                                        <select class="form-control category-filter" name="category">
+                                                            <option value="">choose</option>
+                                                            @foreach ($data['category'] as $category)
+                                                                @if (isset($_GET['category']) && $_GET['category'] == $category->id)
+                                                                    <option selected value="{{ $category->id }}">
+                                                                        {{ $category->detail[0]->category_name }}</option>
+                                                                @else
+                                                                    <option value="{{ $category->id }}">
+                                                                        {{ $category->detail[0]->category_name }}</option>
+                                                                @endif
+                
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                
+                                                </div>
+                
+                
+                                                <div class="form-group ">
+                                                    <label>{{ trans('lables.shop-price') }}</label>
+                                                    <div class="select-control">
+                                                        <select class="form-control price-filter" name="price">
+                                                            <option value="">choose</option>
+                                                            @foreach ($data['price_range'] as $price_range)
+                                                                @if (isset($_GET['price']) && $_GET['price'] == $price_range)
+                                                                    <option selected value="{{ $price_range }}">{{ $price_range }}
+                                                                    </option>
+                                                                @else
+                                                                    <option value="{{ $price_range }}">{{ $price_range }}</option>
+                                                                @endif
+                
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                
+                                                @foreach ($data['attribute'] as $key => $attribute)
+                                                    <div class="form-group ">
+                                                        <label>{{ $attribute->attribute_detail[0]->name }}</label>
+                                                        <input type="hidden" name="attribute[]" value="{{ $attribute->id }}" />
+                                                        <div class="select-control">
+                                                            <select class="form-control variaion-filter" name="variation[]"
+                                                                data-attribute-id="{{ $attribute->id }}"
+                                                                data-attribute-name="{{ $attribute->attribute_detail[0]->name }}">
+                                                                <option value="">choose</option>
+                                                                @foreach ($attribute->variation as $variation)
+                                                                    @if (isset($_GET['variation_id']) && in_array($variation->variation_detail[0]->variation_id, explode(',', $_GET['variation_id'])))
+                                                                        <option selected
+                                                                            value="{{ $variation->variation_detail[0]->variation_id }}"
+                                                                            data-variation-name={{ $variation->variation_detail[0]->name }}>
+                                                                            {{ $variation->variation_detail[0]->name }}</option>
+                                                                    @else
+                                                                        <option
+                                                                            value="{{ $variation->variation_detail[0]->variation_id }}"
+                                                                            data-variation-name={{ $variation->variation_detail[0]->name }}>
+                                                                            {{ $variation->variation_detail[0]->name }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                
+                
+                                                {{-- <div class="form-group ">
+                                                    <button class="btn-secondary" type="button" id="filter">filter</button>
+                                                </div> --}}
+                                            </form>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +209,12 @@
                 
 
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pagination justify-content-between ">
+
+
         </div>
     </div>
 </section>

@@ -155,6 +155,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-12">
+                <input type="hidden" id="product_combination_id" />
                 <div class="d-flex flex-column">
                     <h1 class="font-weight-bold pro-title mt-3">
 
@@ -189,9 +190,13 @@ $newgalleries = array_chunk($galleries, 4, true);
 
 
                 </div>
+                <div class="pro-options">
+
+                </div>
             </div>
 
         </div>
+        
         <div class="row py-5">
             <div class="col-12">
                 <h1 class="font-weight-bold text-center py-4">

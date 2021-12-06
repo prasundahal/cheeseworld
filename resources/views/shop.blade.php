@@ -26,15 +26,15 @@
         var shopStyle = "{{ getSetting()['shop'] }}";
         $(document).ready(function() {
             fetchProduct(1);
-            // $(".variaion-filter").each(function() {
-            //   if($(this).val() != ""){
-            //     attribute_id.push($(this).attr('data-attribute-id'));
-            //     variation_id.push($(this).val());
-            //     attribute.push($(this).attr('data-attribute-name'));
-            //     variation.push($('option:selected', this).attr('data-variation-name'));
-            //   }
+            $(".variaion-filter").each(function() {
+              if($(this).val() != ""){
+                attribute_id.push($(this).attr('data-attribute-id'));
+                variation_id.push($(this).val());
+                attribute.push($(this).attr('data-attribute-name'));
+                variation.push($('option:selected', this).attr('data-variation-name'));
+              }
 
-            // });
+            });
         });
 
         $('.sortBy').change(function() {
@@ -47,7 +47,7 @@
         function fetchProduct(page) {
             var limit = "{{ isset($_GET['limit']) ? $_GET['limit'] : '12' }}";
             var category = "{{ isset($_GET['category']) ? $_GET['category'] : '' }}";
-            // var varations = "{{ isset($_GET['variation_id']) ? $_GET['variation_id'] : '' }}";
+             var varations = "{{ isset($_GET['variation_id']) ? $_GET['variation_id'] : '' }}";
             var price_range = "{{ isset($_GET['price']) ? $_GET['price'] : '' }}";
 
             var url = "{{ url('') }}" + '/api/client/products?page=' + page + '&limit=' + limit +
@@ -55,8 +55,8 @@
 
             if (category != "")
                 url += "&productCategories=" + category;
-            // if(varations != "")
-            //     url += "&variations="+varations;
+             if(varations != "")
+                 url += "&variations="+varations;
             if (price_range != "") {
                 price_range = price_range.split("-");
                 url += "&price_from=" + price_range[0];
@@ -85,22 +85,22 @@
                         if (data.data.length > 0) {
 
                             console.log("true");
-                            // if(data.meta.last_page < page){
-                            //     $('.load-more-products').attr('disabled',true);
-                            //     $('.load-more-products').html('No More Items');
-                            //   return
-                            // }
-                            // var pagination ='<label for="staticEmail" class="col-form-label">Showing From <span class="showing_record">'+data.meta.to+'</span>&nbsp;of&nbsp;<span class="showing_total_record">'+data.meta.total+'</span>&nbsp;results.</label>';
-                            // var nextPage = parseInt(data.meta.current_page)+1;
-                            // pagination += '<div class="col-12 col-sm-6">';
-                            // pagination +='<ol class="loader-page mt-0">';
-                            // pagination +='<li class="loader-page-item">';
-                            // pagination +='<button class="load-more-products btn btn-secondary" data-page="'+nextPage+'">Load More</button>';
-                            // pagination +='</li>';
-                            // pagination +='</ol>';
-                            // pagination +='</div>';
+                            if(data.meta.last_page < page){
+                                $('.load-more-products').attr('disabled',true);
+                                $('.load-more-products').html('No More Items');
+                              return
+                            }
+                            var pagination ='<label for="staticEmail" class="col-form-label">Showing From <span class="showing_record">'+data.meta.to+'</span>&nbsp;of&nbsp;<span class="showing_total_record">'+data.meta.total+'</span>&nbsp;results.</label>';
+                            var nextPage = parseInt(data.meta.current_page)+1;
+                            pagination += '<div class="col-12 col-sm-6">';
+                            pagination +='<ol class="loader-page mt-0">';
+                            pagination +='<li class="loader-page-item">';
+                            pagination +='<button class="load-more-products btn btn-secondary" data-page="'+nextPage+'">Load More</button>';
+                            pagination +='</li>';
+                            pagination +='</ol>';
+                            pagination +='</div>';
 
-                            // $('.pagination').html(pagination);
+                            $('.pagination').html(pagination);
                             const templ = document.getElementById("product-card-template");
                             for (i = 0; i < data.data.length; i++) {
                                 const clone = templ.content.cloneNode(true);

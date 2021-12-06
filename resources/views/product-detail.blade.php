@@ -170,6 +170,46 @@
                             clone.querySelector(".description").innerHTML = data.data.detail[0].desc;
 
                         }
+                        if (data.data.attribute != null) {
+                            var combination = '';
+                            var attribute = data.data.attribute
+                            for (var a = 0; a < attribute.length; a++) {
+
+                                if (attribute[a].attributes != null) {
+
+                                    if (attribute[a].attributes.detail != null) {
+
+                                        combination += '<div class="color-selection">';
+                                        combination += '<h4><b>' + attribute[a].attributes.detail[0].name +
+                                            '</b></h4>';
+                                        combination += '</div>';
+                                    }
+                                    combination += '<ul class="variations">';
+                                    if (attribute[a].variations != null) {
+                                        for (var v = 0; v < attribute[a].variations
+                                            .length; v++) {
+                                            combination +=
+                                                '<li class="btn size-btn variation_list_item attribute_' +
+                                                attribute[a].attributes.detail[0].name.split(' ').join(
+                                                    '_') + '_div  ' + attribute[a].variations[v]
+                                                .product_variation.detail[0].name + '-' + attribute[a]
+                                                .attributes.detail[0].name.split(' ').join('_') +
+                                                '" data-attribute-id="' + attribute[a].attributes
+                                                .attribute_id + '" data-attribute-name="' + attribute[a]
+                                                .attributes.detail[0].name + '" data-variation-id="' +
+                                                attribute[a].variations[v]
+                                                .product_variation.id + '" data-variation-name="' +
+                                                attribute[a].variations[v]
+                                                .product_variation.detail[0].name + '">' + attribute[a]
+                                                .variations[v]
+                                                .product_variation.detail[0].name + '</li>';
+                                        }
+                                    }
+                                    combination += '</ul>';
+                                }
+                                clone.querySelector(".pro-options").innerHTML = combination;
+                            }
+                        }
 
                         // if (data.data.product_type == 'simple') {
                         //     if (data.data.product_discount_price == '' || data.data
