@@ -10,7 +10,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
 <section id="footer-wrapper" class="py-4">
     <div class="container">
         <div class="row text-white">
-            <div class="col-6">
+            <div class="col-xl-6 col-lg-6 col-md-12">
                 <h6 class="font-weight-bold">Phone Numbers</h6>
                 <div class="row">
                     <div class="col-6">
@@ -36,12 +36,12 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="social-media font-weight-bold d-flex justify-content-end align-items-center">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="social-media font-weight-bold d-flex justify-content-end align-items-center mb-xl-2 mb-lg-2 mb-2">
                     <label class="mr-3 mb-0 font-weight-bold text-white">
                         Follow us on
                     </label>
-                    <ul class="p-0 m-0 d-flex align-items-center">
+                    <ul class="pl-0 m-0 d-flex align-items-center">
                         {{-- <li class="mr-2">
                             <a href="{{ getSetting()['google_url'] ?? '#' }}">
                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
@@ -90,17 +90,17 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     </ul>
                 </div>
             </div>
-            <div class="col-12">
-                <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex flex-wrap">
                     <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
-                    {{-- <li class="circle-dot"><a href="#">Catalogs</a></li> --}}
+                    <li class="circle-dot"><a href="#">Catalogs</a></li>
                     <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
                     @foreach ($pages as $page)
                         <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
                     @endforeach
                 </ul>
             </div>
-            <div class="col-12">
+            <div class="col-xl-12 col-lg-12 col-12">
                 <ul class="about p-0 d-flex m-0">
                     <li class="circle-dot"><a href="#">Product safety warnings</a></li>
                     <li class="circle-dot"><a href="#">Declaration of conformity</a></li>

@@ -349,7 +349,16 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        $(".wishlist-count").html(data.data.length);
+                        if(data.data.length > 0){
+                            $(".wishlist-count").css({
+                                "padding-top": "1px",
+                                "padding-right": "5px",
+                                "padding-bottom": "1px",
+                                "padding-left": "5px",
+                            });
+                            $(".wishlist-count").html(data.data.length);
+                        }
+                        
                     }
                 },
                 error: function(data) {},
@@ -693,6 +702,12 @@
                             const clone1 = temp1.content.cloneNode(true);
                             clone1.querySelector(".top-cart-product-total").innerHTML = total_price;
                             $(".top-cart-product-show").append(clone1);
+                            $(".total-menu-cart-product-count").css({
+                                "padding-top": "1px",
+                                "padding-right": "5px",
+                                "padding-bottom": "1px",
+                                "padding-left": "5px", 
+                            });
                             $(".total-menu-cart-product-count").html(data.data.length);
                             $(".dropdown-menu .shopping-cart-items").css({
                                 'overflow-y': 'scroll',
@@ -727,9 +742,9 @@
                         var articles = '';
                         $.each(data.data, function(i, e) {
                             if (i % 2 == 0) {
-                                articles += '<div class="col-4">';
+                                articles += '<div class="col-xl-4 col-md-4 d-md-block d-none">';
                             }
-                            articles += '<div class="box-1st d-flex flex-column mb-5">' +
+                            articles += '<div class=" box-1st d-flex flex-column mb-5">' +
                                 '<div class="card text-center border-0">' +
                                 '<div class="card-header-cus">' +
                                 '<h4 class="font-weight-bold">' + e.detail[0].name + '</h4>' +
@@ -747,7 +762,7 @@
                                 articles += '</div>';
                             }
                             if (i == 1) {
-                                articles += '<div class="col-4">' +
+                                articles += '<div class="col-xl-4 col-md-4 col-sm-12">' +
                                     '<div class="box-3rd d-flex justify-content-center align-items-center h-100">' +
                                     '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
                                     '</div>' +

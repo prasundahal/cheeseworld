@@ -321,7 +321,7 @@
         // Navigation Js Onclick Starts
         var scroll;
         $(document).on('click', 'body', function() {
-            // console.log('helo body ma');
+            
             $("#navbarDropdown").hide();
             $(".mynav").hide();
             if (scroll > 150) {
@@ -352,17 +352,17 @@
              */
 
             $('#navbarDropdown').click(function(e) {
-                console.log('navbarCLick');
+                // console.log('navbarCLick');
                 // e.stopImmediatePropagation();
                 scroll = $(window).scrollTop();
                 $('.mynav').toggle();
                 if ($('.mynav').is(':visible')) {
-                    console.log('visible');
+                    // console.log('visible');
                     $("#navigation-wrapper").css("background", "white");
                     $(".nav-link").css("color", "black");
                 } else {
-                    console.log('notVisible');
-                    console.log(scroll);
+                    // console.log('notVisible');
+                    // console.log(scroll);
                     if (scroll > 150) {
 
                         $(".navigation-wrap").css("background", "white");
@@ -446,14 +446,14 @@
                                 {
                                     breakpoint: 600,
                                     settings: {
-                                        slidesToShow: 1,
+                                        slidesToShow: 4,
                                         slidesToScroll: 1
                                     }
                                 },
                                 {
                                     breakpoint: 480,
                                     settings: {
-                                        slidesToShow: 1,
+                                        slidesToShow: 3,
                                         slidesToScroll: 1
                                     }
                                 }
@@ -497,6 +497,9 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
+                                '<div class="font-weight-bold price product-card-price mt-2">'+
+                                    e.product_price_symbol +
+                                '</div>'+
                                 '<div class=" btn-hover new-design">' +
                                 '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' + e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
                                 '</div>' +
@@ -716,7 +719,7 @@
 
 
         function fetchFeatureProduct() {
-            console.log("Elo");
+            // console.log("Elo");
             var url = "{{ url('') }}" +
                 '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
                 '&topSelling=1&currency=' + localStorage.getItem("currency");
@@ -730,12 +733,10 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data);
-
                     var feature_product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
-                            console.log(e);
+                            
                             feature_product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -748,6 +749,12 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
+                                '<div class="font-weight-bold price product-card-price mt-2">'+
+                                    e.product_price_symbol +
+                                '</div>'+
+                                '<div class=" btn-hover new-design">' +
+                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' + e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
+                                '</div>' +
                                 '</div>' +
                                 '</div>';
                         })
@@ -821,7 +828,7 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        // console.log(data, "final data");
+                        
                         var htmlToRender =
                             "<article><div class='badges'><span class='badge badge-success'>Featured</span></div><div class='detail'>";
 
