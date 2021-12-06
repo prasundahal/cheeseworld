@@ -291,7 +291,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="slick-w4-a">
-                            
+
                         </div>
                     </div>
 
@@ -319,11 +319,11 @@
         });
         // Navigation Js Scroll Ends
         // Navigation Js Onclick Starts
-        var scroll;
-        $(document).on('click', 'body', function() {
-            
+        var scroll = $(window).scrollTop();
+        /* $(document).on('click', 'body', function() {
+
             $("#navbarDropdown").hide();
-            $(".mynav").hide();
+            // $(".mynav").hide();
             if (scroll > 150) {
 
                 $(".navigation-wrap").css("background", "white");
@@ -332,24 +332,24 @@
                 $(".navigation-wrap").css("background", "transparent");
                 $(".nav-link").css("color", "white");
             }
-        });
+        }); */
         $(document).ready(function() {
 
-            /* $("#navbarDropdown")
-                            .focusout(function() {
-                                scroll = $(window).scrollTop();
-                                $('.dropdown-menu').toggle();
-                                if (scroll > 150) {
+            $("#navbarDropdown")
+                .focusout(function() {
+                    scroll = $(window).scrollTop();
+                    $('.mynav').toggle();
+                    if (scroll > 150) {
 
-                                    $(".navigation-wrap").css("background", "white");
-                                    $(".nav-link").css("color", "black");
-                                } else {
-                                    $(".navigation-wrap").css("background", "transparent");
-                                    $(".nav-link").css("color", "white");
-                                }
+                        $(".navigation-wrap").css("background", "white");
+                        $(".nav-link").css("color", "black");
+                    } else {
+                        $(".navigation-wrap").css("background", "transparent");
+                        $(".nav-link").css("color", "white");
+                    }
 
-                            });
-             */
+                });
+
 
             $('#navbarDropdown').click(function(e) {
                 // console.log('navbarCLick');
@@ -497,11 +497,13 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
-                                '<div class="font-weight-bold price product-card-price mt-2">'+
-                                    e.product_price_symbol +
-                                '</div>'+
+                                '<div class="font-weight-bold price product-card-price mt-2">' +
+                                e.product_price_symbol +
+                                '</div>' +
                                 '<div class=" btn-hover new-design">' +
-                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' + e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
+                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' +
+                                e.product_id + '" data-type="' + e.product_type +
+                                '">Add To Cart</a>' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
@@ -736,7 +738,7 @@
                     var feature_product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
-                            
+
                             feature_product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -749,68 +751,69 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
-                                '<div class="font-weight-bold price product-card-price mt-2">'+
-                                    e.product_price_symbol +
-                                '</div>'+
+                                '<div class="font-weight-bold price product-card-price mt-2">' +
+                                e.product_price_symbol +
+                                '</div>' +
                                 '<div class=" btn-hover new-design">' +
-                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' + e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
+                                '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' +
+                                e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
                         })
                         $('.slick-w4-a').html(feature_product);
 
-                         $('.slick-w4-a').slick({
-                             dots: false,
-                             focusOnSelect: false,
-                             autoplay: true,
-                             arrows: false,
-                             speed: 400,
-                             slidesToShow: 4,
-                             slidesToScroll: 1,
+                        $('.slick-w4-a').slick({
+                            dots: false,
+                            focusOnSelect: false,
+                            autoplay: true,
+                            arrows: false,
+                            speed: 400,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
 
-                             responsive: [{
-                                     breakpoint: 1400,
-                                     settings: {
-                                         slidesToShow: 4,
-                                         slidesToScroll: 1
-                                     }
-                                 },
-                                 {
-                                     breakpoint: 1080,
-                                     settings: {
-                                         slidesToShow: 2,
-                                         slidesToScroll: 1
-                                     }
-                                 },
-                                 {
-                                     breakpoint: 780,
-                                     settings: {
-                                         slidesToShow: 2,
-                                         slidesToScroll: 1
-                                     }
-                                 },
+                            responsive: [{
+                                    breakpoint: 1400,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 1080,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 780,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1
+                                    }
+                                },
 
-                                 {
-                                     breakpoint: 600,
-                                     settings: {
-                                         slidesToShow: 1,
-                                         slidesToScroll: 1
-                                     }
-                                 },
-                                 {
-                                     breakpoint: 480,
-                                     settings: {
-                                         slidesToShow: 1,
-                                         slidesToScroll: 1
-                                     }
-                                 }
-
-
-                             ]
+                                {
+                                    breakpoint: 600,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                },
+                                {
+                                    breakpoint: 480,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1
+                                    }
+                                }
 
 
-                         });
+                            ]
+
+
+                        });
                     }
                 }
             });
@@ -828,7 +831,7 @@
                 beforeSend: function() {},
                 success: function(data) {
                     if (data.status == 'Success') {
-                        
+
                         var htmlToRender =
                             "<article><div class='badges'><span class='badge badge-success'>Featured</span></div><div class='detail'>";
 
