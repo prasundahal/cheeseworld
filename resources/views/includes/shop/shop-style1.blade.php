@@ -76,7 +76,7 @@
             </div>
             
             <form class="w-100">
-                <div class="col-xl-12 col-md-4 col-sm-12 col-12 mt-4">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-4">
                     <div class="collapse" id="collapse1">
                         {{-- <div class="card card-body border-0 px-0">
                             <select class="custom-select">
@@ -93,10 +93,10 @@
                             <div class="row">
                                 <div class="col-12 col-lg-12">
                                     <div class="row align-items-center">
-                                        <div class="col-12 d-flex justify-content-between">
+                                        <div class="col-12 d-flex flex-wrap">
                                             
                                             {{-- <form class="form-inline justify-content-center"> --}}
-                                                <div class="form-group ">
+                                                <div class="form-group col-xl-2 col-lg-4 col-md-6 col-6 ">
                                                     <label>{{ trans('lables.shop-category') }}</label>
                                                     <div class="select-control">
                                                         <select class="form-control category-filter" name="category">
@@ -117,7 +117,7 @@
                                                 </div>
                 
                 
-                                                <div class="form-group ">
+                                                <div class="form-group col-xl-2 col-lg-4 col-md-6 col-6 ">
                                                     <label>{{ trans('lables.shop-price') }}</label>
                                                     <div class="select-control">
                                                         <select class="form-control price-filter" name="price">
@@ -137,7 +137,7 @@
                                                 
                 
                                                 @foreach ($data['attribute'] as $key => $attribute)
-                                                    <div class="form-group ">
+                                                    <div class="form-group col-xl-2 col-lg-4 col-md-6 col-6 ">
                                                         <label>{{ $attribute->attribute_detail[0]->name }}</label>
                                                         <input type="hidden" name="attribute[]" value="{{ $attribute->id }}" />
                                                         <div class="select-control">

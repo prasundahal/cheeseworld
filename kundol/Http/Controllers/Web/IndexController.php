@@ -131,6 +131,8 @@ class IndexController extends Controller
     {
         $validator = Validator::make($request->all(),[
             "email" => ["required", "email", "exists:customers"],
+        ],[
+            "email.exists" => "Email hasn't been registered",
         ]);
         if($validator->fails()){
             return response()->json(["errors" => $validator->errors()]);
@@ -155,10 +157,15 @@ class IndexController extends Controller
 
     public function showResetPasswordForm($email, $token)
     {
-        $homeService = new HomeService;
-        $data = $homeService->homeIndex();
-        $setting = getSetting();
-        return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting'));
+        if(Customer::where("reset_token", $token)->exists()){
+            $homeService = new HomeService;
+            $data = $homeService->homeIndex();
+            $setting = getSetting();
+            return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting'));
+        } else {
+            return "<h2 style='color: red;'>The link has been expired or doesn't exist.</h2>";
+        }
+        
     }
 
     public function updateCustomerPassword(Request $request)

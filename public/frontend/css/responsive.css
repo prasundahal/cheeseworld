@@ -202,6 +202,10 @@
             left: 150px;
             position: absolute;
         }
+        #searchmodal .modal-dialog .close {
+right: 12rem;
+
+        }
         #searchmodal .modal-header {
             padding-top: 30px;
         }

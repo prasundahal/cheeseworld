@@ -35,7 +35,7 @@
                             <div class="from-group mb-3 col-12">
                                 <label for="inlineFormInputGroup">{{ trans('lables.login-email') }}</label>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" name="email" value="{{ $email }}" placeholder="Enter your email address">
+                                    <input type="email" class="form-control" name="email" value="{{ $email }}" placeholder="Enter your email address" readonly>
                                 </div>
                                 <div class="require email text-danger"></div>
                                 

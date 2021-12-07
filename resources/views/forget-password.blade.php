@@ -28,7 +28,13 @@
                         <hr>
                     </div>
                     <div class="col-12 registration-process">
-                        <div class="error_msg text-danger"></div>
+                        {{-- <div class="error_msg text-danger"></div> --}}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <span class="error_msg">Your password has been reset</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
                         <form id="form" action="{{ route('customer.sendresetlink') }}" method="GET">
                            
                             @csrf
@@ -68,7 +74,7 @@
 @section('script')
     <script>
         $(function() {
-            $(".error_msg").css('display', 'none');
+            $(".alert-warning").css('display', 'none');
         });
 
 
@@ -90,7 +96,7 @@
                 
                 success: function(data) {
                     if (data.error_msg) {
-                        $(".error_msg").css('display', 'block');
+                        $(".alert-warning").css('display', 'block');
                         $(".error_msg").html(data.error_msg);
                     } else if (data.errors) {
                         var error_html = "";
@@ -99,8 +105,9 @@
                             $('.' + key).css('display', 'block').html(error_html);
                         });
                     } else if (!data.errors && !data.error_msg) {
-                        $(".error_msg").css('display', 'block');
+                        $(".alert-warning").css('display', 'block');
                         $(".error_msg").html(data.msg);
+                        $( "input[name='email']" ).val("");
                     }
 
                 }
