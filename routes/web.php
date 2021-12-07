@@ -59,6 +59,10 @@ Route::group(['middleware' => ['general']], function () {
     Route::get('/blog', 'Web\IndexController@blog');
     Route::get('/checkout', 'Web\IndexController@checkout');
     Route::get('/login', 'Web\IndexController@login');
+    Route::get('/forget-password', 'Web\IndexController@forgetPassword')->name('customer.forgetpassword');
+    Route::get('/post-forget-password', 'Web\IndexController@postForgetPassword')->name('customer.sendresetlink');
+    Route::get('/get-reset-password/{email}/{token}', 'Web\IndexController@showResetPasswordForm')->name('customer.getPasswordResetForm');
+    Route::get('/post-reset-password', 'Web\IndexController@updateCustomerPassword')->name('customer.postPasswordResetForm');
     Route::get('/compare', 'Web\IndexController@compare');
     Route::get('/orders', 'Web\IndexController@orders');
     Route::get('/orders/{id}', 'Web\IndexController@ordersDetail');

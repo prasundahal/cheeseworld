@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <button class="btn btn-secondary swipe-to-top" id="loginAccount">{{ trans('lables.login-login') }}</button>
-                                <a href="{{ url('/change-password') }}" class="btn btn-link">{{ trans('lables.login-forget-password') }}</a>
+                                <a href="{{ url('/forget-password') }}" class="btn btn-link">{{ trans('lables.login-forget-password') }}</a>
                             </div>
                         </div>
                     </form>

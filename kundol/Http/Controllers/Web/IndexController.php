@@ -15,6 +15,11 @@ use App\Services\Web\HomeService;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class IndexController extends Controller
 {
@@ -110,6 +115,71 @@ class IndexController extends Controller
         $data = $homeService->homeIndex();
         $setting = getSetting();
         return view('login', compact('data', 'setting'));
+    }
+
+
+    public function forgetPassword()
+    {
+        $homeService = new HomeService;
+        $data = $homeService->homeIndex();
+        $setting = getSetting();
+        return view('forget-password', compact("data", "setting"));
+    }
+
+
+    public function postForgetPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            "email" => ["required", "email", "exists:customers"],
+        ]);
+        if($validator->fails()){
+            return response()->json(["errors" => $validator->errors()]);
+        }
+        if($validator->passes()){
+            $customer = Customer::where("email", $request->email)->first();
+            if($customer != null){
+                $token = Str::random(40);
+                $customer->update(["reset_token" => $token]);
+                Mail::send('email.forgetPassword', ['token' => $token, "email" => $request->email], function($message) use($request){
+                    $message->to($request->email);
+                    $message->subject('Reset Password');
+                });
+                return response()->json(['msg' => 'Password reset link has been successfully sent to your email']);
+            } else {
+                return response()->json(['error_msg' => 'Your email doesn\'t exist in our database. Please register']);
+            }
+        }
+
+    }
+
+
+    public function showResetPasswordForm($email, $token)
+    {
+        $homeService = new HomeService;
+        $data = $homeService->homeIndex();
+        $setting = getSetting();
+        return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting'));
+    }
+
+    public function updateCustomerPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            "email" => ["required", "email", "exists:customers"],
+            "password" => ["required", "min:6", "confirmed"],
+            "password_confirmation" => ["required"],
+        ]);
+        if($validator->fails()){
+            return response()->json(["errors" => $validator->errors()]);
+        }
+        if($validator->passes()){
+           $customer = Customer::where("email", $request->email)->first();
+           if($customer != null){
+               $customer->update(["password" => Hash::make($request->password), "reset_token" => null]);
+               return response(["msg" => "Password Reset Successfully", "redirectRoute"=>url('/login')]);
+           } else {
+               return response()->json(['error_msg' => "Something went wrong"]);
+           }
+        }
     }
 
     
