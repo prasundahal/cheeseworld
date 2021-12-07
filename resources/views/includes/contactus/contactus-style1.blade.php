@@ -65,7 +65,7 @@
                         <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label for="Surname">Surname</label>
-                                <input type="text" class="form-control" id="lastname">
+                                <input type="text"  class="form-control" id="last_name">
                                 <div class="invalid-feedback">
                                     Please choose a last name.
                                 </div>
@@ -183,7 +183,7 @@
                         <div class="col-12 message">
                             <div class="form-group">
                                 <label for="messagearea1">Message</label>
-                                <textarea class="form-control" id="messagearea1" rows="3"></textarea>
+                                <textarea class="form-control" id="message" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
