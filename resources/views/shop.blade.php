@@ -160,12 +160,16 @@
                                             .product_price_symbol + '</span>';
                                     }
                                 } else {
-                                    if (data.data[i].product_combination != null && data.data[i]
-                                        .product_combination != 'null' && data.data[i].product_combination != ''
-                                    ) {
-                                        clone.querySelector(".product-card-price").innerHTML = data.data[i]
-                                            .product_combination[0].product_price_symbol;
-                                    }
+                                    console.log("variable product");
+                                    console.log(data.data[i]);
+                                    // if (data.data[i].product_combination != null && data.data[i]
+                                    //     .product_combination != 'null' && data.data[i].product_combination != ''
+                                    // ) {
+                                    //     clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                    //         .product_combination[0].product_price_symbol;
+                                    // }
+                                    clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                            .product_price_symbol;
                                 }
 
                                 if (data.data[i].product_type == 'simple') {

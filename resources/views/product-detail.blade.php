@@ -110,7 +110,7 @@
                     console.log(data);
                     if (data.status == 'Success') {
                         const templ = document.getElementById("product-detail-section");
-                        console.log(templ);
+                        
                         const clone = templ.content.cloneNode(true);
                         clone.querySelector(".wishlist-icon").setAttribute('data-id', data.data.product_id);
                         clone.querySelector(".wishlist-icon").setAttribute('onclick', 'addWishlist(this)');
@@ -211,26 +211,34 @@
                             }
                         }
 
-                        // if (data.data.product_type == 'simple') {
-                        //     if (data.data.product_discount_price == '' || data.data
-                        //         .product_discount_price == null || data.data.product_discount_price ==
-                        //         'null') {
-                        //         clone.querySelector(".product-card-price").innerHTML = data.data
-                        //             .product_price_symbol;
-                        //     } else {
-
-                        //         clone.querySelector(".product-card-price").innerHTML = data.data
-                        //             .product_discount_price_symbol + '<span>' + data.data
-                        //             .product_price_symbol + '</span>';
-                        //     }
-                        // } else {
-                        //     if (data.data.product_combination != null) {
-                        //         clone.querySelector(".product-card-price").innerHTML = data.data
-                        //             .product_combination[0].product_price_symbol;
-                        //     }
+                        console.log("product_type = " + data.data.product_type);
+                        console.log(data);
+                        if (data.data.product_type == 'simple') {
 
 
-                        // }
+                            if (data.data.product_discount_price == '' || data.data
+                                .product_discount_price == null || data.data.product_discount_price ==
+                                'null') {
+                               
+                                console.log(data.data.product_price_symbol);
+                                clone.querySelector(".product-card-price2").innerHTML = data.data
+                                    .product_price_symbol;
+                            } else {
+
+                               
+                                clone.querySelector(".product-card-price2").innerHTML = data.data
+                                    .product_discount_price_symbol + '<span>' + data.data
+                                    .product_price_symbol + '</span>';
+                            }
+                        } else {
+                            console.log("combination");
+                            if (data.data.product_combination != null) {
+                                clone.querySelector(".product-card-price2").innerHTML = data.data
+                                    .product_combination[0].product_price_symbol;
+                            }
+
+
+                        }
                         $("." + appendTo).append(clone);
 
                         /* var allSlide = '';
@@ -457,7 +465,23 @@
                                 // clone.querySelector(".product-card-desc").innerHTML = desc.substring(0, 50);
                             }
 
-
+                            if (data.data[i].product_type == 'simple') {
+                                if (data.data[i].product_discount_price == '' || data.data[i]
+                                    .product_discount_price == null || data.data[i].product_discount_price ==
+                                    'null') {
+                                    clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                        .product_price_symbol;
+                                } else {
+                                    clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                        .product_price_symbol + '<span>' + data.data[i]
+                                        .product_discount_price_symbol + '</span>';
+                                }
+                            } else {
+                                if (data.data[i].product_combination != null) {
+                                    clone.querySelector(".product-card-price").innerHTML = data.data[i]
+                                        .product_combination[0].product_price_symbol;
+                                }
+                            }
 
 
                             $("." + appendTo).append(clone);

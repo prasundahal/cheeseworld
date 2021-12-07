@@ -751,7 +751,7 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
-                                '<div class="font-weight-bold price product-card-price mt-2">' +
+                                '<div class="font-weight-bold price mt-2">' +
                                 e.product_price_symbol +
                                 '</div>' +
                                 '<div class=" btn-hover new-design">' +
