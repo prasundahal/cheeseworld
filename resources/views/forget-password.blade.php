@@ -32,17 +32,18 @@
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <span class="error_msg">Your password has been reset</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                          </div>
+                        </div>
                         <form id="form" action="{{ route('customer.sendresetlink') }}" method="GET">
-                           
-                            @csrf
+
+                            {{-- @csrf --}}
                             <div class="row">
                                 <div class="from-group mb-3 col-12">
                                     <label for="inlineFormInputGroup">{{ trans('lables.login-email') }}</label>
                                     <div class="input-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Enter your email address">
+                                        <input type="email" name="email" id="email" class="form-control"
+                                            placeholder="Enter your email address">
                                     </div>
                                     <div class="require email text-danger"></div>
 
@@ -77,24 +78,28 @@
             $(".alert-warning").css('display', 'none');
         });
 
-
+        // $(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // });
         function submitForm(e) {
             e.preventDefault();
             $('.require').css('display', 'none');
             let url = $("#form").attr("action");
-            // var data = $("#form").serialize();
             var data = $("#form").serialize();
+            // var data = $("#form").serialize() + "&_token=" + '{{ csrf_token() }}';
+            // var data = new FormData($("#form")[0]);
             // data.append('_token', '{{ csrf_token() }}');
-           console.log($("#form").serialize());
             $.ajax({
                 url: url,
-                type: 'get',
+                type: 'GET',
+                // data: data + "&_token=" + $('meta[name="csrf-token"]').attr('content'),
                 data: data,
-                
-                
-                
-                
                 success: function(data) {
+                    console.log(data);
                     if (data.error_msg) {
                         $(".alert-warning").css('display', 'block');
                         $(".error_msg").html(data.error_msg);
@@ -107,7 +112,7 @@
                     } else if (!data.errors && !data.error_msg) {
                         $(".alert-warning").css('display', 'block');
                         $(".error_msg").html(data.msg);
-                        $( "input[name='email']" ).val("");
+                        $("input[name='email']").val("");
                     }
 
                 }
