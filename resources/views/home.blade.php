@@ -482,8 +482,25 @@
                 success: function(data) {
                     var product = '';
                     if (data.status == 'Success') {
+                        console.log("checking product_type");
                         $.each(data.data, function(i, e) {
-                            // console.log(e);
+                            if (e.product_type == 'simple') {
+                                if (e.product_discount_price == '' || e
+                                    .product_discount_price == null || e
+                                    .product_discount_price ==
+                                    'null') {
+                                    
+                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
+                                    e.product_price_symbol +
+                                        '</div>';
+                                } else {
+                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
+                                    e.product_discount_price_symbol + '<span>' + data.data[i]
+                                            .product_price_symbol + '</span>' +
+                                        '</div>' ;
+                                }
+                            }
+                            console.log(e);
                             product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -497,9 +514,7 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
-                                '<div class="font-weight-bold price product-card-price mt-2">' +
-                                e.product_price_symbol +
-                                '</div>' +
+                                my_price +
                                 '<div class=" btn-hover new-design">' +
                                 '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' +
                                 e.product_id + '" data-type="' + e.product_type +
@@ -738,7 +753,22 @@
                     var feature_product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
-
+                            if (e.product_type == 'simple') {
+                                if (e.product_discount_price == '' || e
+                                    .product_discount_price == null || e
+                                    .product_discount_price ==
+                                    'null') {
+                                    
+                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
+                                    e.product_price_symbol +
+                                        '</div>';
+                                } else {
+                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
+                                    e.product_discount_price_symbol + '<span>' + data.data[i]
+                                            .product_price_symbol + '</span>' +
+                                        '</div>' ;
+                                }
+                            }
                             feature_product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -751,9 +781,7 @@
                                 '</a>' +
                                 '<h6 class="text-uppercase text-center mb-3">' + e.category[0]
                                 .category_detail.detail[0].name + '</h6>' +
-                                '<div class="font-weight-bold price mt-2">' +
-                                e.product_price_symbol +
-                                '</div>' +
+                                my_price +
                                 '<div class=" btn-hover new-design">' +
                                 '<a class="btn  btn-secondary swipe-to-top" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" onclick="addToCart(this)" data-id="' +
                                 e.product_id + '" data-type="' + e.product_type + '">Add To Cart</a>' +

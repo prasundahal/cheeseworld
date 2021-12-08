@@ -620,7 +620,7 @@
                                     if (data.data[i].product_combination_id == data.data[i].combination[k]
                                         .product_combination_id) {
                                         price = data.data[i].combination[k].price;
-                                        $(".product-card-price").html(data.data[i].product_price_symbol);
+                                        $(".product-card-price2").html(data.data[i].product_price_symbol);
 
                                         if (data.data[i].combination[k].gallary != null && data.data[i]
                                             .combination[k].gallary != 'null' && data.data[i].combination[k]
