@@ -184,7 +184,7 @@
                                             '</b></h4>';
                                         combination += '</div>';
                                     }
-                                    combination += '<ul class="variations">';
+                                    combination += '<ul class="variations pl-0">';
                                     if (attribute[a].variations != null) {
                                         for (var v = 0; v < attribute[a].variations
                                             .length; v++) {

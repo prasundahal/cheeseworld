@@ -194,7 +194,7 @@ $newgalleries = array_chunk($galleries, 4, true);
 
 
                 </div>
-                <div class="pro-options">
+                <div class="pro-options mt-4">
 
                 </div>
             </div>
