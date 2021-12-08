@@ -538,6 +538,7 @@
                 qty = 1;
             }
             addToCartFun(product_id, product_combination_id, cartSession, qty);
+            toastr.success('{{ trans('response.add-to-cart-success') }}')
         }
 
         function addToCartFun(product_id, product_combination_id, cartSession, qty) {
@@ -571,7 +572,7 @@
                             menuCart(cartSession);
                             cartItem(cartSession);
                         }
-                        toastr.success('{{ trans('response.add-to-cart-success') }}')
+                        // toastr.success('{{ trans('response.add-to-cart-success') }}')
                     } else if (data.status == 'Error') {
 
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
@@ -1108,6 +1109,7 @@
                         $(input).closest('tr').remove();
                         cartItem(cartSession);
                         menuCart(cartSession);
+                        toastr.success('Item removed from cart successfully');
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                     }

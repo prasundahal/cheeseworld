@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-12 col-lg-7 align-right">
                                         <div class="row">
-                                            <button type="button" class="btn btn-secondary swipe-to-top mx-2">
+                                            <button type="button" class="btn btn-secondary swipe-to-top mx-2" onclick="location.href = '{{ url('/shop') }}'">
                                                 {{ trans('lables.cart-page-continue-shopping') }}</button>
                                             <button type="button" class="btn btn-light swipe-to-top mx-2" onclick="updateCartItem()">{{ 
                                             trans('lables.cart-page-update-cart') }}</button>
@@ -86,9 +86,9 @@
                         </h4>
                         <div class="item-attributes"></div>
                         <div class="item-controls">
-                            <button type="button" class="btn">
+                            {{-- <button type="button" class="btn">
                                 <span class="fas fa-pencil-alt"></span>
-                            </button>
+                            </button> --}}
                             <button type="button" class="btn cartItem-remove">
                                 <span class="fas fa-times"></span>
                             </button>

@@ -162,7 +162,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                     </h1>
                     <h6 class="font-weight-bold">
                         {{-- <span class="product-card-price"></span> --}}
-                        <span class="product-card-price2"></span>
+                        <span class="price product-card-price2"></span>
                     </h6>
                     <p class="description">
 

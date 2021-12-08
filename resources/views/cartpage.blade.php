@@ -134,7 +134,8 @@
 
                 addToCartFun(product_id, product_combination_id, cartSession, qty);
             }
-
+            toastr.success('Cart Item updated successfully');
+            // addToCartFun(product_id, product_combination_id, cartSession, qty);
             cartItem(cartSession);
             couponCart = $.trim(localStorage.getItem("couponCart"));
             if (couponCart != 'null' && couponCart != '') {

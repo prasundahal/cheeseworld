@@ -5,7 +5,7 @@
     <section class="pro-content empty-content">
         <div class="container">
 
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-12">
                     <div class="pro-empty-page">
                         <h2 style="font-size: 150px;"><i class="far fa-check-circle"></i></h2>
