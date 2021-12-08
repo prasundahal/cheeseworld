@@ -155,13 +155,16 @@ class IndexController extends Controller
     }
 
 
-    public function showResetPasswordForm($email, $token)
+    public function showResetPasswordForm($token)
     {
         if(Customer::where("reset_token", $token)->exists()){
             $homeService = new HomeService;
             $data = $homeService->homeIndex();
             $setting = getSetting();
-            return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting'));
+            $customer = Customer::where("reset_token", $token)->first();
+            $email = $customer->email;
+            // return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting'));
+            return view('resetLink', ['email' => $email, 'token' => $token], compact('data', 'setting', 'email'));
         } else {
             return "<h2 style='color: red;'>The link has been expired or doesn't exist.</h2>";
         }
