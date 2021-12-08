@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPassword;
 use App\Models\Admin\Attribute;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Customer;
@@ -140,12 +141,19 @@ class IndexController extends Controller
         if($validator->passes()){
             $customer = Customer::where("email", $request->email)->first();
             if($customer != null){
+                
                 $token = Str::random(40);
+                $customerDetail = [
+                    'name' => $customer->name,
+                    'email' => $customer->email,
+                    'token' => $token,
+                ];
                 $customer->update(["reset_token" => $token]);
                 Mail::send('email.forgetPassword', ['token' => $token, "email" => $request->email], function($message) use($request){
                     $message->to($request->email);
                     $message->subject('Reset Password');
                 });
+                // Mail::to($request->email)->send(new ResetPassword($customerDetail));
                 return response()->json(['msg' => 'Password reset link has been successfully sent to your email']);
             } else {
                 return response()->json(['error_msg' => 'Your email doesn\'t exist in our database. Please register']);
@@ -153,7 +161,8 @@ class IndexController extends Controller
         }
 
     }
-
+   
+// Mail::to($request->email)->send(new ResetPassword($customerDetail));
 
     public function showResetPasswordForm($token)
     {

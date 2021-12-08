@@ -17,16 +17,18 @@ class ResetPassword extends Mailable
      * @return void
      */
 
-    public $name;
-    public $token;
-    public $email;
+    // public $name;
+    // public $token;
+    // public $email;
+    public $customer;
 
 
-    public function __construct($name, $email, $token)
+    public function __construct($customer)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->token = $token;
+        // $this->name = $name;
+        // $this->email = $email;
+        // $this->token = $token;
+        $this->customer = $customer;
     }
 
     /**
@@ -34,13 +36,22 @@ class ResetPassword extends Mailable
      *
      * @return $this
      */
+    // public function build()
+    // {
+        // $customer['name'] = $this->name;
+        // $customer['email'] = $this->email;
+        // $customer['reset_token'] = $this->token;
+    //     return $this->from(env("MAIL_FROM_ADDRESS", env("APP_NAME"))->subject("Password Reset Link")
+        
+    //     ->view('email.forgetPassword', ['customer' => $customer]));
+    // }
+
     public function build()
     {
-        $customer['name'] = $this->name;
-        $customer['email'] = $this->email;
-        $customer['reset_token'] = $this->token;
-        return $this->from(env("MAIL_FROM_ADDRESS", env("APP_NAME"))->subject("Password Reset Link")
-        
-        ->view('email.forgetPassword', ['customer' => $customer]));
+        // $customer['name'] = $this->name;
+        // $customer['email'] = $this->email;
+        // $customer['reset_token'] = $this->token;
+        return $this->markdown('email.forgetPassword') //pass here your email blade file
+	    	->with('customer',$this->customer);
     }
 }
