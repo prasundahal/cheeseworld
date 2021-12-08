@@ -233,8 +233,7 @@
             },
             beforeSend: function() {},
             success: function(data) {
-                console.log('customeraddre');
-                console.log(data);
+               
                 if (data.status == 'Success') {
                     $("#shipping-address-listing-show").html('');
                     const templ = document.getElementById("shipping-address-listing-template");

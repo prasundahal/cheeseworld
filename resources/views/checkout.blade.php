@@ -1050,7 +1050,7 @@
                             } else if (data.data[i].country_id == country) {
                                 selected = 'selected';
                             }
-                            console.log(data.data[i].country_name);
+                            
                             // if (data.data[i].country_name == 'Australia') {
                             //     selected = 'selected';
                             // }
@@ -1323,7 +1323,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log('successhere');
+                  
                     if (data.status == 'Success') {
                         window.location.href = "{{ url('/thankyou') }}";
                     } else if (data.status == 'Error') {
@@ -1333,7 +1333,7 @@
                     }
                 },
                 error: function(data) {
-                    console.log('errorhere');
+                   
                     if (data.status == 422) {
                         jQuery.each(data.responseJSON.errors, function(index, item) {
                             $("#" + index).parent().find('.invalid-feedback').css('display',
