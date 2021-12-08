@@ -233,6 +233,8 @@
             },
             beforeSend: function() {},
             success: function(data) {
+                console.log('customeraddre');
+                console.log(data);
                 if (data.status == 'Success') {
                     $("#shipping-address-listing-show").html('');
                     const templ = document.getElementById("shipping-address-listing-template");
@@ -249,6 +251,7 @@
                         }
                         clone.querySelector(".shipping-address-listing-country-state-city").innerHTML = country + state + data.data[i].city;
                         clone.querySelector(".shipping-address-listing-is-default").setAttribute('data-id', data.data[i].id);
+                        clone.querySelector(".shipping-address-listing-is-default").setAttribute('data-lat', data.data[i].latlong);
                         clone.querySelector(".shipping-address-listing-is-default").setAttribute('onclick', 'isDefault(this)');
                         clone.querySelector(".shipping-address-listing-edit-btn").setAttribute('data-id', data.data[i].id);
                         clone.querySelector(".shipping-address-listing-edit-btn").setAttribute('onclick', 'shippingEdit(this)');
@@ -420,7 +423,8 @@
             data: {
                 is_default: '1',
                 is_default_type: 'default_action',
-                type: 'profile'
+                type: 'profile',
+                latlong: $(input).attr('data-lat'),
             },
             headers: {
                 'Authorization': 'Bearer ' + customerToken,
@@ -431,7 +435,7 @@
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 'Success') {
-                    toastr.success('{{ trans("address-book-updated") }}')
+                    toastr.success('{{ trans("Address Book Updated") }}')
                 } else if (data.status == 'Error') {
                     toastr.error('{{ trans("response.some_thing_went_wrong") }}');
                 }

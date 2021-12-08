@@ -916,6 +916,8 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log('checkout page');
+                    console.log(data);
                     if (data.status == 'Success') {
                         for (i = 0; i < data.data.length; i++) {
                             $("#delivery_first_name").val(data.data[i].first_name);
@@ -930,6 +932,8 @@
                                 .state_id != '') {
                                 state = data.data[i].state_id.id;
                             }
+                            console.log("state ="+state);
+                            console.log("country ="+country);
                             countries1();
                             $("#delivery_country_hidden").val(country);
                             $("#delivery_state_hidden").val(state);
@@ -1039,17 +1043,17 @@
                         html = '<option value="">Select</option>';
                         for (i = 0; i < data.data.length; i++) {
                             selected = '';
-                            // if ($.trim($("#delivery_country_hidden").val()) != '' && $.trim($(
-                            //         "#delivery_country_hidden").val()) == data.data[i].country_id) {
-                            //     selected = 'selected';
-                            //     $("#delivery_country_hidden").val('');
-                            // } else if (data.data[i].country_id == country) {
-                            //     selected = 'selected';
-                            // }
-                            // console.log(data.data[i].country_name);
-                            if (data.data[i].country_name == 'Australia') {
+                            if ($.trim($("#delivery_country_hidden").val()) != '' && $.trim($(
+                                    "#delivery_country_hidden").val()) == data.data[i].country_id) {
+                                selected = 'selected';
+                                $("#delivery_country_hidden").val('');
+                            } else if (data.data[i].country_id == country) {
                                 selected = 'selected';
                             }
+                            console.log(data.data[i].country_name);
+                            // if (data.data[i].country_name == 'Australia') {
+                            //     selected = 'selected';
+                            // }
                             html += '<option value="' + data.data[i].country_id + '" ' + selected + '>' + data
                                 .data[i].country_name + '</option>';
                         }
