@@ -698,9 +698,9 @@
                         }
                         if (currrency != '' && currrency != 'null' && currrency != null) {
                             if (currrency.symbol_position == 'left') {
-                                total_price = currrency.code + ' ' + total_price;
+                                total_price = currrency.code + ' ' + total_price.toFixed(2);
                             } else {
-                                total_price = total_price + ' ' + currrency.code;
+                                total_price = total_price.toFixed(2) + ' ' + currrency.code;
                             }
                         }
                         if (data.data.length > 0) {
