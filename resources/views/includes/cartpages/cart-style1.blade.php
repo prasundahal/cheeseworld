@@ -1,4 +1,4 @@
-<div class="container-fuild">
+{{-- <div class="container-fuild">
     <nav aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
@@ -7,7 +7,20 @@
             </ol>
         </div>
     </nav>
-</div>
+</div> --}}
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="m-0 p-0 d-flex align-items-center">
+                    <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span class="mx-2"><i class="fa fa-angle-right"
+                            aria-hidden="true"></i></span>
+                    <li class="">{{ trans('lables.bread-shopping-cart') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="pro-content py-4">
     <div class="container">
         <div class="page-heading-title">

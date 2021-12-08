@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <div class="container-fuild">
+    {{-- <div class="container-fuild">
         <nav aria-label="breadcrumb">
             <div class="container">
                 <ol class="breadcrumb">
@@ -11,10 +11,24 @@
                 </ol>
             </div>
         </nav>
-    </div>
-    <section class="pro-content">
+    </div> --}}
+
+    <section id="breadcrumbs">
         <div class="container">
-            <div class="page-heading-title">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="m-0 p-0 d-flex align-items-center">
+                        <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span class="mx-2"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></span>
+                        <li class="">{{ trans('lables.bread-checkout') }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pro-content mt-2">
+        <div class="container">
+            <div class="page-heading-title text-center">
                 <h2> {{ trans('lables.checkout-checkout') }} </h2>
 
             </div>
