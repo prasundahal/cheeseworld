@@ -37,17 +37,19 @@
 
 <template id="wishlist-product-template">
     <div class="media bg-light p-2">
+        <div class="media-img w-25">
         <img class="img-fluid wishlist-product-img" src="images/wishlist/wishlist-1.png" alt="John Doe">
-        <div class="media-body d-flex align-items-center w-100">
+    </div>
+        <div class="media-body d-flex align-items-center w-75">
             <div class="row w-100 align-items-center">
                 <div class="col-12 col-md-8  texting">
                     <h5 class="m-0"><a href="javascript:void(0)" class="wishlist-product-name"></a></h5>
                     <div class="price wishlist-product-price"></div>
                     <p class="wishlist-product-desc mb-1"></p>
                     <div class="buttons">
-                        <div class="input-group item-quantity">
+                        <div class="input-group item-quantity custom_width">
 
-                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control cartItem-qty">
+                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control text-center cartItem-qty">
     
                             <span class="input-group-btn">
                                 <button type="button" value="quantity" class="quantity-right-plus btn cartItem-qty-1" data-type="plus" data-field="">
@@ -215,6 +217,7 @@
                         }
 
                         clone.querySelector(".cartItem-qty").setAttribute('id', 'quantity' + i);
+                        clone.querySelector(".wishlist-product-btn").setAttribute('data-input', i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-2").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('data-field', i);
@@ -245,7 +248,7 @@
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 'Success') {
-                    toastr.success('{{ trans("wishlist-remove") }}');
+                    toastr.success('Wishlist Item removed successfully');
                     wishListShow();
                     getWishlist();
                 }

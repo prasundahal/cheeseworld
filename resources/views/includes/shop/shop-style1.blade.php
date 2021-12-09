@@ -206,6 +206,10 @@
         </div>
     </div>
     <div class="container">
+        <div class="text-center loader-small">
+            <img src="{{ asset('loader/loader.gif') }}" alt="asdf">
+            
+        </div>
         <div class="pagination justify-content-between ">
 
 

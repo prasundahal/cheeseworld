@@ -1,7 +1,7 @@
 <style>
     .active-menu{
-        background-color: cadetblue !important;
-        color: white !important;
+        background-color: var(--lightblue) !important;
+      
     }
 </style>
 <?php

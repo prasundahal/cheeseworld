@@ -157,6 +157,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth:customer-api', 'scope
     Route::resource('customer_address_book', 'API\Web\CustomerAddressBookController', ['names' => ['index' => 'admin.customer_address_book.index', 'store' => 'admin.customer_address_book.store', 'update' => 'admin.customer_address_book.update', 'destroy' => 'admin.customer_address_book.delete']])->except(['edit', 'create']);
     Route::resource('customer/order', 'API\Admin\OrderController')->only(['index', 'show']);
     Route::resource('profile', 'API\Web\CustomerController')->only(['show', 'update']);
+    Route::put('change-client-password', 'API\Web\CustomerController@changePassword');
     Route::resource('coupon', 'API\Web\CouponController')->except(['edit', 'show', 'create', 'update', 'destroy']);
     Route::post('add_comments', 'API\Web\OrderController@addOrderComments');
 });

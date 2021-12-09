@@ -18,8 +18,8 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="m-0 p-0 d-flex align-items-center">
-                        <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span class="mx-2"><i class="fa fa-angle-right"
-                                aria-hidden="true"></i></span>
+                        <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span
+                            class="mx-2"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                         <li class="">{{ trans('lables.bread-checkout') }}</li>
                     </ul>
                 </div>
@@ -179,9 +179,9 @@
 
                                             <div class="col-12 col-sm-12">
                                                 <div class="row">
-
-                                                    <a data-toggle="pill" href="#pills-billing"
-                                                        class="btn btn-secondary swipe-to-top cta">{{ trans('lables.checkout-continue') }}</a>
+                                                    <a data-toggle="pill" role="tab" aria-controls="pills-billing"
+                                                        href="#pills-billing"
+                                                        class="btn btn-secondary swipe-to-top cta" id="ContinuePillsBilling">{{ trans('lables.checkout-continue') }}</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -294,10 +294,13 @@
 
                                             <div class="col-12 col-sm-12">
                                                 <div class="row">
-                                                    <a data-toggle="pill" href="#pills-shipping"
-                                                        class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
-                                                    <a data-toggle="pill" href="#pills-order"
-                                                        class="btn btn-secondary swipe-to-top cta">{{ trans('lables.checkout-continue') }}</a>
+
+                                                    <a data-toggle="pill"
+                                                        href="#pills-shipping" class="btn btn-secondary swipe-to-top cta mr-2"
+                                                        id="pillShipping">{{ trans('lables.checkout-back') }}</a>
+                                                    <a data-toggle="pill" 
+                                                        href="#pills-order"
+                                                        class="btn btn-secondary swipe-to-top cta" id="ContinuePillsOrder">{{ trans('lables.checkout-continue') }}</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -439,10 +442,10 @@
                                         <div class="col-12 col-sm-12">
                                             <div class="row justify-content-between">
                                                 <a data-toggle="pill" href="#pills-method"
-                                                    class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
+                                                    class="btn btn-secondary swipe-to-top cta" id="BackToBilling">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
                                                     class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
-                                                
+
 
                                             </div>
                                         </div>
@@ -476,9 +479,9 @@
                         </div>
                         <div class="item-attributes"></div>
                         <div class="item-controls">
-                            <button type="button" class="btn">
+                            {{-- <button type="button" class="btn">
                                 <span class="fas fa-pencil-alt"></span>
-                            </button>
+                            </button> --}}
                             <button type="button" class="btn cartItem-remove">
                                 <span class="fas fa-times"></span>
                             </button>
@@ -573,6 +576,41 @@
 
 @endsection
 @section('script')
+    <script>
+        $("#pillShipping").on("click", () => {
+            $("#pills-shipping-tab").addClass('active');
+            $("#pills-shipping").addClass('show active');
+            $("#pills-billing-tab").removeClass('active');
+            $("#pills-billing").removeClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+
+        $("#ContinuePillsBilling").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").addClass('active');
+            $("#pills-billing").addClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+        $("#ContinuePillsOrder").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").removeClass('active');
+            $("#pills-billing").removeClass('show active');
+            $("#pills-order-tab").addClass('active');
+            $("#pills-order").addClass('show active');
+        });
+        $("#BackToBilling").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").addClass('active');
+            $("#pills-billing").addClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+    </script>
     <script>
         languageId = $.trim(localStorage.getItem("languageId"));
         cartSession = $.trim(localStorage.getItem("cartSession"));
@@ -785,7 +823,8 @@
             }
 
             if (loggedIn == '1') {
-                url = "{{ url('') }}" + '/api/client/cart/delete?session_id=' + cartSession + '&product_id=' + product_id +
+                url = "{{ url('') }}" + '/api/client/cart/delete?session_id=' + cartSession + '&product_id=' +
+                    product_id +
                     '&product_combination_id=' + product_combination_id + '&language_id=' + languageId;
             } else {
                 url = "{{ url('') }}" + '/api/client/cart/guest/delete?session_id=' + cartSession + '&product_id=' +
@@ -810,8 +849,9 @@
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                     }
-                    
-                    if($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr").length < 0){
+
+                    if ($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr")
+                        .length < 0) {
                         location.href = '/';
                         toastr.success('No item in cart.');
                     }
@@ -946,8 +986,8 @@
                                 .state_id != '') {
                                 state = data.data[i].state_id.id;
                             }
-                            console.log("state ="+state);
-                            console.log("country ="+country);
+                            console.log("state =" + state);
+                            console.log("country =" + country);
                             countries1();
                             $("#delivery_country_hidden").val(country);
                             $("#delivery_state_hidden").val(state);
@@ -1064,7 +1104,7 @@
                             } else if (data.data[i].country_id == country) {
                                 selected = 'selected';
                             }
-                            
+
                             // if (data.data[i].country_name == 'Australia') {
                             //     selected = 'selected';
                             // }
@@ -1240,6 +1280,19 @@
                 $("#billing_country_hidden").val($("#delivery_country").val());
                 countries();
                 $("#billing_state_hidden").val($("#delivery_state").val());
+            } else {
+                $("#billing_first_name").val('');
+                $("#billing_last_name").val('');
+                $("#billing_street_aadress").val('');
+                $("#billing_city").val('');
+                $("#billing_postcode").val('');
+                $("#billing_phone").val('');
+                $("#billing_country_hidden").val('');
+                $("#billing_state_hidden").val('');
+                $("#billing_country").val('');
+                $("#billing_country").empty().append("<option value=''>Select Country</option>");;
+                $("#billing_state").val('');
+                $("#billing_state").empty().append("<option value=''>Select State</option>");
             }
         });
 
@@ -1337,7 +1390,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                  
+
                     if (data.status == 'Success') {
                         window.location.href = "{{ url('/thankyou') }}";
                     } else if (data.status == 'Error') {
@@ -1347,7 +1400,7 @@
                     }
                 },
                 error: function(data) {
-                   
+
                     if (data.status == 422) {
                         jQuery.each(data.responseJSON.errors, function(index, item) {
                             $("#" + index).parent().find('.invalid-feedback').css('display',

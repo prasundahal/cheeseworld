@@ -7,6 +7,9 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
     ])->get();
     
 ?>
+<div id="busybox" class="fog_div">
+    <div></div>
+</div>
 <section id="footer-wrapper" class="py-4">
     <div class="container">
         <div class="row text-white">

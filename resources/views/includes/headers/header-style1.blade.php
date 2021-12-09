@@ -65,30 +65,6 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         <div class="notice">
                             {{-- <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a> --}}
                                 <div class="notice d-flex  justify-content-center align-items-center">
-                                    <div class="login-wrapper auth-login">
-                                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="welcomeUsername"></span>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
-                                            <a class="dropdown-item userDashboard" href="{{ url('/profile') }}"
-                                                title="Dashboard">Dashboard</a>
-                                            <a class="dropdown-item" href="{{ url('/wishlist') }}"
-                                                title="{{ trans('lables.header-wishlist') }}">{{ trans('lables.header-wishlist') }}</a>
-                                            {{-- <a class="dropdown-item" href="{{ url('/compare') }}"
-                                                title="{{ trans('lables.header-compare') }}">{{ trans('lables.header-compare') }}</a> --}}
-                                            <a class="dropdown-item" href="{{ url('/orders') }}"
-                                                title="{{ trans('lables.header-order') }}">{{ trans('lables.header-order') }}</a>
-                                            <a class="dropdown-item log_out" href="javascript:void(0)"
-                                                title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
-                                        </div>
-                                    </div>
-                                    <div class="login-wrapper without-auth-login">
-                                        <a class="nav-link" href="{{ url('/login') }}">
-                                            {{ trans('lables.header-login-register') }}
-                                        </a>
-                
-                                    </div>
                                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                                         <li>
                                             <a href="{{ url('/wishlist') }}" class="nav-link btn" data-toggle="tooltip"
@@ -132,17 +108,19 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                         </li>
                                         </template>
                                         <template id="top-cart-product-total-template">
-                                            <li class="pb-2">
-                                                <span class="item-summary ">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
-                                                        class="top-cart-product-total"></span>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-link btn-block text-dark"
-                                                    href="{{ url('/cart') }}">{{ trans('lables.header-view-cart') }}</a>
-                                                <a class="btn btn-secondary btn-block swipe-to-top"
-                                                    href="{{ url('/checkout') }}">{{ trans('lables.header-checkout') }}</a>
-                                            </li>
+                                       <div class="cart-popup-wrap-total">
+                                        <div class="text-center py-2">
+                                            <span class="item-summary">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
+                                                    class="top-cart-product-total"></span>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-link btn-block text-dark"
+                                                href="{{ url('/cart') }}"><span class="mr-2"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>{{ trans('lables.header-view-cart') }}</a>
+                                            <a class="btn btn-secondary btn-block swipe-to-top py-2"
+                                                href="{{ url('/checkout') }}">{{ trans('lables.header-checkout') }}</a>
+                                        </div>
+                                       </div>
                                         </template>
                                         <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="headerOneCartButton"
                                             style="position: absolute; transform: translate3d(30px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"
@@ -150,9 +128,37 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                             <ul class="shopping-cart-items top-cart-product-show p-3">
                                                 
                                             </ul>
+                                            <div class="top-cart-product-show1">
+
+                                            </div>
                                         </div>
                                         </li>
                                     </ul>
+                                    <div class="login-wrapper auth-login">
+                                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="welcomeUsername"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                                            <a class="dropdown-item userDashboard" href="{{ url('/profile') }}"
+                                                title="Dashboard">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ url('/wishlist') }}"
+                                                title="{{ trans('lables.header-wishlist') }}">{{ trans('lables.header-wishlist') }}</a>
+                                            {{-- <a class="dropdown-item" href="{{ url('/compare') }}"
+                                                title="{{ trans('lables.header-compare') }}">{{ trans('lables.header-compare') }}</a> --}}
+                                            <a class="dropdown-item" href="{{ url('/orders') }}"
+                                                title="{{ trans('lables.header-order') }}">{{ trans('lables.header-order') }}</a>
+                                            <a class="dropdown-item log_out" href="javascript:void(0)"
+                                                title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="login-wrapper without-auth-login">
+                                        <a class="nav-link" href="{{ url('/login') }}">
+                                            {{ trans('lables.header-login-register') }}
+                                        </a>
+                
+                                    </div>
+                                    {{-- Cart Here --}}
                                 </div>
                           
                         </div>

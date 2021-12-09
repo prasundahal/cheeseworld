@@ -27,12 +27,12 @@
         $(document).ready(function() {
             fetchProduct(1);
             $(".variaion-filter").each(function() {
-              if($(this).val() != ""){
-                attribute_id.push($(this).attr('data-attribute-id'));
-                variation_id.push($(this).val());
-                attribute.push($(this).attr('data-attribute-name'));
-                variation.push($('option:selected', this).attr('data-variation-name'));
-              }
+                if ($(this).val() != "") {
+                    attribute_id.push($(this).attr('data-attribute-id'));
+                    variation_id.push($(this).val());
+                    attribute.push($(this).attr('data-attribute-name'));
+                    variation.push($('option:selected', this).attr('data-variation-name'));
+                }
 
             });
         });
@@ -47,7 +47,7 @@
         function fetchProduct(page) {
             var limit = "{{ isset($_GET['limit']) ? $_GET['limit'] : '12' }}";
             var category = "{{ isset($_GET['category']) ? $_GET['category'] : '' }}";
-             var varations = "{{ isset($_GET['variation_id']) ? $_GET['variation_id'] : '' }}";
+            var varations = "{{ isset($_GET['variation_id']) ? $_GET['variation_id'] : '' }}";
             var price_range = "{{ isset($_GET['price']) ? $_GET['price'] : '' }}";
 
             var url = "{{ url('') }}" + '/api/client/products?page=' + page + '&limit=' + limit +
@@ -55,8 +55,8 @@
 
             if (category != "")
                 url += "&productCategories=" + category;
-             if(varations != "")
-                 url += "&variations="+varations;
+            if (varations != "")
+                url += "&variations=" + varations;
             if (price_range != "") {
                 price_range = price_range.split("-");
                 url += "&price_from=" + price_range[0];
@@ -77,27 +77,36 @@
                     clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
                     clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
                 },
-                beforeSend: function() {},
+                beforeSend: function() {
+                    
+                   $(".loader-small").css('display', 'block');
+                },
                 success: function(data) {
                     if (data.status == 'Success') {
-                        
+
                         if (data.data.length > 0) {
 
-                            
-                            if(data.meta.last_page < page){
-                                $('.load-more-products').attr('disabled',true);
+
+                            if (data.meta.last_page < page) {
+                                console.log("MyError");
+                                $('.load-more-products').attr('disabled', true);
                                 $('.load-more-products').html('No More Items');
-                              return
+
+                                return
                             }
-                            var pagination ='<label for="staticEmail" class="col-form-label">Showing From <span class="showing_record">'+data.meta.to+'</span>&nbsp;of&nbsp;<span class="showing_total_record">'+data.meta.total+'</span>&nbsp;results.</label>';
-                            var nextPage = parseInt(data.meta.current_page)+1;
+                            var pagination =
+                                '<label for="staticEmail" class="col-form-label">Showing From <span class="showing_record">' +
+                                data.meta.to + '</span>&nbsp;of&nbsp;<span class="showing_total_record">' + data
+                                .meta.total + '</span>&nbsp;results.</label>';
+                            var nextPage = parseInt(data.meta.current_page) + 1;
                             pagination += '<div class="col-12 col-sm-6">';
-                            pagination +='<ol class="loader-page mt-0">';
-                            pagination +='<li class="loader-page-item" style="list-style:none">';
-                            pagination +='<button class="load-more-products btn btn-secondary" data-page="'+nextPage+'">Load More</button>';
-                            pagination +='</li>';
-                            pagination +='</ol>';
-                            pagination +='</div>';
+                            pagination += '<ol class="loader-page mt-0">';
+                            pagination += '<li class="loader-page-item" style="list-style:none">';
+                            pagination += '<button class="load-more-products btn btn-secondary" data-page="' +
+                                nextPage + '">Load More</button>';
+                            pagination += '</li>';
+                            pagination += '</ol>';
+                            pagination += '</div>';
 
                             $('.pagination').html(pagination);
                             const templ = document.getElementById("product-card-template");
@@ -169,7 +178,8 @@
                                     //         .product_combination[0].product_price_symbol;
                                     // }
                                     clone.querySelector(".product-card-price").innerHTML = data.data[i]
-                                            .product_price_symbol;
+                                        .product_price_symbol;
+                                    $('.load-more-products').hide();
                                 }
 
                                 if (data.data[i].product_type == 'simple') {
@@ -189,9 +199,13 @@
                             }
                         } else {
                             console.log("false");
-                            $(".shop_page_product_card").html('<div class="col-12 text-center">No Product matches your search</div>');
+                            $(".shop_page_product_card").html(
+                                '<div class="col-12 text-center">No Product matches your search</div>');
                         }
                     }
+                },
+                complete: function(){
+                    $(".loader-small").css('display', 'none');
                 },
                 error: function(data) {},
             });

@@ -17,11 +17,12 @@ use App\Models\Web\Order;
 use App\Services\Web\HomeService;
 use Carbon\Carbon;
 use DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class IndexController extends Controller
@@ -58,7 +59,7 @@ class IndexController extends Controller
     }
     public function Index()
     {
-        
+
         // return ini_get('memory_limit');
         $homeService = new HomeService;
         $data = $homeService->homeIndex();
@@ -138,7 +139,6 @@ class IndexController extends Controller
         return view('login', compact('data', 'setting'));
     }
 
-
     public function forgetPassword()
     {
         $homeService = new HomeService;
@@ -147,21 +147,20 @@ class IndexController extends Controller
         return view('forget-password', compact("data", "setting"));
     }
 
-
     public function postForgetPassword(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             "email" => ["required", "email", "exists:customers"],
-        ],[
+        ], [
             "email.exists" => "Email hasn't been registered",
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(["errors" => $validator->errors()]);
         }
-        if($validator->passes()){
+        if ($validator->passes()) {
             $customer = Customer::where("email", $request->email)->first();
-            if($customer != null){
-                
+            if ($customer != null) {
+
                 $token = Str::random(40);
                 $customerDetail = [
                     'name' => $customer->name,
@@ -169,7 +168,7 @@ class IndexController extends Controller
                     'token' => $token,
                 ];
                 $customer->update(["reset_token" => $token]);
-                Mail::send('email.forgetPassword', ['token' => $token, "email" => $request->email], function($message) use($request){
+                Mail::send('email.forgetPassword', ['token' => $token, "email" => $request->email], function ($message) use ($request) {
                     $message->to($request->email);
                     $message->subject('Reset Password');
                 });
@@ -181,12 +180,12 @@ class IndexController extends Controller
         }
 
     }
-   
+
 // Mail::to($request->email)->send(new ResetPassword($customerDetail));
 
     public function showResetPasswordForm($token)
     {
-        if(Customer::where("reset_token", $token)->exists()){
+        if (Customer::where("reset_token", $token)->exists()) {
             $homeService = new HomeService;
             $data = $homeService->homeIndex();
             $setting = getSetting();
@@ -197,31 +196,29 @@ class IndexController extends Controller
         } else {
             return "<h2 style='color: red;'>The link has been expired or doesn't exist.</h2>";
         }
-        
+
     }
 
     public function updateCustomerPassword(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             "email" => ["required", "email", "exists:customers"],
             "password" => ["required", "min:6", "confirmed"],
             "password_confirmation" => ["required"],
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(["errors" => $validator->errors()]);
         }
-        if($validator->passes()){
-           $customer = Customer::where("email", $request->email)->first();
-           if($customer != null){
-               $customer->update(["password" => Hash::make($request->password), "reset_token" => null]);
-               return response(["msg" => "Password Reset Successfully", "redirectRoute"=>url('/login')]);
-           } else {
-               return response()->json(['error_msg' => "Something went wrong"]);
-           }
+        if ($validator->passes()) {
+            $customer = Customer::where("email", $request->email)->first();
+            if ($customer != null) {
+                $customer->update(["password" => Hash::make($request->password), "reset_token" => null]);
+                return response(["msg" => "Password Reset Successfully", "redirectRoute" => url('/login')]);
+            } else {
+                return response()->json(['error_msg' => "Something went wrong"]);
+            }
         }
     }
-
-    
 
     public function blogDetail($slug)
     {
@@ -411,26 +408,25 @@ class IndexController extends Controller
         ];
     }
 
-
     /* public function query()
-    {
-        $vendorId = \Auth::user()->vendor_id;
-        return Earning::with('user', 'vendor')->when($this->type == "vendors", function ($query) {
-            return $query->whereNotNull('vendor_id')->when(\Auth::user()->hasAnyRole('city-admin'), function ($query) {
-                return $query->whereHas("vendor", function ($query) {
-                    return $query->where('creator_id', Auth::id());
-                });
-            });
-        }, function ($query) use ($vendorId) {
-            return $query->whereNotNull('user_id')->when($vendorId, function ($query) use ($vendorId) {
-                return $query->whereHas("user", function ($q) use ($vendorId) {
-                    return $q->where('vendor_id', $vendorId);
-                });
-            })->when(\Auth::user()->hasAnyRole('city-admin'), function ($query) {
-                return $query->whereHas("user", function ($query) {
-                    return $query->where('creator_id', Auth::id());
-                });
-            });
-        })->where("amount",">", 0);
-    } */
+{
+$vendorId = \Auth::user()->vendor_id;
+return Earning::with('user', 'vendor')->when($this->type == "vendors", function ($query) {
+return $query->whereNotNull('vendor_id')->when(\Auth::user()->hasAnyRole('city-admin'), function ($query) {
+return $query->whereHas("vendor", function ($query) {
+return $query->where('creator_id', Auth::id());
+});
+});
+}, function ($query) use ($vendorId) {
+return $query->whereNotNull('user_id')->when($vendorId, function ($query) use ($vendorId) {
+return $query->whereHas("user", function ($q) use ($vendorId) {
+return $q->where('vendor_id', $vendorId);
+});
+})->when(\Auth::user()->hasAnyRole('city-admin'), function ($query) {
+return $query->whereHas("user", function ($query) {
+return $query->where('creator_id', Auth::id());
+});
+});
+})->where("amount",">", 0);
+} */
 }
