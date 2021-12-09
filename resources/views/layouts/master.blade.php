@@ -41,10 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-<<<<<<< HEAD
 
-=======
->>>>>>> 70c18f03ea35c57237476fa88bad357290662b71
 
     <style>
         /* #busybox {

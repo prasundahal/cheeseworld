@@ -1,5 +1,5 @@
-<div class="container-fuild">
-    <nav aria-label="breadcrumb">
+{{-- <div class="container-fuild"> --}}
+    {{-- <nav aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
@@ -7,7 +7,20 @@
             </ol>
         </div>
     </nav>
-</div>
+</div> --}}
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="m-0 p-0 d-flex align-items-center">
+                    <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span
+                        class="mx-2"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    <li class="">{{ trans('lables.bread-login') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- login Content -->
 <section class="page-area pro-content">
