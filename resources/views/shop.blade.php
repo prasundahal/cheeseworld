@@ -77,7 +77,10 @@
                     clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
                     clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
                 },
-                beforeSend: function() {},
+                beforeSend: function() {
+                    
+                   $("#loading").css('display', 'block');
+                },
                 success: function(data) {
                     if (data.status == 'Success') {
 
@@ -200,6 +203,9 @@
                                 '<div class="col-12 text-center">No Product matches your search</div>');
                         }
                     }
+                },
+                complete: function(){
+                    $("#loading").css('display', 'none');
                 },
                 error: function(data) {},
             });

@@ -18,8 +18,8 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="m-0 p-0 d-flex align-items-center">
-                        <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span class="mx-2"><i class="fa fa-angle-right"
-                                aria-hidden="true"></i></span>
+                        <li class="font-weight-bold">{{ trans('lables.bread-crumb-home') }}</li><span
+                            class="mx-2"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                         <li class="">{{ trans('lables.bread-checkout') }}</li>
                     </ul>
                 </div>
@@ -442,7 +442,7 @@
                                                     class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
                                                     class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
-                                                
+
 
                                             </div>
                                         </div>
@@ -476,9 +476,9 @@
                         </div>
                         <div class="item-attributes"></div>
                         <div class="item-controls">
-                            <button type="button" class="btn">
+                            {{-- <button type="button" class="btn">
                                 <span class="fas fa-pencil-alt"></span>
-                            </button>
+                            </button> --}}
                             <button type="button" class="btn cartItem-remove">
                                 <span class="fas fa-times"></span>
                             </button>
@@ -785,7 +785,8 @@
             }
 
             if (loggedIn == '1') {
-                url = "{{ url('') }}" + '/api/client/cart/delete?session_id=' + cartSession + '&product_id=' + product_id +
+                url = "{{ url('') }}" + '/api/client/cart/delete?session_id=' + cartSession + '&product_id=' +
+                    product_id +
                     '&product_combination_id=' + product_combination_id + '&language_id=' + languageId;
             } else {
                 url = "{{ url('') }}" + '/api/client/cart/guest/delete?session_id=' + cartSession + '&product_id=' +
@@ -810,8 +811,9 @@
                     } else {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                     }
-                    
-                    if($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr").length < 0){
+
+                    if ($("#cartItem-product-show tbody tr").length == 0 || $("#cartItem-product-show tbody tr")
+                        .length < 0) {
                         location.href = '/';
                         toastr.success('No item in cart.');
                     }
@@ -946,8 +948,8 @@
                                 .state_id != '') {
                                 state = data.data[i].state_id.id;
                             }
-                            console.log("state ="+state);
-                            console.log("country ="+country);
+                            console.log("state =" + state);
+                            console.log("country =" + country);
                             countries1();
                             $("#delivery_country_hidden").val(country);
                             $("#delivery_state_hidden").val(state);
@@ -1064,7 +1066,7 @@
                             } else if (data.data[i].country_id == country) {
                                 selected = 'selected';
                             }
-                            
+
                             // if (data.data[i].country_name == 'Australia') {
                             //     selected = 'selected';
                             // }
@@ -1337,7 +1339,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                  
+
                     if (data.status == 'Success') {
                         window.location.href = "{{ url('/thankyou') }}";
                     } else if (data.status == 'Error') {
@@ -1347,7 +1349,7 @@
                     }
                 },
                 error: function(data) {
-                   
+
                     if (data.status == 422) {
                         jQuery.each(data.responseJSON.errors, function(index, item) {
                             $("#" + index).parent().find('.invalid-feedback').css('display',

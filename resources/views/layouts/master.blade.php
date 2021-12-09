@@ -41,11 +41,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-    
 
+    <style>
+        /* #busybox {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .8) url('{{ asset('loader/loader.gif') }}') no-repeat 50%
+        } */
+
+        /* .fog_div {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(30, 30, 30, 0.5);
+        } */
+
+        /* #busybox.show {
+            display: block;
+        } */
+
+    </style>
 </head>
 
-<body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
+<body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} " onload="myFunction();">
+    <div id="loading" style="background: #fff url('{{ asset('loader/loader.gif') }}') no-repeat center;"></div>
     {{-- {{   dd(getSetting()) }} --}}
     {{-- @include('extras.preloader') --}}
     {{-- @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
@@ -87,7 +115,7 @@
 
     @yield('content')
 
-
+    
     @include(isset(getSetting()['Footer_style']) ? 'includes.footers.footer-'.getSetting()['Footer_style'] :
     'includes.footers.footer-style1')
 
@@ -144,64 +172,64 @@
 
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
-                            customerFname = $.trim(localStorage.getItem("customerFname"));
-                            customerLname = $.trim(localStorage.getItem("customerLname"));
-                            if (loggedIn != '1') {
-                                $(".auth-login").remove();
-                            } else {
-                                $(".without-auth-login").remove();
-                                $(".welcomeUsername").html(customerFname + " " + customerLname);
-                            }
+                                    customerFname = $.trim(localStorage.getItem("customerFname"));
+                                    customerLname = $.trim(localStorage.getItem("customerLname"));
+                                    if (loggedIn != '1') {
+                                        $(".auth-login").remove();
+                                    } else {
+                                        $(".without-auth-login").remove();
+                                        $(".welcomeUsername").html(customerFname + " " + customerLname);
+                                    }
 
-                            customerToken = $.trim(localStorage.getItem("customerToken"));
-
-
-                            languageId = localStorage.getItem("languageId");
-                            languageName = localStorage.getItem("languageName");
-
-                            if (languageName == null || languageName == 'null') {
-                                localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
-                                localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
-                                $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
-                                languageId = $.trim("{{ $data['selectedLenguage'] }}");
-                            } else {
-                                $(".language-default-name").html(localStorage.getItem("languageName"));
-                                $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                            }
-
-                            currency = localStorage.getItem("currency");
-                            currencyCode = localStorage.getItem("currencyCode");
-                            if (currencyCode == null || currencyCode == 'null') {
-                                localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
-                                localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
-                                $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
-                                currency = 1;
-                            } else {
-                                $("#selected-currency").html(localStorage.getItem("currencyCode"));
-                                $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                            }
+                                    customerToken = $.trim(localStorage.getItem("customerToken"));
 
 
-                            cartSession = $.trim(localStorage.getItem("cartSession"));
-                            if (cartSession == null || cartSession == 'null') {
-                                cartSession = '';
-                            }
-                            $(document).ready(function() {
+                                    languageId = localStorage.getItem("languageId");
+                                    languageName = localStorage.getItem("languageName");
 
-                                if (loggedIn != '1') {
-                                    localStorage.setItem("cartSession", cartSession);
-                                    menuCart(cartSession);
-                                } else {
-                                    menuCart('');
-                                }
+                                    if (languageName == null || languageName == 'null') {
+                                        localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
+                                        localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
+                                        $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
+                                        languageId = $.trim("{{ $data['selectedLenguage'] }}");
+                                    } else {
+                                        $(".language-default-name").html(localStorage.getItem("languageName"));
+                                        $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                                    }
 
-                                getWishlist();
+                                    currency = localStorage.getItem("currency");
+                                    currencyCode = localStorage.getItem("currencyCode");
+                                    if (currencyCode == null || currencyCode == 'null') {
+                                        localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
+                                        localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
+                                        $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
+                                        currency = 1;
+                                    } else {
+                                        $("#selected-currency").html(localStorage.getItem("currencyCode"));
+                                        $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                                    }
+
+
+                                    cartSession = $.trim(localStorage.getItem("cartSession"));
+                                    if (cartSession == null || cartSession == 'null') {
+                                        cartSession = '';
+                                    }
+                                    $(document).ready(function() {
+
+                                        if (loggedIn != '1') {
+                                            localStorage.setItem("cartSession", cartSession);
+                                            menuCart(cartSession);
+                                        } else {
+                                            menuCart('');
+                                        }
+
+                                        getWishlist();
 
 
 
-                            });
+                                    });
 
-                             */
+                                     */
     </script>
     <script>
         toastr.options = {

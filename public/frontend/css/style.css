@@ -1161,3 +1161,13 @@
                                                                     }
 
                                                                     /* Popup Nav Wishlist and Cart Ends*/
+
+                                                                    #loading {
+                                                                        position: fixed;
+                                                                        width: 100%;
+                                                                        height: 100vh;
+                                                                        
+                                                                        z-index: 99999;
+                                                                    }
+
+                                                                    

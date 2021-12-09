@@ -29,3 +29,25 @@ $('#slick-carousel').slick({
 
 });
 // Slick Slider Ends
+
+
+// loader
+// $(document).ready(function(){
+//  $('div#loading').removeAttr('id');
+// });
+var preloader = document.getElementById("loading");
+// window.addEventListener('load', function(){
+//  preloader.style.display = 'none';
+//  })
+function myFunction() {
+    // preloader.style.display = 'none';
+    $("#loading").css('display', 'none');
+};
+
+function busySign() {
+        $('#busybox').css('display', 'block');
+    }
+
+function hideBusySign() {
+        $('#busybox').css('display', 'none');
+}
