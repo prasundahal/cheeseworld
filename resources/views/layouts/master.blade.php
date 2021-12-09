@@ -42,7 +42,6 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
-
     <style>
         /* #busybox {
             position: absolute;
@@ -104,60 +103,8 @@
                 </button>
                 <div class="modal-body text-center">
                     <form>
-                        <style>
-                            #searchBox .content:hover {
-                                background-color: #000c27c9;
-                                color: #fff;
-                                text-decoration: none;
-                                font-size: 20px;
-                            }
-
-                            #searchBox .content {
-                                color: #000;
-                                text-decoration: none;
-                                font-size: 20px;
-                            }
-                            .searchbox-wrapper {
-                                background-color: white;
-                                box-shadow: 0 16px 24px rgb(96 97 112 / 10%), 0 32px 48px rgb(0 0 0 / 15%);
-                                max-height: 400px;
-                                min-height: auto;
-                                overflow: hidden;
-                                cursor: pointer;
-                                overflow-y:scroll;
-                            }
-
-                            ::-webkit-scrollbar {
-                            width: 10px;
-                            }
-
-                            /* Track */
-                            ::-webkit-scrollbar-track {
-                            background: #f1f1f1; 
-                            }
-                            
-                            /* Handle */
-                            ::-webkit-scrollbar-thumb {
-                            background: #888; 
-                            }
-
-                            /* Handle on hover */
-                            ::-webkit-scrollbar-thumb:hover {
-                            background: #555; 
-                            }
-
-                            .img-thumbnail {
-                                padding: 0px;
-                                border: 0 !important;
-                                height: 100px;
-                            }
-                        </style>
                         <input type="search" id="search-input" placeholder="Search anything you like"
-                            class="w-75" autocomplete="off">
-                        <div class="w-75 m-auto searchbox-wrapper">
-                            <div class="searchBox" id="searchBox"> 
-                            </div>
-                        </div>
+                            class="w-75">
                         <button id="search_button" class="d-none">Search</button>
                     </form>
                 </div>
@@ -313,6 +260,7 @@
         }
 
         customerToken = $.trim(localStorage.getItem("customerToken"));
+
 
         languageId = localStorage.getItem("languageId");
         languageName = localStorage.getItem("languageName");
@@ -616,7 +564,7 @@
                 qty = $.trim($("#quantity-input").val());
             }else{
                 qty = $.trim($("#quantity"+product_input).val());
-                // console.log('asdf');
+                console.log('asdf');
             }
             // qty = $.trim($("#quantity-input").val());
             console.log(qty);
@@ -1212,58 +1160,6 @@
                 error: function(data) {},
             });
         }
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $(document).on('keyup', '#search-input', function() {
-                var name = $(this).val();
-                if (name.length > 0) {
-                    $.ajax({
-                        url: '{{ route('search-product') }}',
-                        dataType: 'json',
-                        method: 'get',
-                        data: {
-                            name: name
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            if (response.length > 0) {
-                                $('#searchBox').html('');
-                                var results = '';
-                                $.each(response, function(i, e) {
-                                    results += '<a href="/product/' + e.id + '/' + e.product_slug + '" class="w-100 d-block content p-1">' +
-                                        '<div class="d-flex align-items-center">' +
-                                            '<div class="w-25">' +
-                                                '<img src="{{ asset("/gallary") }}/' + e.gallary_name + '" class="img-thumbnail">' +
-                                            '</div>' +
-                                            '<div class="w-75 title h-100 text-left">' +
-                                                e.title +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</a>';
-                                });
-                                $('#searchBox').html(results);
-                                $('#searchBox').prop('hidden', false);
-                                // if (e.key === "Escape") {
-                                //     $('#searchBox').prop('hidden', true);
-                                // }
-                            } else {
-                                $('#searchBox').html('');
-                                $('#searchBox').prop('hidden', true);
-                            }
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
-                } else {
-                    $('#searchBox').html('');
-                    $('#searchBox').prop('hidden', true);
-                }
-
-            })
-        })
     </script>
 
     {{-- <script>
