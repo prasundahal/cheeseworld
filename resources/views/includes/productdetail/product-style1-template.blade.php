@@ -172,7 +172,7 @@ $newgalleries = array_chunk($galleries, 4, true);
                     </div> --}}
                 </div>
                 <div class="pro-counter mt-2">
-                    <div class="input-group item-quantity">
+                    <div class="input-group custom_width item-quantity">
 
                         <input type="text" id="quantity-input" name="quantity" class="form-control" value="1">
 

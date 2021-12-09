@@ -296,7 +296,7 @@
                                                 <div class="row">
 
                                                     <a data-toggle="pill"
-                                                        href="#pills-shipping" class="btn btn-light swipe-to-top cta"
+                                                        href="#pills-shipping" class="btn btn-secondary swipe-to-top cta mr-2"
                                                         id="pillShipping">{{ trans('lables.checkout-back') }}</a>
                                                     <a data-toggle="pill" 
                                                         href="#pills-order"
@@ -442,7 +442,7 @@
                                         <div class="col-12 col-sm-12">
                                             <div class="row justify-content-between">
                                                 <a data-toggle="pill" href="#pills-method"
-                                                    class="btn btn-light swipe-to-top cta" id="BackToBilling">{{ trans('lables.checkout-back') }}</a>
+                                                    class="btn btn-secondary swipe-to-top cta" id="BackToBilling">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
                                                     class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
 
@@ -1280,6 +1280,19 @@
                 $("#billing_country_hidden").val($("#delivery_country").val());
                 countries();
                 $("#billing_state_hidden").val($("#delivery_state").val());
+            } else {
+                $("#billing_first_name").val('');
+                $("#billing_last_name").val('');
+                $("#billing_street_aadress").val('');
+                $("#billing_city").val('');
+                $("#billing_postcode").val('');
+                $("#billing_phone").val('');
+                $("#billing_country_hidden").val('');
+                $("#billing_state_hidden").val('');
+                $("#billing_country").val('');
+                $("#billing_country").empty().append("<option value=''>Select Country</option>");;
+                $("#billing_state").val('');
+                $("#billing_state").empty().append("<option value=''>Select State</option>");
             }
         });
 

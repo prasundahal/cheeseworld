@@ -111,17 +111,19 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                         </li>
                                         </template>
                                         <template id="top-cart-product-total-template">
-                                            <li class="pb-2">
-                                                <span class="item-summary ">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
-                                                        class="top-cart-product-total"></span>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <a class="btn btn-link btn-block text-dark"
-                                                    href="{{ url('/cart') }}">{{ trans('lables.header-view-cart') }}</a>
-                                                <a class="btn btn-secondary btn-block swipe-to-top"
-                                                    href="{{ url('/checkout') }}">{{ trans('lables.header-checkout') }}</a>
-                                            </li>
+                                       <div class="cart-popup-wrap-total">
+                                        <div class="text-center py-2">
+                                            <span class="item-summary">{{ trans('lables.header-total') }}&nbsp;:&nbsp;<span
+                                                    class="top-cart-product-total"></span>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-link btn-block text-dark"
+                                                href="{{ url('/cart') }}"><span class="mr-2"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>{{ trans('lables.header-view-cart') }}</a>
+                                            <a class="btn btn-secondary btn-block swipe-to-top py-2"
+                                                href="{{ url('/checkout') }}">{{ trans('lables.header-checkout') }}</a>
+                                        </div>
+                                       </div>
                                         </template>
                                         <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="headerOneCartButton"
                                             style="position: absolute; transform: translate3d(30px, 39px, 0px); top: 0px; left: 0px; will-change: transform;"
@@ -129,6 +131,9 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                             <ul class="shopping-cart-items top-cart-product-show p-3">
                                                 
                                             </ul>
+                                            <div class="top-cart-product-show1">
+
+                                            </div>
                                         </div>
                                         </li>
                                     </ul>
@@ -185,7 +190,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                         <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
                                     </span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="mynav dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="container d-block">
                                         <div class="row">
                                             @foreach ($categories as $key => $category)

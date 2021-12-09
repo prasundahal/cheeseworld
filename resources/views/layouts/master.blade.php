@@ -735,7 +735,7 @@
                             const temp1 = document.getElementById("top-cart-product-total-template");
                             const clone1 = temp1.content.cloneNode(true);
                             clone1.querySelector(".top-cart-product-total").innerHTML = total_price;
-                            $(".top-cart-product-show").append(clone1);
+                            $(".top-cart-product-show1").append(clone1);
                             $(".total-menu-cart-product-count").css({
                                 "padding-top": "1px",
                                 "padding-right": "5px",

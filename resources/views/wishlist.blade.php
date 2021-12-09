@@ -45,9 +45,9 @@
                     <div class="price wishlist-product-price"></div>
                     <p class="wishlist-product-desc mb-1"></p>
                     <div class="buttons">
-                        <div class="input-group item-quantity">
+                        <div class="input-group item-quantity custom_width">
 
-                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control cartItem-qty">
+                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control text-center cartItem-qty">
     
                             <span class="input-group-btn">
                                 <button type="button" value="quantity" class="quantity-right-plus btn cartItem-qty-1" data-type="plus" data-field="">

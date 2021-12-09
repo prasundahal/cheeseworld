@@ -143,17 +143,17 @@
                                 </li>
                                 </template>
                                 <template id="top-cart-product-total-template">
-                                    <li>
+                                    {{-- <div>
                                         <span class="item-summary ">Total&nbsp;:&nbsp;<span
                                                 class="top-cart-product-total"></span>
                                         </span>
-                                    </li>
-                                    <li>
+                                    </div>
+                                    <div>
                                         <a class="btn btn-link btn-block text-dark"
                                             href="http://127.0.0.1:8000/cart">View Cart</a>
                                         <a class="btn btn-secondary btn-block  swipe-to-top"
                                             href="http://127.0.0.1:8000/checkout">Checkout</a>
-                                    </li>
+                                    </div> --}}
                                 </template>
                                 <div class="dropdown-menu dropdown-menu-right p-0 show"
                                     aria-labelledby="headerOneCartButton"
@@ -210,7 +210,7 @@
 
                                             </div>
                                         </li>
-                                        <li class="pb-2">
+                                        {{-- <li class="pb-2">
                                             <span class="item-summary ">Total&nbsp;:&nbsp;<span class="top-cart-product-total">Rs 84.48</span>
                                             </span>
                                         </li>
@@ -219,7 +219,7 @@
                                                 href="http://127.0.0.1:8000/cart">View Cart</a>
                                             <a class="btn btn-secondary btn-block  swipe-to-top"
                                                 href="http://127.0.0.1:8000/checkout">Checkout</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                                 </li>

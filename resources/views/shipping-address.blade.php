@@ -322,6 +322,7 @@
                 if (data.status == 'Success') {
                     toastr.success('{{ trans("shipping-add-successfully") }}')
                     getCustomerAdress();
+                    $("#shippingAddressForm")[0].reset();
                 } else if (data.status == 'Error') {
                     toastr.error('{{ trans("response.some_thing_went_wrong") }}');
                 }

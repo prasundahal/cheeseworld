@@ -155,14 +155,14 @@
             </li>
             </template>
             <template id="top-cart-product-total-template">
-              <li>
+              <div>
                 <span class="item-summary ">{{  trans("lables.header-total") }}&nbsp;:&nbsp;<span class="top-cart-product-total"></span>
                 </span>
-              </li>
-              <li>
+              </div>
+              <div>
                 <a class="btn btn-link btn-block " href="{{url('/cart')}}">{{  trans("lables.header-view-cart") }}</a>
                 <a class="btn btn-secondary btn-block  swipe-to-top" href="{{url('/checkout')}}">{{  trans("lables.header-checkout") }}</a>
-              </li>
+              </div>
             </template>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="headerOneCartButton">
               <ul class="shopping-cart-items top-cart-product-show">
