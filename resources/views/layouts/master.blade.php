@@ -548,9 +548,9 @@
 
 
         function addToCart(input) {
-            // console.log(input);
             product_type = $.trim($(input).attr('data-type'));
             product_id = $.trim($(input).attr('data-id'));
+            product_input = $.trim($(input).attr('data-input'));
             product_combination_id = '';
             if (product_type == 'variable') {
                 if ($.trim($("#product_combination_id").val()) == '' || $.trim($("#product_combination_id").val()) ==
@@ -560,8 +560,14 @@
                 }
                 product_combination_id = $("#product_combination_id").val();
             }
-
-            qty = $.trim($("#quantity-input").val());
+            if ($("#quantity-input").length) {
+                qty = $.trim($("#quantity-input").val());
+            }else{
+                qty = $.trim($("#quantity"+product_input).val());
+                // console.log('asdf');
+            }
+            // qty = $.trim($("#quantity-input").val());
+            console.log(qty);
             if (qty == '' || qty == 'undefined' || qty == null) {
                 qty = 1;
             }

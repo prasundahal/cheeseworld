@@ -217,6 +217,7 @@
                         }
 
                         clone.querySelector(".cartItem-qty").setAttribute('id', 'quantity' + i);
+                        clone.querySelector(".wishlist-product-btn").setAttribute('data-input', i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-2").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('data-field', i);
