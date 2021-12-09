@@ -79,7 +79,7 @@
                 },
                 beforeSend: function() {
                     
-                   $("#loading").css('display', 'block');
+                   $(".loader-small").css('display', 'block');
                 },
                 success: function(data) {
                     if (data.status == 'Success') {
@@ -205,7 +205,7 @@
                     }
                 },
                 complete: function(){
-                    $("#loading").css('display', 'none');
+                    $(".loader-small").css('display', 'none');
                 },
                 error: function(data) {},
             });

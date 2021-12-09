@@ -415,7 +415,7 @@
                 success: function(data) {
                     if (data.status == 'Success') {
                         $(".wishlist-count").html(data.data.length);
-                        toastr.success('{{ trans('wishlist-add-success') }}')
+                        toastr.success('{{ trans("Item added successfully in wishlist") }}')
                     }
                 },
                 error: function(data) {},
@@ -735,7 +735,7 @@
                             const temp1 = document.getElementById("top-cart-product-total-template");
                             const clone1 = temp1.content.cloneNode(true);
                             clone1.querySelector(".top-cart-product-total").innerHTML = total_price;
-                            $(".top-cart-product-show1").append(clone1);
+                            $(".top-cart-product-show1").html(clone1);
                             $(".total-menu-cart-product-count").css({
                                 "padding-top": "1px",
                                 "padding-right": "5px",

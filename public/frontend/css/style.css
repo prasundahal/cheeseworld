@@ -1089,7 +1089,7 @@
                                                                     }
 
                                                                     .wishlist-content .list-group .list-group-item:hover{
-                                                                        background-color: var(--red);
+                                                                        background-color: var(--gray);
                                                                         color: white;
                                                                     }
                                                                     .wishlist-content .list-group .list-group-item:hover a{
@@ -1111,7 +1111,8 @@
                                                                         min-height: 150px;
                                                                         max-height: 150px;
                                                                         object-position: center;
-                                                                        object-fit: cover;
+                                                                        object-fit: contain;
+                                                                        width: 100%;
                                                                     }
 
                                                                     .wishlist-content .media-body {
@@ -1174,6 +1175,9 @@
                                                                         height: 100vh;
 
                                                                         z-index: 99999;
+                                                                    }
+                                                                    .loader-small   {
+                                                                      
                                                                     }
 
                                                                     ::-webkit-scrollbar {
@@ -1241,4 +1245,8 @@
                                                                     }
                                                                     .nav-pills .nav-link {
                                                                         border-radius: 0 !important;
+                                                                    }
+
+                                                                    a{
+                                                                        text-decoration: none !important;
                                                                     }

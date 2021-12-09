@@ -37,8 +37,10 @@
 
 <template id="wishlist-product-template">
     <div class="media bg-light p-2">
+        <div class="media-img w-25">
         <img class="img-fluid wishlist-product-img" src="images/wishlist/wishlist-1.png" alt="John Doe">
-        <div class="media-body d-flex align-items-center w-100">
+    </div>
+        <div class="media-body d-flex align-items-center w-75">
             <div class="row w-100 align-items-center">
                 <div class="col-12 col-md-8  texting">
                     <h5 class="m-0"><a href="javascript:void(0)" class="wishlist-product-name"></a></h5>
@@ -245,7 +247,7 @@
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 'Success') {
-                    toastr.success('{{ trans("wishlist-remove") }}');
+                    toastr.success('Wishlist Item removed successfully');
                     wishListShow();
                     getWishlist();
                 }
