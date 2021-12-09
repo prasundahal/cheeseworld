@@ -179,9 +179,9 @@
 
                                             <div class="col-12 col-sm-12">
                                                 <div class="row">
-
-                                                    <a data-toggle="pill" href="#pills-billing"
-                                                        class="btn btn-secondary swipe-to-top cta">{{ trans('lables.checkout-continue') }}</a>
+                                                    <a data-toggle="pill" role="tab" aria-controls="pills-billing"
+                                                        href="#pills-billing"
+                                                        class="btn btn-secondary swipe-to-top cta" id="ContinuePillsBilling">{{ trans('lables.checkout-continue') }}</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -294,10 +294,13 @@
 
                                             <div class="col-12 col-sm-12">
                                                 <div class="row">
-                                                    <a data-toggle="pill" href="#pills-shipping"
-                                                        class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
-                                                    <a data-toggle="pill" href="#pills-order"
-                                                        class="btn btn-secondary swipe-to-top cta">{{ trans('lables.checkout-continue') }}</a>
+
+                                                    <a data-toggle="pill"
+                                                        href="#pills-shipping" class="btn btn-light swipe-to-top cta"
+                                                        id="pillShipping">{{ trans('lables.checkout-back') }}</a>
+                                                    <a data-toggle="pill" 
+                                                        href="#pills-order"
+                                                        class="btn btn-secondary swipe-to-top cta" id="ContinuePillsOrder">{{ trans('lables.checkout-continue') }}</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -439,7 +442,7 @@
                                         <div class="col-12 col-sm-12">
                                             <div class="row justify-content-between">
                                                 <a data-toggle="pill" href="#pills-method"
-                                                    class="btn btn-light swipe-to-top cta">{{ trans('lables.checkout-back') }}</a>
+                                                    class="btn btn-light swipe-to-top cta" id="BackToBilling">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
                                                     class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
 
@@ -573,6 +576,41 @@
 
 @endsection
 @section('script')
+    <script>
+        $("#pillShipping").on("click", () => {
+            $("#pills-shipping-tab").addClass('active');
+            $("#pills-shipping").addClass('show active');
+            $("#pills-billing-tab").removeClass('active');
+            $("#pills-billing").removeClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+
+        $("#ContinuePillsBilling").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").addClass('active');
+            $("#pills-billing").addClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+        $("#ContinuePillsOrder").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").removeClass('active');
+            $("#pills-billing").removeClass('show active');
+            $("#pills-order-tab").addClass('active');
+            $("#pills-order").addClass('show active');
+        });
+        $("#BackToBilling").on("click", function(){
+            $("#pills-shipping-tab").removeClass('active');
+            $("#pills-shipping").removeClass('show active');
+            $("#pills-billing-tab").addClass('active');
+            $("#pills-billing").addClass('show active');
+            $("#pills-order-tab").removeClass('active');
+            $("#pills-order").removeClass('show active');
+        });
+    </script>
     <script>
         languageId = $.trim(localStorage.getItem("languageId"));
         cartSession = $.trim(localStorage.getItem("cartSession"));
