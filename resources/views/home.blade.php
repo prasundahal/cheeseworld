@@ -337,20 +337,20 @@
         }); */
         $(document).ready(function() {
 
-            $("#navbarDropdown")
-                .focusout(function() {
-                    scroll = $(window).scrollTop();
-                    $('.mynav').toggle();
-                    if (scroll > 150) {
+            // $("#navbarDropdown")
+            //     .focusout(function() {
+            //         scroll = $(window).scrollTop();
+            //         $('.mynav').toggle();
+            //         if (scroll > 150) {
 
-                        $(".navigation-wrap").css("background", "white");
-                        $(".nav-link").css("color", "black");
-                    } else {
-                        $(".navigation-wrap").css("background", "transparent");
-                        $(".nav-link").css("color", "white");
-                    }
+            //             $(".navigation-wrap").css("background", "white");
+            //             $(".nav-link").css("color", "black");
+            //         } else {
+            //             $(".navigation-wrap").css("background", "transparent");
+            //             $(".nav-link").css("color", "white");
+            //         }
 
-                });
+            //     });
 
 
             $('#navbarDropdown').click(function(e) {
