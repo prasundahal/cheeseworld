@@ -24,6 +24,7 @@ Route::get('/login', function () {
     return response()->json(['status' => 'Error', 'message' => 'Unauthorized, please login to get access to specfied route!'], 401);
 })->name('login');
 
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:user-api', 'scopes:user']], function () {
 
     Route::post('/token-validate', 'API\Admin\AuthController@tokenValidate');

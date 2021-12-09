@@ -53,6 +53,8 @@ Route::group(['middleware' => ['general']], function () {
     Route::get('/', 'Web\IndexController@index');
 
     Route::get('/product/{id}/{slug}', 'Web\IndexController@productDetail');
+    Route::get('search/product', 'Web\IndexController@searchProduct')->name('search-product');
+    Route::get('/getProduct', 'Web\IndexController@getProduct');
     Route::get('/shop', 'Web\IndexController@shop');
     Route::get('/cart', 'Web\IndexController@cartPage');
     Route::get('/blog-detail/{slug}', 'Web\IndexController@blogDetail');

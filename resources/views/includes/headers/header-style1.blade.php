@@ -6,7 +6,6 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     ->with('my_products')
     ->take(12)
     ->get();
-
 ?>
 
 <style>
@@ -58,15 +57,13 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     <div class="col-xl-4 col-md-4 col-8 m-auto">
                         <a href="{{ url('/') }}">
                             <div class="logo text-center">
-                                <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}"
-                                    class="img-fluid">
+                                <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}" class="img-fluid">
                             </div>
                         </a>
                     </div>
                     <div class="col-4 m-auto d-md-block d-none">
                         <div class="notice">
                             {{-- <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a> --}}
-                          
                                 <div class="notice d-flex  justify-content-center align-items-center">
                                     <div class="login-wrapper auth-login">
                                         <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
@@ -94,7 +91,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                     </div>
                                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                                         <li>
-                                            <a href="{{ url('/wishlist') }}" class="btn" data-toggle="tooltip"
+                                            <a href="{{ url('/wishlist') }}" class="nav-link btn" data-toggle="tooltip"
                                                 data-placement="bottom" title="Wishlist">
                                                 <i class="far fa-heart" aria-hidden="true"></i>
                                                 <sup class="badge-secondary wishlist-count rounded"></sup>
@@ -102,7 +99,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                             </a>
                                         </li>
                                         <li class="show">
-                                            <div class="btn" type="button" id="headerOneCartButton" data-toggle="dropdown"
+                                            <div class="btn nav-link" type="button" id="headerOneCartButton" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <div class="cart-left">
                                                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
@@ -163,8 +160,8 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                 </div>
             </div>
 
-            <div class="navbar-nav-wrapper col-12 py-2">
-                <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="navbar-nav-wrapper col-12">
+                <nav class="navbar navbar-expand-lg navbar-light py-0">
                     <button type="button" class="btn navbar-btn border-0" data-toggle="modal"
                         data-target="#sidebarmodal">
 
@@ -173,7 +170,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                         <div></div>
                     </button>
 
-                    <div class="collapse navbar-collapse mt-3" id="togglernavbar">
+                    <div class="collapse navbar-collapse" id="togglernavbar">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle1 font-weight-bold d-block" href="javascript:void(0);"
@@ -184,7 +181,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                         <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
                                     </span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="mynav dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="container d-block">
                                         <div class="row">
                                             @foreach ($categories as $key => $category)

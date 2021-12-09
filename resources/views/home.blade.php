@@ -311,9 +311,11 @@
                 if (scroll > 150) {
                     $(".navigation-wrap").css("background", "white");
                     $(".nav-link").css("color", "black");
+                    console.log('bg-white');
                 } else {
                     $(".navigation-wrap").css("background", "transparent");
                     $(".nav-link").css("color", "white");
+                    console.log('bg-trans');
                 }
             })
         });

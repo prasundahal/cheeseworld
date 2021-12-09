@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\ProductDetail;
 use App\Mail\ResetPassword;
 use App\Models\Admin\Attribute;
 use App\Models\Admin\Brand;
@@ -11,6 +12,7 @@ use App\Models\Admin\Page;
 use App\Models\Admin\PaymentMethod;
 use App\Models\Admin\PaymentMethodSetting;
 use App\Models\Admin\Product;
+use App\Models\Admin\ProductDetail as AdminProductDetail;
 use App\Models\Web\Order;
 use App\Services\Web\HomeService;
 use Carbon\Carbon;
@@ -85,6 +87,24 @@ class IndexController extends Controller
         // dd($data);
         return view('product-detail', compact('data', 'product'));
     }
+
+    public function searchProduct(Request $request){
+        // dd('here');
+        // dd($request->name);
+        
+        // $products = AdminProductDetail::whereLike('title', $request->name)->get();
+
+        // dd($products);
+        
+        // $products = AdminProductDetail::where('title', 'like', '%' . $request->name . '%')->get();
+
+        $products = DB::table('products AS t1')->select('t1.id', 't2.title', 't1.product_slug', 't3.name as gallary_name')->join('product_detail AS t2', 't2.product_id', '=', 't1.id')->join('gallary AS t3', 't3.id', '=', 't1.gallary_id')->where('t2.title', 'like', '%' . $request->name . '%')->where('t2.language_id', 1)->get();
+
+        // $products = DB::table('product_detail AS t1')->select('t2.id', 't1.title', 't2.product_slug', 't2.gallary_id')->join('products AS t1', 't1.product_id', '=', 't2.id')->where('t1.title', 'like', '%' . $request->name . '%')->where('t1.language_id', 1)->get();
+
+        return response()->json($products);
+    }
+    
 
     public function shop()
     {

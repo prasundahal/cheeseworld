@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-    
+
 
 </head>
 
@@ -75,8 +75,60 @@
                 </button>
                 <div class="modal-body text-center">
                     <form>
+                        <style>
+                            #searchBox .content:hover {
+                                background-color: #000c27c9;
+                                color: #fff;
+                                text-decoration: none;
+                                font-size: 20px;
+                            }
+
+                            #searchBox .content {
+                                color: #000;
+                                text-decoration: none;
+                                font-size: 20px;
+                            }
+                            .searchbox-wrapper {
+                                background-color: white;
+                                box-shadow: 0 16px 24px rgb(96 97 112 / 10%), 0 32px 48px rgb(0 0 0 / 15%);
+                                max-height: 400px;
+                                min-height: auto;
+                                overflow: hidden;
+                                cursor: pointer;
+                                overflow-y:scroll;
+                            }
+
+                            ::-webkit-scrollbar {
+                            width: 10px;
+                            }
+
+                            /* Track */
+                            ::-webkit-scrollbar-track {
+                            background: #f1f1f1; 
+                            }
+                            
+                            /* Handle */
+                            ::-webkit-scrollbar-thumb {
+                            background: #888; 
+                            }
+
+                            /* Handle on hover */
+                            ::-webkit-scrollbar-thumb:hover {
+                            background: #555; 
+                            }
+
+                            .img-thumbnail {
+                                padding: 0px;
+                                border: 0 !important;
+                                height: 100px;
+                            }
+                        </style>
                         <input type="search" id="search-input" placeholder="Search anything you like"
-                            class="w-75">
+                            class="w-75" autocomplete="off">
+                        <div class="w-75 m-auto searchbox-wrapper">
+                            <div class="searchBox" id="searchBox"> 
+                            </div>
+                        </div>
                         <button id="search_button" class="d-none">Search</button>
                     </form>
                 </div>
@@ -144,64 +196,64 @@
 
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
-                            customerFname = $.trim(localStorage.getItem("customerFname"));
-                            customerLname = $.trim(localStorage.getItem("customerLname"));
-                            if (loggedIn != '1') {
-                                $(".auth-login").remove();
-                            } else {
-                                $(".without-auth-login").remove();
-                                $(".welcomeUsername").html(customerFname + " " + customerLname);
-                            }
+                                            customerFname = $.trim(localStorage.getItem("customerFname"));
+                                            customerLname = $.trim(localStorage.getItem("customerLname"));
+                                            if (loggedIn != '1') {
+                                                $(".auth-login").remove();
+                                            } else {
+                                                $(".without-auth-login").remove();
+                                                $(".welcomeUsername").html(customerFname + " " + customerLname);
+                                            }
 
-                            customerToken = $.trim(localStorage.getItem("customerToken"));
-
-
-                            languageId = localStorage.getItem("languageId");
-                            languageName = localStorage.getItem("languageName");
-
-                            if (languageName == null || languageName == 'null') {
-                                localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
-                                localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
-                                $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
-                                languageId = $.trim("{{ $data['selectedLenguage'] }}");
-                            } else {
-                                $(".language-default-name").html(localStorage.getItem("languageName"));
-                                $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                            }
-
-                            currency = localStorage.getItem("currency");
-                            currencyCode = localStorage.getItem("currencyCode");
-                            if (currencyCode == null || currencyCode == 'null') {
-                                localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
-                                localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
-                                $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
-                                currency = 1;
-                            } else {
-                                $("#selected-currency").html(localStorage.getItem("currencyCode"));
-                                $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
-                            }
+                                            customerToken = $.trim(localStorage.getItem("customerToken"));
 
 
-                            cartSession = $.trim(localStorage.getItem("cartSession"));
-                            if (cartSession == null || cartSession == 'null') {
-                                cartSession = '';
-                            }
-                            $(document).ready(function() {
+                                            languageId = localStorage.getItem("languageId");
+                                            languageName = localStorage.getItem("languageName");
 
-                                if (loggedIn != '1') {
-                                    localStorage.setItem("cartSession", cartSession);
-                                    menuCart(cartSession);
-                                } else {
-                                    menuCart('');
-                                }
+                                            if (languageName == null || languageName == 'null') {
+                                                localStorage.setItem("languageId", $.trim("{{ $data['selectedLenguage'] }}"));
+                                                localStorage.setItem("languageName", $.trim("{{ $data['selectedLenguageName'] }}"));
+                                                $(".language-default-name").html($.trim("{{ $data['selectedLenguageName'] }}"));
+                                                languageId = $.trim("{{ $data['selectedLenguage'] }}");
+                                            } else {
+                                                $(".language-default-name").html(localStorage.getItem("languageName"));
+                                                $('.mobile-language option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                                            }
 
-                                getWishlist();
+                                            currency = localStorage.getItem("currency");
+                                            currencyCode = localStorage.getItem("currencyCode");
+                                            if (currencyCode == null || currencyCode == 'null') {
+                                                localStorage.setItem("currency", $.trim("{{ $data['selectedCurrency'] }}"));
+                                                localStorage.setItem("currencyCode", $.trim("{{ $data['selectedCurrencyName'] }}"));
+                                                $("#selected-currency").html($.trim("{{ $data['selectedCurrencyName'] }}"));
+                                                currency = 1;
+                                            } else {
+                                                $("#selected-currency").html(localStorage.getItem("currencyCode"));
+                                                $('.currency option[value="' + localStorage.getItem("languageId") + '"]').attr('selected', 'selected');
+                                            }
+
+
+                                            cartSession = $.trim(localStorage.getItem("cartSession"));
+                                            if (cartSession == null || cartSession == 'null') {
+                                                cartSession = '';
+                                            }
+                                            $(document).ready(function() {
+
+                                                if (loggedIn != '1') {
+                                                    localStorage.setItem("cartSession", cartSession);
+                                                    menuCart(cartSession);
+                                                } else {
+                                                    menuCart('');
+                                                }
+
+                                                getWishlist();
 
 
 
-                            });
+                                            });
 
-                             */
+                                             */
     </script>
     <script>
         toastr.options = {
@@ -232,7 +284,6 @@
         }
 
         customerToken = $.trim(localStorage.getItem("customerToken"));
-
 
         languageId = localStorage.getItem("languageId");
         languageName = localStorage.getItem("languageName");
@@ -1126,6 +1177,58 @@
                 error: function(data) {},
             });
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('keyup', '#search-input', function() {
+                var name = $(this).val();
+                if (name.length > 0) {
+                    $.ajax({
+                        url: '{{ route('search-product') }}',
+                        dataType: 'json',
+                        method: 'get',
+                        data: {
+                            name: name
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.length > 0) {
+                                $('#searchBox').html('');
+                                var results = '';
+                                $.each(response, function(i, e) {
+                                    results += '<a href="/product/' + e.id + '/' + e.product_slug + '" class="w-100 d-block content p-1">' +
+                                        '<div class="d-flex align-items-center">' +
+                                            '<div class="w-25">' +
+                                                '<img src="{{ asset("/gallary") }}/' + e.gallary_name + '" class="img-thumbnail">' +
+                                            '</div>' +
+                                            '<div class="w-75 title h-100 text-left">' +
+                                                e.title +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</a>';
+                                });
+                                $('#searchBox').html(results);
+                                $('#searchBox').prop('hidden', false);
+                                // if (e.key === "Escape") {
+                                //     $('#searchBox').prop('hidden', true);
+                                // }
+                            } else {
+                                $('#searchBox').html('');
+                                $('#searchBox').prop('hidden', true);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    $('#searchBox').html('');
+                    $('#searchBox').prop('hidden', true);
+                }
+
+            })
+        })
     </script>
 
     {{-- <script>
