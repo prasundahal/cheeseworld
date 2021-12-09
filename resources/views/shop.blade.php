@@ -91,7 +91,7 @@
                                 console.log("MyError");
                                 $('.load-more-products').attr('disabled', true);
                                 $('.load-more-products').html('No More Items');
-
+                                $('.load-more-products').hide();
                                 return
                             }
                             var pagination =
@@ -198,6 +198,7 @@
                                 $("." + appendTo).append(clone);
                             }
                         } else {
+                            $('.load-more-products').hide();
                             console.log("false");
                             $(".shop_page_product_card").html(
                                 '<div class="col-12 text-center">No Product matches your search</div>');
