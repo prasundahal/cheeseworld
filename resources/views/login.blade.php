@@ -105,6 +105,7 @@
                     localStorage.setItem("customerLname",data.data.last_name);
                     localStorage.setItem("customerLoggedin",'1');
                     localStorage.setItem("cartSession",'');
+                    sessionStorage.setItem("customerId", data.data.id);
                     window.location.href = "/";
                 }
             },

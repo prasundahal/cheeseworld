@@ -68,30 +68,6 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                             {{-- <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a> --}}
                           
                                 <div class="notice d-flex  justify-content-center align-items-center">
-                                    <div class="login-wrapper auth-login">
-                                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="welcomeUsername"></span>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
-                                            <a class="dropdown-item userDashboard" href="{{ url('/profile') }}"
-                                                title="Dashboard">Dashboard</a>
-                                            <a class="dropdown-item" href="{{ url('/wishlist') }}"
-                                                title="{{ trans('lables.header-wishlist') }}">{{ trans('lables.header-wishlist') }}</a>
-                                            {{-- <a class="dropdown-item" href="{{ url('/compare') }}"
-                                                title="{{ trans('lables.header-compare') }}">{{ trans('lables.header-compare') }}</a> --}}
-                                            <a class="dropdown-item" href="{{ url('/orders') }}"
-                                                title="{{ trans('lables.header-order') }}">{{ trans('lables.header-order') }}</a>
-                                            <a class="dropdown-item log_out" href="javascript:void(0)"
-                                                title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
-                                        </div>
-                                    </div>
-                                    <div class="login-wrapper without-auth-login">
-                                        <a class="nav-link" href="{{ url('/login') }}">
-                                            {{ trans('lables.header-login-register') }}
-                                        </a>
-                
-                                    </div>
                                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                                         <li>
                                             <a href="{{ url('/wishlist') }}" class="btn" data-toggle="tooltip"
@@ -156,6 +132,31 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                         </div>
                                         </li>
                                     </ul>
+                                    <div class="login-wrapper auth-login">
+                                        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="welcomeUsername"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                                            <a class="dropdown-item userDashboard" href="{{ url('/profile') }}"
+                                                title="Dashboard">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ url('/wishlist') }}"
+                                                title="{{ trans('lables.header-wishlist') }}">{{ trans('lables.header-wishlist') }}</a>
+                                            {{-- <a class="dropdown-item" href="{{ url('/compare') }}"
+                                                title="{{ trans('lables.header-compare') }}">{{ trans('lables.header-compare') }}</a> --}}
+                                            <a class="dropdown-item" href="{{ url('/orders') }}"
+                                                title="{{ trans('lables.header-order') }}">{{ trans('lables.header-order') }}</a>
+                                            <a class="dropdown-item log_out" href="javascript:void(0)"
+                                                title="{{ trans('lables.header-logout') }}">{{ trans('lables.header-logout') }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="login-wrapper without-auth-login">
+                                        <a class="nav-link" href="{{ url('/login') }}">
+                                            {{ trans('lables.header-login-register') }}
+                                        </a>
+                
+                                    </div>
+                                    {{-- Cart Here --}}
                                 </div>
                           
                         </div>
