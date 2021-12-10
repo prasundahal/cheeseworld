@@ -106,7 +106,8 @@
     </section>
 @endsection
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('frontend/js/jquery-validate.min.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script> --}}
     <script>
         loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
         if (loggedIn != '1') {
@@ -125,7 +126,10 @@
             rules: {
                 new_password: "required",
                 confirm_password: {
-                    required: true,
+                    // required: true,
+                    required: function(element){
+                        return  $("#new_password").val() != ''
+                    },
                     equalTo: "#new_password"
                 }
             },
