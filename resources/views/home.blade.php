@@ -302,6 +302,16 @@
 
 @endsection
 @section('script')
+    <script src="{{ asset('frontend/js/scripts/touchswipe.min.js') }}"></script>
+    <script>
+        $(".carousel").swipe({
+            swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+                if (direction == 'left') $(this).carousel('next');
+                if (direction == 'right') $(this).carousel('prev');
+            },
+            allowPageScroll: "vertical"
+        });
+    </script>
     <script>
         // Navigation Js Scroll Starts
         $(document).ready(function() {
@@ -491,15 +501,18 @@
                                     .product_discount_price == null || e
                                     .product_discount_price ==
                                     'null') {
-                                    
-                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
-                                    e.product_price_symbol +
+
+                                    var my_price =
+                                        '<div class="font-weight-bold price product-card-price mt-2">' +
+                                        e.product_price_symbol +
                                         '</div>';
                                 } else {
-                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
-                                    e.product_discount_price_symbol + '<span>' + data.data[i]
-                                            .product_price_symbol + '</span>' +
-                                        '</div>' ;
+                                    var my_price =
+                                        '<div class="font-weight-bold price product-card-price mt-2">' +
+                                        e.product_discount_price_symbol + '<span>' + data.data[
+                                            i]
+                                        .product_price_symbol + '</span>' +
+                                        '</div>';
                                 }
                             }
                             console.log(e);
@@ -760,15 +773,17 @@
                                     .product_discount_price == null || e
                                     .product_discount_price ==
                                     'null') {
-                                    
-                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
-                                    e.product_price_symbol +
+
+                                    var my_price =
+                                        '<div class="font-weight-bold price product-card-price mt-2">' +
+                                        e.product_price_symbol +
                                         '</div>';
                                 } else {
-                                    var my_price = '<div class="font-weight-bold price product-card-price mt-2">' +
-                                    e.product_discount_price_symbol + '<span>' + data.data[i]
-                                            .product_price_symbol + '</span>' +
-                                        '</div>' ;
+                                    var my_price =
+                                        '<div class="font-weight-bold price product-card-price mt-2">' +
+                                        e.product_discount_price_symbol + '<span>' + data.data[i]
+                                        .product_price_symbol + '</span>' +
+                                        '</div>';
                                 }
                             }
                             feature_product +=
