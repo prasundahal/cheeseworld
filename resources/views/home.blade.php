@@ -322,10 +322,10 @@
         // Navigation Js Scroll Ends
         // Navigation Js Onclick Starts
         var scroll = $(window).scrollTop();
-        /* $(document).on('click', 'body', function() {
+        $(document).on('click', 'body', function() {
 
             $("#navbarDropdown").hide();
-            // $(".mynav").hide();
+            $(".mynav").hide();
             if (scroll > 150) {
 
                 $(".navigation-wrap").css("background", "white");
@@ -334,7 +334,7 @@
                 $(".navigation-wrap").css("background", "transparent");
                 $(".nav-link").css("color", "white");
             }
-        }); */
+        });
         $(document).ready(function() {
 
             // $("#navbarDropdown")
