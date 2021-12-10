@@ -43,24 +43,30 @@
                                             <div class="col-12"> <label
                                                     for="inlineFormInputGroup">{{ trans('lables.change-password-new-password') }}</label>
                                             </div>
-                                            <div class="input-group col-12">
-
-                                                <input type="password" class="form-control" name="new_password" id="new_password"
+                                            <div class="col-12">
+                                                <input type="password" class="form-control" name="new_password"
+                                                    id="new_password"
                                                     placeholder="{{ trans('lables.change-password-new-password') }}"
                                                     required>
                                             </div>
+                                            
                                         </div>
+
                                         <div class="from-group mb-3">
                                             <div class="col-12"> <label
                                                     for="inlineFormInputGroup">{{ trans('lables.change-password-confirm-password') }}</label>
                                             </div>
-                                            <div class="input-group col-12">
+                                            <div class="col-12">
 
-                                                <input type="password" name="confirm_password" class="form-control" id="confirm_password"
+                                                <input type="password" name="confirm_password" class="form-control"
+                                                    id="confirm_password"
                                                     placeholder="{{ trans('lables.change-password-confirm-password') }}"
                                                     required>
+
                                             </div>
+                                            
                                         </div>
+
                                         <div class="col-12 col-sm-12">
                                             <button type="submit"
                                                 class="btn btn-secondary">{{ trans('lables.change-password') }}</button>
@@ -153,7 +159,7 @@
                         console.log(data);
                         toastr.success(data.msg);
                         $("#changeForm")[0].reset();
-                        location.href = "{{ url('/login') }}";
+                        // location.href = "{{ url('/login') }}";
                     },
                     error: function(data) {
                         console.log();

@@ -1250,3 +1250,7 @@
                                                                     a{
                                                                         text-decoration: none !important;
                                                                     }
+
+                                                                    .error{
+                                                                        color: #dc3545!important;
+                                                                    }
