@@ -24,7 +24,7 @@ class ProductRepository implements ProductInterface
      */
     public function all()
     {
-   
+//    dd(isset($_GET['isFeatured']) && $_GET['isFeatured'] == '1');
         $product = Product::type();
         try {
             if (isset($_GET['limit']) && is_numeric($_GET['limit']) && $_GET['limit'] > 0) {
@@ -65,8 +65,10 @@ class ProductRepository implements ProductInterface
                 $product = $product->with('stock');
             }
 
+
             if (isset($_GET['isFeatured']) && $_GET['isFeatured'] == '1') {
                 $product = $product->where('is_featured', $_GET['isFeatured']);
+                // dd($product);
             }
 
             if (isset($_GET['productCategories']) && $_GET['productCategories'] != '') {

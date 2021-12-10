@@ -751,10 +751,11 @@
 
 
         function fetchFeatureProduct() {
-            // console.log("Elo");
+            console.log("Elo");
+            console.log(languageId);
             var url = "{{ url('') }}" +
-                '/api/client/products?limit=1&getCategory=1&getDetail=1&language_id=' + languageId +
-                '&topSelling=1&currency=' + localStorage.getItem("currency");
+                '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=' + languageId +
+                '&topSelling=1&isFeatured=1&currency=' + localStorage.getItem("currency");
             $.ajax({
                 type: 'get',
                 url: url,
@@ -765,6 +766,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log(data);
                     var feature_product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
