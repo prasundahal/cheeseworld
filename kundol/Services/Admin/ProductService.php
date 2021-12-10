@@ -254,7 +254,7 @@ class ProductService
         
         $sql = ProductGallaryDetail::where('product_id', $product_id)->count();
         if($sql > 0){
-            if($sql->delete()){
+            if($sql){
                 foreach ($gallary_detail_id as $gallary_detail) {
                     ProductGallaryDetail::create([
                         'product_id' => $product_id,
