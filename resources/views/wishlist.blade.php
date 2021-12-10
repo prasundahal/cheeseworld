@@ -125,7 +125,9 @@
                 clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
                 clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
             },
-            beforeSend: function() {},
+            beforeSend: function() {
+                $("#loading").css('display', 'block');
+            },
             success: function(data) {
                 console.log(data);
                 if (data.status == 'Success') {
@@ -229,6 +231,9 @@
                 }
             },
             error: function(data) {},
+            complete: function(){
+                $("#loading").css('display', 'none');
+            },
         });
     }
 
