@@ -75,7 +75,7 @@
 
                                             <div class="d-flex">
                                                 <div class="image mr-2">
-                                                    <img src="{{ asset('frontend/image/product-deta') }}ils/1.jpg" class="img-fluid">
+                                                    <img src="{{ asset('frontend/image/product-details/1.jpg') }}" class="img-fluid">
                                                 </div>
                                                 <div class="content">
                                                     <a class="file-name">
@@ -91,7 +91,7 @@
 
                                             <div class="d-flex">
                                                 <div class="image mr-2">
-                                                    <img src="{{ asset('frontend/image/product-deta') }}ils/1.jpg" class="img-fluid">
+                                                    <img src="{{ asset('frontend/image/product-details/1.jpg') }}" class="img-fluid">
                                                 </div>
                                                 <div class="content">
                                                     <a class="file-name">
