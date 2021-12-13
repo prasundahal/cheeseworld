@@ -72,7 +72,7 @@
     </style>
 </head>
 
-<body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} " onload="myFunction();">
+<body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
     <div id="loading" style="background: #fff url('{{ asset('loader/loader.gif') }}') no-repeat center;"></div>
     {{-- {{   dd(getSetting()) }} --}}
     {{-- @include('extras.preloader') --}}
@@ -216,6 +216,15 @@
         $locale = session()->get('locale');
         //dd ($locale);
     @endphp
+
+    <script>
+        // $(document).ajaxComplete(function(){
+        //     myFunction();
+        // });
+        $(document).ajaxStop(function(){
+            myFunction();
+        });
+    </script>
 
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
