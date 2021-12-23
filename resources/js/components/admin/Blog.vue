@@ -149,7 +149,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tabslang">
-                        <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
+                        <div v-for="(language, index) in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)" v-if="index == 0">
                             {{ language.language_name }}
                         </div>
                     </div>
