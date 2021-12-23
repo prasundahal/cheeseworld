@@ -156,7 +156,7 @@
                     <br />
                     <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
                         <label class="text-dark">Name ( {{ language.language_name }} ) </label>
-                        <input type="text" :name="'name'+index" v-model="blog.name[index]" class="form-control" />
+                        <input type="text" :name="'name'+0" v-model="blog.name[0]" class="form-control" />
                         <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
                     </div>
 
@@ -164,7 +164,7 @@
                     <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
                         <label class="text-dark">Description ( {{ language.language_name }} ) </label>
                         <!-- <input type="text" :name="'desc'+index" v-model="blog.desc[index]" class="form-control" /> -->
-                        <vue-editor v-model="blog.desc[index]"></vue-editor>
+                        <vue-editor v-model="blog.desc[0]"></vue-editor>
                         <small class="form-text text-danger" v-if="errors.has('desc')" v-text="errors.get('desc')"></small>
                     </div>
 
@@ -276,7 +276,7 @@ export default {
                     if (res.data.status == "Success") {
                         this.languages = res.data.data;
                         for(var i = 0 ; i < res.data.data.length; i++){
-                            this.blog.language_id.push(res.data.data[i].id);
+                            this.blog.language_id.push(res.data.data[0].id);
                             if(res.data.data[i].is_default){
                                 this.selectedLanguage = res.data.data[i].id;   
                             }

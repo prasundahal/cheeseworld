@@ -97,11 +97,18 @@ class AttributeRepository implements AttributeInterface
         }
 
         foreach ($parms['name'] as $i => $name) {
-            AttributeDetail::create([
-                'name' => $name,
-                'language_id' => $parms['language_id'][$i],
-                'attribute_id' => $sql->id,
-            ]);
+            if($i == 0)
+            {
+                AttributeDetail::create([
+                    'name' => $name,
+                    'language_id' => $parms['language_id'][$i],
+                    'attribute_id' => $sql->id,
+                ]);
+            }
+            else
+            {
+                break;
+            }
         }
 
         if ($sql) {
@@ -127,11 +134,18 @@ class AttributeRepository implements AttributeInterface
         }
 
         foreach ($parms['name'] as $i => $name) {
-            AttributeDetail::create([
-                'name' => $name,
-                'language_id' => $parms['language_id'][$i],
-                'attribute_id' => $attribute->id,
-            ]);
+            if($i == 0)
+            {
+                AttributeDetail::create([
+                    'name' => $name,
+                    'language_id' => $parms['language_id'][$i],
+                    'attribute_id' => $attribute->id,
+                ]);
+            }
+            else
+            {
+                break;
+            }
         }
         if ($attribute) {
             return $this->successResponse(new AttributeResource($attribute), 'Attribute Update Successfully!');

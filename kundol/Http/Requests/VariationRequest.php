@@ -26,9 +26,9 @@ class VariationRequest extends FormRequest
     {
         $size = Language::count();
         return [
-            'name' => 'required|array|size:' . $size,
+            'name' => 'required|array',
             'name.*' => 'string|max:191',
-            'language_id' => 'required|array|exists:languages,id|size:' . $size,
+            'language_id' => 'required|array|exists:languages,id',
             'attribute_id' => 'required|exists:attributes,id',
         ];
     }

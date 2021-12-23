@@ -12,18 +12,22 @@ class CategoryDetailService
     public function update($parms, $categoryId)
     {
         foreach ($parms['language_id'] as $i => $data) {
-            $arr['language_id'] = $parms['language_id'][$i];
-            $arr['description'] = $parms['description'][$i];
-            $arr['category_name'] = $parms['category_name'][$i];
-            try {
-                $arr['category_id'] = $categoryId;
-                $query = CategoryDetail::updateOrCreate(
-                    ['category_id' => $categoryId, 'language_id' => $arr['language_id']],
-                    $arr
-                );
-            } catch (Exception $e) {
-                DB::rollback();
-                return $this->errorResponse();
+            if($i == 0){
+                $arr['language_id'] = $parms['language_id'][$i];
+                $arr['description'] = $parms['description'][$i];
+                $arr['category_name'] = $parms['category_name'][$i];
+                try {
+                    $arr['category_id'] = $categoryId;
+                    $query = CategoryDetail::updateOrCreate(
+                        ['category_id' => $categoryId, 'language_id' => $arr['language_id']],
+                        $arr
+                    );
+                } catch (Exception $e) {
+                    DB::rollback();
+                    return $this->errorResponse();
+                }
+            }else{
+                break;
             }
         }
 
@@ -53,17 +57,20 @@ class CategoryDetailService
     public function store($parms, $categoryId)
     {
         foreach ($parms['language_id'] as $i => $data) {
-
-            $arr['language_id'] = $parms['language_id'][$i];
-            $arr['description'] = $parms['description'][$i];
-            $arr['category_name'] = $parms['category_name'][$i];
-            try {
-                $arr['category_id'] = $categoryId;
-                $query = new CategoryDetail;
-                $query->create($arr);
-            } catch (Exception $e) {
-                DB::rollback();
-                return $this->errorResponse();
+            if($i == 0){
+                $arr['language_id'] = $parms['language_id'][$i];
+                $arr['description'] = $parms['description'][$i];
+                $arr['category_name'] = $parms['category_name'][$i];
+                try {
+                    $arr['category_id'] = $categoryId;
+                    $query = new CategoryDetail;
+                    $query->create($arr);
+                } catch (Exception $e) {
+                    DB::rollback();
+                    return $this->errorResponse();
+                }
+            }else{
+                break;
             }
         }
         return true;

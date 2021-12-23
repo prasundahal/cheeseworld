@@ -17,8 +17,8 @@ class ShippingMethodRequest extends FormRequest
         $size = Language::count();
 
         return [
-            'language_id' => 'exclude_if:is_default,1|required|array|exists:languages,id|size:' . $size,
-            'language_value' => 'exclude_if:is_default,1|required|array|size:' . $size,
+            'language_id' => 'exclude_if:is_default,1|required|array|exists:languages,id',
+            'language_value' => 'exclude_if:is_default,1|required|array',
             'language_value.*' => 'exclude_if:is_default,1|string|max:191',
             'is_default' => 'in:DEFAULT,1,0',
             'status' => 'in:DEFAULT,1,0',

@@ -14,16 +14,24 @@ class BlogNewsDetailService
         $query = BlogNewsDetail::where('blog_news_id', $blogNewsId)->delete();
         $arr['blog_news_id'] = $blogNewsId;
         foreach ($parms['language_id'] as $i => $data) {
-            $arr['language_id'] = $parms['language_id'][$i];
-            $arr['name'] = $parms['name'][$i];
-            $arr['desc'] = $parms['desc'][$i];
-            try {
-                $query = new BlogNewsDetail;
-                $query->create($arr);
-            } catch (Exception $e) {
-                DB::rollback();
-                return $this->errorResponse();
+            if($i == 0)
+            {
+                $arr['language_id'] = 1;
+                $arr['name'] = $parms['name'][$i];
+                $arr['desc'] = $parms['desc'][$i];
+                try {
+                    $query = new BlogNewsDetail;
+                    $query->create($arr);
+                } catch (Exception $e) {
+                    DB::rollback();
+                    return $this->errorResponse();
+                }
             }
+           else
+           {
+
+           }
+            
         }
 
         return $query;
@@ -52,18 +60,25 @@ class BlogNewsDetailService
     public function store($parms, $blogNewsId)
     {
         foreach ($parms['language_id'] as $i => $data) {
-
-            $arr['language_id'] = $parms['language_id'][$i];
-            $arr['name'] = $parms['name'][$i];
-            $arr['desc'] = $parms['desc'][$i];
-            try {
-                $arr['blog_news_id'] = $blogNewsId;
-                $query = new BlogNewsDetail;
-                $query->create($arr);
-            } catch (Exception $e) {
-                DB::rollback();
-                return $this->errorResponse();
+            if($i == 0)
+            {
+                $arr['language_id'] = 1;
+                $arr['name'] = $parms['name'][$i];
+                $arr['desc'] = $parms['desc'][$i];
+                try {
+                    $arr['blog_news_id'] = $blogNewsId;
+                    $query = new BlogNewsDetail;
+                    $query->create($arr);
+                } catch (Exception $e) {
+                    DB::rollback();
+                    return $this->errorResponse();
+                }
             }
+            else
+            {
+                break;
+            }
+            
         }
         return true;
     }

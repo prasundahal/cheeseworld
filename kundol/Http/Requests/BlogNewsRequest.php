@@ -20,10 +20,10 @@ class BlogNewsRequest extends FormRequest
             'blog_category_id' => 'required|exists:blog_categories,id',
             'is_featured' => 'in:DEFAULT,0,1',
             'slug' => 'required|string|max:255',
-            'name' => 'required|array|size:' . $size,
+            'name' => 'required|array',
             'name.*' => 'string|max:255',
-            'language_id' => 'required|array|exists:languages,id|size:' . $size,
-            'desc' => 'required|array|size:' . $size,
+            'language_id' => 'required|exists:languages,id|size:' . $size,
+            'desc' => 'required|array',
             'desc.*' => 'string',
         ];
     }

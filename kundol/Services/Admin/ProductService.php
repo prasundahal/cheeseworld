@@ -28,12 +28,22 @@ class ProductService
             \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
         $data['product_id'] = $id;
+    
+        
         foreach ($parms['language_id'] as $i => $language) {
-            $data['language_id'] = $language;
-            $data['title'] = $parms['title'][$language];
-            $data['desc'] = $parms['desc'][$language];
-            $query = new ProductDetail;
-            $query->create($data);
+            if($i == 0)
+            {
+                $data['language_id'] = 1;
+                $data['title'] = $parms['title'][$language];
+                $data['desc'] = $parms['desc'][$language];
+                $query = new ProductDetail;
+                $query->create($data);
+            }
+            else
+            {
+               break;
+            }
+          
         }
 
         foreach ($parms['category_id'] as $i => $category) {

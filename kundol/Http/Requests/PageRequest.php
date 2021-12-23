@@ -31,11 +31,11 @@ class PageRequest extends FormRequest
         }
         return [
             'slug' => 'required|string|unique:pages,slug,' . $id,
-            'title' => 'required|array|size:' . $size,
+            'title' => 'required|array',
             'title.*' => 'string|max:191',
-            'description' => 'required|array|size:' . $size,
+            'description' => 'required|array',
             'description.*' => 'string',
-            'language_id' => 'required|array|exists:languages,id|size:' . $size,
+            'language_id' => 'required|array|exists:languages,id',
         ];
     }
 }
