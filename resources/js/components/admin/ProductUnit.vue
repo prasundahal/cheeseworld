@@ -349,7 +349,7 @@ export default {
         }
     },
     mounted() {
-        
+        this.selectedLanguage = 1;
         var token = localStorage.getItem('token');
         this.token = {
             headers: {
