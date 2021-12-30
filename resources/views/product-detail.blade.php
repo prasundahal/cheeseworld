@@ -109,6 +109,9 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == 'Success') {
+                        $('#breadCat').attr('href', '{{ url("shop?category=") }}' + data.data.category[0].category_detail.id);
+                        $('#breadCat').html(data.data.category[0].category_detail.detail[0].name);
+                        $('#breadProd').html(data.data.detail[0].title);
                         const templ = document.getElementById("product-detail-section");
                         
                         const clone = templ.content.cloneNode(true);
