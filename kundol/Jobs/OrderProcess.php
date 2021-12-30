@@ -37,6 +37,7 @@ class OrderProcess implements ShouldQueue
      * @return void
      */
     private $parms;
+    
     public function __construct($parms)
     {
         $this->parms = $parms;
@@ -55,19 +56,22 @@ class OrderProcess implements ShouldQueue
      */
     public function handle()
     {
+        
         try {
             \DB::beginTransaction();
             $orderService = new OrderService;
                 
             $amount = 0;
             $customer_id = \Auth::id();
+            // dd($customer_id);
             $currency = Currency::defaultCurrency()->select('exchange_rate', 'symbol_position', 'code')->first();
-
+            // dd($currency);
             if($customer_id == '' || $customer_id == null){
                 $customer_id = $this->parms['customer_id'];
             }
 
             $stockValidate = $orderService->CheckStock($customer_id);
+            // dd($stockValidate);
             if ($stockValidate['status'] == 'Error')
                 return $stockValidate;
 
@@ -140,6 +144,7 @@ class OrderProcess implements ShouldQueue
             }
             // return $this->parms['order_status'];
             $tax_rate = TaxRate::findByState($this->parms['delivery_state'])->get();
+            // dd($tax_rate);
             $total = 0;
             foreach($tax_rate as $tax_rates){
                 $total = $total + $tax_rates->tax_rate;
@@ -163,7 +168,9 @@ class OrderProcess implements ShouldQueue
             $this->parms['customer_id'] = $customer_id;
             $this->parms['currency_id'] = $currency->id;
             $this->parms['currency_value'] = $currency->exchange_rate;
+            
             $sql = Order::create($this->parms);
+            // dd($sql);
             OrderHistory::create([
                 'order_id'=>$sql->id,
                 'order_status' => 'Pending'
@@ -238,7 +245,8 @@ class OrderProcess implements ShouldQueue
             return $this->errorResponse();
         }
         if ($sql) {
-            OrderProcessed::dispatch($sql->id);
+            $this->parms["warehouse_id"] = 3;
+             OrderProcessed::dispatch($sql->id);
             \DB::commit();
             return $this->successResponse(new OrderResource($sql), 'Order Save Successfully!');
         } else {

@@ -17,7 +17,7 @@ class Customer extends Authenticatable
     use SoftDeletes;
     
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'gallary_id', 'is_seen', 'status', 'hash' ,'password','created_by','updated_by','provider','provider_id',
+        'first_name', 'last_name', 'email', 'gallary_id', 'is_seen', 'status', 'hash' ,'password','created_by','updated_by','provider','provider_id', 'reset_token'
     ];
 
     protected $hidden = [

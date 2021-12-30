@@ -28,12 +28,22 @@ class ProductService
             \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
         $data['product_id'] = $id;
+    
+        
         foreach ($parms['language_id'] as $i => $language) {
-            $data['language_id'] = $language;
-            $data['title'] = $parms['title'][$language];
-            $data['desc'] = $parms['desc'][$language];
-            $query = new ProductDetail;
-            $query->create($data);
+            if($i == 0)
+            {
+                $data['language_id'] = 1;
+                $data['title'] = $parms['title'][$language];
+                $data['desc'] = $parms['desc'][$language];
+                $query = new ProductDetail;
+                $query->create($data);
+            }
+            else
+            {
+               break;
+            }
+          
         }
 
         foreach ($parms['category_id'] as $i => $category) {
@@ -252,8 +262,18 @@ class ProductService
     public function saveProductGallaryImage($product_id, $gallary_detail_id)
     {
         
-        $sql = ProductGallaryDetail::where('product_id', $product_id)->delete();
-        if($sql){
+        $sql = ProductGallaryDetail::where('product_id', $product_id)->count();
+        if($sql > 0){
+            if($sql){
+                foreach ($gallary_detail_id as $gallary_detail) {
+                    ProductGallaryDetail::create([
+                        'product_id' => $product_id,
+                        'gallary_id' => $gallary_detail,
+                    ]);
+                }
+            }
+        }
+        else{
             foreach ($gallary_detail_id as $gallary_detail) {
                 ProductGallaryDetail::create([
                     'product_id' => $product_id,

@@ -112,12 +112,14 @@
             <ul class="nav nav-pills lang-tab" id="pills-tab1" role="tablist">
               <li
                 class="nav-item"
-                v-for="language in languages"
+                v-for="(language,index) in languages"
                 @click="setSelectedLanguage(language.id)"
+               v-if="index === 0"
               >
                 <a
                   class="nav-link btn-light shadow-none rounded-0"
-                  :class="language.id == selectedLanguage ? 'show active' : ''"
+                  :class="language.id === 1 ? 'show active' : ''"
+                	
                 >
                   {{ language.language_name }}
                 </a>
@@ -131,8 +133,9 @@
                     class="tab-pane fade"
                     v-for="(language, index) in languages"
                     :class="
-                      language.id == selectedLanguage ? 'show active' : ''
+                      language.id === 1 ? 'show active' : ''
                     "
+                   
                   >
                     <h6 class="text-body">
                       Product Name ( {{ language.language_name }} )

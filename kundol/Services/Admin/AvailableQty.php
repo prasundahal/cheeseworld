@@ -14,16 +14,19 @@ class AvailableQty
     public function availableQty($product_id, $product_combination_id, $qty, $type = null)
     {
 
+        // dd(234, null, 1, cart);
         $availableQty = AvailableInventory::where('product_id', $product_id);
         if ($product_combination_id != '') {
             $availableQty = $availableQty->where('product_combination_id', $product_combination_id);
         }
         if($type == 'cart'){
             $defaultWareHouse =  Warehouse::isDefault()->value('id');
+            // dd($defaultWareHouse);
             $availableQty = $availableQty->where('warehouse_id',$defaultWareHouse);
 
         }
         $availableQty = $availableQty->first();
+        
         if (!$availableQty) {
             return 0;
         }

@@ -31,11 +31,11 @@ class CategoryRequest extends FormRequest
             'category_icon' => 'required|exists:gallary,id',
             'parent_id' => 'nullable|exists:categories,id',
             'sort_order' => 'nullable|integer',
-            'category_name' => 'required|array|size:' . $languageSize,
+            'category_name' => 'required|array',
             'category_name.*' => 'string|max:255',
-            'description' => 'required|array|size:' . $languageSize,
+            'description' => 'required|array',
             'description.*' => 'string',
-            'language_id' => 'required|array|exists:languages,id|size:' . $languageSize,
+            'language_id' => 'required|array|exists:languages,id',
         ];
     }
 }

@@ -134,7 +134,8 @@
 
                 addToCartFun(product_id, product_combination_id, cartSession, qty);
             }
-
+            toastr.success('Cart Item updated successfully');
+            // addToCartFun(product_id, product_combination_id, cartSession, qty);
             cartItem(cartSession);
             couponCart = $.trim(localStorage.getItem("couponCart"));
             if (couponCart != 'null' && couponCart != '') {
@@ -148,7 +149,9 @@
             var row_id = $(this).attr('data-field');
 
             var quantity = $('#quantity' + row_id).val();
+            // console.log("qty =" +quantity);
             $('#quantity' + row_id).val(parseInt(quantity) + 1);
+            console.log($("#quantity"+row_id).val());
         })
 
         $(document).on('click', '.quantity-left-minus', function() {

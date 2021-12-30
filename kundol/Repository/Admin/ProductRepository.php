@@ -24,7 +24,7 @@ class ProductRepository implements ProductInterface
      */
     public function all()
     {
-   
+//    dd(isset($_GET['isFeatured']) && $_GET['isFeatured'] == '1');
         $product = Product::type();
         try {
             if (isset($_GET['limit']) && is_numeric($_GET['limit']) && $_GET['limit'] > 0) {
@@ -65,8 +65,10 @@ class ProductRepository implements ProductInterface
                 $product = $product->with('stock');
             }
 
+
             if (isset($_GET['isFeatured']) && $_GET['isFeatured'] == '1') {
                 $product = $product->where('is_featured', $_GET['isFeatured']);
+                // dd($product);
             }
 
             if (isset($_GET['productCategories']) && $_GET['productCategories'] != '') {
@@ -334,6 +336,7 @@ class ProductRepository implements ProductInterface
             if ($parms['product_type'] == 'variable' && $sql) {
                 $variable_result = $productService->variableProductDetailData($parms, $sql->id, 'store');
                 if ($variable_result) {
+                    $productService->saveProductGallaryImage($sql->id, $parms["gallary_detail_id"]);
                     \DB::commit();
                     return $this->successResponse(new ProductResource(Product::with('category')->with("detail")->productId($sql->id)->firstOrFail()), 'Product Save Successfully!');
                 } else {

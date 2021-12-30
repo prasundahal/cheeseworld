@@ -45,18 +45,53 @@ class CustomerAuthRepository implements CustomerAuthInterface
             ->cookie($cookie['name'], $cookie['value'], $cookie['minutes'], $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly']);
     }
 
+    // public function forgetPassword(array $parms)
+    // {
+    //     $link = str_replace("/", '1', Hash::make('time'));
+    //     Customer::where('email', $parms['email'])->update(['forget_hash' => $link]);
+
+    //     $data_set = array('link' => $link);
+    //     $message = "";
+    //     $email = $parms['email'];
+    //     Mail::send('emails.forget-password', $data_set, function ($message) use ($email) {
+    //         $message->to($email)->subject('Forget Password');
+    //     });
+    //     return $this->successResponseArray($link, 'Email Sent Successfully! Against this Link');
+    // }
+
+
     public function forgetPassword(array $parms)
     {
-        $link = str_replace("/", '1', Hash::make('time'));
-        Customer::where('email', $parms['email'])->update(['forget_hash' => $link]);
+        $customer = Customer::where("email", $parms['email'])->first();
+        if($customer != null){
+            $token = $link = str_replace("/", '1', Hash::make('time'));
+            $customer->update(["reset_token" => $token]);
+            try{
+                Mail::send('email.forgetPassword', ['token' => $token, "email" => $parms['email']], function($message) use($parms){
+                    $message->to($parms['email']);
+                    $message->subject('Reset Password');
+                });
+            }catch (\Exception $e) {
+                $bug = $e->getMessage();
+                return redirect()->back()->with('error', $bug);
+            }
+            return $this->successResponseArray($link, 'Password reset link has been successfully sent to your email.');
+        } else {
+            return $this->successResponseArray('error_msg', 'Your email doesn\'t exist in our database. Please register');
+        }
 
-        $data_set = array('link' => $link);
-        $message = "";
-        $email = $parms['email'];
-        Mail::send('emails.forget-password', $data_set, function ($message) use ($email) {
-            $message->to($email)->subject('Forget Password');
-        });
-        return $this->successResponseArray($link, 'Email Sent Successfully! Against this Link');
+
+
+//        $link = str_replace("/", '1', Hash::make('time'));
+//        Customer::where('email', $parms['email'])->update(['forget_hash' => $link]);
+//
+//        $data_set = array('link' => $link);
+//        $message = "";
+//        $email = $parms['email'];
+//        Mail::send('emails.forget-password', $data_set, function ($message) use ($email) {
+//            $message->to($email)->subject('Forget Password');
+//        });
+//        return $this->successResponseArray($link, 'Email Sent Successfully! Against this Link');
     }
 
     public function resetPassword(array $parms)

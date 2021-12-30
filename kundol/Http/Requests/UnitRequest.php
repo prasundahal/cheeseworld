@@ -26,10 +26,10 @@ class UnitRequest extends FormRequest
     {
         $size = Language::count();
         return [
-            'name' => 'required|array|size:' . $size,
+            'name' => 'required|array',
             'name.*' => 'string|max:255',
             'is_active' => 'nullable|in:1,0',
-            'language_id' => 'required|size:' . $size,
+            'language_id' => 'required',
         ];
     }
 }

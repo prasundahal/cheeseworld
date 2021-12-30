@@ -107,11 +107,15 @@ class VariationRepository implements VariationInterface
         }
 
         foreach ($parms['name'] as $i => $name) {
-            VariationDetail::create([
-                'name' => $name,
-                'language_id' => $parms['language_id'][$i],
-                'variation_id' => $sql->id,
-            ]);
+            if($i == 0){
+                VariationDetail::create([
+                    'name' => $name,
+                    'language_id' => $parms['language_id'][$i],
+                    'variation_id' => $sql->id,
+                ]);
+            }else{
+                break;
+            }
         }
 
         if ($sql) {
@@ -136,11 +140,15 @@ class VariationRepository implements VariationInterface
         }
 
         foreach ($parms['name'] as $i => $name) {
-            VariationDetail::create([
-                'name' => $name,
-                'language_id' => $parms['language_id'][$i],
-                'variation_id' => $variation->id,
-            ]);
+            if($i == 0){
+                VariationDetail::create([
+                    'name' => $name,
+                    'language_id' => $parms['language_id'][$i],
+                    'variation_id' => $variation->id,
+                ]);
+            }else{
+                break;
+            }
         }
 
         if ($variation) {

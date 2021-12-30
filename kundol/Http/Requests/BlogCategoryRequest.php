@@ -16,9 +16,9 @@ class BlogCategoryRequest extends FormRequest
     {
         $size = Language::count();
         return [
-            'name' => 'required|array|size:' . $size,
+            'name' => 'required|array',
             'name.*' => 'string|max:255',
-            'language_id' => 'required|array|exists:languages,id|size:' . $size,
+            'language_id' => 'required|array|exists:languages,id',
             'gallary_id' => 'required|integer|exists:gallary,id',
             'status' => 'in:DEFAULT,inactive,active',
             'blog_category_slug' => 'required',

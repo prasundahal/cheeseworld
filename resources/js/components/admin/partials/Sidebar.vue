@@ -2609,7 +2609,7 @@
 
               <!--begin::Nav Mobile App Settings -->
 
-              <li
+              <!-- <li
                 class="nav-item"
                 v-if="
                   setting.is_app_purchased === '1' &&
@@ -2720,7 +2720,7 @@
                     </ul>
                   </div>
                 </div>
-              </li>
+              </li> -->
 
               <!--begin::Nav Delivery Boy Settings -->
 

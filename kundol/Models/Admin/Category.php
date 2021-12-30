@@ -69,4 +69,10 @@ class Category extends Model
     {
         return $this->hasMany(CategoryDetail::class);
     }
+
+
+    public function my_products()
+    {
+        return $this->belongsToMany("App\Models\Admin\Product", "product_category");
+    }
 }

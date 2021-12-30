@@ -4,7 +4,7 @@ import axios from 'axios';
 window.axios = require('axios');
 import InputTag from 'vue-input-tag'
 import Toaster from 'v-toaster';
-import AttachImage from './Components/admin/AttachImage';
+import AttachImage from './components/admin/AttachImage';
 // You need a specific loader for CSS files like https://github.com/webpack/css-loader
 import 'v-toaster/dist/v-toaster.css';
 import VueNestable from 'vue-nestable'
@@ -125,8 +125,8 @@ let routes = [
             { path: '/admin/expense-adjustment', component: require('./components/admin/ExpenseAdjustment.vue').default, name: 'expense', meta: { auth: true } },
             { path: '/admin/profile', component: require('./components/admin/Profile.vue').default, name: 'Profile', meta: { auth: true } },
             { path: '/admin/deliveryboy-list', component: require('./components/admin/DeliveryBoyList.vue').default, name: 'delivery-boy-list', meta: { auth: true } },
-            { path: '/admin/deliveryboy', component: require('./components/admin/ADdDeliveryBoy.vue').default, name: 'manage-delivery-boy', meta: { auth: true } },
-            { path: '/admin/deliveryboy/:id', component: require('./components/admin/ADdDeliveryBoy.vue').default, name: 'manage-delivery-boy', meta: { auth: true } },
+            { path: '/admin/deliveryboy', component: require('./components/admin/AddDeliveryBoy.vue').default, name: 'manage-delivery-boy', meta: { auth: true } },
+            { path: '/admin/deliveryboy/:id', component: require('./components/admin/AddDeliveryBoy.vue').default, name: 'manage-delivery-boy', meta: { auth: true } },
 
 
         ]
@@ -201,3 +201,10 @@ router.beforeEach((to, from, next) => {
 const app = new Vue({
     router
 }).$mount('#kundol-body');
+
+if (process.env.MIX_ENV_MODE === 'production') {
+    Vue.config.devtools = false;
+    Vue.config.debug = false;
+    Vue.config.silent = true;
+    https = true;
+};

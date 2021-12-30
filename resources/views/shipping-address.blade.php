@@ -3,20 +3,9 @@
 
 
 <!--Shipping Content -->
-
-<div class="container-fuild">
-    <nav aria-label="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">{{ trans('lables.bread-crumb-home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('lables.shipping-address') }}</li>
-            </ol>
-        </div>
-    </nav>
-</div>
 <section class="pro-content">
 
-    <section class="shipping-content">
+    <section class="shipping-content py-4 wishlist-content pro-content py-4">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-3">
@@ -40,11 +29,11 @@
                     <table class="table shipping-table">
                         <thead>
                             <tr>
-                                <th scope="col">{{ trans('lables.shipping-address-default') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-first-name') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-last-name') }}</th>
-                                <th scope="col">{{ trans('lables.shipping-address-country-state-city') }}</th>
-                                <th scope="col" class="d-none d-md-block">{{ trans('lables.shipping-address-action') }}</th>
+                                <th>{{ trans('lables.shipping-address-default') }}</th>
+                                <th>{{ trans('lables.shipping-address-first-name') }}</th>
+                                <th>{{ trans('lables.shipping-address-last-name') }}</th>
+                                <th>{{ trans('lables.shipping-address-country-state-city') }}</th>
+                                <th class="d-none d-md-block">{{ trans('lables.shipping-address-action') }}</th>
                             </tr>
                         </thead>
                         <tbody id="shipping-address-listing-show">
@@ -55,7 +44,7 @@
                     <template id="shipping-address-listing-template">
                         <tr class="shipping-address-listing-id">
                             <td>
-                                <div class="form-check">
+                                <div class="form-check" style="display: unset">
                                     <input class="form-check-input shipping-address-listing-is-default" name="radiobtn" type="radio">
                                 </div>
                             </td>
@@ -73,7 +62,7 @@
                             </td>
 
                             <td class="edit-tag">
-                                <ul>
+                                <ul class="pl-0 mb-0 d-flex justify-content-between">
                                     <li><a href="javascript:void(0)" class="shipping-address-listing-edit-btn"> <i class="fas fa-pen"></i> Edit</a></li>
                                     <li><a href="javascript:void(0)" class="shipping-address-listing-delete-btn"> <i class="fas fa-trash-alt"></i> Remove</a></li>
                                 </ul>
@@ -244,6 +233,7 @@
             },
             beforeSend: function() {},
             success: function(data) {
+               
                 if (data.status == 'Success') {
                     $("#shipping-address-listing-show").html('');
                     const templ = document.getElementById("shipping-address-listing-template");
@@ -260,6 +250,7 @@
                         }
                         clone.querySelector(".shipping-address-listing-country-state-city").innerHTML = country + state + data.data[i].city;
                         clone.querySelector(".shipping-address-listing-is-default").setAttribute('data-id', data.data[i].id);
+                        clone.querySelector(".shipping-address-listing-is-default").setAttribute('data-lat', data.data[i].latlong);
                         clone.querySelector(".shipping-address-listing-is-default").setAttribute('onclick', 'isDefault(this)');
                         clone.querySelector(".shipping-address-listing-edit-btn").setAttribute('data-id', data.data[i].id);
                         clone.querySelector(".shipping-address-listing-edit-btn").setAttribute('onclick', 'shippingEdit(this)');
@@ -331,6 +322,7 @@
                 if (data.status == 'Success') {
                     toastr.success('{{ trans("shipping-add-successfully") }}')
                     getCustomerAdress();
+                    $("#shippingAddressForm")[0].reset();
                 } else if (data.status == 'Error') {
                     toastr.error('{{ trans("response.some_thing_went_wrong") }}');
                 }
@@ -431,7 +423,8 @@
             data: {
                 is_default: '1',
                 is_default_type: 'default_action',
-                type: 'profile'
+                type: 'profile',
+                latlong: $(input).attr('data-lat'),
             },
             headers: {
                 'Authorization': 'Bearer ' + customerToken,
@@ -442,7 +435,7 @@
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 'Success') {
-                    toastr.success('{{ trans("address-book-updated") }}')
+                    toastr.success('{{ trans("Address Book Updated") }}')
                 } else if (data.status == 'Error') {
                     toastr.error('{{ trans("response.some_thing_went_wrong") }}');
                 }

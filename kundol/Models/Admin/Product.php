@@ -196,4 +196,10 @@ class Product extends Model
         $warehouse_id = Setting::type('pos', 'default_warehouse')->value('value');
         return $this->hasOne(AvailableQty::class, 'product_id', 'id')->where('warehouse_id', $warehouse_id);
     }
+
+
+    public function my_categories()
+    {
+        return $this->belongsToMany("App\Models\Admin\Category", "product_category");
+    }
 }

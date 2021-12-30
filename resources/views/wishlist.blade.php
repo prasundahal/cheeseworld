@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
+
 <!-- wishlist Content -->
-<section class="wishlist-content pro-content">
+<section class="order-one-content pro-content  wishlist-content pro-content py-4">
 
     <div class="container">
         <div class="row">
@@ -35,18 +36,20 @@
 </section>
 
 <template id="wishlist-product-template">
-    <div class="media">
+    <div class="media bg-light p-2">
+        <div class="media-img w-25">
         <img class="img-fluid wishlist-product-img" src="images/wishlist/wishlist-1.png" alt="John Doe">
-        <div class="media-body">
-            <div class="row">
+    </div>
+        <div class="media-body d-flex align-items-center w-75">
+            <div class="row w-100 align-items-center">
                 <div class="col-12 col-md-8  texting">
-                    <h3><a href="javascript:void(0)" class="wishlist-product-name"></a></h3>
+                    <h5 class="m-0"><a href="javascript:void(0)" class="wishlist-product-name"></a></h5>
                     <div class="price wishlist-product-price"></div>
-                    <p class="wishlist-product-desc"></p>
+                    <p class="wishlist-product-desc mb-1"></p>
                     <div class="buttons">
-                        <div class="input-group item-quantity">
+                        <div class="input-group item-quantity custom_width">
 
-                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control cartItem-qty">
+                            <input type="text" value="1" id="quantity2" name="quantity" class="form-control text-center cartItem-qty">
     
                             <span class="input-group-btn">
                                 <button type="button" value="quantity" class="quantity-right-plus btn cartItem-qty-1" data-type="plus" data-field="">
@@ -63,7 +66,7 @@
     
     
                         </div>
-                        <a href="javascript:void(0)" class="btn btn-secondary swipe-to-top wishlist-product-btn">
+                        <a href="javascript:void(0)" class="btn btn-secondary swipe-to-top wishlist-product-btn mt-2">
                             ADD TO CART
                         </a>
                     </div>
@@ -122,12 +125,16 @@
                 clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
                 clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
             },
-            beforeSend: function() {},
+            beforeSend: function() {
+                $("#loading").css('display', 'block');
+            },
             success: function(data) {
+                console.log(data);
                 if (data.status == 'Success') {
                     $("#wishlist-show").html('');
                     const templ = document.getElementById("wishlist-product-template");
                     for (i = 0; i < data.data.length; i++) {
+                        console.log(data.data[i]);
                         const clone = templ.content.cloneNode(true);
                         // clone.querySelector(".single-text-chat-li").classList.add("bg-blue-100");
                         if (data.data[i].products.product_gallary != null && data.data[i].products.product_gallary !=
@@ -212,6 +219,7 @@
                         }
 
                         clone.querySelector(".cartItem-qty").setAttribute('id', 'quantity' + i);
+                        clone.querySelector(".wishlist-product-btn").setAttribute('data-input', i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-2").setAttribute('value', 'quantity' + i);
                         clone.querySelector(".cartItem-qty-1").setAttribute('data-field', i);
@@ -223,6 +231,9 @@
                 }
             },
             error: function(data) {},
+            complete: function(){
+                $("#loading").css('display', 'none');
+            },
         });
     }
 
@@ -242,7 +253,7 @@
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 'Success') {
-                    toastr.success('{{ trans("wishlist-remove") }}');
+                    toastr.success('Wishlist Item removed successfully');
                     wishListShow();
                     getWishlist();
                 }

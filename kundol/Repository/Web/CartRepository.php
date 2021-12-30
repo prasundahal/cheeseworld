@@ -64,6 +64,7 @@ class CartRepository implements CartInterface
 
     public function store(array $parms)
     {
+        
         try {
             if (Auth::check()) {
                 $customer_id = Auth::id();
@@ -85,17 +86,24 @@ class CartRepository implements CartInterface
                 $parms['session_id'] = $session_id;
                  $qtyValidation = new AvailableQty;
                  $qtyValidation = $qtyValidation->availableQty($parms['product_id'], $parms['product_combination_id'], $parms['qty'],'cart');
-                 if (!$qtyValidation) {
+                 /* if (!$qtyValidation) {
                     return $this->errorResponse('Out of Stock!', 422);
-                 }
+                 } */
             } else {
                 
                 $parms['qty'] = null;
                 $parms['product_combination_id'] = null;
             }
+           
 
             $sql = Cart::updateOrCreate(
-                ['product_id' => $parms['product_id'], 'product_combination_id' => $parms['product_combination_id'], 'is_order' => '0', 'customer_id' => $customer_id, 'session_id' => $session_id],
+                [
+                    'product_id' => $parms['product_id'], 
+                    'product_combination_id' => $parms['product_combination_id'], 
+                    'is_order' => '0', 
+                    'customer_id' => $customer_id, 
+                    'session_id' => $session_id
+                ],
                 $parms
             );
         } catch (Exception $e) {
