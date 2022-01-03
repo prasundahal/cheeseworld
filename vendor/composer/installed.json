@@ -2541,6 +2541,7 @@
         },
         {
             "name": "league/commonmark",
+<<<<<<< HEAD
             "version": "2.1.0",
             "version_normalized": "2.1.0.0",
             "source": {
@@ -2552,6 +2553,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/819276bc54e83c160617d3ac0a436c239e479928",
                 "reference": "819276bc54e83c160617d3ac0a436c239e479928",
+=======
+            "version": "2.1.1",
+            "version_normalized": "2.1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "17d2b9cb5161a2ea1a8dd30e6991d668e503fb9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/17d2b9cb5161a2ea1a8dd30e6991d668e503fb9d",
+                "reference": "17d2b9cb5161a2ea1a8dd30e6991d668e503fb9d",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2595,11 @@
             "suggest": {
                 "symfony/yaml": "v2.3+ required if using the Front Matter extension"
             },
+<<<<<<< HEAD
             "time": "2021-12-05T18:25:20+00:00",
+=======
+            "time": "2022-01-02T18:25:06+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7637,6 +7655,7 @@
         },
         {
             "name": "symfony/console",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -7648,6 +7667,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/console/zipball/9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
                 "reference": "9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "a2c6b7ced2eb7799a35375fb9022519282b5405e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a2c6b7ced2eb7799a35375fb9022519282b5405e",
+                "reference": "a2c6b7ced2eb7799a35375fb9022519282b5405e",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -7685,7 +7717,11 @@
                 "symfony/lock": "",
                 "symfony/process": ""
             },
+<<<<<<< HEAD
             "time": "2021-12-09T11:22:43+00:00",
+=======
+            "time": "2021-12-20T16:11:12+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -7719,7 +7755,11 @@
                 "terminal"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/console/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/console/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -7739,24 +7779,24 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.4.0",
-            "version_normalized": "5.4.0.0",
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "44b933f98bb4b5220d10bed9ce5662f8c2d13dcc"
+                "reference": "cfcbee910e159df402603502fe387e8b677c22fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/44b933f98bb4b5220d10bed9ce5662f8c2d13dcc",
-                "reference": "44b933f98bb4b5220d10bed9ce5662f8c2d13dcc",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/cfcbee910e159df402603502fe387e8b677c22fd",
+                "reference": "cfcbee910e159df402603502fe387e8b677c22fd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/polyfill-php80": "^1.16"
             },
-            "time": "2021-09-09T08:06:01+00:00",
+            "time": "2021-12-16T21:58:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -7788,7 +7828,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v5.4.0"
+                "source": "https://github.com/symfony/css-selector/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -7878,6 +7918,7 @@
         },
         {
             "name": "symfony/error-handler",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -7889,6 +7930,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/error-handler/zipball/1e3cb3565af49cd5f93e5787500134500a29f0d9",
                 "reference": "1e3cb3565af49cd5f93e5787500134500a29f0d9",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/error-handler.git",
+                "reference": "e0c0dd0f9d4120a20158fc9aec2367d07d38bc56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/e0c0dd0f9d4120a20158fc9aec2367d07d38bc56",
+                "reference": "e0c0dd0f9d4120a20158fc9aec2367d07d38bc56",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -7901,7 +7955,11 @@
                 "symfony/http-kernel": "^4.4|^5.0|^6.0",
                 "symfony/serializer": "^4.4|^5.0|^6.0"
             },
+<<<<<<< HEAD
             "time": "2021-12-01T15:04:08+00:00",
+=======
+            "time": "2021-12-19T20:02:00+00:00",
+>>>>>>> muniraj_test
             "bin": [
                 "Resources/bin/patch-type-declarations"
             ],
@@ -7932,7 +7990,11 @@
             "description": "Provides tools to manage errors and ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/error-handler/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/error-handler/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -8122,17 +8184,17 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.4.0",
-            "version_normalized": "5.4.0.0",
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "d2f29dac98e96a98be467627bd49c2efb1bc2590"
+                "reference": "e77046c252be48c48a40816187ed527703c8f76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/d2f29dac98e96a98be467627bd49c2efb1bc2590",
-                "reference": "d2f29dac98e96a98be467627bd49c2efb1bc2590",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/e77046c252be48c48a40816187ed527703c8f76c",
+                "reference": "e77046c252be48c48a40816187ed527703c8f76c",
                 "shasum": ""
             },
             "require": {
@@ -8140,7 +8202,7 @@
                 "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php80": "^1.16"
             },
-            "time": "2021-11-28T15:25:38+00:00",
+            "time": "2021-12-15T11:06:13+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -8168,7 +8230,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v5.4.0"
+                "source": "https://github.com/symfony/finder/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -8188,6 +8250,7 @@
         },
         {
             "name": "symfony/http-foundation",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -8199,6 +8262,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-foundation/zipball/5dad3780023a707f4c24beac7d57aead85c1ce3c",
                 "reference": "5dad3780023a707f4c24beac7d57aead85c1ce3c",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ce952af52877eaf3eab5d0c08cc0ea865ed37313",
+                "reference": "ce952af52877eaf3eab5d0c08cc0ea865ed37313",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -8216,7 +8292,11 @@
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
             },
+<<<<<<< HEAD
             "time": "2021-12-09T12:46:57+00:00",
+=======
+            "time": "2021-12-28T17:15:56+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -8244,7 +8324,11 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-foundation/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/http-foundation/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -8264,6 +8348,7 @@
         },
         {
             "name": "symfony/http-kernel",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -8275,6 +8360,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-kernel/zipball/2bdace75c9d6a6eec7e318801b7dc87a72375052",
                 "reference": "2bdace75c9d6a6eec7e318801b7dc87a72375052",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-kernel.git",
+                "reference": "35b7e9868953e0d1df84320bb063543369e43ef5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/35b7e9868953e0d1df84320bb063543369e43ef5",
+                "reference": "35b7e9868953e0d1df84320bb063543369e43ef5",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -8331,7 +8429,11 @@
                 "symfony/console": "",
                 "symfony/dependency-injection": ""
             },
+<<<<<<< HEAD
             "time": "2021-12-09T13:36:09+00:00",
+=======
+            "time": "2021-12-29T13:20:26+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -8359,7 +8461,11 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-kernel/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/http-kernel/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -8379,17 +8485,17 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v5.4.0",
-            "version_normalized": "5.4.0.0",
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "d4365000217b67c01acff407573906ff91bcfb34"
+                "reference": "1bfd938cf9562822c05c4d00e8f92134d3c8e42d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/d4365000217b67c01acff407573906ff91bcfb34",
-                "reference": "d4365000217b67c01acff407573906ff91bcfb34",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/1bfd938cf9562822c05c4d00e8f92134d3c8e42d",
+                "reference": "1bfd938cf9562822c05c4d00e8f92134d3c8e42d",
                 "shasum": ""
             },
             "require": {
@@ -8413,7 +8519,7 @@
                 "symfony/property-info": "^4.4|^5.1|^6.0",
                 "symfony/serializer": "^5.2|^6.0"
             },
-            "time": "2021-11-23T10:19:22+00:00",
+            "time": "2021-12-28T17:15:56+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -8445,7 +8551,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v5.4.0"
+                "source": "https://github.com/symfony/mime/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -9303,24 +9409,24 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.0",
-            "version_normalized": "5.4.0.0",
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "5be20b3830f726e019162b26223110c8f47cf274"
+                "reference": "2b3ba8722c4aaf3e88011be5e7f48710088fb5e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/5be20b3830f726e019162b26223110c8f47cf274",
-                "reference": "5be20b3830f726e019162b26223110c8f47cf274",
+                "url": "https://api.github.com/repos/symfony/process/zipball/2b3ba8722c4aaf3e88011be5e7f48710088fb5e4",
+                "reference": "2b3ba8722c4aaf3e88011be5e7f48710088fb5e4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/polyfill-php80": "^1.16"
             },
-            "time": "2021-11-28T15:25:38+00:00",
+            "time": "2021-12-27T21:01:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -9348,7 +9454,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v5.4.0"
+                "source": "https://github.com/symfony/process/tree/v5.4.2"
             },
             "funding": [
                 {
@@ -9638,6 +9744,7 @@
         },
         {
             "name": "symfony/string",
+<<<<<<< HEAD
             "version": "v5.4.0",
             "version_normalized": "5.4.0.0",
             "source": {
@@ -9649,6 +9756,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/9ffaaba53c61ba75a3c7a3a779051d1e9ec4fd2d",
                 "reference": "9ffaaba53c61ba75a3c7a3a779051d1e9ec4fd2d",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d",
+                "reference": "e6a5d5ecf6589c5247d18e0e74e30b11dfd51a3d",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -9668,7 +9788,11 @@
                 "symfony/translation-contracts": "^1.1|^2",
                 "symfony/var-exporter": "^4.4|^5.0|^6.0"
             },
+<<<<<<< HEAD
             "time": "2021-11-24T10:02:00+00:00",
+=======
+            "time": "2021-12-16T21:52:00+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -9707,7 +9831,11 @@
                 "utf8"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/string/tree/v5.4.0"
+=======
+                "source": "https://github.com/symfony/string/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -9727,6 +9855,7 @@
         },
         {
             "name": "symfony/translation",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -9738,6 +9867,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/8c82cd35ed861236138d5ae1c78c0c7ebcd62107",
                 "reference": "8c82cd35ed861236138d5ae1c78c0c7ebcd62107",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca",
+                "reference": "ff8bb2107b6a549dc3c5dd9c498dcc82c9c098ca",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -9776,7 +9918,11 @@
                 "symfony/config": "",
                 "symfony/yaml": ""
             },
+<<<<<<< HEAD
             "time": "2021-12-05T20:33:52+00:00",
+=======
+            "time": "2021-12-25T19:45:36+00:00",
+>>>>>>> muniraj_test
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -9807,7 +9953,11 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/translation/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/translation/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {
@@ -9908,6 +10058,7 @@
         },
         {
             "name": "symfony/var-dumper",
+<<<<<<< HEAD
             "version": "v5.4.1",
             "version_normalized": "5.4.1.0",
             "source": {
@@ -9919,6 +10070,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
                 "reference": "2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
+=======
+            "version": "v5.4.2",
+            "version_normalized": "5.4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1b56c32c3679002b3a42384a580e16e2600f41c1",
+                "reference": "1b56c32c3679002b3a42384a580e16e2600f41c1",
+>>>>>>> muniraj_test
                 "shasum": ""
             },
             "require": {
@@ -9942,7 +10106,11 @@
                 "ext-intl": "To show region name in time zone dump",
                 "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
             },
+<<<<<<< HEAD
             "time": "2021-12-01T15:04:08+00:00",
+=======
+            "time": "2021-12-29T10:10:35+00:00",
+>>>>>>> muniraj_test
             "bin": [
                 "Resources/bin/var-dump-server"
             ],
@@ -9980,7 +10148,11 @@
                 "dump"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/var-dumper/tree/v5.4.1"
+=======
+                "source": "https://github.com/symfony/var-dumper/tree/v5.4.2"
+>>>>>>> muniraj_test
             },
             "funding": [
                 {

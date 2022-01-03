@@ -88,5 +88,7 @@ Route::group(['middleware' => ['general']], function () {
     Route::get('set_currency/{currency}', 'Web\IndexController@setCurrency');
 
     Route::get('lang/{locale}', 'LocalizationController@n');
+    
+    Route::get('esewa-verify', 'Web\PaymentVerification@verify')->name('esewa-verify');
 
 });

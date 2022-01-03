@@ -383,6 +383,10 @@
                                                                     Card Payment</label>
                                                             </div>
                                                         @endforeach
+                                                        <div class="form-group">
+                                                            <input type="radio" name="payment_method" class="payment_method esewaRadio" id="esewaRadio" value="esewa">
+                                                            <label class="esewaRadio" for="esewaRadio">Esewa</label>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -444,9 +448,20 @@
                                                 <a data-toggle="pill" href="#pills-method"
                                                     class="btn btn-secondary swipe-to-top cta" id="BackToBilling">{{ trans('lables.checkout-back') }}</a>
                                                 <button type="submit"
-                                                    class="btn btn-secondary swipe-to-top createOrder">{{ trans('lables.checkout-continue') }}</button>
-
-
+                                                    class="btn btn-secondary swipe-to-top createOrder" id="otherContinue">{{ trans('lables.checkout-continue') }}</button>
+                                                
+                                                <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewaForm" class="my-3 mx-auto" hidden="false">
+                                                    <input value="10" name="tAmt" type="hidden">
+                                                    <input value="10" name="amt" type="hidden">
+                                                    <input value="0" name="txAmt" type="hidden">
+                                                    <input value="0" name="psc" type="hidden">
+                                                    <input value="0" name="pdc" type="hidden">
+                                                    <input value="EPAYTEST" name="scd" type="hidden">
+                                                    <input value="" name="pid" type="hidden">
+                                                    <input value="{{ route('esewa-verify') }}?q=su" type="hidden" name="su">
+                                                    <input value="{{ route('esewa-verify') }}?q=fu" type="hidden" name="fu">
+                                                    <button type="submit" class="btn btn-secondary swipe-to-top esewaButton" id="esewaButton">Continue Esewa</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -633,6 +648,25 @@
             }
         });
 
+        $(document).ajaxStop(function () {
+            var d = new Date();
+            var productSkus = d.getTime();
+            $.each($('#cartItem-product-show > tbody'), function(){
+                if(productSkus == ''){
+                    productSkus += $(this).find('tr').attr('product_sku');
+                }else{
+                    productSkus += '>' + $(this).find('tr').attr('product_sku');
+                }
+            });
+            console.log(productSkus);
+            var total = $('.caritem-grandtotal').html().split(' ').slice(-1)[0];
+            $('#esewaForm input[name="amt"]').val(total);
+            var tax = 0;
+            var servChrg = 0;
+            var total = parseFloat(total) + parseFloat(tax) + parseFloat(servChrg);
+            $('#esewaForm input[name="pid"]').val(productSkus);
+            $('#esewaForm input[name="tAmt"]').val(total);
+        });
 
         function cartItem(cartSession) {
             if (loggedIn == '1') {
@@ -653,6 +687,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log(data);
                     if (data.status == 'Success') {
                         $("#cartItem-product-show").html('');
                         const templ = document.getElementById("cartItem-Template");
@@ -762,6 +797,7 @@
                                 .product_id);
                             clone.querySelector(".cartItem-row").setAttribute('product_type', data.data[i]
                                 .product_type);
+                            clone.querySelector(".cartItem-row").setAttribute('product_sku', data.data[i].product_slug);
 
                             $("#cartItem-product-show").append(clone);
                             const temp1 = document.getElementById("cartItem-grandtotal-template");
@@ -798,7 +834,7 @@
                             $("#cartItem-grandtotal-product-show").append(clone1);
                         }
 
-                        $('.total_by_weight').val(total_weight);
+                        $('.total_by_weight').val('');
                         couponCart = $.trim(localStorage.getItem("couponCart"));
                         if (couponCart != 'null' && couponCart != '') {
                             $("#coupon_code").val(couponCart);
@@ -812,7 +848,6 @@
                 error: function(data) {},
             });
         }
-
 
 
         function removeCartItem(input) {
@@ -859,6 +894,7 @@
                 error: function(data) {},
             });
         }
+
 
         $("#removeCoupon").click(function() {
             localStorage.setItem("couponCart", '');
@@ -1301,20 +1337,30 @@
             if (payment_method == 'stripe' || payment_method == 'paypal') {
                 $(".stripe_payment").removeClass('d-none');
                 $(".bank_transfer").addClass('d-none');
+                $("#esewaForm").attr('hidden', 'hidden');
+                $('#otherContinue').removeAttr('hidden');
                 return;
             }
             if (payment_method == 'banktransfer') {
                 $(".bank_transfer").removeClass('d-none');
                 $(".stripe_payment").addClass('d-none');
+                $("#esewaForm").attr('hidden', 'hidden');
+                $('#otherContinue').removeAttr('hidden');
             }
             if (payment_method == 'cod') {
                 $(".stripe_payment").addClass('d-none');
                 $(".bank_transfer").addClass('d-none');
-
+                $("#esewaForm").attr('hidden', 'hidden');
+                $('#otherContinue').removeAttr('hidden');
+            }
+            if (payment_method == 'esewa') {
+                $(".stripe_payment").addClass('d-none');
+                $(".bank_transfer").addClass('d-none');
+                $("#esewaForm").removeAttr('hidden');
+                $('#otherContinue').attr('hidden', 'hidden');
             }
 
         });
-
 
         $(".createOrder").click(function(e) {
             e.preventDefault();
@@ -1393,6 +1439,123 @@
 
                     if (data.status == 'Success') {
                         window.location.href = "{{ url('/thankyou') }}";
+                    } else if (data.status == 'Error') {
+                        toastr.error('{{ trans('response.some_thing_went_wrong') }}');
+                        $("#pills-shipping-tab").addClass('active');
+                        $("#pills-shipping").addClass('show active');
+                    }
+                },
+                error: function(data) {
+
+                    if (data.status == 422) {
+                        jQuery.each(data.responseJSON.errors, function(index, item) {
+                            $("#" + index).parent().find('.invalid-feedback').css('display',
+                                'block');
+                            $("#" + index).parent().find('.invalid-feedback').html(item);
+                        });
+                    } else {
+                        toastr.error('{{ trans('response.some_thing_went_wrong') }}');
+                    }
+                    $("#pills-shipping-tab").addClass('active');
+                    $("#pills-shipping").addClass('show active');
+
+                    $("#pills-billing-tab").removeClass('active');
+                    $("#pills-billing").removeClass('show active');
+
+                    $("#pills-method-tab").removeClass('active');
+                    $("#pills-method").removeClass('show active');
+
+                    $("#pills-order-tab").removeClass('active');
+                    $("#pills-order").removeClass('show active');
+
+                },
+            });
+        });
+
+        $("#esewaButton").click(function(e) {
+            console.log('kashdgfakshdgfhg');
+            e.preventDefault();
+            $('.invalid-feedback').css('display', 'none');
+            locations = $("#latlong").val();
+            billing_first_name = $("#billing_first_name").val();
+            billing_last_name = $("#billing_last_name").val();
+            billing_street_aadress = $("#billing_street_aadress").val();
+            billing_country = $("#billing_country").val();
+            billing_state = $("#billing_state").val();
+            billing_city = $("#billing_city").val();
+            billing_postcode = $("#billing_postcode").val();
+            billing_phone = $("#billing_phone").val();
+
+            delivery_first_name = $("#delivery_first_name").val();
+            delivery_last_name = $("#delivery_last_name").val();
+            delivery_street_aadress = $("#delivery_street_aadress").val();
+            delivery_country = $("#delivery_country").val();
+            delivery_state = $("#delivery_state").val();
+            delivery_city = $("#delivery_city").val();
+            delivery_postcode = $("#delivery_postcode").val();
+            delivery_phone = $("#delivery_phone").val();
+            order_notes = $("#order_notes").val();
+            coupon_code = $.trim(localStorage.getItem("couponCart"));
+
+            payment_method = $(".payment_method:checked").val();
+            cc_number = $("#cc_number").val();
+            cc_expiry_month = $("#cc_expiry_month").val();
+            cc_expiry_year = $("#cc_expiry_year").val();
+            cc_cvc = $("#cc_cvc").val();
+            if (payment_method == '') {
+                toastr.error('Select Payment Method');
+                return;
+            }
+
+            url = '/api/client/order';
+
+            $.ajax({
+                type: 'post',
+                url: "{{ url('') }}" + url,
+                data: {
+                    billing_first_name: billing_first_name,
+                    billing_last_name: billing_last_name,
+                    billing_street_aadress: billing_street_aadress,
+                    billing_country: billing_country,
+                    billing_state: billing_state,
+                    billing_city: billing_city,
+                    billing_postcode: billing_postcode,
+                    billing_phone: billing_phone,
+                    delivery_first_name: delivery_first_name,
+                    delivery_last_name: delivery_last_name,
+                    delivery_street_aadress: delivery_street_aadress,
+                    delivery_country: delivery_country,
+                    delivery_state: delivery_state,
+                    delivery_city: delivery_city,
+                    delivery_postcode: delivery_postcode,
+                    delivery_phone: delivery_phone,
+                    order_notes: order_notes,
+                    coupon_code: coupon_code,
+                    latlong: locations,
+                    currency_id: localStorage.getItem("currency"),
+                    payment_method: payment_method,
+                    cc_number: cc_number,
+                    cc_expiry_month: cc_expiry_month,
+                    cc_expiry_year: cc_expiry_year,
+                    cc_cvc: cc_cvc,
+                },
+                headers: {
+                    'Authorization': 'Bearer ' + customerToken,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
+                    clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
+                },
+                beforeSend: function() {},
+                success: function(data) {
+
+                    if (data.status == 'Success') {
+                        if(payment_method == 'esewa'){
+                            pid = $('#esewaForm input[name=pid]').val() + '?' + data.data.order_id;
+                            $('#esewaForm input[name=pid]').val(pid);
+                            $('#esewaForm').submit();
+                        }else if(payment_method == 'cod'){
+                            window.location.href = "{{ url('/thankyou') }}";
+                        }
                     } else if (data.status == 'Error') {
                         toastr.error('{{ trans('response.some_thing_went_wrong') }}');
                         $("#pills-shipping-tab").addClass('active');
@@ -1541,7 +1704,6 @@
                 },
             });
         }
-
 
         function caritemGrandtotal() {
             couponCart = $(".caritem-discount-coupon").attr('price');

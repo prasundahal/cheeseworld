@@ -176,7 +176,7 @@ class OrderProcess implements ShouldQueue
                 'order_status' => 'Pending'
             ]);
 
-            if($this->parms['payment_method'] != 'cod' && $this->parms['payment_method'] != 'banktransfer'){
+            if($this->parms['payment_method'] != 'cod' && $this->parms['payment_method'] != 'esewa' && $this->parms['payment_method'] != 'banktransfer'){
                 if($paymentMethod['message'] == 'Success'){
                     $orderService->CompleteTransaction($sql, $this->parms['customer_id']);
                 }

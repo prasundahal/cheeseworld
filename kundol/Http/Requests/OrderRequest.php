@@ -15,7 +15,7 @@ class OrderRequest extends FormRequest
     {
         $rule1 = 'required|string|max:191';
         $rule2 = 'nullable|string|max:191';
-        $isDeliveryboy = isset(getSetting()['is_deliveryboyapp_purchased']) && getSetting()['is_deliveryboyapp_purchased'] == '1' ? 'required|string|max:191,' : 'nullable|string|max:191,';
+        $isDeliveryboy = isset(getSetting()['is_deliveryboyapp_purchased']) && getSetting()['is_deliveryboyapp_purchased'] == '1' ? 'nullable|string|max:191,' : 'nullable|string|max:191,';
         return [
             'billing_first_name' => $rule1,
             'billing_last_name' => $rule1,
@@ -47,11 +47,11 @@ class OrderRequest extends FormRequest
             'latlong' => $isDeliveryboy,
             'order_status' => 'nullable|in:Pending,Inprocess,Dispatched,Complete,Return,Cancel,Shipped',
             'coupon_code' => 'nullable|exists:coupon_setting,code',
-            'payment_method' => $rule1.'|in:cod,paypal,stripe,banktransfer',
-            'cc_number' => 'exclude_if:payment_method,cod,banktransfer|required|integer',
-            'cc_expiry_month' => 'exclude_if:payment_method,cod,banktransfer|required|integer',
-            'cc_expiry_year' => 'exclude_if:payment_method,cod,banktransfer|required|integer',
-            'cc_cvc' => 'exclude_if:payment_method,cod,banktransfer|required|integer',
+            'payment_method' => $rule1.'|in:cod,esewa,paypal,stripe,banktransfer',
+            'cc_number' => 'exclude_if:payment_method,cod,esewa,banktransfer|required|integer',
+            'cc_expiry_month' => 'exclude_if:payment_method,cod,esewa,banktransfer|required|integer',
+            'cc_expiry_year' => 'exclude_if:payment_method,cod,esewa,banktransfer|required|integer',
+            'cc_cvc' => 'exclude_if:payment_method,cod,esewa,banktransfer|required|integer',
             'transaction_id' => $rule2,
             'total_tax' => $rule2,
         ];
