@@ -7,6 +7,7 @@ use App\Http\Resources\Admin\ProductDetail;
 use App\Mail\ResetPassword;
 use App\Models\Admin\Attribute;
 use App\Models\Admin\Brand;
+use App\Models\Admin\CategoryDetail;
 use App\Models\Admin\Customer;
 use App\Models\Admin\Page;
 use App\Models\Admin\PaymentMethod;
@@ -126,6 +127,11 @@ class IndexController extends Controller
         $data['price_range'] = ['0-500', '500-1000', '1000-2000'];
         $data['brand'] = $brand;
         return view('shop', compact('data'));
+    }
+
+    public function getCategory($id){
+        $name = CategoryDetail::where(['category_id' => $id, 'language_id' => 1])->pluck('category_name')->first();
+        return response()->json($name);
     }
 
     public function cartPage()

@@ -8,7 +8,7 @@
                     <ul class="m-0 p-0 d-flex align-items-center">
                         <li class="font-weight-bold">Home</li><span class="mx-2"><i class="fa fa-angle-right"
                                 aria-hidden="true"></i></span>
-                        <li class="">Product Listing</li>
+                        <li class="" id="breadProd">Product Listing</li>
                     </ul>
                 </div>
             </div>

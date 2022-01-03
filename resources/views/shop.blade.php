@@ -25,6 +25,26 @@
         var priceFromSidebar = "{{ isset($_GET['price']) ? $_GET['price'] : '' }}";
         var shopStyle = "{{ getSetting()['shop'] }}";
         $(document).ready(function() {
+            id = '';
+            var url = new URL(window.location);
+            if(url.searchParams.get("category")){
+                id = url.searchParams.get("category");
+            }
+            var url = "{{ route('getCategory', ":id") }}";
+            url = url.replace(':id', id);
+            console.log(url);
+            $.ajax({
+                type: 'get',
+                url: url,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#breadProd').html(response);
+                }
+            });
+
             fetchProduct(1);
             $(".variaion-filter").each(function() {
                 if ($(this).val() != "") {
