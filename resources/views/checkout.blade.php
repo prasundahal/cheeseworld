@@ -687,7 +687,6 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data);
                     if (data.status == 'Success') {
                         $("#cartItem-product-show").html('');
                         const templ = document.getElementById("cartItem-Template");
@@ -1006,8 +1005,6 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log('checkout page');
-                    console.log(data);
                     if (data.status == 'Success') {
                         for (i = 0; i < data.data.length; i++) {
                             $("#delivery_first_name").val(data.data[i].first_name);
@@ -1022,8 +1019,6 @@
                                 .state_id != '') {
                                 state = data.data[i].state_id.id;
                             }
-                            console.log("state =" + state);
-                            console.log("country =" + country);
                             countries1();
                             $("#delivery_country_hidden").val(country);
                             $("#delivery_state_hidden").val(state);

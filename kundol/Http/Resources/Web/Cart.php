@@ -25,6 +25,7 @@ class Cart extends JsonResource
         return [
             'session' => $this->session_id,
             'product_id' => $this->product_id,
+            'product_slug' => $this->product->product_slug,
             'product_weight' => $this->product->product_weight ? $this->product->product_weight : 0,
             'product_type' => $this->product->product_type,
             'product_combination_id' => $this->product_combination_id,
