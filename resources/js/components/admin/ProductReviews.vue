@@ -85,9 +85,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="review in reviews" v-bind:key="review.id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(review, index) in reviews" v-bind:key="review.id">
                                                             <td class="sorting_1">
-                                                                {{review.id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                                 {{ review.comment }}

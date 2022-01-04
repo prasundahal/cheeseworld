@@ -1353,6 +1353,24 @@
                 $(".bank_transfer").addClass('d-none');
                 $("#esewaForm").removeAttr('hidden');
                 $('#otherContinue').attr('hidden', 'hidden');
+                $.ajax({
+                    type: 'post',
+                    data: {
+                        'payment_method': payment_method,
+                    },
+                    url: '{{ url("") }}' + '/api/client/esewaMerchant',
+                    headers: {
+                        'Authorization': 'Bearer ' + customerToken,
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
+                        clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
+                    },
+                    beforeSend: function() {},
+                    success: function(response) {
+                        $("#esewaForm").attr('action', response.ESEWA_URL);
+                        $('#esewaForm input[name="scd"]').val(response.ESEWA_MERCHANT_ID);
+                    }
+                });
             }
 
         });

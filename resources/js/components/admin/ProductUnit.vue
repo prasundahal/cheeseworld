@@ -84,9 +84,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="unit in units" v-bind:key="unit.unit_id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(unit, index) in units" v-bind:key="unit.unit_id">
                                                             <td class="sorting_1">
-                                                                {{unit.id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                                 {{ unit.detail == null ? '' : (unit.detail[0] ? unit.detail[0].name : '') }}

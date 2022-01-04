@@ -87,9 +87,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="brand in brands" v-bind:key="brand.brand_id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(brand, index) in brands" v-bind:key="brand.brand_id">
                                                             <td class="sorting_1">
-                                                                {{brand.brand_id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                                 {{ brand.brand_name }}

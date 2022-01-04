@@ -80,9 +80,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" product="row" v-for="product in products" v-bind:key="product.id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" product="row" v-for="(product, index) in products" v-bind:key="product.id">
                                                             <td class="sorting_1">
-                                                                {{product.product_id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                                 {{ product.detail == null ? '' : (product.detail[0] ? product.detail[0].title : '') }}

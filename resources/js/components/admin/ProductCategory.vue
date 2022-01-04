@@ -87,9 +87,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="category in categorys" v-bind:key="category.category_id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(category, index) in categorys" v-bind:key="category.category_id">
                                                             <td class="sorting_1">
-                                                                {{category.id}}
+                                                                {{  index + 1  }}
                                                             </td>
                                                             <td>
                                                                 {{ category.detail[0] ? category.detail[0].name : '' }}

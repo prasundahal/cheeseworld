@@ -84,9 +84,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="variation in variations" v-bind:key="variation.id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(variation, index) in variations" v-bind:key="variation.id">
                                                             <td class="sorting_1">
-                                                                {{variation.id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                             {{ variation.detail == null ? '' : (variation.detail[0] ? variation.detail[0].name : '') }}

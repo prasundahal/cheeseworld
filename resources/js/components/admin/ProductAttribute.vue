@@ -81,9 +81,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
-                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="attribute in attributes" v-bind:key="attribute.attribute_id">
+                                                        <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="(attribute, index) in attributes" v-bind:key="attribute.attribute_id">
                                                             <td class="sorting_1">
-                                                                {{attribute.attribute_id}}
+                                                                {{ index + 1 }}
                                                             </td>
                                                             <td>
                                                                 {{ attribute.detail == null ? '' : (attribute.detail[0] ? attribute.detail[0].name : '') }}
