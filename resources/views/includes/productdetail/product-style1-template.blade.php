@@ -157,13 +157,13 @@ $newgalleries = array_chunk($galleries, 4, true);
             <div class="col-xl-4 col-lg-4 col-12">
                 <input type="hidden" id="product_combination_id" />
                 <div class="d-flex flex-column">
-                    <h1 class="font-weight-bold pro-title mt-3">
+                    <h1 class="font-weight-bold pro-title mt-3" style="font-size: 25px">
 
                     </h1>
-                    <h6 class="font-weight-bold">
+                    <h3 class="font-weight-bold">
                         {{-- <span class="product-card-price"></span> --}}
                         <span class="price product-card-price2"></span>
-                    </h6>
+                    </h3>
                     <p class="description">
 
                     </p>
@@ -202,17 +202,6 @@ $newgalleries = array_chunk($galleries, 4, true);
         </div>
         
         <div class="row py-5">
-            <div class="col-12">
-                <h1 class="font-weight-bold text-center py-4">
-                    Chicco SterilNatural
-                </h1>
-                <p>
-                    The new line of sterilizers by Chicco fits the needs of mother and baby. It allows to choose
-                    between different models
-                    and configurations in order to sterilize effectively and easily.
-                </p>
-
-            </div>
 
         </div>
     </div>

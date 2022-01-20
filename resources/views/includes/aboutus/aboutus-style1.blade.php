@@ -236,7 +236,7 @@
                                         Customer Service</label>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-6 col-12 d-flex align-items-center justify-content-end">
-                                    <p class="font-weight-bold m-0">1800-102-6702</p>
+                                    <p class="font-weight-bold m-0">{{ getSetting()['phone_number'] ?? '1800 102 6702' }}</p>
                                 </div>
 
                             </div>
@@ -256,7 +256,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-12 text-center mt-xl-2 mt-md-3 mt-4">
                         <div class="email d-flex justify-content-center align-items-center h-100">
-                            <a href="#" class="font-weight-bold">Send an email</a>
+                            <a href="{{ url('contact-us') }}" class="font-weight-bold">Send an email</a>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@
                             <select @change="setProductType($event.target.value)" class="single-select w-100 mb-3 categories-select ms-offscreen" v-model="product_type">
                                 <option value="">Select Product Type</option>
                                 <option value="simple">Simple</option>
-                                <option value="variable">Variable</option>
+                                <!-- <option value="variable">Variable</option> -->
                             </select>
                             <small class="form-text text-danger" v-if="errors.has('product_type')" v-text="errors.get('product_type')"></small>
                         </fieldset>

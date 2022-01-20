@@ -35,7 +35,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     <div class="container">
         <div class="row">
             <div class="main-header-wrapper col-xl-12 col-lg-12 col-md-6 col-6 m-auto">
-                <div class="main-header row py-2">
+                <div class="main-header row py-2"  style="margin: 0 -150px 0 !important;">
                     <div class="col-xl-4 col-md-4 col-2 m-auto">
                         <div class=" list">
                             <ul class="navbar-nav mr-auto d-flex flex-row">
@@ -64,7 +64,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     <div class="col-4 m-auto d-md-block d-none">
                         <div class="notice">
                             {{-- <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a> --}}
-                                <div class="notice d-flex  justify-content-center align-items-center">
+                                <div class="notice d-flex  justify-content-end align-items-end">
                                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                                         <li>
                                             <a href="{{ url('/wishlist') }}" class="nav-link btn" data-toggle="tooltip"

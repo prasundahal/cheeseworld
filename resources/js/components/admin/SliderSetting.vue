@@ -255,7 +255,7 @@ export default {
             showModal:false,
             searchParameter: '',
             sortBy: 'id',
-            sortType: 'ASC',
+            sortType: 'DESC',
             limit: 10,
             error_message: '',
             edit: false,

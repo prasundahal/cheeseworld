@@ -20,7 +20,7 @@ class SliderRequest extends FormRequest
             'slider_type_id' => 'required|exists:slider_types,id',
             'slider_navigation_id' => 'required|exists:slider_navigation,id',
             'gallary_id' => 'required|exists:gallary,id',
-            'ref_id' => 'exclude_if:slider_navigation_id,3,4|required|integer',
+            'ref_id' => 'exclude_if:slider_navigation_id,3,4,5|required|integer',
             'url' => 'nullable',
         ];
     }

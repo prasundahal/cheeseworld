@@ -30,6 +30,9 @@ class SliderController extends Controller
     public function store(SliderRequest $request)
     {
         $parms = $request->all();
+        if($request->ref_id == 0){
+            $parms['ref_id'] = 0;
+        }
         return $this->SliderRepository->store($parms);
     }
 

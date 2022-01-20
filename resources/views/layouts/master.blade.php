@@ -918,7 +918,7 @@
                             if (i == 1) {
                                 articles += '<div class="col-xl-4 col-md-4 col-sm-12">' +
                                     '<div class="box-3rd d-flex justify-content-center align-items-center h-100">' +
-                                    '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="">' +
+                                    '<img src="{{ asset('frontend/image/observatory/kid.jpg') }}" alt="" id="observatory-image">' +
                                     '</div>' +
                                     '</div>';
                             }
@@ -927,6 +927,27 @@
                             }
                         });
                         $('#articles').html(articles);
+
+                        $.ajax({
+                            type: 'get',
+                            url: "{{ url('') }}" +
+                                '/api/client/slider?getLanguage=1&getSliderType=1&getSliderNavigation=1&getSliderGallary=1&limit=5&sortBy=id&sortType=DESC&sliderType=6&language_id=1',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                clientid: "{{ isset(getSetting()['client_id']) ? getSetting()['client_id'] : '' }}",
+                                clientsecret: "{{ isset(getSetting()['client_secret']) ? getSetting()['client_secret'] : '' }}",
+                            },
+                            beforeSend: function() {},
+                            success: function(data) {
+                                if (data.status == 'Success') {
+                                    if(data.data[0].gallary){
+                                        imgSrc = '{{ url('/') }}/gallary/' + data.data[0].gallary;
+                                        $('#observatory-image').attr('src', imgSrc);
+                                    }
+                                }
+                            },
+                            error: function(data) {},
+                        });
                     }
                 },
                 error: function(data) {},

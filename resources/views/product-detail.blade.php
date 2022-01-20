@@ -23,46 +23,6 @@
 
     <input type="hidden" id="product_id" value="{{ $product }}" />
 
-
-
-
-
-    <!-- Observatory Section Starts -->
-    <section id="observatory-wrapper" class="py-5">
-        <div class="container">
-            <div class="heading-wrap d-flex align-items-center justify-content-center flex-column mb-3">
-                <div class="icon-logo-head text-center mb-2">
-                    <img src="{{ asset('frontend/image/observatory/1.png') }}" alt="logo-icon" class="img-fluid">
-                </div>
-                <div class="head text-center">
-                    <h5 class="font-weight-bold">Observatory</h5>
-
-                    <div class="slogan-wrapper">
-                        <h2 class="font-weight-bold">Do you know that...</h2>
-                        <p>
-                            <span class="fancy-comma font-weight-bold">
-                                "
-                            </span>
-                            Sucking is an instinct that reassures and comforts your child.
-                            <span class="fancy-comma font-weight-bold">
-                                "
-                            </span>
-                        </p>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="content mb-3">
-                <div class="row" id="articles">
-
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-    <!-- Observatory Section Ends -->
     @include('includes.productdetail.related-product-section');
 @endsection
 
