@@ -18,32 +18,6 @@
         
     </div>
 </section>
-<!-- Breadcrumb Section Ends -->
-<!-- Things We Believe Section Starts -->
-<section id="booster-seats">
-    <div class="container">
-        <div class="row">
-            <div class="col-10 m-auto">
-                <div class="content-wrapper text-center">
-                    <div class="head">
-                        <h1 class="font-weight-bold">Booster seats</h1>
-                    </div>
-                    <div class="content">
-                        <p>
-                            Thanks to the practical table seats and chair racks, the child can share with
-                            parents one of the most important moments
-                            of the day: the baby food.
-                        </p>
-
-                        <p>
-                            Even outside the home!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- Things We Believe Section Ends -->
 <!-- Filter Section Starts -->
 <section id="filter-section" class="py-5">
