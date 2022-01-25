@@ -5,6 +5,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
            return $q->latest()->first();
         },
     ])->get();
+    dd(getSetting());
     
 ?>
 <div id="busybox" class="fog_div">
@@ -19,21 +20,25 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     <div class="col-6">
                         <ul class="info p-0 ml-0">
                             <li>
-                                Artsana customer service
+                                Chicco customer service
                             </li>
                             <li>
-                                Operational assistance for Chicco Shop </li>
+                                Sales Inquuiry </li>
                         </ul>
                     </div>
                     <div class="col-6">
                         <ul class="info p-0 ml-0">
                             <li>
                                 <span class="mr-2"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                {{ getSetting()['phone_number'] ?? '1800 102 6702' }}
+                                <a href="tel:{{ getSetting()['phone_number'] ?? '+977-1-4168810' }}">
+                                    {{ getSetting()['phone_number'] ?? '+977-1-4168810' }}
+                                </a>
                             </li>
                             <li>
                                 <span class="mr-2"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                {{ getSetting()['phone_number'] ?? '1800 102 6702' }}
+                                <a href="tel:{{ getSetting()['phone_number'] ?? '+977-1-4168810' }}">
+                                    +977-1-4168810
+                                </a>
                             </li>
                         </ul>
                     </div>
