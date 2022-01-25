@@ -5,7 +5,6 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
            return $q->latest()->first();
         },
     ])->get();
-    dd(getSetting());
     
 ?>
 <div id="busybox" class="fog_div">
