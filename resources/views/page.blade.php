@@ -3,10 +3,13 @@
 
 @if(isset($page->page_detail))
 <br />
-<h2>{{ $page->page_detail[0]->title }}</h2>
 
 <br />
-{!! $page->page_detail[0]->description !!}
+<div class="container">
+    <h2>{{ $page->page_detail[0]->title }}</h2>
+
+    {!! $page->page_detail[0]->description !!}
+</div>
 @else
 <h2>comming soon</h2>
 @endif
