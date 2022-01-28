@@ -5,9 +5,15 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="m-0 p-0 d-flex align-items-center">
-                        <li class="font-weight-bold">Home</li><span class="mx-2"><i class="fa fa-angle-right"
-                                aria-hidden="true"></i></span>
-                        <li class="">Product Details</li>
+                        <li class="font-weight-bold">Home</li>
+                        <span class="mx-2"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+
+                        <li class="">
+                            <a id="breadCat" style="text-decoration: none; color: #000"></a>
+                        </li>
+                        <span class="mx-2"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                        
+                        <li class="" id="breadProd"></li>
                     </ul>
                 </div>
             </div>
