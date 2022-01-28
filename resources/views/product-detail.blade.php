@@ -67,7 +67,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.status == 'Success') {
                         $('#breadCat').attr('href', '{{ url("shop?category=") }}' + data.data.category[0].category_detail.id);
                         $('#breadCat').html(data.data.category[0].category_detail.detail[0].name);
@@ -174,8 +174,8 @@
                             }
                         }
 
-                        console.log("product_type = " + data.data.product_type);
-                        console.log(data);
+                        // console.log("product_type = " + data.data.product_type);
+                        // console.log(data);
                         if (data.data.product_type == 'simple') {
 
 
@@ -194,7 +194,7 @@
                                     .product_price_symbol + '</span>';
                             }
                         } else {
-                            console.log("combination");
+                            // console.log("combination");
                             if (data.data.product_combination != null) {
                                 clone.querySelector(".product-card-price2").innerHTML = data.data
                                     .product_combination[0].product_price_symbol;
@@ -322,8 +322,8 @@
                                 ++p;
                             }
                             if (variation_array.length == variation_id.length) {
-                                console.log(variation_array);
-                                console.log(variation_id);
+                                // console.log(variation_array);
+                                // console.log(variation_id);
                                 for (m = 0; m < variation_id.length; m++) {
                                     if (jQuery.inArray(parseInt(variation_id[m]),
                                             variation_array) == -
@@ -487,7 +487,7 @@
                     }
                 },
                 error: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.status == 422) {
                         jQuery.each(data.responseJSON.errors, function(index, item) {
                             $("#" + index).parent().find('.invalid-feedback').css('display',

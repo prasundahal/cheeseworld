@@ -658,7 +658,7 @@
                     productSkus += '>' + $(this).find('tr').attr('product_sku');
                 }
             });
-            console.log(productSkus);
+            // console.log(productSkus);
             var total = $('.caritem-grandtotal').html().split(' ').slice(-1)[0];
             $('#esewaForm input[name="amt"]').val(total);
             var tax = 0;
@@ -969,7 +969,7 @@
                     }
                 },
                 error: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     price = $(".caritem-subtotal").attr('price-symbol');
                     $(".caritem-discount-coupon").attr('price', 0);
                     $(".caritem-discount-coupon").html('');
@@ -1486,7 +1486,7 @@
         });
 
         $("#esewaButton").click(function(e) {
-            console.log('kashdgfakshdgfhg');
+            // console.log('kashdgfakshdgfhg');
             e.preventDefault();
             $('.invalid-feedback').css('display', 'none');
             locations = $("#latlong").val();
@@ -1905,7 +1905,7 @@
                         anchor: new google.maps.Point(17, 34),
                         scaledSize: new google.maps.Size(25, 25)
                     };
-                    console.log(place.geometry.location);
+                    // console.log(place.geometry.location);
                     // Create a marker for each place.
                     markers.setPosition(place.geometry.location);
                     markers.setTitle(place.name);

@@ -151,7 +151,7 @@
             var quantity = $('#quantity' + row_id).val();
             // console.log("qty =" +quantity);
             $('#quantity' + row_id).val(parseInt(quantity) + 1);
-            console.log($("#quantity"+row_id).val());
+            // console.log($("#quantity"+row_id).val());
         })
 
         $(document).on('click', '.quantity-left-minus', function() {

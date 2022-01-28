@@ -301,7 +301,7 @@
                         name: name	
                     },	
                     success: function(response) {	
-                        console.log(response);	
+                        // console.log(response);	
                         if (response.length > 0) {	
                             $('#searchBox').html('');	
                             var results = '';	
@@ -671,10 +671,10 @@
                 qty = $.trim($("#quantity-input").val());
             }else{
                 qty = $.trim($("#quantity"+product_input).val());
-                console.log('asdf');
+                // console.log('asdf');
             }
             // qty = $.trim($("#quantity-input").val());
-            console.log(qty);
+            // console.log(qty);
             if (qty == '' || qty == 'undefined' || qty == null) {
                 qty = 1;
             }

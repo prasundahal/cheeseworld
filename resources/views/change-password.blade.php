@@ -160,13 +160,13 @@
                     },
                     beforeSend: function() {},
                     success: function(data) {
-                        console.log(data);
+                        // console.log(data);
                         toastr.success(data.msg);
                         $("#changeForm")[0].reset();
                         // location.href = "{{ url('/login') }}";
                     },
                     error: function(data) {
-                        console.log();
+                        console.log(data);
                         // if (data.status == 422) {
                         //     jQuery.each(data.responseJSON.errors, function(index, item) {
                         //         $("#" + index).parent().find('.invalid-feedback').css('display',
