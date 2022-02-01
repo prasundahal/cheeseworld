@@ -5,6 +5,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     ->whereHas('my_products')
     ->with('my_products')
     ->with('subcategory')
+    ->whereHas('subcategory')
     ->take(12)
     ->get();
 ?>
