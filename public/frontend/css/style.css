@@ -1343,3 +1343,9 @@ a {
 .error {
 	color: #dc3545!important;
 }
+.page-title{	
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 25px 0;
+	color: white;
+}
