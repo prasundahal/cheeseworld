@@ -225,7 +225,7 @@ export default {
         fetchproducts(page_url) {
             this.$parent.loading = true;
             let vm = this;
-            page_url = 'https://chicco.nextnepal.org/' || "/api/admin/product";
+            page_url = 'https://chicco.nextnepal.org/' || "https://chicco.nextnepal.org//api/admin/product";
             var arr = page_url.split('?');
             
             if (arr.length > 1) {
