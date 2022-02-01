@@ -2,6 +2,15 @@
 @section('content')
 
 @if(isset($page->page_detail))
+
+<style>
+    .page-title{	
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 25px 0;
+        color: white;
+    }
+</style>
 <br />
 
 <br />
