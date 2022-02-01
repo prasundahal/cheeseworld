@@ -1,5 +1,13 @@
 @extends('layouts.master')
 @section('content')
+<style>
+    .page-title{	
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 25px 0;
+        color: white;
+    }
+</style>
     <section id="who-we-are">
         <!-- Breadcrumb Section Starts -->
         <section id="breadcrumbs">
