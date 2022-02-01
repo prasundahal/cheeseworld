@@ -82,6 +82,7 @@ Route::group(['middleware' => ['general']], function () {
     Route::get('/term', 'Web\IndexController@term');
     Route::get('/contact-us', 'Web\IndexController@contactUs');
     Route::get('/about-us', 'Web\IndexController@aboutUs');
+    Route::get('/research-center', 'Web\IndexController@research');
 
     Route::get('set_currency/{currency}', 'Web\IndexController@setCurrency');
 

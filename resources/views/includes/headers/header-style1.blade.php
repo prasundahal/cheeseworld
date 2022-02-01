@@ -216,7 +216,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-bold" href="#">Chicco Research Center</a>
+                                <a class="nav-link font-weight-bold" href="{{ url('/research-center') }}">Chicco Research Center</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-weight-bold" href="{{ url('/about-us') }}">Who we are</a>

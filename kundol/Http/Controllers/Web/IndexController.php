@@ -80,7 +80,12 @@ class IndexController extends Controller
         $data = $homeService->homeIndex();
         return view('aboutus', compact('data'));
     }
-
+    public function research()
+    {
+        $homeService = new HomeService;
+        $data = $homeService->homeIndex();
+        return view('research', compact('data'));
+    }
     public function productDetail($product, $slug)
     {
         $homeService = new HomeService;
