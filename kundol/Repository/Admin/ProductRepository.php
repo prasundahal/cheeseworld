@@ -208,6 +208,7 @@ class ProductRepository implements ProductInterface
                     'avg_rating' => ProductReview::whereColumn('product_review.product_id', 'products.id')->where('status', 'active')->selectRaw('avg(rating)'),
                 ]);
             }
+            // return $product->first();
 //return $product->first();
             return $this->successResponse(new ProductResource($product->first()), 'Data Get Successfully!');
         } catch (Exception $e) {
