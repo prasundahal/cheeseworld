@@ -34,7 +34,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
 
 </style>
 <section id="navigation-wrapper" class="navigation-wrap fixed-top">
-    <div class="container">
+    <div class="container" style="max-width:1290px">
         <div class="row">
             <div class="main-header-wrapper col-xl-12 col-lg-12 col-md-6 col-6 m-auto">
                 <div class="main-header row py-2">
