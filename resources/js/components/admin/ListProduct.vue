@@ -239,7 +239,7 @@ export default {
             }
 
             page_url += '&sortBy='+this.sortBy+'&sortType='+this.sortType;
-            page_url +='&getDetail=1&getCategory=1';
+            page_url +='&getDetail=1&getCategory=1/';
 
             var responseData = {};
 
