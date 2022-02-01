@@ -208,7 +208,7 @@
                                     <span class="mr-3">
                                         <i class="fa fa-phone" aria-hidden="true"></i></span>
                                     <label for="icon" class="m-0">Chicco
-                                        Customer Service</label>
+                                        Customer Care</label>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-6 col-12 d-flex align-items-center justify-content-end">
                                     <a class="font-weight-bold m-0" href="tel:{{ getSetting()['phone_number'] ?? '1800 102 6702' }}">{{ getSetting()['phone_number'] ?? '1800 102 6702' }}</a>

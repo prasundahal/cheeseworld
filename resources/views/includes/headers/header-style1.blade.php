@@ -4,6 +4,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     ->with('detail')
     ->whereHas('my_products')
     ->with('my_products')
+    ->with('subcategory')
     ->take(12)
     ->get();
 ?>
@@ -35,7 +36,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
     <div class="container">
         <div class="row">
             <div class="main-header-wrapper col-xl-12 col-lg-12 col-md-6 col-6 m-auto">
-                <div class="main-header row py-2"  style="margin: 0 -150px 0 !important;">
+                <div class="main-header row py-2">
                     <div class="col-xl-4 col-md-4 col-2 m-auto">
                         <div class=" list">
                             <ul class="navbar-nav mr-auto d-flex flex-row">
@@ -64,7 +65,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                     <div class="col-4 m-auto d-md-block d-none">
                         <div class="notice">
                             {{-- <a class="nav-link m-0">BOPPY HUG&NEST - SAFETY NOTICE</a> --}}
-                                <div class="notice d-flex  justify-content-end align-items-end">
+                                <div class="notice d-flex  justify-content-center align-items-center">
                                     <ul class="pro-header-right-options d-flex pl-0 mb-0">
                                         <li>
                                             <a href="{{ url('/wishlist') }}" class="nav-link btn" data-toggle="tooltip"
@@ -190,6 +191,8 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                 <div class="mynav dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="container d-block">
                                         <div class="row">
+                                            @if (isset($categories))
+                                                
                                             @foreach ($categories as $key => $category)
                                                 <div class="col-xl-3 col-lg-3 col-6">
                                                     <ul class="nav flex-column">
@@ -197,18 +200,22 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                                             <a class="nav-link head font-weight-bold"
                                                                 href="/shop?category={{ $category->id }}">{{ $category->detail[0]->category_name }}</a>
                                                         </li>
-                                                        @foreach ($category->my_products->take(3) as $value)
-                                                            <li class="nav-item p-0">
-                                                                <a class="nav-link"
-                                                                    href="/product/{{ $value->id }}/{{ $value->product_slug }}">{{ $value->detail[0]->title }}</a>
-                                                            </li>
-                                                        @endforeach
+                                                        @if (!$category->subcategory->isEmpty())
+                                                            @foreach ($category->subcategory as $sub => $value)
+                                                                <li class="nav-item p-0">
+                                                                    <a class="nav-link" href="/shop?category={{ $value->id }}"> {{ $value->detail[0]->category_name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
 
 
                                                     </ul>
 
                                                 </div>
                                             @endforeach
+                                            @else
+                                                
+                                            @endif
 
                                         </div>
                                     </div>
@@ -258,23 +265,25 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                             <span class="pull-right"><b class="caret"></b></span></span>
                                     </a>
                                     <ul class="collapse pl-0" id="submenu1">
-                                        @foreach ($categories as $vey => $category)
-                                            <li>
-                                                <a class="accordion-heading dropdown-toggle" data-toggle="collapse"
-                                                    data-target="#submenu11"
-                                                    aria-expanded="true">{{ $category->detail[0]->category_name }}
+                                        @if (isset($categories))
+                                            @foreach ($categories as $vey => $category)
+                                                <li>
+                                                    <a class="accordion-heading dropdown-toggle" data-toggle="collapse"
+                                                        data-target="#submenu11"
+                                                        aria-expanded="true">{{ $category->detail[0]->category_name }}
 
-                                                    <span class="pull-right"><b
-                                                            class="caret"></b></span></a>
-                                                <ul class="collapse pl-0" id="submenu11">
+                                                        <span class="pull-right"><b
+                                                                class="caret"></b></span></a>
+                                                    <ul class="collapse pl-0" id="submenu11">
 
-                                                    @foreach ($category->my_products->take(3) as $value)
-                                                        <li><a href="#"
-                                                                title="Title">{{ $value->detail[0]->title }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
+                                                        @foreach ($category->my_products->take(3) as $value)
+                                                            <li><a href="#"
+                                                                    title="Title">{{ $value->detail[0]->title }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @endforeach
+                                        @endif
 
 
                                     </ul>

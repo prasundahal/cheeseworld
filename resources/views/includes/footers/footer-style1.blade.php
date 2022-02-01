@@ -19,10 +19,10 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     <div class="col-6">
                         <ul class="info p-0 ml-0">
                             <li>
-                                Chicco customer service
+                                Chicco Customer Care
                             </li>
                             <li>
-                                Sales Inquuiry </li>
+                                Sales Inquiry </li>
                         </ul>
                     </div>
                     <div class="col-6">

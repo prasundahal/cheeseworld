@@ -32,6 +32,7 @@ class HomeService
         $data['direction'] =$this->selectedLenguagePosition();
         $data['pages'] = $this->contentpages();
         $data['homeBanners'] = $this->HomeBanners();
+        // dd($data);
         return $data;
     }
 
