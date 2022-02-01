@@ -183,7 +183,7 @@
                                 .product_discount_price == null || data.data.product_discount_price ==
                                 'null') {
                                
-                                console.log(data.data.product_price_symbol);
+                                // console.log(data.data.product_price_symbol);
                                 clone.querySelector(".product-card-price2").innerHTML = data.data
                                     .product_price_symbol;
                             } else {

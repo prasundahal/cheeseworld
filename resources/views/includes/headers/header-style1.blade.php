@@ -278,7 +278,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                                     <ul class="collapse pl-0" id="submenu11">
 
                                                         @foreach ($category->my_products->take(3) as $value)
-                                                            <li><a href="#"
+                                                            <li><a href="/shop?category={{ $value->id }}"
                                                                     title="Title">{{ $value->detail[0]->title }}</a></li>
                                                         @endforeach
                                                     </ul>
@@ -290,43 +290,15 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                     </ul>
                                 </li>
                                 <li class="main-list">
-                                    <a class="accordion-heading" data-toggle="collapse" data-target="#submenu2">
-                                        <span class="nav-header-primary nav-link d-block p-0">Chicco
-                                            Research
-                                            Center
-                                            <!-- <span class="ml-1 icon">
-                                                <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
-
-                                            </span> -->
+                                    <a class="accordion-heading" href="{{ url('/research-center') }}">
+                                        <span class="nav-header-primary nav-link d-block p-0">Chicco Research Center
                                             <span class="pull-right"><b class="caret"></b></span>
                                         </span>
                                     </a>
-
-
-                                    <!-- <ul class="nav nav-list collapse" id="submenu2">
-                                        <li>
-                                            <a class="accordion-heading dropdown-toggle2" data-toggle="collapse"
-                                                data-target="#submenu2">Sub Menu Link
-                                                <span class="ml-1 icon">
-                                                    <i class="fa fa-chevron-down toggleico2" aria-hidden="true"></i>
-
-                                                </span>
-                                                <span class="pull-right"><b class="caret"></b></span></a>
-                                            <ul class="nav nav-list collapse" id="submenu2">
-                                                <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
-                                                <li><a href="#" title="Title">Sub Sub Menu Link</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul> -->
                                 </li>
                                 <li class="main-list">
-                                    <a class="accordion-heading" data-toggle="collapse" data-target="#submenu3">
-                                        <span class="nav-header-primary nav-link  d-block p-0">Who
-                                            we are
-                                            <!-- <span class="ml-1 icon">
-                                                <i class="fa fa-chevron-down toggleico" aria-hidden="true"></i>
-
-                                            </span> -->
+                                    <a class="accordion-heading" href="{{ url('/about-us') }}">
+                                        <span class="nav-header-primary nav-link  d-block p-0">Who we are
                                             <span class="pull-right"><b class="caret"></b></span>
                                         </span>
                                     </a>
@@ -349,7 +321,7 @@ $categories = App\Models\Admin\Category::inRandomOrder()
                                     </ul> -->
                                 </li>
                                 <li class="main-list">
-                                    <a class="accordion-heading" data-toggle="collapse" data-target="#submenu4">
+                                    <a class="accordion-heading" href="{{ url('/shop') }}">
                                         <span class="nav-header-primary nav-link  d-block p-0">
                                             <span class="mr-2"><i class="fa fa-map-marker"
                                                     aria-hidden="true"></i></span>
