@@ -334,54 +334,6 @@
                             } else {
                                 not_combination = 1;
                             }
-                            $('.product-detail-slider').slick({
-        dots: false,
-        arrows: true,
-        autoplay: true,
-        vertical: true,
-        verticalSwiping: true,
-        autoplaySpeed: 3000,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [{
-                breakpoint: 1399,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 780,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    vertical: false,
-                    verticalSwiping: false,
-                    arrows: false,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    vertical: false,
-                    verticalSwiping: false,
-                    arrows: false,
-                },
-            },
-            {
-                breakpoint: 496,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    vertical: false,
-                    verticalSwiping: false,
-                    arrows: false,
-                },
-            },
-        ],
-    });
                             if (not_combination == 0) {
                                 product_combination_id = data.data.product_combination[i]
                                     .product_combination_id;
@@ -427,7 +379,56 @@
             });
 
         })
-
+        $(document).ajaxStop(function() {
+            $('.product-detail-slider').slick({
+                dots: false,
+                arrows: true, // arrow dallo dallo ayo false gare
+                autoplay: true,
+                vertical: true,
+                verticalSwiping: true,
+                autoplaySpeed: 3000,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [{
+                        breakpoint: 1399,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                        },
+                    },
+                    {
+                        breakpoint: 780,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            vertical: false,
+                            verticalSwiping: false,
+                            arrows: false,
+                        },
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            vertical: false,
+                            verticalSwiping: false,
+                            arrows: false,
+                        },
+                    },
+                    {
+                        breakpoint: 496,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            vertical: false,
+                            verticalSwiping: false,
+                            arrows: false,
+                        },
+                    },
+                ],
+            });
+        });
         function fetchRelatedProduct() {
             var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' + languageId +
                 '&currency=' + localStorage.getItem("currency");
