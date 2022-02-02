@@ -321,23 +321,21 @@
                 if (scroll > 150) {
                     $(".navigation-wrap").css("background", "white");
                     $(".nav-link").css("color", "black");
-                    console.log('bg-white');
+                    // console.log('bg-white');
                 } else {
                     $(".navigation-wrap").css("background", "transparent");
                     $(".nav-link").css("color", "white");
-                    console.log('bg-trans');
+                    // console.log('bg-trans');
                 }
             })
         });
         // Navigation Js Scroll Ends
         // Navigation Js Onclick Starts
-        var scroll = $(window).scrollTop();
         $(document).on('click', 'body', function() {
 
             $("#navbarDropdown").hide();
             $(".mynav").hide();
-            if (scroll > 150) {
-
+            if ($(window).scrollTop() > 150) {
                 $(".navigation-wrap").css("background", "white");
                 $(".nav-link").css("color", "black");
             } else {
@@ -494,7 +492,7 @@
                 success: function(data) {
                     var product = '';
                     if (data.status == 'Success') {
-                        console.log("checking product_type");
+                        // console.log("checking product_type");
                         $.each(data.data, function(i, e) {
                             if (e.product_type == 'simple') {
                                 if (e.product_discount_price == '' || e
@@ -515,7 +513,7 @@
                                         '</div>';
                                 }
                             }
-                            console.log(e);
+                            // console.log(e);
                             product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
@@ -752,7 +750,7 @@
 
 
         function fetchFeatureProduct() {
-            console.log("Elo");
+            // console.log("Elo");
             console.log(languageId);
             var url = "{{ url('') }}" +
                 '/api/client/products?limit=10&getCategory=1&getDetail=1&language_id=' + languageId +
@@ -767,7 +765,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     var feature_product = '';
                     if (data.status == 'Success') {
                         $.each(data.data, function(i, e) {
