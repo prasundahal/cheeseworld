@@ -190,6 +190,8 @@
     <!-- font awesome -->
     <script src="{{ asset('frontend/js/wow.js') }}"></script>
     <script src="https://kit.fontawesome.com/a26d9146a0.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/scripts/main.js') }}"></script>
     <!-- NEW LIN ============================================================ -->
     {{-- <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script> --}}
@@ -197,8 +199,6 @@
 
     <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
     {{-- <script src="{{ asset('frontend/js/animated.headline.js') }}"></script> --}}
     <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>

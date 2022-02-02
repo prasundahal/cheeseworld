@@ -35,7 +35,9 @@ $newgalleries = array_chunk($galleries, 4, true);
 // }
 // die();
 
+// dd($newgalleries);
 ?>
+<link rel="stylesheet" href="{{ asset('frontend/css/slider2.css') }}">
 
 <template id="product-detail-section">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
@@ -50,106 +52,37 @@ $newgalleries = array_chunk($galleries, 4, true);
         <div class="row">
             <div class="col-xl-8 col-lg-8 col-12">
                 <div class="row carousel-gallery-wrapper">
-                    <div class="col-xl-3 col-lg-3 col-12">
+                    <div class="col-xl-3 col-lg-3 col-12 _boxzoom d-flex align-items-center justify-content-between order-lg-1 order-md-2 order-2">
                         <!-- Carousel Navigatiom -->
-                        <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-                            <?php
-                            $i = 0;
-                            $id = [];
-                            // $j = 1;
-                            ?>
-                            <div class="carousel-inner allSlide">
+                        <div class="zoom-thumb">
+                            <div class="product-detail-slider d-flex position-relative">
+                                <?php
+                                $i = 0;
+                                $id = [];
+                                // $j = 1;
+                                ?>
                                 @foreach ($newgalleries as $key => $newgallery)
-                                    <div class="carousel-item {{ $loop->first ? 'active': '' }}" data-slide-number="{{ $key }}">
-                                        <div
-                                            class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
-                                            @foreach ($newgallery as $v => $gal)
-                                                <div id="carousel-selector-{{ $v }}"
-                                                    class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
-                                                    data-target="#carousel" data-slide-to="{{ $v }}">
-                                                    <img src="{{ asset('gallary/large' . $gal['name']) }}"
-                                                        class="img-fluid">
-                                                </div>
-                                            @endforeach
+                                    @foreach ($newgallery as $v => $gal)
+                                        <div class="slider_item position-relative selected" data-target="#carousel"
+                                            data-slide-to="{{ $v }}">
+                                            <img src="{{ asset('gallary/large' . $gal['name']) }}" class="img-fluid">
                                         </div>
-                                    </div>
+                                    @endforeach
                                 @endforeach
-
-                                {{-- @for ($i = 0; $i <= 1; $i++)
-                                    @if ($i == 0)
-                                        <div class="carousel-item active" data-slide-number="0">
-                                            <div
-                                                class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
-                                                @foreach ($galleries->take(4) as $key => $gallery)
-                                                    <?php
-                                                    $id[] = $gallery->id;
-                                                    ?>
-                                                    <div id="carousel-selector-{{ $key }}"
-                                                        class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
-                                                        data-target="#carousel" data-slide-to="{{ $key }}">
-                                                        <img src="{{ asset('gallary/large' . $gallery->name) }}"
-                                                            class="img-fluid">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if ($i == 1)
-                                        <div class="carousel-item" data-slide-number="1">
-                                            <div
-                                                class="row mx-0 .row-content d-flex  align-items-center justify-content-center">
-                                                @foreach ($galleries->whereNotIn('id', (array) $id)->take(4) as $k => $gallery)
-                                                    <div id="carousel-selector-{{ $k }}"
-                                                        class="thumb col-xl-12 col-lg-12 col-md-6 col-3 px-1 py-2 selected"
-                                                        data-target="#carousel" data-slide-to="{{ $k }}">
-                                                        <img src="{{ asset('gallary/large' . $gallery->name) }}"
-                                                            class="img-fluid">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endfor --}}
-
                             </div>
-                            <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
-                                <span class="icon-prv">
-                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                </span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
-                                <span class="icon-nxt">
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </span>
-                                <span class="sr-only">Next</span>
-                            </a>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-9 col-12">
+                    <div class="col-xl-9 col-lg-9 col-12 order-lg-2 order-md-1 order-1">
                         <!-- Carousel -->
-                        <div id="carousel" class="carousel slide gallery" data-ride="carousel">
-                            <div class="carousel-inner allImage">
+                        <div id="carousel" class="carousel slide gallery">
+                            <div class="carousel-inner">
                                 @foreach ($galleries as $v => $gallery)
-                                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}"
-                                        data-slide-number="{{ $v }}" data-toggle="lightbox"
-                                        data-gallery="gallery"
-                                        data-remote="{{ asset('gallary/large' . $gallery['name']) }}">
-                                        <img src="{{ asset('gallary/large' . $gallery['name']) }}"
-                                            class="d-block w-100" alt="...">
+                                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                        <img src="{{ asset('gallary/large' . $gallery['name']) }}" class="img-fluid w-100" />
                                     </div>
                                 @endforeach
-
-
                             </div>
-                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -208,3 +141,5 @@ $newgalleries = array_chunk($galleries, 4, true);
 
 
 </template>
+<script>
+</script>
