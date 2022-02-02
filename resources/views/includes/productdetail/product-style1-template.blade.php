@@ -89,9 +89,10 @@ $newgalleries = array_chunk($galleries, 4, true);
                             <!-- Carousel -->
                             <div id="carousel" class="carousel slide gallery">
                                 <div class="carousel-inner">
+                                    {{-- zoom" id="{{ $loop->first ? 'ex1' : '' }}" --}}
                                     @foreach ($galleries as $v => $gallery)
-                                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                            <img src="{{ asset('gallary/large' . $gallery['name']) }}" class="img-fluid w-100" />
+                                        <div class="carousel-item this-image {{ $loop->first ? 'active' : '' }}">
+                                            <img src="{{ asset('gallary/large' . $gallery['name']) }}" class="img-fluid w-100 "/>
                                         </div>
                                     @endforeach
                                 </div>

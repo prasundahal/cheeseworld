@@ -29,7 +29,16 @@
 
 @section('script')
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script> --}}
+        
+       
     <script>
+        
+        // $('.active').zoom();
+// $('.active').zoom();
+        
+            // $('.slider_item').click(function(){
+            //     $('.active').zoom();
+            // });
         var attribute_id = [];
         var attribute = [];
         var variation_id = [];
@@ -203,7 +212,13 @@
 
                         }
                         $("." + appendTo).append(clone);
-
+                        // $('.slider_item').click(function(){
+                        //     setTimeout(() => {
+                        //     console.log('asdfasd');
+                        //     $('.active').zoom();
+                                
+                        //     }, 500);
+                        // });
                         /* var allSlide = '';
                         var allImage = '';
                         var j = 1
@@ -380,6 +395,14 @@
 
         })
         $(document).ajaxStop(function() {
+        $('.this-image').zoom();
+            // $('.slider_item').click(function(){
+            //                 setTimeout(() => {
+            //                 console.log('asdfasd');
+            //                 $('.this-image').zoom();
+                                
+            //                 }, 500);
+            // });
             $('.product-detail-slider').slick({
                 dots: false,
                 arrows: true, // arrow dallo dallo ayo false gare

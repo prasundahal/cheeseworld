@@ -193,6 +193,14 @@
     <script src="{{ asset('frontend/js/jquery.slicknav.min.js') }}"></script>
     <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/scripts/main.js') }}"></script>
+    <script src="{{ asset('frontend/js/scripts/jquery.zoom.min.js') }}"></script>
+    <script>
+        // if(){
+            // $(document).ready(function(){
+               
+            // });
+        // }
+    </script>
     <!-- NEW LIN ============================================================ -->
     {{-- <script src="{{ asset('frontend/js/modernizr-3.5.0.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script> --}}
