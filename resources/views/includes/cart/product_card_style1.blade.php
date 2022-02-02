@@ -2,7 +2,7 @@
     <div class="col-xl-3 col-lg-3 col-md-6 col-12 mb-4">
         <div class="content d-flex flex-column bg-white pb-3">
             <div class="image mb-3">
-                <a class="product-card-link" href="">
+                <a class="product-card-link1" href="">
                     <img src="" class="img-fluid product-card-image" alt="">
                 </a>
             </div>

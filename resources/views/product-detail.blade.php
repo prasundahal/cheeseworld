@@ -494,6 +494,10 @@
                                     data
                                     .data[i].product_id + '/' + data
                                     .data[i].product_slug);
+                                clone.querySelector(".product-card-link1").setAttribute('href', '/product/' +
+                                    data
+                                    .data[i].product_id + '/' + data
+                                    .data[i].product_slug);
                                 clone.querySelector(".product-card-link").setAttribute('href', '/product/' +
                                     data
                                     .data[i].product_id + '/' + data
