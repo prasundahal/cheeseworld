@@ -139,6 +139,10 @@
                                     clone.querySelector(".product-card-image").setAttribute('alt', data.data[i]
                                         .detail[0].title);
                                 }
+                                clone.querySelector(".product-card-link1").setAttribute('href', '/product/' +
+                                    data
+                                    .data[i].product_id + '/' + data
+                                    .data[i].product_slug);
                                 // if (data.data[i].category != null) {
                                 //   if (data.data[i].category[0].category_detail.detail != null) {
                                 //     clone.querySelector(".product-card-category").innerHTML = data.data[i].category[0].category_detail.detail[0].name;

@@ -519,8 +519,9 @@
                             product +=
                                 '<div class="content d-flex flex-column justify-content-center align-items-center mx-3">' +
                                 '<div class="image mb-3">' +
-                                '<img src="{{ asset('gallary') }}/' + e.product_gallary
-                                .gallary_name + '" class="img-fluid" alt="image-1">' +
+                                '<a href="/product/' + e.product_id + '/' + e.product_slug +
+                                '"><img src="{{ asset('gallary') }}/' + e.product_gallary
+                                .gallary_name + '" class="img-fluid" alt="image-1"></a>' +
                                 '</div>' +
                                 '<div class="heading m-auto">' +
                                 '<a href="/product/' + e.product_id + '/' + e.product_slug +
