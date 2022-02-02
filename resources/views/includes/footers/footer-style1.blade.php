@@ -102,15 +102,22 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
                     <li class="circle-dot"><a href="#">Catalogs</a></li>
                     <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
-                    @foreach ($pages as $page)
+                    @foreach ($pages as $key => $page)
+                        @if ($key < 8)
                         <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
             <div class="col-xl-12 col-lg-12 col-12">
                 <ul class="about p-0 d-flex m-0">
-                    <li class="circle-dot"><a href="#">Product safety warnings</a></li>
-                    <li class="circle-dot"><a href="#">Declaration of conformity</a></li>
+                    @foreach ($pages as $key => $page)
+                        @if ($key > 8)
+                            <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
+                        @endif
+                    @endforeach
+                    {{-- <li class="circle-dot"><a href="#">Product safety warnings</a></li>
+                    <li class="circle-dot"><a href="#">Declaration of conformity</a></li> --}}
                 </ul>
             </div>
         </div>
@@ -119,12 +126,13 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
 <section id="copyright-wrapper" class="py-3">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <ul class="copyright m-0 p-0 d-flex">
+            <div class="col-12 text-center" style="font-size: 14px;color: white;">
+                © 2022 Chicco All Rights Reserved.
+                {{-- <ul class="copyright m-0 p-0 d-flex">
                     <li class="circle-dot"><a href="#">PRIVACY DISCLAIMER</a></li>
                     <li class="circle-dot"><a href="#">LEGAL NOTICES</a></li>
                     <li class="circle-dot"><a href="#">COOKIES</a></li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </div>
