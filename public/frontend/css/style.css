@@ -933,10 +933,10 @@ button.navbar-btn {
 }
 
 #product-detail-slider-wrapper #carousel.gallery .carousel-item img {
-	/* max-height: 375px;
-	min-height: 375px; */
-	max-height: 180px;
-	min-height: 180px;
+	max-height: 375px;
+	min-height: 375px;
+	/* max-height: 180px;
+	min-height: 180px; */
 	object-fit: contain;
 	object-position: center;
 }
