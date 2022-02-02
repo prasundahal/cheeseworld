@@ -103,7 +103,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     <li class="circle-dot"><a href="#">Catalogs</a></li>
                     <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
                     @foreach ($pages as $key => $page)
-                        @if ($key < 8)
+                        @if ($key < 4)
                         <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
                         @endif
                     @endforeach
@@ -112,7 +112,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
             <div class="col-xl-12 col-lg-12 col-12">
                 <ul class="about p-0 d-flex m-0">
                     @foreach ($pages as $key => $page)
-                        @if ($key > 8)
+                        @if ($key => 4)
                             <li class="circle-dot"><a href="{{ url('page/'.$page->slug) }}">{{ $page->lastDetail()->title }}</a></li>
                         @endif
                     @endforeach
