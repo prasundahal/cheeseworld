@@ -78,14 +78,14 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                                   </a></li>
                         @endif
                         
-                        @if (isset(getSetting()['linkedin_url']))
+                        {{-- @if (isset(getSetting()['linkedin_url']))
                             <li class="mr-2">
                               <a target="_blank" href="{{ isset(getSetting()['google_url']) ? getSetting()['linkedin_url'] : '#' }}" data-toggle="tooltip" data-placement="bottom"
                               title="{{ trans('lables.footer-linkedin') }}">
                                 <i class="fa fa-linkedin" aria-hidden="true"></i>
                               </a>
                                   </li>
-                        @endif
+                        @endif --}}
                         @if (isset(getSetting()['instagram_url']))
                             <li class="mr-2">
                                 <a target="_blank"
