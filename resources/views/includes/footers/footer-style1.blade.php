@@ -43,12 +43,35 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12">
-                <div class="social-media font-weight-bold d-flex justify-content-end align-items-center mb-xl-2 mb-lg-2 mb-2">
-                    <label class="mr-3 mb-0 font-weight-bold text-white">
-                        Follow us on
-                    </label>
-                    <ul class="pl-0 m-0 d-flex align-items-center">
+            <div class="col-xl-3 col-lg-3 col-md-12">
+                <div class="social-media font-weight-bold d-flex justify-content-center align-items-start mb-xl-2 mb-lg-2 mb-2 flex-column ">
+                    <h6 class="font-weight-bold">Contact Us</h6>
+                    {{-- <label class="mr-3 mb-0 font-weight-bold text-white">
+                        Contact Us
+                    </label> --}}
+                    <ul class="pl-0">
+                        <li class="font-weight-light">First Step Pvt. Ltd.</li>
+                        <li class="font-weight-light"><i class="fa fa-map-marker mr-2"></i>Kamaladi, Kathmandu, Nepal</li>
+                        <li class="font-weight-light"><i class="fa fa-phone mr-2"></i><a class="text-white" href="tel:+977-1-4535411">+977-1-4535411</a> </li>
+                        <li class="font-weight-light"><i class="fa fa-envelope mr-2"></i><a class="text-white" href="mailto:info@firststepnepal.com">info@firststepnepal.com</a> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-12">
+                <div class="social-media font-weight-bold d-flex justify-content-center align-items-start mb-xl-2 mb-lg-2 mb-2 flex-column ">
+                    <h6 class="font-weight-bold">Contact Us</h6>
+                    {{-- <label class="mr-3 mb-0 font-weight-bold text-white">
+                        Contact Us
+                    </label> --}}
+                    <ul class="pl-0">
+                        <li class="font-weight-light">First Smile Pvt. Ltd.</li>
+                        <li class="font-weight-light"><i class="fa fa-map-marker mr-2"></i>LGF, Labim Mall, Pulchowk, Lalitpur</li>
+                        <li class="font-weight-light"><i class="fa fa-phone mr-2"></i><a class="text-white" href="tel:+977-9801907770">+977-9801907770</a> </li>
+                    </ul>
+                    {{-- @php
+                        dd(getSetting());
+                    @endphp --}}
+                    <ul class="pl-0 m-0 d-flex align-items-center social-icons">
                         {{-- <li class="mr-2">
                             <a href="{{ getSetting()['google_url'] ?? '#' }}">
                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
@@ -73,27 +96,27 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                         @if (isset(getSetting()['twitter_url']))
                             <li class="mr-2"><a target="_blank" href="{{ isset(getSetting()['twitter_url']) ? getSetting()['twitter_url'] : '#' }}"
                                      data-toggle="tooltip" data-placement="bottom"
-                                    title="{{ trans('lables.footer-twitter') }}">
-                                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                    title="{{ trans('lables.footer-instagram') }}">
+                                  <i class="fa fa-instagram" aria-hidden="true"></i>
                                   </a></li>
                         @endif
                         
-                        {{-- @if (isset(getSetting()['linkedin_url']))
+                        @if (isset(getSetting()['linkedin_url']))
                             <li class="mr-2">
                               <a target="_blank" href="{{ isset(getSetting()['google_url']) ? getSetting()['linkedin_url'] : '#' }}" data-toggle="tooltip" data-placement="bottom"
-                              title="{{ trans('lables.footer-linkedin') }}">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                              title="Youtube">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
                               </a>
                                   </li>
-                        @endif --}}
-                        @if (isset(getSetting()['instagram_url']))
+                        @endif
+                        {{-- @if (isset(getSetting()['instagram_url']))
                             <li class="mr-2">
                                 <a target="_blank"
                                     href="{{ isset(getSetting()['instagram_url']) ? getSetting()['instagram_url'] : '#' }}" title="{{ trans('lables.footer-instagram') }}">
                                     <i class="fa fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
                     </ul>
                 </div>
             </div>
@@ -127,7 +150,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
     <div class="container">
         <div class="row">
             <div class="col-12 text-center" style="font-size: 14px;color: white;">
-                © 2022 Chicco All Rights Reserved.
+                ©️ Copyright 2022 | All Rights Reserved | First Step Pvt. Ltd. |
                 {{-- <ul class="copyright m-0 p-0 d-flex">
                     <li class="circle-dot"><a href="#">PRIVACY DISCLAIMER</a></li>
                     <li class="circle-dot"><a href="#">LEGAL NOTICES</a></li>

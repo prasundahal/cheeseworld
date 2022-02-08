@@ -169,6 +169,7 @@
         }
         #footer-wrapper .social-media {
             justify-content: center !important;
+            align-items: center!important;
         }
         #footer-wrapper ul {
             justify-content: center;

@@ -417,7 +417,7 @@ a.btn-blue {
 	background-color: #42596e;
 }
 
-#footer-wrapper .social-media ul li a {
+#footer-wrapper .social-media .social-icons li a {
 	height: 35px;
 	width: 35px;
 	border: 3px solid white;
