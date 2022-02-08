@@ -109,6 +109,12 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                               </a>
                                   </li>
                         @endif
+                        <li class="mr-2">
+                            <a target="_blank" href="tel:+977-9801907770" data-toggle="tooltip" data-placement="bottom"
+                            title="Whatsapp">
+                              <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                            </a>
+                                </li>
                         {{-- @if (isset(getSetting()['instagram_url']))
                             <li class="mr-2">
                                 <a target="_blank"
