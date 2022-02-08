@@ -134,8 +134,8 @@
                                 </div>
                                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="reason_for_request" id="reason_for_request"
-                                            value="request_information" checked>
+                                        <input class="form-check-input" type="checkbox" name="reason_for_request" id="reason_for_request"
+                                            value="Request Information" checked>
                                         <label class="form-check-label" for="reason_for_request">
                                             Request Information
                                         </label>
@@ -143,8 +143,8 @@
                                 </div>
                                 <div class="col-xl-3 col-md-3 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="suggestion" id="suggestion"
-                                            value="suggestion">
+                                        <input class="form-check-input" type="checkbox" name="suggestion" id="suggestion"
+                                            value="Suggestion">
                                         <label class="form-check-label" for="suggestion">
                                             Suggestion
                                         </label>
@@ -152,8 +152,8 @@
                                 </div>
                                 <div class="col-xl-3 col-md-3 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="complaints" id="complaints"
-                                            value="option1">
+                                        <input class="form-check-input" type="checkbox" name="complaints" id="complaints"
+                                            value="Complaints">
                                         <label class="form-check-label" for="complaints">
                                             Complaints
                                         </label>
@@ -161,8 +161,8 @@
                                 </div>
                                 <div class="col-xl-3 col-md-3 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radiobtn" id="radiobtn"
-                                            value="option1">
+                                        <input class="form-check-input" type="checkbox" name="trade-enquiry" id="radiobtn"
+                                            value="Trade Enquiry">
                                         <label class="form-check-label" for="radiobtn">
                                             Trade Enquiry
                                         </label>
@@ -190,7 +190,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                                         <label class="form-check-label" for="exampleCheck1">*I agree to the terms and policies of the company.</label>
                                     </div>
         
@@ -224,7 +224,7 @@
                                 </div> --}}
                             {{-- </div> --}}
                             <div class="row py-5">
-                                <button type="submit" class="btn btnclck m-auto">Submit</button>
+                                <button type="submit" class="btn btnclck m-auto submit-btn-contact">Submit</button>
                             </div>
                         </form>
 

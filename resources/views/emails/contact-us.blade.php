@@ -12,6 +12,7 @@
 | Postal_code      | {{$data['postal_code']}}      |
 | Province      | {{$data['province']}}      |
 | Town      | {{$data['town']}}      |
+| Reason      | {{$data['reason']}}      |
 @endcomponent
 
 

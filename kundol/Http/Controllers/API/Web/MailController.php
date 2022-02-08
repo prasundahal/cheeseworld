@@ -24,12 +24,13 @@ class MailController extends Controller
             'postal_code' => (isset($request->postal_code) && !empty($request->postal_code))?$request->postal_code:'empty', 
             'province' => (isset($request->province) && !empty($request->province))?$request->province:'empty', 
             'town' => (isset($request->town) && !empty($request->town))?$request->town:'empty', 
+            'reason' => (isset($request->reason) && !empty($request->reason))?$request->reason:'empty', 
         ];
         
         $setting = Setting::where('type', 'email_notify_setting')->pluck('value', 'key');
         $senderEmail = explode(',',$setting['notify_email']);
         foreach($senderEmail as $email){
-            Mail::to('joshibipin2052@gmail.com')->send(new ContactUs($data));
+            Mail::to($email)->send(new ContactUs($data));
         }
         return $this->successResponse('', 'Email sent successfully!');
     }
