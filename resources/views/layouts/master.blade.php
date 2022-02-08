@@ -104,6 +104,10 @@
                 <div class="modal-body text-center">
                     <form>
                         <style>	
+                            #navigation-wrapper .navbar .dropdown-menu {
+                                height: 100vh;
+                                overflow-y: scroll;
+                            }
                             #searchBox .content:hover {	
                                 background-color: #000c27c9;	
                                 color: #fff;	

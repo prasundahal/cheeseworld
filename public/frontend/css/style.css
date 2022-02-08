@@ -207,8 +207,6 @@ button:focus {
 	outline: 0;
 	background-color: rgb(246 246 247);
 	box-shadow: 0 0px 10px 1px rgb(246 246 247);
-	height: 100vh;
-    overflow-y: scroll;
 }
 
 #navigation-wrapper .navbar .dropdown-menu .nav .nav-link {
