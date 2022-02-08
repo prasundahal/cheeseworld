@@ -8,6 +8,10 @@
 | Email      | {{$data['email']}}      |
 | Phone      | {{$data['phone']}}      |
 | Message      | {{$data['message']}}      |
+| Address      | {{$data['address']}}      |
+| Postal_code      | {{$data['postal_code']}}      |
+| Province      | {{$data['province']}}      |
+| Town      | {{$data['town']}}      |
 @endcomponent
 
 

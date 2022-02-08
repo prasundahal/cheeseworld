@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                                     <div class="form-group">
-                                        <label for="Surname">Province</label>
+                                        <label for="province">Province</label>
                                         <input type="text" class="form-control" id="province">
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-12 file-input">
         
                                     <div class="form-group">
@@ -186,7 +186,7 @@
                                     </div>
         
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-check">

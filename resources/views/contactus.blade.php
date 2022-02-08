@@ -17,6 +17,10 @@
         email = $.trim($("#email").val());
         phone = $.trim($("#phone").val());
         message = $.trim($("#message").val());
+        address = $.trim($("#address").val());
+        postal_code = $.trim($("#postal_code").val());
+        province = $.trim($("#province").val());
+        town = $.trim($("#town").val());
 
         $.ajax({
         type: 'post',
@@ -26,7 +30,11 @@
             last_name:last_name,
             email:email,
             phone:phone,
-            message:message
+            message:message,
+            address:address,
+            postal_code:postal_code,
+            province:province,
+            town:town
         },
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),

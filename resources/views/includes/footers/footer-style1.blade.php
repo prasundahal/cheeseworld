@@ -22,7 +22,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                                 Chicco Customer Care
                             </li>
                             <li>
-                                Sales Inquiry </li>
+                                Trade Inquiry </li>
                         </ul>
                     </div>
                     <div class="col-6">
@@ -35,8 +35,8 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                             </li>
                             <li>
                                 <span class="mr-2"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                <a class="text-white" href="tel:{{ getSetting()['phone_number'] ?? '+977-1-4168810' }}">
-                                    +977-1-4168810
+                                <a class="text-white" href="tel:{{ getSetting()['phone_number'] ?? '+977-1-4535411' }}">
+                                    +977-1-4535411
                                 </a>
                             </li>
                         </ul>
