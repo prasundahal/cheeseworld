@@ -230,7 +230,8 @@
 
                     </div>
                     <div class="col-4">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.183988887383!2d85.31525551506218!3d27.711604982790288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19ee5a419a53%3A0x777652b480f0dbb7!2sFirst%20smile%20pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1644309123794!5m2!1sen!2snp" style="border:0;width:100%;height:350px" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1766.6521901869417!2d85.31646904285479!3d27.676985841980528!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9eccf6f398114bae!2sChicco%20Nepal!5e0!3m2!1sen!2snp!4v1644822464757!5m2!1sen!2snp" style="border:0;width:100%;height:350px" allowfullscreen="" loading="lazy"></iframe>
+                        {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.183988887383!2d85.31525551506218!3d27.711604982790288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19ee5a419a53%3A0x777652b480f0dbb7!2sFirst%20smile%20pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1644309123794!5m2!1sen!2snp" style="border:0;width:100%;height:350px" allowfullscreen="" loading="lazy"></iframe> --}}
                     </div>
                 </div>
 
