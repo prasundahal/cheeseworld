@@ -80,7 +80,7 @@
         width: 100%;
         height: 100vh;
         background: #fff;
-        background-image: url('{{ asset('loader/loader.gif')}}');
+        background-image: url('{{ asset('loader/s.gif')}}');
         background-size: 50px;
         background-repeat: no-repeat;
         background-position: center;
