@@ -79,7 +79,7 @@
 </head>
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
-    <div id="loading" style="background-image: url('{{ asset('loader/loader.gif')}}');background-repeat: no-repeat;background-size: 50px;background-position: center;">
+    <div id="loading" style="background-image: url('{{ asset('loader/loader.gif')}}');background-repeat: no-repeat;background-size: 50px;background-position: center;background: #fff;z-index: 99999;height: 100vh;width: 100%;position: fixed;">
         <div class="d-flex justify-content-center align-items-center h-75"> 
             <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}">
         </div>
