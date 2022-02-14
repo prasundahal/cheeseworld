@@ -75,11 +75,22 @@
         #welcome-wrapper .slick-slide {
             height: unset !important;
         }
+        #loading {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        background-image: url('{{ asset('loader/loader.gif')}}');
+        background-size: 50px;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 99999;
+    }
     </style>
 </head>
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
-    <div id="loading" style="background-image: #fff url('{{ asset('loader/loader.gif')}}') no-repeat center;background-size: 50px;z-index: 99999;height: 100vh;width: 100%;position: fixed;">
+    <div id="loading">
         <div class="d-flex justify-content-center align-items-center h-75"> 
             <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}">
         </div>
