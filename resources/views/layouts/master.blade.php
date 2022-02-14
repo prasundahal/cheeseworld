@@ -79,7 +79,12 @@
 </head>
 
 <body class="animation-s1 {{ $data['direction'] === 'rtl' ? 'bodyrtl' : '' }} ">
-    <div id="loading" style="background: #fff url('{{ asset('loader/loader.gif') }}') no-repeat center;"></div>
+    <div id="loading" style="background-image: url('{{ asset('loader/loader.gif')}}')">
+        <div class="d-flex justify-content-center align-items-center h-75"> 
+            <img src="{{ isset(getSetting()['site_logo']) ? getSetting()['site_logo'] : asset('01-logo.png') }}" alt="{{ isset(getSetting()['site_name']) ? getSetting()['site_name'] : 'Logo' }}">
+        </div>
+    </div>  
+    {{-- <div id="loading" style="background: #fff url('{{ asset('loader/loader.gif')}}') no-repeat center;"></div> --}}
     {{-- {{   dd(getSetting()) }} --}}
     {{-- @include('extras.preloader') --}}
     {{-- @include(isset(getSetting()['header_style']) ? 'includes.headers.header-'.getSetting()['header_style'] :
