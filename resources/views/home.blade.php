@@ -521,7 +521,7 @@
                                 '"><img src="{{ asset('gallary') }}/' + e.product_gallary
                                 .gallary_name + '" class="img-fluid" alt="image-1"></a>' +
                                 '</div>' +
-                                '<div class="heading m-auto">' +
+                                '<div class="heading d-flex h-100 flex-column justify-content-between align-items-center text-center mx-auto">' +
                                 '<a href="/product/' + e.product_id + '/' + e.product_slug +
                                 '">' +
                                 '<h5 class="font-weight-bold">' + e.detail[0].title + '</h5>' +

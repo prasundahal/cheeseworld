@@ -35,7 +35,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                             </li>
                             <li>
                                 <span class="mr-2"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                <a class="text-white" href="tel:{{ getSetting()['phone_number'] ?? '+977-1-4535411' }}">
+                                <a class="text-white" href="tel:+977-1-4535411">
                                     +977-1-4535411
                                 </a>
                             </li>
@@ -110,11 +110,11 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
                                   </li>
                         @endif
                         <li class="mr-2">
-                            <a target="_blank" href="tel:+977-9801907770" data-toggle="tooltip" data-placement="bottom"
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=+9779801907770" data-toggle="tooltip" data-placement="bottom"
                             title="Whatsapp">
                               <i class="fa fa-whatsapp" aria-hidden="true"></i>
                             </a>
-                                </li>
+                        </li>
                         {{-- @if (isset(getSetting()['instagram_url']))
                             <li class="mr-2">
                                 <a target="_blank"
@@ -128,7 +128,7 @@ $pages = App\Models\Admin\Page::whereHas('page_detail')
             </div>
             <div class="col-xl-12 col-lg-12 col-12">
                 <ul class="about bord ml-0 pl-0 pt-3 pb-3 d-flex flex-wrap">
-                    <li class="circle-dot"><a href="/contact-us">Contacts</a></li>
+                    <li class="circle-dot"><a href="/contact-us">Contact Us</a></li>
                     <li class="circle-dot"><a href="#">Catalogs</a></li>
                     <li class="circle-dot"><a href="{{ url('/about-us') }}">Who we are</a></li>
                     @foreach ($pages as $key => $page)

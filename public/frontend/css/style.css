@@ -1,7 +1,7 @@
 /* Global Css */
 
 body {
-	font-family: 'Baloo 2', cursive;
+	/* font-family: 'Baloo 2', cursive; */
 	font-weight: 400;
 	overflow-x: hidden !important;
 	color: var(--lightblack);
@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Baloo 2', cursive;
+	/* font-family: 'Baloo 2', cursive; */
 }
 
 p {
@@ -329,7 +329,13 @@ button:focus {
 
 
 /* Welcome Section Starts */
+#welcome-wrapper .slick-track {
+	display: flex !important;
+}
 
+#welcome-wrapper .slick-slide {
+	height: unset;
+}
 #welcome-wrapper .content-wrapper .content {
 	background-color: white;
 }
@@ -992,7 +998,7 @@ button.navbar-btn {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	font-family: 'Baloo 2', cursive;
+	/* font-family: 'Baloo 2', cursive; */
 }
 
 #product-detail-slider-wrapper .share a {
