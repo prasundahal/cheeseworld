@@ -453,7 +453,7 @@
             });
         });
         function fetchRelatedProduct() {
-            var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&language_id=' + languageId +
+            var url = "{{ url('') }}" + '/api/client/products?limit=10&getDetail=1&getRandom=1&language_id=' + languageId +
                 '&currency=' + localStorage.getItem("currency");
             var appendTo = 'related';
             $.ajax({
