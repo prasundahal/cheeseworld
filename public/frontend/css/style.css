@@ -329,13 +329,7 @@ button:focus {
 
 
 /* Welcome Section Starts */
-#welcome-wrapper .slick-track {
-	display: flex !important;
-}
 
-#welcome-wrapper .slick-slide {
-	height: unset;
-}
 #welcome-wrapper .content-wrapper .content {
 	background-color: white;
 }

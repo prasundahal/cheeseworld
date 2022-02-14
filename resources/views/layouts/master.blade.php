@@ -68,7 +68,13 @@
         /* #busybox.show {
             display: block;
         } */
+        #welcome-wrapper .slick-track {
+            display: flex !important;
+        }
 
+        #welcome-wrapper .slick-slide {
+            height: unset !important;
+        }
     </style>
 </head>
 
