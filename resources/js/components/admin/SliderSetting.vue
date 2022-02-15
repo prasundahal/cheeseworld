@@ -226,6 +226,14 @@
                         <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
                     </div>
                     
+                    <div class="form-group" v-if="slider.slider_navigation_id == 4">
+                        <label class="text-dark">URL: </label>
+                        <div class="clearfix"></div>
+                        <input type="text"  v-model="slider.url" class="form-control" />
+
+                        <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
+                    </div>
+                    
                 </div>
             </div>
             <button type="button" @click="addUpdateSlider()" class="btn btn-primary">Submit</button>
@@ -250,6 +258,7 @@ export default {
                 slider_navigation_id: "",
                 ref_id: "",
                 gallary_id: "",
+                url: "",
                 language_id: "",
             },
             showModal:false,

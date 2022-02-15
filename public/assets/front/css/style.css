@@ -280,7 +280,7 @@
     font-style: normal;
 
     src: url(/fonts/slick.eot?ced611daf7709cc778da928fec876475);
-    src: url(/fonts/slick.eot?ced611daf7709cc778da928fec876475?#iefix) format('embedded-opentype'), url(/fonts/slick.woff?b7c9e1e479de3b53f1e4e30ebac2403a) format('woff'), url(/fonts/slick.ttf?d41f55a78e6f49a5512878df1737e58a) format('truetype'), url(/fonts/slick.svg?f97e3bbf73254b0112091d0192f17aec#slick) format('svg');
+    src: url(/fonts/slick.eot?ced611daf7709cc778da928fec876475?#iefix) format('embedded-opentype'), url(/fonts/slick.woff?b7c9e1e479de3b53f1e4e30ebac2403a) format('woff'), url(/fonts/slick.ttf?d41f55a78e6f49a5512878df1737e58a) format('truetype'), url(/fonts/slick.svg?526d7fdf63614222d376257221e8b754#slick) format('svg');
 }
 /* Arrows */
 .slick-prev,
@@ -585,14 +585,14 @@
 
 @font-face {
   font-family: 'Montserrat-Regular';
-  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?0d08c03b77bfd7c0c6ace9d0881da672) format("svg");
+  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?24fb280fe25940e6ca9bb542b17550f6) format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat-Bold';
-  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?93526c54ca264a1243d7b2c7eaaaf8e1) format("svg");
+  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?6722f2ea68898f313dd9e4eb3458467b) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -41105,14 +41105,14 @@ a.carousel-control-next.btn-secondary.swipe-to-top:focus {
 
 @font-face {
   font-family: 'Montserrat-Regular';
-  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?0d08c03b77bfd7c0c6ace9d0881da672) format("svg");
+  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?24fb280fe25940e6ca9bb542b17550f6) format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat-Bold';
-  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?93526c54ca264a1243d7b2c7eaaaf8e1) format("svg");
+  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?6722f2ea68898f313dd9e4eb3458467b) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -42777,14 +42777,14 @@ a.carousel-control-next.btn-secondary.swipe-to-top:focus {
 
 @font-face {
   font-family: 'Montserrat-Regular';
-  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?0d08c03b77bfd7c0c6ace9d0881da672) format("svg");
+  src: url(/fonts/Montserrat-Regular.eot?af0492c24e83e57b6b8a843d96c818af) format("embedded-opentype"), url(/fonts/Montserrat-Regular.woff?91f380f212f0ef228c7115c28d9492d0) format("woff"), url(/fonts/Montserrat-Regular.ttf?ee6539921d713482b8ccd4d0d23961bb) format("truetype"), url(/fonts/Montserrat-Regular.svg?24fb280fe25940e6ca9bb542b17550f6) format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat-Bold';
-  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?93526c54ca264a1243d7b2c7eaaaf8e1) format("svg");
+  src: url(/fonts/Montserrat-Bold.eot?d8e01c23a4c04c132a443a71dbe2220f) format("embedded-opentype"), url(/fonts/Montserrat-Bold.woff?a8db2428ec1951a9a7bb161b5341f010) format("woff"), url(/fonts/Montserrat-Bold.ttf?ade91f473255991f410f61857696434b) format("truetype"), url(/fonts/Montserrat-Bold.svg?6722f2ea68898f313dd9e4eb3458467b) format("svg");
   font-weight: normal;
   font-style: normal;
 }
