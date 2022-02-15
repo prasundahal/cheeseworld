@@ -181,9 +181,6 @@
                                 <div class="col-12 message">
                                     <div class="form-group">
                                         <div class="captcha">
-                                            {{captcha_src()}}<br>
-                                            {{captcha()}}<br>
-
                                             <span>{!! captcha_img() !!}</span>
                                             <button type="button" class="btn btn-danger" class="reload" id="reload">
                                                 &#x21bb;
