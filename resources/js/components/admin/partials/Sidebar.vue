@@ -2411,7 +2411,7 @@
                           <span class="nav-text">General Settings</span>
                         </router-link>
                       </li>
-                      <li
+                      <!-- <li
                         class="nav-item"
                         v-if="$parent.permissions.includes('home-page-builder')"
                       >
@@ -2447,8 +2447,8 @@
                           </span>
                           <span class="nav-text">Home Page Builder</span>
                         </router-link>
-                      </li>
-                      <li
+                      </li> -->
+                      <!-- <li
                         class="nav-item"
                         v-if="$parent.permissions.includes('menu-builder')"
                       >
@@ -2484,7 +2484,7 @@
                           </span>
                           <span class="nav-text">Menu Builder</span>
                         </router-link>
-                      </li>
+                      </li> -->
                       <li
                         class="nav-item"
                         v-if="
@@ -2524,7 +2524,7 @@
                           <span class="nav-text">Slider Banners</span>
                         </router-link>
                       </li>
-                      <li
+                      <!-- <li
                         class="nav-item"
                         v-if="
                           $parent.permissions.includes('constant-bannder-list')
@@ -2562,8 +2562,8 @@
                           </span>
                           <span class="nav-text">Constant Banners</span>
                         </router-link>
-                      </li>
-                      <li
+                      </li> -->
+                      <!-- <li
                         class="nav-item"
                         v-if="
                           $parent.permissions.includes('parrallex-bannder-list')
@@ -2601,7 +2601,7 @@
                           </span>
                           <span class="nav-text">Parallax Banners</span>
                         </router-link>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>

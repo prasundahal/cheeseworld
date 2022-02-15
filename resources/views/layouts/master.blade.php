@@ -22,6 +22,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +75,10 @@
 
         #welcome-wrapper .slick-slide {
             height: unset !important;
+        }
+        .header-content h1{
+            font-family: 'Baloo Paaji 2', cursive!important;
+            font-weight: 800;
         }
         #loading {
         position: fixed;
