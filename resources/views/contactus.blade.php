@@ -21,6 +21,7 @@
         postal_code = $.trim($("#postal_code").val());
         province = $.trim($("#province").val());
         town = $.trim($("#town").val());
+        captcha = $.trim($("#captcha").val());
 
         radio1 = $('input[name="reason_for_request"]:checked').val();
         radio2 = $('input[name="suggestion"]:checked').val();
@@ -46,6 +47,7 @@
                         province:province,
                         town:town,
                         reason:reason,
+                        captcha:captcha
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -57,7 +59,7 @@
                     },
                     success: function(data) {
                         if (data.status == 'Success') {
-                            toastr.error('{{ trans("response.contact-form-success") }}');
+                            toastr.success('{{ trans("response.contact-form-success") }}');
                             $('.submit-btn-contact').attr('disabled','disabled');
                             $('.submit-btn-contact').text('Message Sent');
                         }
@@ -66,20 +68,32 @@
                         }
                     },
                     error: function(data) {
+                            console.log('2');
                         // console.log(data);
                         if(data.status == 422){
+                            console.log('3');
                             jQuery.each(data.responseJSON.errors, function(index, item) {
                                 $("#"+index).parent().find('.invalid-feedback').css('display','block');
                                 $("#"+index).parent().find('.invalid-feedback').html(item);
                             });
                         }
                         else{
+                            console.log('4');
                             toastr.error('{{ trans("response.some_thing_went_wrong") }}');;
                         }
 
                     },
                     });
      
+    });
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
     });
 </script>
 @endsection

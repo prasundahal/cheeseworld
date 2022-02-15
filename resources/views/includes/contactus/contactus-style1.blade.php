@@ -177,6 +177,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mt-2">
+                                <div class="col-12 message">
+                                    <div class="form-group">
+                                        <div class="captcha">
+                                            {{captcha_src()}}<br>
+                                            {{captcha()}}<br>
+
+                                            <span>{!! captcha_img() !!}</span>
+                                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                                &#x21bb;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12 message">
+                                    <div class="form-group">
+                                        <label for="captcha">Captcha</label>
+                                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                    </div>
+                                </div>
+                            </div>
                             {{-- <div class="row">
                                 <div class="col-12 file-input">
         

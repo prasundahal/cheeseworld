@@ -3,6 +3,7 @@
 use App\Mail\ContactUs;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CaptchaServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,5 +90,8 @@ Route::group(['middleware' => ['general']], function () {
     Route::get('lang/{locale}', 'LocalizationController@n');
     
     Route::get('esewa-verify', 'Web\PaymentVerification@verify')->name('esewa-verify');
+
+    Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
+
 
 });

@@ -8,12 +8,21 @@ use App\Mail\ContactUs;
 use App\Models\Admin\Setting;
 use Illuminate\Support\Facades\Mail;
 use App\Traits\ApiResponser;
+use Illuminate\Support\Facades\Validator;
 
 class MailController extends Controller
 {
     use ApiResponser;
     public function contact_us(ContactUsRequest $request)
     {
+        $validator = Validator::make($request->all(), [
+            'captcha' => 'required|captcha'
+        ]);
+        
+        if ($validator->fails()) {
+            return $this->errorResponse('Captcha Invalid', 401);
+            // return redirect()->back()->withInput()->with('error', $validator->messages()->first());
+        }
         $data = [
             'first_name' => (isset($request->first_name) && !empty($request->first_name))?$request->first_name:'empty', 
             'last_name' => (isset($request->last_name) && !empty($request->last_name))?$request->last_name:'empty', 
