@@ -251,7 +251,9 @@ button:focus {
 }
 
 #page-wrapper #navigation-wrapper {
-	position: static;
+	/* position: static; */
+	position: sticky;
+	top: 0;
 }
 
 #page-wrapper #navigation-wrapper .nav-link {
@@ -1345,4 +1347,10 @@ a {
 
 .error {
 	color: #dc3545!important;
+}
+.fixed{
+	position: fixed!important;
+}
+.bg-white{
+	background:white;
 }

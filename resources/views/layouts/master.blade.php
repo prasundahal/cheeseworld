@@ -259,7 +259,23 @@
             myFunction();
         });
     </script>
+    @if ((request()->segment(1) != ''))
+     <script>
+          var num = 100; //number of pixels before modifying styles
 
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > num) {
+                    $('#navigation-wrapper').addClass('fixed');
+                    $('#navigation-wrapper').addClass('bg-white');
+                } else {
+                    $('#navigation-wrapper').removeClass('fixed');
+                    $('#navigation-wrapper').removeClass('bg-white');
+                }
+            });
+
+     </script>
+   
+    @endif
     <script>
         /*   loggedIn = $.trim(localStorage.getItem("customerLoggedin"));
                                     customerFname = $.trim(localStorage.getItem("customerFname"));
