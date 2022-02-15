@@ -72,7 +72,12 @@
         #welcome-wrapper .slick-track {
             display: flex !important;
         }
-
+        body{
+            font-family: 'Baloo Paaji 2', cursive!important;
+        }
+        label{
+            font-family: 'Baloo Paaji 2', cursive!important;
+        }
         #welcome-wrapper .slick-slide {
             height: unset !important;
         }
