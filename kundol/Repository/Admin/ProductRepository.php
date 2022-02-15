@@ -144,10 +144,6 @@ class ProductRepository implements ProductInterface
                     $query->whereIn('product_variation.variation_id', $variations);
                 });
             }
-           
-            if (isset($_GET['getRandom']) && $_GET['getRandom'] == '1') {
-                $product = $product->inRandomOrder();
-            }
             // return $product->toSql();
             return $this->successResponse(ProductResource::collection($product->paginate($numOfResult)), 'Data Get Successfully!');
         } catch (Exception $e) {

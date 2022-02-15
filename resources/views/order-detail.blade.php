@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Shop Page One content -->
-<div class="container-fuild">
+{{-- <div class="container-fuild">
     <nav aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
@@ -11,7 +11,7 @@
             </ol>
         </div>
     </nav>
-</div>
+</div> --}}
 
 
 <!--My Order Content -->

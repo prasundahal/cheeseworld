@@ -317,7 +317,7 @@
                                     </div>
 
 
-                                </div> --}}
+                                    </div> --}}
                                     <input type="hidden" id="delivery_state_hidden" />
                                     <input type="hidden" id="delivery_country_hidden" />
                                     <input type="hidden" id="billing_state_hidden" />
@@ -917,6 +917,7 @@
                 },
                 beforeSend: function() {},
                 success: function(data) {
+                    console.log(coupon_code);
                     $("#coupon_code").val(coupon_code);
                     if (data.status == 'Success') {
                         if (data.data.type == 'fixed') {
