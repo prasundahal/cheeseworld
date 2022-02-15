@@ -1690,7 +1690,7 @@
                                         '.total_by_weight').val();
                                 }
                             } else {
-                                alert(data.data.shipping_method_id + '     ' + $('.total_by_weight').val());
+                                // alert(data.data.shipping_method_id + '     ' + $('.total_by_weight').val());
                                 $(".shipping-tax").attr('data-price', data.data.shipping_method_amount);
                                 shipping = data.data.shipping_method_amount;
 
